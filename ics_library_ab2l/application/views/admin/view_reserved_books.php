@@ -49,11 +49,11 @@
                                                 echo "</td>
                                                 <td>{$row->date_borrowed}</td>
                                                 <td>{$row->due_date}</td>";
-										echo "<td><form action='controller_reservation/extend' method='post'>
+										echo "<td><form action='controller_reservation/extend' id='overext$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
 												<input type='submit' class='background-red' name='extend' value='Extend' />
 												</form></td>";
-										echo	"<td><form action='controller_outgoing_books/return_book/' method='post'>
+										echo	"<td><form action='controller_outgoing_books/return_book/' id='overret$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
                                                 <input type='submit' class='background-red' name='return' value='Return' />
                                             </form></td>";
@@ -128,12 +128,12 @@
 										if($row->due_date != $date){
 											echo "<td></td>";
 										}else{
-											echo "<td><form action='controller_reservation/extend' method='post'>
+											echo "<td><form action='controller_reservation/extend' id='borrext$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
 												<input type='submit' class='background-red' name='extend' value='Extend' />
 												</form></td>";
 										}
-                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' method='post'>
+                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='borrret$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
                                                 <input type='submit' class='background-red' name='return' value='Return' />
                                             </form></td>";
@@ -165,8 +165,88 @@
                         ?>
 	       </div>
 </div>
+<div id="returndialog" title="Return Book Dialog">
+    <p>Are you sure that you want to confirm that this book was properly returned?</o>
+</div>
+<div id="extenddialog" title="Extend Book Dialog">
+    <p>Are you sure that you want to extend the due date of this book?</o>
+</div>
 <script>
     $(document).ready(function(){
         $('#tabs').tabs();
+
+        $("#extenddialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully extend the due date of a book!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+        $("#returndialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully confirm that a book was properly returned!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+    $( "form[id^='borrret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='borrext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+    $( "form[id^='overret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='overext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+
+    var form;
+
     });
 </script>
