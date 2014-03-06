@@ -1,5 +1,6 @@
 <!DOCTYPE html>j
 <html>
+	
 	<head>
 		<title><?php echo $titlepage?></title>
 		<!--The full build of all the generic classes of the framework(Framework itself)-->

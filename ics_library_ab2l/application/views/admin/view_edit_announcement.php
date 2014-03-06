@@ -49,7 +49,7 @@
                                 		</div>
                                 		<div class="cell">		
 										<div id="add" class="cell">
-											<form action="../controller_announcement/saveChanges" method="post">
+											<form action="../controller_announcement/saveChanges" id="editannouncement" method="post">
 												<div class="panel cell" style="background: #f6f6f6;border: 1px solid #9BA0AF;">
 													<div class="cell">
 														<label>ANNOUNCEMENT TITLE</label><br/>
@@ -69,7 +69,8 @@
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel editing this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
 													<input type = "hidden" name = "date" id = "date" value = "<?php echo $id;?>" />
-													<input type="submit" name="save" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
+													<input type="hidden" name="save"/>
+ 													<input type="submit" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
 													
 									</form>
 									</div>	
@@ -80,3 +81,40 @@
                         </div>
 				</div>
 			</div>
+<div id="announcementdialog" title="Add Announcement Confirmation Dialog">
+	<p>Are you sure that you want to edit this announcement?</o>
+</div>
+<script>
+	$(document).ready(function(){
+		$("#announcementdialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+		$( "#editannouncement" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#announcementdialog" ).dialog( "open" );
+    	});
+	});
+	var form;
+</script>

@@ -26,7 +26,7 @@ foreach($rows as $row => $data)
 	//echo 'Date: ' . ($date=$info[$row]['date']) . '<br />';
 
 	array_shift($data1);
-
+	$count = 0;
 	foreach($data1 as $row1 => $data2)
 	{
 		$row_data = explode('#', $data2);
@@ -37,8 +37,9 @@ foreach($rows as $row => $data)
 		echo "<div class='gradient header'>Title: {$info[$row1]['title']}
 		<form action='controller_announcement/find' class='float-right' method='post'>
 				<input type='hidden' name='date' ' value='{$info[$row]['date']}' />
+				<input type='hidden' name='delete'/>
 				<input type='submit' name='edit' style='height:1.5em; font-size: 10px; line-height: 0px;' value='Edit' enabled/>
-				<input type='submit' name='delete' value='Delete' style='height:1.5em; font-size:10px; line-height: 0px;' onclick=\"return confirm('Are you sure you want to delete this announcement?')\" enabled/>
+				<input type='submit' value='Delete' id='delete$count' style='height:1.5em; font-size:10px; line-height: 0px;' enabled/>
 				</form><br/>
 		Date: {$info[$row]['date']}
 				</div>";
@@ -50,6 +51,7 @@ foreach($rows as $row => $data)
 		echo "</div>";
 		echo "</div>";
 		echo "</div><hr/>";
+		$count++;
 	}
 	
 }
@@ -57,8 +59,9 @@ foreach($rows as $row => $data)
 else{
 	echo "<div class='cell'><h2>There is no announcement to display!</h2></div><hr/>";
 }
-	echo "<form action='controller_announcement/deleteAll' class='float-right' style='margin-left: 5px;' method='post'>
-			<input type='submit' name='delete_all' value='Delete All Announcements' onclick=\"return confirm('Are you sure you want to delete all announcements?\\nThis cannot be undone!')\"enabled/>
+	echo "<form action='controller_announcement/deleteAll' id='deleteall' class='float-right' style='margin-left: 5px;' method='post'>
+			<input type='hidden' name='delete_all'/>
+			<input type='submit' value='Delete All Announcements' enabled/>
 		</form>
 		<form action='controller_announcement/viewForm' class='float-right' method='post'>
 			<input type='submit' name='new' value='Add New Announcement' enabled/>
@@ -66,3 +69,102 @@ else{
 
 		";
 ?>
+<div id="deletealldialog" title="Add Announcement Confirmation Dialog">
+	<p>Are you sure that you want to delete all the announcement?</o>
+</div>
+<div id="deletedialog" title="Add Announcement Confirmation Dialog">
+	<p>Are you sure that you want to delete this announcement?</o>
+</div>
+<div id="deleteconfirm" title="Add Announcement Confirmation Dialog">
+	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
+</div>
+<script>
+	$(document).ready(function(){
+		$("#deleteconfirm").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+      });
+
+		$("#deletealldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+    			$(this).dialog('close');
+            	$('#deleteconfirm').dialog("open");
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+    	$("#deletedialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+ 				button.closest('form').submit();
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+		$( "form#deleteall" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#deletealldialog" ).dialog( "open" );
+    	});
+    	$( "input[id^='delete']" ).click(function (e) {
+    		e.preventDefault();
+    	 	button = $(this);
+      		$( "#deletedialog" ).dialog( "open" );
+    	});
+	});
+	var form;
+	var button;
+</script>
