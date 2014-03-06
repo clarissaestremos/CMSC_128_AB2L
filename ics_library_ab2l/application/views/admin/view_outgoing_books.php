@@ -40,11 +40,11 @@
 
                                                 echo "</td>
 											<td>{$row->due_date}</td>";
-										echo "<td><form action='controller_outgoing_books/reserve/' method='post'>
+										echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
 											<input type='hidden' name='res_number' value='{$row->res_number}' />
 											<input type='submit' class='background-red' name='reserve' value='Confirm' />
 										</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
-										echo "<td><form action='controller_outgoing_books/cancel/' method='post'>
+										echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
 											<input type='hidden' name='res_number' value='{$row->res_number}' />
 											<input type='submit' class='background-red' name='cancel' value='Cancel' />
 										</form></td>";				//button to be clicked if the reservation will be cancelled; functionality of this not included
@@ -72,3 +72,76 @@
 	                    ?>
 	                </div>				
 	            </div>
+<div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
+	<p>Are you sure that you want confirm the borrowing of this book?</o>
+</div>
+<div id="canceldialog" title="Cancel Reservation Confirmation">
+	<p>Are you sure that you want to cancel the reservation of this book?</o>
+</div>
+<script>
+	$(document).ready(function(){
+		$("#confirmdialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+            	alert('You have successfully canceled a reserved book!');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+		$( "form[id^='confirm']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#confirmdialog" ).dialog( "open" );
+    	});
+
+    	$("#canceldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+            	alert('You have successfully canceled a reserved book!');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+		$( "form[id^='cancel']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#canceldialog" ).dialog( "open" );
+    	});
+
+	});
+	var form;
+</script>

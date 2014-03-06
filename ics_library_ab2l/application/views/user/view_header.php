@@ -1,6 +1,10 @@
-<!DOCTYPE html>j
+<!DOCTYPE html>
+<script src="<?php echo  base_url() ?>js/module/jquery/global.js" type="text/javascript"></script>
+
+<script type = "text/javascript">
+	var base_url = "<?php echo base_url() ?>";
+</script>
 <html>
-	
 	<head>
 		<title><?php echo $titlepage?></title>
 		<!--The full build of all the generic classes of the framework(Framework itself)-->
@@ -39,11 +43,6 @@
 			.clear-right{
 				clear: right;
 			}
-			
-			.itemhover { background-color:black !important; color:#ffffff !important; width: 500px !important;}
-			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
-			#selectItems ul li { }
-			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
 		</style>
   		<?php
   		 if($this->session->userdata('logged_in_type')=='admin')
