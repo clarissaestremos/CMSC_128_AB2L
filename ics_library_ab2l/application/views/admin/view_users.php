@@ -3,13 +3,19 @@
         <div class="page-header cell">
            <h1>Admin <small>View Users</small></h1>
         </div>
-        <?php if(isset($message)){ ?>
         <div>
-            <?php echo $message ?>
+            <!--<?php echo $message ?>-->
+			<?php 
+			if(isset($msg)){
+				if($msg1){
+					echo "<div class='color-green'>$msg</div>";
+				}
+				else{
+					 echo "<div class='color-red'>$msg</div>";
+				}
+			}
+			?>
         </div>
-        <?php
-            }
-        ?>
 		<div class="panel datasheet cell">
             <div class="header background-red">
                 List of Users

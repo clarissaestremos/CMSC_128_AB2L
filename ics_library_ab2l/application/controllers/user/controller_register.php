@@ -60,44 +60,15 @@ class Controller_register extends CI_Controller {
           if($this->form_validation->run() == FALSE)
           {
            $data['msg'] = validation_errors();
+           $data['msg1'] = false;
            $this->success($data); 
           }
           else
           {
-            $this->model_register->add_user();
-           /* $data['msg'] = "You successfully registered an account. You may proceed to ICS library to activate it! ";
+            $this->model_register->add_user("guest");
+            $data['msg'] = "You successfully registered an account. You may proceed to ICS library to activate it!";
+            $data['msg1'] = true;
             $this->success($data);
-          */
-            //redirect to controller home
-            //select
-
-             //create the session
-             $sess_array = array(
-                 'username' => $this->input->post('username'),
-                 'fname' => $this->input->post('fname'),
-                 'mname' =>$this->input->post('minit'),
-                 'lname'=>$this->input->post('lname')
-             );
-
-              $this->session->set_userdata('logged_in', $sess_array);
-              $this->session->set_userdata('logged_in_type', "user");
-
-
-
-            if($this->session->userdata('logged_in_type')=="user"){
-              if($this->session->userdata('id')){
-                redirect('index.php/user/controller_reserve_book');
-                }
-                else redirect('index.php/user/controller_home', 'refresh');
-            }
-           else{
-            $session_user = $this->session->userdata('logged_in')['username'];
-            $this->add_log("Admin $session_user logged in.", "Admin Login");
-            //the remove_unclaimed() and update_reservation_status() are better implemented as procedures in the database
-            $this->remove_unclaimed();
-            $this->update_reservation_status();
-            redirect('index.php/admin/controller_admin_home', 'refresh');
-            }
         }
       }
 

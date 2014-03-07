@@ -158,6 +158,8 @@ class Model_reservation extends CI_Model {
 			
 			return count($query->result());
 	}
+	
+
 }
 
 ?>

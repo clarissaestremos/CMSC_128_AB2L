@@ -43,6 +43,7 @@ class Controller_settings extends Controller_log {
 			$this->form_validation->set_rules('icsmail', 'ICS e-Lib Email Address', 'trim|valid_email');
 			$this->form_validation->set_rules('icsmailpw', 'ICS e-Lib Password', 'trim|min_length[5]|max_length[32]|alpha_numeric');
 			$this->form_validation->set_rules('icsmailpw1', 'Retype Password', 'trim||matches[icsmailpw]');
+			
 			if((isset($_POST['admin_password']) and isset($_POST['admin_password1'])) or isset($_POST['icsmail']))
 				$this->form_validation->set_rules('admin_pass', 'Password Confirmation', 'trim|required|min_length[5]|max_length[32]|alpha_numeric');
 				

@@ -38,6 +38,7 @@ class Model_book extends CI_Model {
 		return $this->db->query("SELECT max(id) FROM book")->result();
 	}
 	
+	/*EDIT BOOK*/
 	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects){
 
 		$query = $this->db->where('id', $id);
@@ -99,7 +100,8 @@ class Model_book extends CI_Model {
 		$this->db->delete($table);
 
 	}
-
+	
+	/*DELETE Book*/
 	public function delete_book($id){
 		$this->db->where('id', $id);
 		$this->db->delete('book');

@@ -77,7 +77,6 @@
 												<div class="cell panel" style="background: #f6f6f6; margin-top: 1.5em; border: 1px solid #9BA0AF;">
 													<div class="cell">
 													<label>ICS e-Lib Email Address: <?php echo  $email;?></label><br/>
-													<input type="hidden" name="oldmail" id="oldmail" value="<?php echo  $email;?>" />
 													<input type="email" name="icsmail" id="icsmail" placeholder="New Email" class="background-white" style="width: 95%; margin-left: 3%;" />
 													<label>ICS e-Lib Email Password: ********************</label><br/>
 													<input type="password" name="icsmailpw" id="icsmailpw" placeholder="New Password" class="background-white" style="width: 95%; margin-left: 3%;"/><br /><br/>
