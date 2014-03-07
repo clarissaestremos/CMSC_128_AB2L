@@ -115,7 +115,7 @@ function validateEmail(){
 					document.getElementsByName("valUser")[0].innerHTML=msg;
 				}
 				else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{4,20}$/)){
-				  msg+="Must be between 4-20 alpha numeric character!<br/>";
+				  msg+="Must be between 5-20 characters.<br/>";
 					document.getElementsByName("valUser")[0].innerHTML=msg;
 				}
 				else if(msg="Invalid input"){
@@ -139,12 +139,13 @@ function validateEmail(){
 				msg="";
 
 				if (str=="") msg+="Password is required!";
+				else if(str.length<5) msg+= "Password must be atleast 5 characters."
 				else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
 				else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
 				else if (str.match(/^[a-zA-z0-9]{5,20}$/))  msg+="Strong";
 				else if(msg="") msg="";
 				document.getElementsByName("valPass")[0].innerHTML=msg;
-				if(msg!= "Password is required!") return true;
+				if(msg!= "Password is required!" || msg!= "Password must be atleast 5 characters." || msg!= "Strength: Weak" ) return true;
 				else return false;
 		}		
 	function validateCpass(){

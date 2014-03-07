@@ -37,40 +37,40 @@ else{
 } 
 
 
- $( document ).ready(function(){  
-//to check if the new student number is still available
-	window.getResult = function(stdNum){
-	   // var baseurl = <?php echo base_url()?>;
-	   var bool= false;
-	    $('#stdNum').addClass('preloader');
-	    $("#stdNum").text("Checking availability...");
-	    $.ajax({
-	        url : base_url + 'index.php/user/controller_register/check_stdNum/' + stdNum,
-	        cache : false,
-	        async:false,
-	        success : function(response){
 
-	            $('#stdNum').delay(1000).removeClass('preloader');
-	            if(response == 'userOk'){
-	                $('#stdNum').removeClass('userNo').addClass('userOk');
-	                $('#stdNum').text("Student number available!");
-	                
-	              bool= true;
-	            }
-	            else{
-	                $('#stdNum').removeClass('userOk').addClass('userNo');;
-	                $("#stdNum").text("Student number already exists.");
-	               bool= false;
-	            }
-	        }
-	    })
+       $( document ).ready(function(){   
+       
+       	 window.getResult = 	function (name){
+               // var baseurl = <?php echo base_url()?>;
+               var bool= false;
+                $('#span_un').append("<span id = 'helpusername'></span>");
+                $("#helpusername").text("Checking availability...");
+                $.ajax({
+                    url : base_url + 'index.php/user/controller_editprofile/check_username/' + name,
+                    cache : false,
+                    async:false,
+                    success : function(response){
 
-	  
-	    return bool;
+                        $('#helpusername').delay(1000).removeClass('preloader');
+                        if(response == 'userOk'){
+                            $('#helpusername').removeClass('userNo').addClass('userOk');
+                            $('#helpusername').text("Username available!");
+                            
+                          bool= true;
+                        }
+                        else{
+                            $('#helpusername').removeClass('userOk').addClass('color-red');;
+                            $("#helpusername").text("Username not available.");
+                           bool= false;
+                        }
+                    }
+                })
 
-	}
-})
+              
+                return bool;
 
+            }
+       })
 
 function courseChecker(){
 var selected = document.getElementById('college').value;
