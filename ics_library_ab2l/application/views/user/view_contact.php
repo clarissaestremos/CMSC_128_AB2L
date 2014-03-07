@@ -40,7 +40,7 @@
 																	<label class="color-black" for="name">* Name:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="text" id="sender_name" name="sender_name" pattern="[A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?([A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?)*" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="sender_name" name="sender_name" pattern="[A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?([A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?)*" data-errormessage-type-mismatch="Invalid Input: Must be a more 2 alpha character." data-errormessage="Error." required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
