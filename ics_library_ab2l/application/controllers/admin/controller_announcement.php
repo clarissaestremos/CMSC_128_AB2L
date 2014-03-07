@@ -171,7 +171,7 @@ class Controller_announcement extends Controller_log {
 			$session_user = $this->session->userdata('logged_in')['username'];
 			$this->add_log("Admin $session_user deleted an announcement.", "Delete Announcement");
 			echo "<script>alert('You have deleted an announcement.');</script>";
-			header("refresh:0;url=..");
+			header("refresh:0;url=../controller_announcement");
 		}
 	}
 	
@@ -216,7 +216,7 @@ class Controller_announcement extends Controller_log {
 				$session_user = $this->session->userdata('logged_in')['username'];
 				$this->add_log("Admin $session_user updated an announcement", "Update Announcement");
 				echo "<script>alert('You have updated an announcement.');</script>";
-				header("refresh:0;url=..");
+				header("refresh:0;url=../controller_admin_home");
 			}
 		}
 		else if(isset($_POST["cancel"])){

@@ -18,7 +18,7 @@
 												</div>
 												<div class="cell justify">
 													<h5>Phone(8:00-17:00 +8:00GMT):</h5>
-													<p class="color-black">63-49-536-2313</p>
+													<p class="color-black">536-2313</p>
 												</div>
 												<div class="cell justify">
 													<h5>Website:</h5>
