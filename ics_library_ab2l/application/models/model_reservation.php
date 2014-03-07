@@ -86,7 +86,7 @@ class Model_reservation extends CI_Model {
 			'no_of_available' => "$status"
 			);
 		}elseif($action == "reserved"){
-			$status -= 1;
+		//	$status -= 1;
 			$data = array(
 			'no_of_available' => "$status"
 			);

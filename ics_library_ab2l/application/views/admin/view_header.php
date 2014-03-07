@@ -61,7 +61,7 @@
 						<p id="user-name">
 							<?php  
 								$session_data = $this->session->userdata('logged_in');
-            					 echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
+            					 echo $session_data['fname']." ".$session_data['mname']." ".$session_data['lname'];
             					?>
 					(<a href="<?php echo base_url() ?>index.php/admin/controller_logout">Logout</a>)
 					<a href="<?php echo base_url() ?>index.php/admin/controller_adminmanual" class="tiny float-right" style="margin-top:1.5em;" target="_blank">Admin Manual</a></p>

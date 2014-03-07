@@ -35,6 +35,7 @@ class Model_book extends CI_Model {
 		$this->db->query("INSERT INTO book_call_number values((SELECT max(id) FROM book), '$value3')");
 	}
 	
+		return $this->db->query("SELECT max(id) FROM book")->result();
 	}
 	
 	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects){
