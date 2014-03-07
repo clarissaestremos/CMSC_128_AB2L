@@ -92,8 +92,15 @@
                                     <span class="col width-1of4">Confirm password:</span><input type= 'password' id ='confirm_password' class="background-white" name ='confirm_password' required><span id = "helpcpassword" class = "color-red" class="col width-fill"></span><br>
                                      <input type='button' id = "cancel_password" value= 'Cancel'>
                                     <input type='submit'  onclick= "return  validate_passwords()" value= 'Save'><br/><br/>
-                 
+                                    </form>
                                     </div>
+
+                                     <?php
+          $this->load->model('model_upload');
+          $this->load->view('user/view_upload');
+
+          ?>
+               
                                 </div>
                             </div>
                         </div>
