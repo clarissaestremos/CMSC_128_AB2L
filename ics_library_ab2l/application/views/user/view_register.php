@@ -14,9 +14,14 @@
                                                     <div class="width-fill" style="font-weight: bold;"><p>
                                                         <?php 
                                                             
-                                                            if(isset($msg))    
-                                                            echo $msg;
-                                                            
+                                                            if(isset($msg)){
+																if($msg1){
+                                                                    echo "<div class='color-green'>$msg</div>";
+                                                                }
+                                                                else{
+                                                                     echo "<div class='color-red'>$msg</div>";
+                                                                }
+                                                            }
 
                                                      ?></p>
                                                     </div>

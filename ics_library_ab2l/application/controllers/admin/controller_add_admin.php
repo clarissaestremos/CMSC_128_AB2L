@@ -45,19 +45,27 @@ class Controller_add_admin extends Controller_log{
             $this->form_validation->set_rules('parent_key', 'Parent Key', 'trim|required|alphanumeric|xss_clean');
 
             if($this->form_validation->run() == FALSE){
-                echo validation_errors();
-                echo "<script>alert('ERROR!')</script>";
-                redirect('index.php/admin/controller_add_admin','refresh');
+                $data['msg']=validation_errors();
+                $data['msg1']=false;
             }
             else{
                 $this->model_add_admin->add_admin();
-                echo "<script>alert('You have successfully added another admin account');</script>";
 				$session_user = $this->session->userdata('logged_in')['username'];
 				$this->add_log("Admin $session_user added a new administrator.", "Add Administrator");
-                redirect('index.php/admin/controller_admin_home', 'refresh');
+				$data['msg']="You have successfully added another administrator account.";
+                $data['msg1']=true;
             }
+			$this->success($data);
         }
     }
+	
+	function success($data) {
+        $this->load->helper(array('form','html'));
+        $this->load->view("user/view_header",$data);
+        $this->load->view("user/view_add_admin",$data);
+        $this->load->view("user/view_footer");
+    }
+	
     function redirectPage(){
         if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');

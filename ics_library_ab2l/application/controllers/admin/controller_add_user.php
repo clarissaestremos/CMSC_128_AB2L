@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Controller_add_user extends CI_Controller {
+include_once('controller_log.php');
+class Controller_add_user extends Controller_log {
 
     public function __construct()
     {
@@ -51,16 +52,81 @@ class Controller_add_user extends CI_Controller {
             if($this->form_validation->run() == FALSE)
             {
              $data['msg'] = validation_errors();
+             $data['msg1'] = false;
              $this->success($data); 
             }
             else
             {
-              $this->model_register->add_user();
-              $data['msg'] = "You successfully registered an account. You may proceed to ICS library to activate it! ";
+              $this->model_register->add_user("admin");
+			  $this->email_confirm_account($this->input->post('stdNum'));
               $this->success($data);
             }
           }
     }
+	
+	function email_confirm_account($account_number){
+		if($this->session->userdata('logged_in_type')!="admin")
+			redirect('index.php/user/controller_login', 'refresh');
+		include("./application/controllers/admin/controller_retrieve_email.php");
+		$config = array(
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => "$email",
+			'smtp_pass' => "$password",
+			'mailtype'  => 'html', 
+			'charset'   => 'utf-8',
+			'wordwrap'  => true,
+			'newline'   => "\r\n",
+			'crlf'      => "\n"
+			);//config for the email
+		$subject='Re: ICS e-Lib Account Approval';
+		$from_email= "$email";
+		$from_name='ICS e-Lib';
+
+		//Get user account in database
+		$this->load->model('model_user');
+		$query['query'] = $this->model_user->get_acct($account_number);
+		$username = $query['query'][0]->username;
+		$first_name= $query['query'][0]->first_name;
+		$mi=$query['query'][0]->middle_initial;
+		$last_name=$query['query'][0]->last_name;
+		$to=$query['query'][0]->email;
+
+		$message = "<br />Dear {$first_name} {$mi} {$last_name},<br/>";
+		$message .= "Your account with the following information has been approved:<br />";
+		$message .= "<b>Name:</b> {$first_name} {$mi} {$last_name}<br />";
+		$message .= "<b>Email:</b> {$to}<br />";
+		$message .= "<b>Username:</b> {$username}<br />";
+		$message .= "Please remember necessary information such as your username and password used for this account to be able to access your profile in the ICS e-Lib. Please maximize the use of the site for your needs. For inquiries, please contact the ICS Library librarian.<br/><br />";
+		$message .= "Thank you!<br/>";
+		$message .= "ICS Library Administrator<hr />";
+		$message .= "The ICS e-Lib will never ask or provide confidential account details such as your password. In case you've received messages from us asking for your password, please report them immediately to our administrators. Thank you!<br />Mag-aral ng mabuti!";
+		//  echo $message;
+		$this->load->library('email', $config);
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		$this->email->from($from_email, $from_name);
+		$this->email->to($to); 
+		$this->email->subject($subject);
+		$this->email->message($message);
+		//Send the email
+		if($this->email->send()){
+			$this->load->model('model_user');
+			$this->model_user->approve_user($account_number);
+			$session_user = $this->session->userdata('logged_in')['username'];
+			$this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
+			echo "<script>alert('Account of $account_number has been successfully validated! User may check the email provided for confirmation.')</script>";
+			$data['msg'] = "You've successfully registered and validated a user account.";
+            $data['msg1'] = true;
+			//redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');
+		}else{
+			$data['msg']= "The account of $account_number was not successfully validated! Email failed to send";
+			$data['msg1']= false;
+			//echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send.')</script>";
+			//redirect('index.php/admin/controller_add_user','refresh');
+		}
+	}
 
      public function username_Regex($username){
         if (preg_match('/^[A-Za-z][A-Za-z0-9._]{4,20}$/', $username) ) {

@@ -155,11 +155,18 @@ class Controller_book extends Controller_log {
 			$book_stat = 0;
 			
 			$this->load->model("model_book");
-			$this->model_book->insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject);
-
-			$type = "Add Book";
-			$message = "Admin $session_user added a new book with ISBN: $isbn";
-			$this->add_log($message,$type);	
+			$id = $this->model_book->insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject);
+			if($type== "BOOK"){
+				$type = ucfirst($type);
+				$message = "Admin $session_user added a new $type with ISBN: $isbn";
+			}else{
+				$cn="";
+				foreach ($call_number as $value3) {
+					$cn .= $value3.", ";
+				}
+				$message = "Admin $session_user added a new $type with Call Number(s): $cn";
+			}
+			$this->add_log($message,"Add Book");	
 			$this->call_success();
 		}
 	}

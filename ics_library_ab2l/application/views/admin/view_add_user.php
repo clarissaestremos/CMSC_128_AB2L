@@ -20,7 +20,7 @@
                                                         <div class="cell">
                                                         <?php 
                                                             if(isset($msg)){
-                                                                if($msg === "You successfully registered an account. You may proceed to ICS library to activate it!"){
+                                                                if($msg1){
                                                                     echo "<div class='color-green'>$msg</div>";
                                                                 }
                                                                 else{
