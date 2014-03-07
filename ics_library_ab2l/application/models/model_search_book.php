@@ -66,6 +66,7 @@
 					$query="DISTINCT b.*
 						FROM book b, book_author ba
 						WHERE b.id=ba.id
+						AND ba.author LIKE '%$str%'
 						ORDER BY ba.author LIKE '$str%' DESC";
 					
 				}
@@ -73,12 +74,13 @@
 					$query="DISTINCT b.*
 						FROM book b, book_subject bs
 						WHERE b.id=bs.id
-						ORDER BY bs.subject LIKE '$str%' DESC";
+						AND bs.subject LIKE '$str'";
 				}
 				else if($data['category'] == "tag_name"){
 					$query="DISTINCT b.*
 						FROM book b, tag t
 						WHERE b.id=t.id
+						AND t.tag_name LIKE '%$str%'
 						ORDER BY t.tag_name LIKE '$str%' DESC";
 				}
 				else{

@@ -6,7 +6,7 @@
             				redirect('index.php/user/controller_login', 'refresh');
     ?>
 	<head>
-		<title>Admin Portal</title>
+		<title>Admin Page</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>style/admin/build-full.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>style/admin/admin-style.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css">
@@ -28,6 +28,13 @@
 
 			base_url= "<?php echo base_url() ?>";
 		</script>
+		<style type="text/css">
+			.itemhover { background-color:black !important; color:#ffffff !important; width: 500px !important;}
+			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
+			#selectItems ul li { }
+			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
+			#sorry{text-align: center; padding: 10px;}
+		</style>
 	</head>
 
 

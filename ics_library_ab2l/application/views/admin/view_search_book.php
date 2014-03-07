@@ -36,15 +36,15 @@
 			<h3>Basic Search<h3>
 			<div class="col body">
 				<form method="post" id="search_form" name="search_form" class="col width-3of4">
-					<select id="category" name="category" class="form-elements">
+					<select id="category" name="category" class="form-elements" onchange="autosuggest(sinput.value, this.value, 'admin');showAutoSuggestResultinBody(sinput.value,'admin','search_form', false);">
 						<option value="title">Title</option>
 						<option value="author">Author</option>
 						<option value="subject">Subject</option>
 						<option value="year_of_pub">Publication</option>
 						<option value="tag_name">Tag</option>
 					</select>
-					<input type="text" required="required" placeholder="Search..." class="form-elements background-white" id="sinput" name="sinput" onkeyup="autosuggest(this.value, category.value, 'admin');" />
-					<input type="button" value="Basic Search" class="form-elements" onclick="get_data('admin', 'search_form');"/>
+					<input type="text" required="required" placeholder="Search..." class="form-elements background-white" id="sinput" name="sinput" onkeyup="autosuggest(this.value, category.value, 'admin');showAutoSuggestResultinBody(this.value,'admin','search_form', false);" />
+					<input type="button" value="Basic Search" class="form-elements" id="basicSearch" onclick="get_data('admin', 'search_form',true);"/>
 					<div class="autosuggest" id="autosuggest_list"></div>
 					
 				</form>

@@ -101,6 +101,4 @@ class Controller_reserve_book extends CI_Controller{
 		
 	}
 
-	function success($title){
-	}
 }
