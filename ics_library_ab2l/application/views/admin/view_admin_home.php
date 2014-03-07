@@ -53,11 +53,11 @@
                                                 echo "</td>
                                                 <td>{$row->date_borrowed}</td>
                                                 <td>{$row->due_date}</td>";
-                                        echo "<td><form action='$base/index.php/admin/controller_reservation/extend' method='post'>
+                                        echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
                                                 <input type='submit' class='background-red' name='extend' value='Extend' />
                                                 </form></td>";
-                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' method='post'>
+                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
                                                 <input type='submit' class='background-red' name='return' value='Return' />
                                             </form></td>";
@@ -73,7 +73,7 @@
                                     <li><a href="#">Next</a></li>
                                 </ul>
                             </div>
-                                <form action="controller_outgoing_books/send_email" method='post' class="float-right">
+                                <form action="<?php echo $base ?>index.php/admin/controller_outgoing_books/send_email" method='post' class="float-right">
                                    <input type='submit' name='notify_all' value='Notify All' enabled/>
                                 </form>
 	                    </div>
@@ -125,11 +125,11 @@
 
                                                 echo "</td>
 											<td>{$row->due_date}</td>";
-										echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' method='post'>
+										echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' id='confirm$count' method='post'>
 											<input type='hidden' name='res_number' value='{$row->res_number}' />
 											<input type='submit' class='background-red' name='reserve' value='Confirm' />
 										</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
-										echo "<td><form action='controller_outgoing_books/cancel/' method='post'>
+										echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
 											<input type='hidden' name='res_number' value='{$row->res_number}' />
 											<input type='submit' class='background-red' name='cancel' value='Cancel' />
 										</form></td>";	
@@ -201,8 +201,9 @@
 											echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
 											}
 											else{
-												echo "<form action='$base/index.php/admin/controller_view_users/approve_user' method='POST'>";
+												echo "<form action='$base/index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
 				                                echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
+				                                 echo "<input type='hidden' name='approve' value='approve'/>";
 				                                echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
 				                                echo "</form>";	//'Validate' button. Functionality not included here.
 										    }
@@ -263,10 +264,11 @@ foreach($rows as $row => $data)
 
 		echo "<div class='panel cell'>";
 		echo "<div class='gradient header'>Title: {$info[$row1]['title']}
-		<form action='controller_announcement/find' class='float-right' method='post'>
+		<form action='$base/index.php/admin/controller_announcement/find' class='float-right' method='post'>
 				<input type='hidden' name='date' ' value='{$info[$row]['date']}' />
+				<input type='hidden' name='delete'/>
 				<input type='submit' name='edit' style='height:1.5em; font-size: 10px; line-height: 0px;' value='Edit' enabled/>
-				<input type='submit' name='delete' value='Delete' style='height:1.5em; font-size:10px; line-height: 0px;' onclick=\"return confirm('Are you sure you want to delete this announcement?')\" enabled/>
+				<input type='submit' name='delete' id='delete$count' value='Delete' style='height:1.5em; font-size:10px; line-height: 0px;'enabled/>
 				</form><br/>
 		Date: {$info[$row]['date']}
 				</div>";
@@ -285,10 +287,10 @@ foreach($rows as $row => $data)
 else{
 	echo "<div class='cell'><h2>There is no announcement to display!</h2></div><hr/>";
 }
-	echo "<form action='controller_announcement/deleteAll' class='float-right' style='margin-left: 5px;' method='post'>
-			<input type='submit' name='delete_all' value='Delete All Announcements' onclick=\"return confirm('Are you sure you want to delete all announcements?\\nThis cannot be undone!')\"enabled/>
+	echo "<form action='$base/index.php/admin/controller_announcement/deleteAll' id='deleteall' class='float-right' style='margin-left: 5px;' method='post'>
+			<input type='submit' name='delete_all' value='Delete All Announcements' enabled/>
 		</form>
-		<form action='controller_announcement/viewForm' class='float-right' method='post'>
+		<form action='$base/index.php/admin/controller_announcement/viewForm' class='float-right' method='post'>
 			<input type='submit' name='new' value='Add New Announcement' enabled/>
 		</form>
 
@@ -300,8 +302,325 @@ else{
 	</div>
 </div>
 </div>
+<div id="deletealldialog" title="Add Announcement Confirmation Dialog">
+	<p>Are you sure that you want to delete all the announcement?</o>
+</div>
+<div id="deletedialog" title="Add Announcement Confirmation Dialog">
+	<p>Are you sure that you want to delete this announcement?</o>
+</div>
+<div id="deleteconfirm" title="Add Announcement Confirmation Dialog">
+	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
+</div>
+<div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
+	<p>Are you sure that you want confirm the borrowing of this book?</o>
+</div>
+<div id="canceldialog" title="Cancel Reservation Confirmation">
+	<p>Are you sure that you want to cancel the reservation of this book?</o>
+</div>
+<div id="returndialog" title="Return Book Dialog">
+    <p>Are you sure that you want to confirm that this book was properly returned?</o>
+</div>
+<div id="extenddialog" title="Extend Book Dialog">
+    <p>Are you sure that you want to extend the due date of this book?</o>
+</div>
+
+<div id="confdialog" title="Confirm Account Dialog">
+    <h5>Are you sure that you want to activate this user account?</h5>
+</div>
+
+<div id="deactivatedialog" title="Deactivate Account Dialog">
+    <h5>Do you really wish to deactivate all account?</h5>
+</div>
+
 <script>
-	$(function (){
+	$(document).ready(function(){
 		$('#tabs').tabs();
+		$("#deleteconfirm").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+      });
+
+		$("#deletealldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+    			$(this).dialog('close');
+            	$('#deleteconfirm').dialog("open");
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+    	$("#deletedialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+ 				button.closest('form').submit();
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+		$( "form#deleteall" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#deletealldialog" ).dialog( "open" );
+    	});
+    	$( "input[id^='delete']" ).click(function (e) {
+    		e.preventDefault();
+    	 	button = $(this);
+      		$( "#deletedialog" ).dialog( "open" );
+    	});
+
+    	$(document).ready(function(){
+		$("#confirmdialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+            	alert('You have successfully canceled a reserved book!');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+		$( "form[id^='confirm']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#confirmdialog" ).dialog( "open" );
+    	});
+
+    	$("#canceldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	document.getElementById(form).submit();
+            	alert('You have successfully canceled a reserved book!');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+		$( "form[id^='cancel']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#canceldialog" ).dialog( "open" );
+    	});
+
 	});
+	$("#extenddialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully extend the due date of a book!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+        $("#returndialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully confirm that a book was properly returned!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+    $( "form[id^='borrret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='borrext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+    $( "form[id^='overret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='overext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+    $("#confdialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();            
+                alert('You have successfully activate a user account');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $("#deactivatedialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $( "form[id^='accountconfirm']" ).submit(function (e) {
+            e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#confdialog" ).dialog( "open" );
+        });
+         $( "form[id='deactivateaccount']" ).submit(function (e) {
+                e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#deactivatedialog" ).dialog( "open" );
+        });
+
+	});
+	var form;
+	var button;
 </script>

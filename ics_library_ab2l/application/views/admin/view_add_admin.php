@@ -13,22 +13,18 @@
                                             <div class="body">
                                                 <div class="cell">
                                                     <div class="color-red width-fill" style="font-weight: bold;"><p>
-                                                        <?php 
-                                                            if(isset($msg)){
-                                                                echo $msg;
-                                                             }
-
-                                                     ?></p>
+                                                
+                                                        </p>
                                                     </div>
                                                     <div class="col">
                                                         <div class="cell">
                                                         <?php 
                                                             if(isset($msg)){
-                                                                if($msg1){
+                                                                if($msg === "You successfully added a new admin account."){
                                                                     echo "<div class='color-green'>$msg</div>";
                                                                 }
                                                                 else{
-                                                                     echo "<div class='color-red'>$msg</div>";
+                                                                     echo "<div class='color-red'>Unsuccessful adding admin account. Recheck input values.</div>";
                                                                 }
                                                              }
 
@@ -46,7 +42,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" name="adminkey" class="background-white" id = "adminkey" required placeholder="Administrator's Key"/><br/>&nbsp;<span name="helpadminkey" class="validate color-red"></span><br/>
+                                                                            <input type="text" name="adminkey" class="background-white" id = "adminkey" required placeholder="Administrator's Key"/><br/>&nbsp;<span name="helpadminkey" id="span_ak" class="validate color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -111,7 +107,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" name="uname" class="background-white" id = "uname" required placeholder="Username"/><br/>&nbsp;<span name="helpusername" class="validate color-red"></span><br/>
+                                                                            <input type="text" name="uname" class="background-white" id = "uname" required placeholder="Username"/><br/>&nbsp;<span name="helpusername" id="span_un" class="validate color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -154,6 +150,7 @@
                                                                     </div>
                                                                 </div>
                                                             </form>
+                                                            <p id="haha"></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,5 +161,6 @@
                             </div>
                         </div>
                 </div>
+
             <script src="<?php echo base_url() ?>js/validationAdmin.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>

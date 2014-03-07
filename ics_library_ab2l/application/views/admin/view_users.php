@@ -3,19 +3,13 @@
         <div class="page-header cell">
            <h1>Admin <small>View Users</small></h1>
         </div>
+        <?php if(isset($message)){ ?>
         <div>
-            <!--<?php echo $message ?>-->
-			<?php 
-			if(isset($msg)){
-				if($msg1){
-					echo "<div class='color-green'>$msg</div>";
-				}
-				else{
-					 echo "<div class='color-red'>$msg</div>";
-				}
-			}
-			?>
+            <?php echo $message ?>
         </div>
+        <?php
+            }
+        ?>
 		<div class="panel datasheet cell">
             <div class="header background-red">
                 List of Users
@@ -57,8 +51,9 @@
 							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
 							}
 							else{
-								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' method='POST'>";
+								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='confirmaccount$count' method='POST'>";
                                 echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
+                                echo "<input type='hidden' name='approve' value='approve'/>";
                                 echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
                                 echo "</form>";	//'Validate' button. Functionality not included here.
 						    }
@@ -75,9 +70,90 @@
                     <li><a href="#">Next</a></li>
                 </ul>
             </div>
-			<form action='<?php echo base_url();?>index.php/admin/controller_view_users/deactivate' method='POST' class="float-right">
-				<input type ='submit' class='background-white' name='deactivate' value = 'Deactivate All User Accounts' onclick="confirm('Are you sure you want to deactivate all user accounts? This cannot be undone!')">
+			<form action='<?php echo base_url();?>index.php/admin/controller_view_users/deactivate' id='deactivateaccount' method='POST' class="float-right">
+                <input type='hidden' name='deactivate' id='deactivate' value='deact'/>
+				<input type ='submit' class='background-white' value = 'Deactivate All User Accounts'>
 			</form>
         </div>
     </div>
 </div>
+
+<div id="confdialog" title="Confirm Account Dialog">
+    <h5>Are you sure that you want to activate this user account?</h5>
+</div>
+
+<div id="deactivatedialog" title="Deactivate Account Dialog">
+    <h5>Do you really wish to deactivate all account?</h5>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#confdialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();            
+                alert('You have successfully activate a user account');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $("#deactivatedialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $( "form[id^='confirmaccount']" ).submit(function (e) {
+            e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#confdialog" ).dialog( "open" );
+        });
+         $( "form[id='deactivateaccount']" ).submit(function (e) {
+                e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#deactivatedialog" ).dialog( "open" );
+        });
+
+    });
+    var form;
+</script>
