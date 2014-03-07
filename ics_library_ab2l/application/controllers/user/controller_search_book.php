@@ -3,22 +3,20 @@ class Controller_search_book extends CI_Controller {
  	function __construct(){
 		parent::__construct();
 		$this->load->model('model_search_book');
+
+		$this->load->model('model_get_list');
+		$this->load->model('model_reserve_book');
 		$this->load->library('Jquery_pagination');
 		$this->load->library('pagination');
 	}
 
     function index() {
-    	if($this->session->userdata('id') && $this->session->userdata('borrower')){
-    		redirect('index.php/admin/controller_reserve_book/verify_login/'.$this->session->userdata('id'), 'refresh');
-    	}
-    	$data['parent'] = "Books";
-    	$data['current'] = "Search";
+    	$data['titlepage'] = "Books - Search";
 
         $this->load->helper(array('form','html'));
-        $this->load->view("admin/view_header",$data);
-        $this->load->view("admin/view_aside");
-        $this->load->view("admin/view_search_book");
-        $this->load->view("admin/view_footer");
+        $this->load->view("user/view_header",$data);
+        $this->load->view("user/view_search_book");
+        $this->load->view("user/view_footer");
     }
 
     //AJAX. DO NOT TOUCH IF YOU ARE NOT FAMILIAR WITH IT. Nah.
@@ -29,12 +27,15 @@ class Controller_search_book extends CI_Controller {
 		$category = addslashes($this->input->post('category'));
 		$row = $this->model_search_book->find_suggestion($str, $category);
 		// echo a list where each li has a set_activity function bound to its onclick() event
-		
 		echo "<div id='selectItems'><ul>";
 		foreach ($row->result() as $activity) {
 			echo '<li id="'.$activity->$category.'" onclick="setActivity(\''.$activity->$category.'\',\'search_form\')"><a>'.$activity->$category.'</a></li>'; 
 		}
 		echo "</ul></div>";
+	}
+
+	public function refreshpage(){
+		redirect('index.php/user/controller_search_book', 'refresh');
 	}
 
 	public function get_book_data(){
@@ -61,6 +62,7 @@ class Controller_search_book extends CI_Controller {
 		//fetches data from database.
 		$row = $this->model_search_book->fetch_book_data($data,$config['per_page'],$page);
 		//display data from database
+		
 		
 		//initialize the configuration of the ajax_pagination
 		$this->jquery_pagination->initialize($config);
@@ -124,8 +126,9 @@ class Controller_search_book extends CI_Controller {
 				                                echo "<td><img title = 'THESIS/SP' width = 30px height = 30px src='../../images/type_thesis.png' /></td>";
 
 				                            echo "<td>".$row->no_of_available. "/" . $row->quantity."</td>";
-				                            if($row->no_of_available != 0)
-				                                echo "<td><form method='POST' action='controller_reserve_book/verify_login/$row->id'>
+
+											if($row->no_of_available > 0)
+				                               echo "<td><form method='POST' action='controller_reserve_book/verify_login/$row->id'>
 				                                        <input type='submit' class='background-red table-button' value='Reserve Book'>                                                       </form>
 				                                    </td>";
 				                            else
@@ -141,7 +144,7 @@ class Controller_search_book extends CI_Controller {
 
 	                "</div></div>";
 		}
-
+		
 		else if($row->num_rows() == 0){
 			echo"<div class='panel datasheet'>
                 <div class='header text-center background-red'>
