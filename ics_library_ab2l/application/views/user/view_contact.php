@@ -40,7 +40,7 @@
 																	<label class="color-black" for="name">* Name:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="text" id="sender_name" name="sender_name" pattern="[A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?([A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?)*" data-errormessage-type-mismatch="Invalid Input: Must be a more 2 alpha character." data-errormessage="Error." required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="sender_name" name="sender_name" pattern="[A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?([A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: Must be alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
@@ -48,7 +48,7 @@
 																	<label class="color-black" for="email">* Email:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="email" id="sender_email" name="sender_email" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="email" id="sender_email" name="sender_email" required="required"  oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
@@ -57,7 +57,7 @@
 																</div>
 																<div class="col width-fill">
 																	
-																	<input type="text" id="contactnum" name="contactnum" pattern="[0]{1}[9]{1}[0-9]{9}" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="contactnum" name="contactnum" pattern="[0]{1}[9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Invalid Input: Must be 09-xxxxxxxxx.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
@@ -66,7 +66,7 @@
 																</div>
 																<div class="col width-fill">
 																	
-																	<input type="text" id="subject" name="subject" pattern=".{1,50}" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="subject" name="subject" pattern=".{1,50}"  oninvalid="setCustomValidity('Invalid Input: Must be up to 50 characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															
@@ -75,7 +75,7 @@
 																	<label class="color-black" for="message">*Comments/Suggestion/Inquiries:</label>
 																</div>
 																<div class="col">
-																	<textarea name="message" rows="5" cols="50" required="required" class="float-right width-5of6 background-white"></textarea>
+																	<textarea name="message" rows="5" cols="50" required="required" oninvalid="setCustomValidity('Please leave some comments, suggestions or questions.')" onchange="try{setCustomValidity('')}catch(e){}" class="float-right width-5of6 background-white"></textarea>
 																</div>
 															</div>
 															<div class="cell">
