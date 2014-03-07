@@ -1,15 +1,29 @@
 <script type="text/javascript">
                         window.onload=function() {
+                            checker();
                             myform.call_number.onblur=validate_call_no;
                             myform.title1.onblur=validate_title;
                             myform.author.onblur=validate_author;
                             myform.subject.onblur=validate_subject;
-                            myform.isbn.onblur=validate_isbn_key();
+                            myform.isbn.onblur=validate_isbn_key;
                             myform.year_of_pub.onblur=validate_year_pub;
                             myform.quantity.onblur=validate_quantity;
                             myform.onsubmit=process_add;
                         }
                                 
+                        function checker(){
+
+                        var selected = document.getElementById('type').value;
+
+                        if(selected === 'BOOK')
+                            $('#isbn_div').show();
+                        
+                        else
+                            $('#isbn_div').hide();
+                        
+
+                        } 
+
                         function validate_call_no() {
                             msg="Invalid input: ";
                             str=myform.call_number.value;
@@ -33,12 +47,11 @@
                         function validate_isbn_key(){
                             msg="Invalid input: ";
                             str=myform.isbn.value;
-
                             if(str=="")
                                 msg+="ISBN is required!<br/>";
-                            if( String(x).search(/^\s*(\+|-)?((\d+(\.\d+)?)|(\.\d+))\s*$/) != -1
-&&( str<0000000000001 || str>99999999999999 ))
-                                msg+="Must be numbers only and 13 digits.<br/>";
+                            if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
+                                msg+="Must start and end in number and 13 digits.<br/>";
+
                             if(msg=="Invalid input: ")
                             msg="";
                             else {
@@ -46,11 +59,11 @@
                                 document.getElementsByName("help_isbn_key")[0].style.fontFamily="verdana";
                                 document.getElementsByName("help_isbn_key")[0].style.color="red";
                             }
-                            document.getElementsByName("help_call_number")[0].innerHTML=msg;
-                            if(msg=="")
+                            document.getElementsByName("help_isbn_key")[0].innerHTML=msg;
+
+                            if(msg=="" || selected != "BOOK")
                                 return true;
   
-                            
                         }
 
                         function validate_title() {
@@ -80,7 +93,7 @@
                                 
                             if(str=="")
                             msg+="Author is required!<br/>";
-                            if(!str.match(/^[a-zA-Z\ ]+[a-zA-Z\ ]*$/))
+                            if(!str.match(/^[a-zA-Z][a-zA-Z\ \,\.]*$/))
                             msg+="Must be between 1-100 alpha character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
@@ -198,8 +211,8 @@
                             rowContainer.appendChild(document.createElement("BR")); // add line break
 
                         }
-						
-						function addRow_call_number(element, indentFlag){
+                        
+                        function addRow_call_number(element, indentFlag){
                             var maxFieldWidth = "500";
                             var elementClassName = element.className; // this is the class name of the button that was clicked
                             var fieldNumber = elementClassName.substr(3, elementClassName.length);
@@ -292,7 +305,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type = "text" name = "title" value="<?php echo $book[0]->title ;?>" />&nbsp;<span name="help_title" class="color-red"></span><br/>
+                                                                            <input id = "title1" type = "text" name = "title" value="<?php echo $book[0]->title ;?>" />&nbsp;<span name="help_title" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -309,7 +322,7 @@
                                                                                 $authors = $this->model_book->get_book_authors($book[0]->id);
                                                                                 $count = 0;
                                                                                 foreach ($authors as $author) {
-                                                                                    echo '<input type = "text" name = "author[]" value="'.$author->author.'"><br />';
+                                                                                    echo '<input id  = "author" type = "text" name = "author[]" value="'.$author->author.'"><br />';
                                                                                     $count++;
                                                                                 }
                                                                             ?><span name="help_author" class="color-red"></span>
@@ -332,28 +345,14 @@
                                                                            <?php 
                                                                             $call_numbers = $this->model_book->get_book_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<input type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><br/>';
+                                                                                echo '<input id = "call_number" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><br/>';
                                                                             }
                                                                             ?><span name="help_call_number" class="color-red"></span>
-																			<input type="button" class="row1 cell" value="Add copy" onclick="addRow_call_number(this, false)">
+                                                                            <input type="button" class="row1 cell" value="Add copy" onclick="addRow_call_number(this, false)">
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <div class="col width-1of4">
-                                                                        <div class="cell">
-                                                                            <label for="isbn">ISBN<span class="color-red"></span></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col width-fill">
-                                                                        <div class="cell">
-                                                                            <input type="text" id="isbn" name = "isbn" placeholder="ISBN" value="<?php echo $book[0]->isbn;?>">&nbsp;
-                                                                            <br/><span name="help_isbn_key" class="color-red"></span><br/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                
                                                                  <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
@@ -365,7 +364,7 @@
                                                                             <?php 
                                                                             $subjects = $this->model_book->get_book_subjects($book[0]->id);
                                                                             foreach ($subjects as $subject) {
-                                                                                echo '<input type = "text" name = "subject[]" value="'.$subject->subject.'" /><br/>';
+                                                                                echo '<input id = "subject" type = "text" name = "subject[]" value="'.$subject->subject.'" /><br/>';
                                                                             }
                                                                             ?>
                                                                             <span name="help_subject" class="color-red"></span>
@@ -383,7 +382,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type = "number" name = "year_of_pub" min=1900 max="<?php echo date("Y"); ?>" value="<?php echo $book[0]->year_of_pub ;?>" />&nbsp;<span name="help_year_pub" class="color-red"></span><br/>
+                                                                            <input id  = "year_of_pub" type = "number" name = "year_of_pub" min=1900 max="<?php echo date("Y"); ?>" value="<?php echo $book[0]->year_of_pub ;?>" />&nbsp;<span name="help_year_pub" class="color-red"></span><br/>
                                                                             
                                                                         </div>
                                                                     </div>
@@ -397,9 +396,9 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <select name="type">
+                                                                            <select name="type" id = 'type' onchange = "checker()">
                                                                                 <?php
-                                                                                $types = array("Book", "SP", "Thesis");
+                                                                                $types = array("BOOK", "SP", "THESIS");
                                                                                 foreach($types as $type){
                                                                                     if($type == $book[0]->type){
                                                                                         echo "<option value=\"$type\" selected=\"selected\">";
@@ -416,6 +415,20 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="col" id = 'isbn_div'>
+                                                                    <div class="col width-1of4">
+                                                                        <div class="cell">
+                                                                            <label for="isbn">ISBN<span class="color-red"></span> *</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col width-fill">
+                                                                        <div class="cell">
+                                                                            <input type="text" id="isbn" name = "isbn" placeholder="ISBN" value="<?php echo $book[0]->isbn;?>">&nbsp;
+                                                                            <br/><span name="help_isbn_key" class="color-red"></span><br/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
@@ -424,7 +437,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type = "number" name = "quantity" min=1 max=50 value="<?php echo $book[0]->quantity ;?>" />&nbsp;<span name="helpquantity" class="color-red"></span><br/>
+                                                                            <input id = "quantity" type = "number" name = "quantity" min=1 max=50 value="<?php echo $book[0]->quantity ;?>" />&nbsp;<span name="helpquantity" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>

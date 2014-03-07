@@ -203,12 +203,16 @@ class Controller_book extends Controller_log {
 		$call_numbers = array_unique ($this->input->post('call_number'));
 		$book_authors = array_unique ($this->input->post('author'));
 		$book_subjects = array_unique ($this->input->post('subject'));
+		$isbn = $this->input->post('isbn');
+		$typeCheck = $this->input->post('type');
+		if ($typeCheck != "BOOK")
+			$isbn = "";
 		$book = array(
 			'title' => $this->input->post('title'),
 			'year_of_pub' => $this->input->post('year_of_pub'),
 			'no_of_available' => $this->input->post('no_of_available'),
 			'type' => strtoupper($this->input->post('type')),
-			'isbn' => $this->input->post('isbn'),
+			'isbn' => $isbn,
 			'quantity' => sizeof($call_numbers),
 		);
 		//BUG: CHECK IF A COPY OF THE BOOK IS ON LOAN, THEN SUBTRACT NUMBER OF ON LOAN BOOKS IN QUANTITY THEN UPDATE NO. OF AVAILABLE
