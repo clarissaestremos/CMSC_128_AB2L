@@ -21,11 +21,10 @@ class Controller_add_admin extends Controller_log{
         $this->load->view("admin/view_add_admin");
         $this->load->view("admin/view_footer");
     }
-	
-	public function alpha_space($str){
-       $this->form_validation->set_message('alpha_space', 'Invalid input.');
-      return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
-
+    
+    public function alpha_space($str){
+        $this->form_validation->set_message('alpha_space', 'Invalid input.');
+        return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
     }
     
     function registration(){
@@ -45,33 +44,38 @@ class Controller_add_admin extends Controller_log{
             $this->form_validation->set_rules('parent_key', 'Parent Key', 'trim|required|alphanumeric|xss_clean');
 
             if($this->form_validation->run() == FALSE){
-                $data['msg']=validation_errors();
-                $data['msg1']=false;
+                echo validation_errors();
+                $data['msg'] = validation_errors();
+                redirect('index.php/admin/controller_add_admin', 'refresh');
             }
             else{
                 $this->model_add_admin->add_admin();
-				$session_user = $this->session->userdata('logged_in')['username'];
-				$this->add_log("Admin $session_user added a new administrator.", "Add Administrator");
-				$data['msg']="You have successfully added another administrator account.";
-                $data['msg1']=true;
+                $data['msg'] = "You successfully added a new admin account.";
+                $session_user = $this->session->userdata('logged_in')['username'];
+                $this->add_log("Admin $session_user added a new administrator.", "Add Administrator");
+                $this->success($data);
             }
-			$this->success($data);
         }
     }
-	
-	function success($data) {
-        $this->load->helper(array('form','html'));
-        $this->load->view("user/view_header",$data);
-        $this->load->view("user/view_add_admin",$data);
-        $this->load->view("user/view_footer");
-    }
-	
+
     function redirectPage(){
         if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');
         if(isset($_POST['cancelAdd'])){
             //redirect('index.php/admin/controller_view_users','refresh');
         }
+    }
+
+    function success($data) {
+
+        $data['parent'] = "Admin";
+        $data['current'] = "Add Admin";
+
+            $this->load->helper(array('form','html'));
+            $this->load->view("admin/view_header",$data);
+            $this->load->view("admin/view_aside");
+            $this->load->view("admin/view_add_admin",$data);
+            $this->load->view("admin/view_footer");
     }
 }
 ?>

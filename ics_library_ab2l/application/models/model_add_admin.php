@@ -10,12 +10,18 @@ public function add_admin()
   {
     $parent_key = $this->input->post('parent_key');
     $data['query'] = $this->model_add_admin->get_adminkey($parent_key);
+
+    $fname=$this->input->post('fname');
+    $fname=ucfirst($fname);
+
+    $lname=$this->input->post('lname');
+    $lname=ucfirst($lname);
     
     $data=array(
     'admin_key'=>$this->input->post('adminkey'),
-    'first_name'=>$this->input->post('fname'),
+    'first_name'=>$fname,
     'middle_name'=>$this->input->post('minit'),
-    'last_name'=>$this->input->post('lname'),
+    'last_name'=>$lname,
 
     'email'=>$this->input->post('eadd'),
     'username'=>$this->input->post('uname'),
@@ -33,15 +39,15 @@ public function add_admin()
   }
   
   public function change_password($username, $password){
-	$data=array(
-		'password'=>$password 
+  $data=array(
+    'password'=>$password 
     );
-	$query = $this->db->where('username', $username);
-	$this->db->update('admin_account', $data);
+  $query = $this->db->where('username', $username);
+  $this->db->update('admin_account', $data);
   }
   
   public function check_password($username){
-	$query = $this->db->get_where('admin_account', array('username' => $username));
+  $query = $this->db->get_where('admin_account', array('username' => $username));
     return $query->row_array();
   }
 }

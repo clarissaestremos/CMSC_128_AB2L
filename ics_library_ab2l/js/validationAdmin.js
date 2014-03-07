@@ -25,7 +25,7 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="Middle Initial is required!";
-        else if (!str.match(/^[A-Z]{1,3}\.$/))  msg+="Must be between 1-3 capital alpha character ended by period!<br/>";
+        else if (!str.match(/^[A-Z]{1,3}\.$/))  msg+="Must be between 1-3 capital alpha character ended by period! (i.e. 'S.', 'SJ.')<br/>";
         else if(msg="Invalid input") msg="";
         document.getElementsByName("helpmname")[0].innerHTML=msg;
         if(msg=="") return true;
@@ -56,7 +56,7 @@
                 msg="Invalid Input: ";
             
                 if (str=="") msg+="Email is required!";
-                else if (!str.match(/^(\w|\.){6,30}\@([0,9]|[a-z]|[A-Z]){3,}\./))  msg+="Must be in the form: name@domain.extension!<br/>";
+                else if (!str.match(/^(\w|\.){6,30}\@([0,9]|[a-z]|[A-Z]){3,}\./))  msg+="Must be in the form: name@domain.extension! 'name' should be atleast 6 characters.<br/>";
                 else if(msg="Invalid input") msg="";
                 document.getElementsByName("helpemail")[0].innerHTML=msg;
                 if(msg=="") return true;
@@ -77,13 +77,16 @@
                 msg="";
 
                 if (str=="") msg+="Password is required!";
-                else if (str.match(/^([a-z]+|\d+)$/))  msg+="Invalid Input: Strength: Weak";
-                else if (str.match(/^[a-zA-z]+$/))  msg+="Invalid Input: Strength: Medium";
-                else if (str.match(/^[a-zA-z0-9]+$/))  msg+="Strength: Strong";
-                else if(msg="") msg="";
+                else if (str.match(/^\w{0,4}$/)) msg+="Invalid input: Minimum of 6 characters!";
+                else if (str.match(/^([a-z]{5,}|\d{5,})$/))  msg+="Invalid input: Strength: Weak";
+                else if (str.match(/^[a-zA-z]{5,}$/))  msg+="Invalid input: Strength: Medium";
+                else if (str.match(/^[a-zA-z0-9]{5,}$/))  msg+="Strength: Strong";
+                else if (str== "") msg="";
                 document.getElementsByName("helppassword")[0].innerHTML=msg;
-                if(msg=="Strength: Strong") return true;
-        }       
+                if(msg=="Invalid input: Minimum of 6 characters!" || msg+="Invalid input: Strength: Weak"  || msg+="Invalid input: Strength: Medium") return false;
+                else if(msg!="" && str!="") return true;
+                return false;
+        }     
     function validateCpass(){
             str=regForm.pass.value;
             str2=regForm.cpass.value;
@@ -98,46 +101,12 @@
             return true;
         }
     function validateAll(){
-        if(validateFname()&&validateMinitial()&&validateLname()&&validateNumber()&&/*validateCollege()&&validateCourse()&&
+        if(validateFname()&&validateMinitial()&&validateLname()&&/*validateCollege()&&validateCourse()&&
            validateClassification()&&*/validateEmail()&&validateUser()&&validatePass()&&validateCpass())
         {
             return true;
         }
-        else{return false;}
+        else{
+            return false;
+        }
     }
-
-    
-       $( document ).ready(function(){   
-       
-         window.getResult =     function (name){
-               // var baseurl = <?php echo base_url()?>;
-               var bool= false;
-                $('#span_un').append("<span id = 'helpusername'></span>");
-                $("#helpusername").text("Checking availability...");
-                $.ajax({
-                    url : base_url + 'index.php/user/controller_editprofile/check_username/' + name,
-                    cache : false,
-                    async:false,
-                    success : function(response){
-
-                        $('#helpusername').delay(1000).removeClass('preloader');
-                        if(response == 'userOk'){
-                            $('#helpusername').removeClass('userNo').addClass('userOk');
-                            $('#helpusername').text("Username available!");
-                            
-                          bool= true;
-                        }
-                        else{
-                            $('#helpusername').removeClass('userOk').addClass('color-red');;
-                            $("#helpusername").text("Username not available.");
-                           bool= false;
-                        }
-                    }
-                })
-
-              
-                return bool;
-
-            }
-       })
-   

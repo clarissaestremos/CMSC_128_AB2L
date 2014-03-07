@@ -13,22 +13,18 @@
                                             <div class="body">
                                                 <div class="cell">
                                                     <div class="color-red width-fill" style="font-weight: bold;"><p>
-                                                        <?php 
-                                                            if(isset($msg)){
-                                                                echo $msg;
-                                                             }
-
-                                                     ?></p>
+                                                
+                                                        </p>
                                                     </div>
                                                     <div class="col">
                                                         <div class="cell">
                                                         <?php 
                                                             if(isset($msg)){
-                                                                if($msg1){
+                                                                if($msg === "You successfully added a new admin account."){
                                                                     echo "<div class='color-green'>$msg</div>";
                                                                 }
                                                                 else{
-                                                                     echo "<div class='color-red'>$msg</div>";
+                                                                     echo "<div class='color-red'>Unsuccessful adding admin account. Recheck input values.</div>";
                                                                 }
                                                              }
 
@@ -154,6 +150,7 @@
                                                                     </div>
                                                                 </div>
                                                             </form>
+                                                            <p id="haha"></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,5 +161,6 @@
                             </div>
                         </div>
                 </div>
+
             <script src="<?php echo base_url() ?>js/validationAdmin.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
