@@ -102,10 +102,10 @@
 				foreach ($row->result() as $book_details) {
 					$row2 = $this->model_reserve_book->fetch_breservation($book_details->call_number);
 					if($rank > $row2->num_rows()){
-						foreach ($row2->result() as $cnum_details) {
-							$call_number = $book_details->call_number;
-						}
+						$call_number = $book_details->call_number;
 						$rank = $row2->num_rows();
+						if($row2->num_rows() == 0)
+							$rank = 0;
 					}
 				}
 			}
