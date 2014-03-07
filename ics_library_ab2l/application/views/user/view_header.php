@@ -55,6 +55,7 @@
           ?>
           <script type="text/javascript">
 
+
           var base_url= "<?php echo  base_url() ?>"</script>
   		<meta charset="utf-8"/>
 	</head>
