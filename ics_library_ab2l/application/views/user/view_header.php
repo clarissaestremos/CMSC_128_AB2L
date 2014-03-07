@@ -46,7 +46,7 @@
 		</style>
   		<?php
   		 if($this->session->userdata('logged_in_type')=='admin')
-            				redirect('index.php/admin/controller_announcement', 'refresh');
+            				redirect('index.php/admin/controller_home', 'refresh');
           ?>
           <script type="text/javascript">
 
