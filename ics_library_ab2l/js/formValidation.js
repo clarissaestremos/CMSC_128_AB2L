@@ -131,7 +131,6 @@ function validateEmail(){
 				if(msg=="") return true;
 				else return false;
 
-
 			}
 	
 	function validatePass(){
@@ -174,7 +173,6 @@ function validateEmail(){
 	return true;
 
 	}
-
 
 
        $( document ).ready(function(){   
