@@ -70,6 +70,38 @@ else{
                 return bool;
 
             }
+
+             window.getResultAdminKey = 	function (key){
+               // var baseurl = <?php echo base_url()?>;
+               var bool= false;
+                $('#span_ak').append("<span id = 'helpadminkey'></span>");
+                $("#helpadminkey").text("Checking availability...");
+                $.ajax({
+                    url : base_url + 'index.php/admin/controller_add_admin/check_admin_key/' + key,
+                    cache : false,
+                    async:false,
+                    success : function(response){
+
+                        $('#helpadminkey').delay(1000).removeClass('preloader');
+                        if(response == 'userOk'){
+                            $('#helpadminkey').removeClass('userNo').addClass('userOk');
+                            $('#helpadminkey').text("Admin Key available!");
+                            
+                          bool= true;
+                        }
+                        else{
+                            $('#helpadminkey').removeClass('userOk').addClass('color-red');;
+                            $("#helpadminkey").text("Admin Key not available.");
+                           bool= false;
+                        }
+                    }
+                })
+
+              
+                return bool;
+
+            }
+
        })
 
 function courseChecker(){

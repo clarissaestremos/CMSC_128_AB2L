@@ -44,12 +44,23 @@
     function validateAdminkey(){
                 str=regForm.adminkey.value;
                 msg="Invalid Input: ";
-                
-                if (str=="") msg+="Admin key is required!";
-                else if (!str.match(/^[A-Za-z0-9]{4,10}$/))  msg+="Must be between 4-10 alphanumeric character!<br/>";
-                else if(msg="Invalid input") msg="";
-                document.getElementsByName("helpadminkey")[0].innerHTML=msg;
+
+                if (str==""){
+                    msg+="Admin key is required!";
+                    document.getElementsByName("helpadminkey")[0].innerHTML=msg;
+                }
+                else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{7,9}$/)){
+                  msg+="Must be between 8-10 alphanumeric character!<br/>";
+                    document.getElementsByName("helpadminkey")[0].innerHTML=msg;
+                }
+                else if(msg="Invalid input"){
+                    msg="";
+                    document.getElementsByName("helpadminkey")[0].innerHTML=msg;
+                    if(getResultAdminKey(str)) msg="";
+                }
+
                 if(msg=="") return true;
+                else return false;
             }
             
     function validateEmail(){
@@ -65,7 +76,6 @@
     function validateUser(){
                 str=regForm.uname.value;
                 msg="Invalid Input: ";
-                
 
                 if (str==""){
                     msg+="Username is required!";
@@ -78,11 +88,7 @@
                 else if(msg="Invalid input"){
                     msg="";
                     document.getElementsByName("helpusername")[0].innerHTML=msg;
-                    if(getResult(str))
-                    {
-                        msg="";
-                    }
-
+                    if(getResult(str)) msg="";
                 }
 
                 if(msg=="") return true;

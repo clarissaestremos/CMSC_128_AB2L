@@ -59,17 +59,10 @@ class Controller_add_admin extends Controller_log{
     }
 
     public function check_admin_key( $admin_key){
-            $this->db->where('username',$username);
-            $query = $this->db->get('user_account')->num_rows();
-            if($query == 0 ){
-                    $this->db->where('username',$username);
-                    $query = $this->db->get('admin_account')->num_rows();
-                     if($query == 0 )
-                       echo 'userOk';
-                     else echo 'userNo';
-              }
+            $this->db->where('admin_key',$admin_key);
+            $query = $this->db->get('admin_account')->num_rows();
+            if($query == 0 ) echo 'userOk';
             else echo 'userNo';
-            
     }
 
     function redirectPage(){
