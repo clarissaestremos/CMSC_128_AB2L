@@ -68,16 +68,13 @@ class Controller_view_users extends Controller_log {
 			redirect('index.php/user/controller_login', 'refresh');
 		include("./application/controllers/admin/controller_retrieve_email.php");
 		$config = array(
-			'protocol'  => 'smtp',
-			'smtp_host' => 'ssl://smtp.googlemail.com',
-			'smtp_port' => 465,
-			'smtp_user' => "$email",
-			'smtp_pass' => "$password",
-			'mailtype'  => 'html', 
-			'charset'   => 'utf-8',
-			'wordwrap'  => true,
-			'newline'   => "\r\n",
-			'crlf'      => "\n"
+			'protocol' => 'smtp',
+               'smtp_host' => 'ssl://smtp.googlemail.com',
+               'smtp_port' => 465,
+               'smtp_user' => $email,
+               'smtp_pass' => "$password",
+               'mailtype'  => 'text', 
+                'charset'   => 'iso-8859-1'
 			);//config for the email
 		$subject='Re: ICS e-Lib Account Approval';
 		$from_email= "$email";
