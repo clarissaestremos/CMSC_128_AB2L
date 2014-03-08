@@ -28,7 +28,7 @@
                         
                         
                          <?php 
-                        $attributes = array('name' => 'regForm');
+                        $attributes = array('name' => 'regForm', 'id' => 'regForm');
 
                         echo form_open("index.php/user/controller_register/registration", $attributes); ?>
                         <div class="col">
@@ -224,7 +224,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    </br><input type="submit" onclick="return validateAll()" value="Submit"/>
+                                     </br><input type="submit" value="Submit"/>
                                 </div>
                             </div>
                         </div>
@@ -242,5 +242,59 @@
                         </div>
                     </div>
                 </div>
+<div id="regdialog" title="Extend Book Dialog">
+    <p id="myfname"></p>
+    <p id="mymname"></p>
+    <p id="mylname"></p>
+    <p id="mycol"></p>
+    <p id="myemail"></p>
+    <p id="myusername"></p>
+    <p>Are you sure that the information provided is legit?</p>
+</div>
+
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+         $("#regdialog").dialog({
+         autoOpen: false,
+         modal: true,
+         closeOnEscape: true,
+         maxHeight: 640,
+         maxWidth: 320,
+         closeText: 'show',
+         show: {
+             effect: "fadeIn",
+             duration: 500
+         },
+         hide: {
+             effect: "fadeOut",
+             duration: 500
+         },
+         draggable: false,
+         buttons : {
+             "Confirm": function() {
+                 document.getElementById(form).submit();            },
+             "Edit": function() {
+                 $(this).dialog('close');
+             }
+         }
+ 
+     });
+         $( "form#regForm" ).submit(function (e) {
+             e.preventDefault();
+             document.getElementById('myfname').innerText = "First Name: "+document.getElementById('fname').value;
+             document.getElementById('mymname').innerText = "Middle Initial: " +document.getElementById('minit').value;
+             document.getElementById('mylname').innerText = "Last Name: " +document.getElementById('lname').value;
+             document.getElementById('mycol').innerText = "College: " +document.getElementById('college').value;
+             document.getElementById('myemail').innerText = "Email: " +document.getElementById('eadd').value;
+             document.getElementById('myusername').innerText = "Username: " +document.getElementById('uname').value;
+             if(validateAll()){
+                 form = $(this).get(0).id;
+                 $( "#regdialog" ).dialog( "open" );
+             }
+         });
+ 
+     });
+     var form;
+ </script>
