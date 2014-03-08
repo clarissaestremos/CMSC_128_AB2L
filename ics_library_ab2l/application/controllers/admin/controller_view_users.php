@@ -100,7 +100,7 @@ class Controller_view_users extends Controller_log {
 		$message .= "Please remember necessary information such as your username and password used for this account to be able to access your profile in the ICS e-Lib. Please maximize the use of the site for your needs. For inquiries, please contact the ICS Library librarian.<br/><br />";
 		$message .= "Thank you!<br/>";
 		$message .= "ICS Library Administrator<hr />";
-		$message .= "The ICS e-Lib will never ask or provide confidential account details such as your password. In case you've received messages from us asking for your password, please report them immediately to our administrators. Thank you!<br />Mag-aral ng mabuti!";
+		$message .= "The ICS e-Lib will never ask or provide confidential account details such as your password. In case you've received messages from us asking for your password, please report them immediately to our administrators. Thank you!<br />Mag-aral ng mabuti! ";
 		//  echo $message;
 		$this->load->library('email', $config);
 		$this->email->initialize($config);
@@ -118,7 +118,7 @@ class Controller_view_users extends Controller_log {
 			echo "<script>alert('Account of $account_number has been successfully validated! User may check the email provided for confirmation.')</script>";
 			redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');
 		}else{
-			echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send.')</script>";
+			echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send. Please check your internet connection.')</script>";
 			redirect('index.php/admin/controller_view_users','refresh');
 		}
 	}

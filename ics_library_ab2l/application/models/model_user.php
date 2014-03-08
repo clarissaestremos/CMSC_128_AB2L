@@ -53,6 +53,5 @@ class Model_user extends CI_Model {
 			WHERE account_number='{$user->account_number}'");
 		}
 	}
-
 }
 ?>
