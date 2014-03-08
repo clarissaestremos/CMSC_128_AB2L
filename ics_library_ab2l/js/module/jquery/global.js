@@ -25,8 +25,8 @@ $(window).keydown(function Event(e) {
 			break;
 			// User pressed "enter"
 			case 13:
-				if(currentUrl != '') {
-					$("#sinput").val(currentUrl);	//sets current value
+				if(sinput != '') {
+					$("#sinput").val(sinput);	//sets current value
 					$("#autosuggest_list").hide();	
 					$("#basicSearch").focus();		//focuses on the submit button
 				}
@@ -40,11 +40,13 @@ $(window).keydown(function Event(e) {
 		// Simulote the "hover" effect with the mouse
 		$("#selectItems ul li a").hover(
 			function () {
+				$("#selecItems").focus();
 				currentSelection = $(this).data("number");
 				setSelected(currentSelection);
 			}, function() {
+				$("#selecItems").focus();
 				$("#selectItems ul li a").removeClass("itemhover");
-				currentUrl = '';
+				sinput = '';
 			});
 });
 /*
@@ -73,6 +75,7 @@ function navigate(direction) {
 	setSelected(currentSelection);
 }
 function autosuggest(str, category, user){
+	sinput=str;
 	$('#sinput').attr('autocomplete','off');
 	$('#sinput').bind('keypress', function(event){ 
 		if(event.keyCode == 13){ 
@@ -127,7 +130,8 @@ function showAutoSuggestResultinBody(str,user,form,clicked){
 function setSelected(menuitem) {
 	$("#selectItems ul li a").removeClass("itemhover");
 	$("#selectItems ul li a").eq(menuitem).addClass("itemhover");
-	currentUrl = $("#selectItems ul li").eq(menuitem).attr('id');
+	sinput = $("#selectItems ul li").eq(menuitem).attr('id');
+	changed=true;
 }
 function setActivity(name, form){
 	$("#sinput").val(name);
@@ -162,7 +166,10 @@ function get_data(str, str2, clicked){
 	$('#list_area').addClass('loading');
 	if(flag){
 		$.ajax({
+			//url: "http://localhost/zurbano_module/index.php/controller_search_book/get_book_data",		//EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
 		url: base_url+"index.php/"+str+"/controller_search_book/get_book_data",		//EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
+		
+	//		url: "http://localhost/kebench/index.php/search/get_book_data",
 		type: 'POST',
 		async: true,
 		data: serialize_form(),
@@ -173,8 +180,8 @@ function get_data(str, str2, clicked){
 		}
 		});
 
-	}	
-
+		
+	}
 }
 
 //serializes the form enebling all the inputs to have a value of an empty string if forms.value is equal to " ".
