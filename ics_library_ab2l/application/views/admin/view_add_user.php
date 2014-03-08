@@ -1,3 +1,4 @@
+<!-- edited -->
 <div id="thisbody" class="body width-fill">
 					<div class="col">
                             <div id="whoscell" class="cell">
@@ -37,7 +38,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="firstname">First name<span class="color-red"> *</span></label>
+                                    <label for="fname">First name<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -51,7 +52,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="firstname">Middle Initial<span class="color-red"> *</span></label>
+                                    <label for="minit">Middle Initial<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -65,7 +66,7 @@
 
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="lastname">Last name<span class="color-red"> *</span></label>
+                                    <label for="lname">Last name<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -103,7 +104,7 @@
                          <div class="col" id= "numDiv">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="studno" id = "labelNum">Student Number<span class="color-red"> *</span></label>
+                                    <label for="stdNum" id = "labelNum">Student Number<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -151,7 +152,7 @@
                         <div class="col" id= "courseDiv">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    </br><label for="college">Course <span class="color-red"> *</span></label>
+                                    </br><label for="course">Course <span class="color-red"> *</span></label>
                                 </div>
                             </div>
                         <div class="col width-fill">
@@ -171,7 +172,7 @@
                         <div class="col" id = "divEadd">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Email Address<span class="color-red"> *</span></label>
+                                    <label for="eadd">Email Address<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -186,7 +187,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Username:<span class="color-red"> *</span></label>
+                                    <label for="uname">Username:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -199,7 +200,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Password:<span class="color-red"> *</span></label>
+                                    <label for="pass">Password:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -212,7 +213,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Confirm Password:<span class="color-red"> *</span></label>
+                                    <label for="cpass">Confirm Password:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">

@@ -42,7 +42,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" name="adminkey" class="background-white" id = "adminkey" required placeholder="Administrator's Key"/><br/>&nbsp;<span name="helpadminkey" class="validate color-red"></span><br/>
+                                                                            <input type="text" name="adminkey" class="background-white" id = "adminkey" required placeholder="Administrator's Key"/><br/>&nbsp;<span name="helpadminkey" id="span_ak" class="validate color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -107,7 +107,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" name="uname" class="background-white" id = "uname" required placeholder="Username"/><br/>&nbsp;<span name="helpusername" class="validate color-red"></span><br/>
+                                                                            <input type="text" name="uname" class="background-white" id = "uname" required placeholder="Username"/><br/>&nbsp;<span name="helpusername" id="span_un" class="validate color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
