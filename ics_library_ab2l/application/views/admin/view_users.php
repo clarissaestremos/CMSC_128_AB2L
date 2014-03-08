@@ -106,8 +106,7 @@
         draggable: false,
         buttons : {
             "Yes": function() {
-                document.getElementById(form).submit();            
-                //alert('You have successfully activate a user account');
+                document.getElementById(form).submit();
             },
             "No": function() {
                 $(this).dialog('close');
