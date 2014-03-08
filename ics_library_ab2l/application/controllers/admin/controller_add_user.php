@@ -59,7 +59,7 @@ class Controller_add_user extends Controller_log {
             {
               $this->model_register->add_user("admin");
 			  $this->email_confirm_account($this->input->post('stdNum'));
-              $this->success($data);
+              
             }
           }
     }
@@ -126,6 +126,7 @@ class Controller_add_user extends Controller_log {
 			//echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send.')</script>";
 			//redirect('index.php/admin/controller_add_user','refresh');
 		}
+		$this->success($data);
 	}
 
      public function username_Regex($username){

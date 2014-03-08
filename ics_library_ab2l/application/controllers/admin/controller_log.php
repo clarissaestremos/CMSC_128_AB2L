@@ -55,7 +55,7 @@
 			$this->load->model('model_reservation');
 			$data['query'] = $this->model_reservation->show_all_user_book_reservation("reserved");
 			foreach($data['query'] as $reservation){
-				if($reservation->due_date < $date){ //if due date is yesterday, or older
+				if(($reservation->due_date < $date) and ($reservation->rank == 1)){ //if due date is yesterday, or older and is reserved
 					$this->model_reservation->delete_book_reservation($reservation->res_number);
 				}
 			}

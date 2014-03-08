@@ -54,8 +54,8 @@
 								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='confirmaccount$count' method='POST'>";
                                 echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
                                 echo "<input type='hidden' name='approve' value='approve'/>";
-                                echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
-                                echo "</form>";	//'Validate' button. Functionality not included here.
+                                echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";
+                                echo "</form>";
 						    }
 							
 							echo "</tr>";

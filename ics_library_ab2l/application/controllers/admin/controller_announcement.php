@@ -127,6 +127,7 @@ class Controller_announcement extends Controller_log {
 					if($flag == 1){
 						$title = $row_data[0];
 						$content = $row_data[1];
+						$content = str_replace( '<br />', '', $content);
 					}
 				}
 
@@ -216,7 +217,7 @@ class Controller_announcement extends Controller_log {
 				$session_user = $this->session->userdata('logged_in')['username'];
 				$this->add_log("Admin $session_user updated an announcement", "Update Announcement");
 				echo "<script>alert('You have updated an announcement.');</script>";
-				header("refresh:0;url=../controller_admin_home");
+				header("refresh:0;url=../controller_announcement");
 			}
 		}
 		else if(isset($_POST["cancel"])){
