@@ -42,7 +42,7 @@
                                                     <th style="width: 10%;" nowrap="nowrap">Subject</th>
                                                     <th style="width: 45%;" nowrap="nowrap">Material</th>
                                                     <th style="width: 6%;" nowrap="nowrap">Type</th>
-                                                    <th style="width: 5%;" nowrap="nowrap">Rank</th>
+                                                    <th style="width: 5%;" nowrap="nowrap">Status</th>
                                                     <th style="width: 10%;" nowrap="nowrap">Action</th>
                                                 </tr>
                                             </thead>
@@ -75,9 +75,14 @@
                                                             else
                                                                 //image source: http://www.webweaver.nu/clipart/img/education/diploma.png
                                                                 echo "<td><img title = 'THESIS/SP' width = 30px height = 30px src='$base/images/type_thesis.png' /></td>";
-                                                            
-                                                            echo "<td>".$row->rank."</td>"; 
-                                                            
+                                                            echo "<td>";
+                                                            if($row->rank == 1){
+                                                                echo "Reserved";
+                                                            }
+                                                            else{
+                                                                echo "Waitlisted";
+                                                            }
+                                                            echo "</td>";
                                                             echo "<td> 
                                                                     <form  action=\"$base/index.php/user/controller_book/cancel/\" id='cancel$count' method=\"post\">
                                                                         <input type='hidden' name='res_number' value='{$row->res_number}'/>

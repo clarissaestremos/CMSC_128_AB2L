@@ -31,9 +31,6 @@ class Controller_reserve_book extends CI_Controller{
 			}
 		}
 		$data['borrower'] = $this->session->userdata('logged_in')['username'];
-		date_default_timezone_set('Asia/Manila'); // CDT
-		$data['date_reserved'] = getdate();
-		$data['date_expire'] = $this->model_reserve_book->getExpiration($data['date_reserved']);
 		$data['parent'] = "Books";
     	$data['current'] = "Reserve";
 
@@ -83,7 +80,7 @@ class Controller_reserve_book extends CI_Controller{
 				else{
 					$this->model_reserve_book->waitlist_reservation($data);
 					echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
-					redirect('index.php/user/controller_book/user_borrowed_list', 'refresh');
+					redirect('index.php/user/controller_book', 'refresh');
 
 				}
 			}

@@ -28,8 +28,6 @@
 									?></li>
 									<li><b>Year of Publication: </b><?=$year_of_pub?>
 									<li><b>Type: </b><?=$type?></li>
-									<li><b>Current Date (DD/MM/YYYY): </b><?=$date_reserved['mday']."/".$date_reserved['mon']."/".$date_reserved['year'];?></li>
-									<li><b>Expected Expiration Date of Reservation (if book is reserved now): </b><?=$date_expire['mday']."/".$date_expire['mon']."/".$date_expire['year']?></li><br/>
 									<a id="confirmButton" href="<?php echo base_url().'index.php/user/controller_reserve_book/confirm_reservation/'.$tbook; ?>"><input type="button" value="Confirm Reservation"></a>
 								</div>
 							</form>
