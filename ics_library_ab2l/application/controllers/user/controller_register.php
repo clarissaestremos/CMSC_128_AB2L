@@ -95,7 +95,7 @@ class Controller_register extends CI_Controller {
 
 			             //create the session
 			             $sess_array = array(
-			                 'username' => $this->input->post('username'),
+			                 'username' => $this->input->post('uname'),
 			                 'fname' => $this->input->post('fname'),
 			                 'mname' =>$this->input->post('minit'),
 			                 'lname'=>$this->input->post('lname')
