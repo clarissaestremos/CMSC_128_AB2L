@@ -58,6 +58,20 @@ class Controller_add_admin extends Controller_log{
         }
     }
 
+    public function check_admin_key( $admin_key){
+            $this->db->where('username',$username);
+            $query = $this->db->get('user_account')->num_rows();
+            if($query == 0 ){
+                    $this->db->where('username',$username);
+                    $query = $this->db->get('admin_account')->num_rows();
+                     if($query == 0 )
+                       echo 'userOk';
+                     else echo 'userNo';
+              }
+            else echo 'userNo';
+            
+    }
+
     function redirectPage(){
         if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');

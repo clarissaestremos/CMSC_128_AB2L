@@ -1,3 +1,4 @@
+//edited
 	window.onload=function(){
 	
 
@@ -30,7 +31,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Middle Initial is required!";
-		else if (!str.match(/^[a-zA-Z0-9]{1,3}$/))  msg+="Must be between 1-3 capital alpha character.<br/>";
+		else if (!str.match(/^[a-zA-Z0-9]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valInitial")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -141,7 +142,7 @@ function validateEmail(){
 				else if(str.length<5) msg+= "Password must be atleast 5 characters."
 				else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
 				else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
-				else if (str.match(/^[a-zA-z0-9]{5,20}$/))  msg+="Strong";
+				else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strong";
 				else if(msg="") msg="";
 				document.getElementsByName("valPass")[0].innerHTML=msg;
 				if(msg!= "Password is required!" || msg!= "Password must be atleast 5 characters." || msg!= "Strength: Weak" ) return true;
@@ -161,8 +162,7 @@ function validateEmail(){
 			return true;
 		}
 	function validateAll(){
-		if(validateFname()&&validateMinitial()&&validateLname()&&validateNumber()&&validateClassification()&&/*validateCollege()&&validateCourse()&&
-		   validateClassification()&&*/validateEmail()&&validateUser()&&validatePass()&&validateCpass())
+		if(validateFname()&&validateMinitial()&&validateLname()&&validateNumber()&&validateClassification()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
 		{
 			return true;
 		}
