@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="main-body" class="site-body">
 				<div class="site-center">
 <div class="cell body">
@@ -23,6 +32,8 @@
 												<div class="cell justify">
 													<h5>Website:</h5>
 													<p class="color-black"><a href="http://www.ics.uplb.edu.ph">www.ics.uplb.edu.ph</a></p>
+													<h5>Facebook Page:</h5>
+													<div class="fb-like" data-href="https://www.facebook.com/ICS.UPLB" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
 												</div>
 											</div>
 										</div>

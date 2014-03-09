@@ -13,12 +13,9 @@
         display: none;
     }
 
-    #frame:hover ~ div[id='sib']{
+   #frame:hover ~ div:nth-child(14){
         display: block;
     }
-    div[id='sib']{
-    }
-
 
 </style>
 <div id="main-body" class="site-body">
@@ -39,25 +36,34 @@
                                         if(isset($msg)){
                                             echo $msg;
                                          }
-
                                  ?>
 
-                                 <form action = "view_upload.php" method="post" enctype="multipart/form-data">
-                                    <div id = "frame" style = "width: 220px;height:220px;border-radius:110px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFF8DC;"></div><br/><br/><br/>
-                                    <h4 style = "color: #413839; padding-left: 37px; font-size: 22px;font-family:'Lucida Console', Monaco, monospace"><?php echo $name?></h4>
+                                    <h4 style = "color: #413839; padding-left: 20px; font-size: 25px;font-family:'Lucida Console', Monaco, monospace"><?php echo $name?></h4>
+                                    <div id = "frame" style = "width: 240px;height:250px;border-radius:360px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFF8DC;"></div></br></br></br>
+                                    
                                     </div>
-                                    <div id='sib'>
-                                        <ul>
-                                            <li style = "list-style: none;margin-top:-65px"><input type="file" name="file" id="file"></li>
-                                            <li style = "list-style: none;margin-top:-30px;margin-left:250px;"><input type="submit" name="Upload" value="Upload"></li>
-                                        </ul>
-                                    </div>
-                                 </form>
+                
+                                    <!-- <div class="col"> -->
+                                        <!-- <div class="cell panel"> -->
+                                            <!-- <div class="body"> -->
+                                                <!-- <div class="cell"> -->
+                                                    <!-- <a>Change Profile Picture</a> -->
+                                                     <form action = "controller_upload/uploadImage" method="post" enctype="multipart/form-data">
+                                                       <?php
+                                                        $this->load->view('user/view_upload');
+                                                       ?>
+                                                      </form>
+                                                <!-- </div> -->
+                                            <!-- </div> -->
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+     
+                               
                                     
                                         
                                 </div>
                                
-                               <div style = "margin-top:-370px;margin-left:350px;">
+                               <div style = "margin-top:-380px;margin-left:350px;">
                                 <div class="col">
                                     <div class="cell">
                                         
@@ -88,7 +94,7 @@
                                                 <div class="cell panel">
                                                     <div class="body">
                                                         <div class="cell">
-                                                           <span id="label_username" class = "main">Username:</span><em id= "username"><?php echo  $user_details->username?></em> <a id = "edit_username">Edit</a><br>
+                                                           <span style = "font-size: 20px;color:#413839;"id="label_username" class = "main">Username:</span><em style = "padding-left:20px;font-size:15px;"id= "username"><?php echo  $user_details->username?></em> <a id = "edit_username">Edit</a><br>
                                     
                                      
                                                             <form id= 'form_username' method= 'post'  action = 'controller_editprofile/edit_username'>
@@ -101,22 +107,22 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Classification:</span><em><?php echo  $user_details->classification?></em>
+                                                            <span style = "font-size: 20px;color:#413839;" class = "main">Classification:</span><em style = "padding-left:20px;font-size:15px;"><?php echo  $user_details->classification?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">College:</span><em><?php echo  $user_details->college?></em>
+                                                            <span style = "font-size: 20px;color:#413839;" class = "main">College:</span><em style = "padding-left:20px;font-size:15px;"><?php echo  $user_details->college?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Course:</span><em><?php echo  $user_details->course?></em>
+                                                            <span style = "font-size: 20px;color:#413839;" class = "main">Course:</span><em style = "padding-left:20px;font-size:15px;"><?php echo  $user_details->course?></em>
                                                         </div>
                                                     </div>
                                                      <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main" id="label_email">Email:</span><em id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
+                                                            <span style = "font-size: 20px;color:#413839;" class = "main" id="label_email">Email:</span><em style = "padding-left:20px;font-size:15px;" id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
                                                             <form id= 'form_email' method= 'post' action = 'controller_editprofile/edit_email'>
                                                             <span id="label_email1">Email Address:</span><input type = 'text' id= 'input_email'name = 'new_email' value="<?php echo  $user_details->email?>" required><span id = "helpemail"></span>
                                                             <span>Enter password:</span><input type= 'password' id ='pword_for_email' class="background-white" name ='pword_for_email' required><br>
@@ -127,7 +133,7 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Status:</span><em><?php echo  $user_details->status?></em>
+                                                            <span style = "font-size: 20px;color:#413839;" class = "main">Status:</span><em style = "padding-left:20px;font-size:15px;"><?php echo  $user_details->status?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">
