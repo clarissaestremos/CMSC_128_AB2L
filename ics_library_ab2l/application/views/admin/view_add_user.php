@@ -32,7 +32,7 @@
                                                      ?></p>
                                                     </div>
                          <?php 
-                        $attributes = array('name' => 'regForm');
+                        $attributes = array('name' => 'regForm', 'id' => 'userRegister');
 
                         echo form_open("index.php/admin/controller_add_user/registration", $attributes); ?>
                         <div class="col">
@@ -244,5 +244,18 @@
                             </div>
                         </div>
 				</div>
+<div id='registerconf' title='Registration Confirmation Dialog'>
+    <h5>Are you sure that the following information is true?</h5>
+    <p id='regname'></p>
+    <p id='regclass'></p>
+    <p id='regnum'></p>
+    <p id='regcol'></p>
+    <p id='regcourse'></p>
+    <p id='regemail'></p>
+    <p id='reguser'></p>
+</div>
+<div id="regsucc">
+    <h5>You have successfuly register an account. You may now go to the library to activate your account. Thank you!</h5>
+</div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>

@@ -594,6 +594,333 @@ $("#dsucc").dialog({
 
     });
     //END OF RESERVE BOOK MODAL
+    
+
+    /**
+    	*Settings Modal
+    */
+    $("#elibmail").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	$('#elibmailconf').dialog('open');
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+
+		$("#elibmailconf").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	$('#elibmainsucc').dialog('open');
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+		$("#elibmailsucc").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          document.getElementById(form).submit();
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              document.getElementById(form).submit();
+ 	          },
+ 	        }
+ 
+     	});
+ 
+		$( "#myform" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#elibmail" ).dialog( "open" );
+    	});
+
+    	$("#passadmin").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	$('#passadminconf').dialog('open');
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+
+		$("#passadminconf").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	$('#elibmainsucc').dialog('open');
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+		$("#passadminsucc").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          document.getElementById(form).submit();
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              document.getElementById(form).submit();
+ 	          },
+ 	        }
+ 
+     	});
+     	$("#cancelmsg").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          window.location.replace(link);
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              window.location.replace(link);
+ 	          },
+ 	        }
+ 
+     	});
+ 
+		$( "#form" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#passadmin" ).dialog( "open" );
+    	});
+    	$( "#cancelset1" ).submit(function (e) {
+    		e.preventDefault();
+    	 	link = $(this).attr('href');
+      		$( "#cancelmsg" ).dialog( "open" );
+    	});
+    	$( "#cancelset2" ).submit(function (e) {
+    		e.preventDefault();
+    	 	link = $(this).attr('href');
+      		$( "#cancelmsg" ).dialog( "open" );
+    	});
+    //END OF SETTINGS MODAL
+
+    /*
+    	*Add Admin Modals
+    */
+    $("#addadminsuccess").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+                document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
+        $("#addadmin").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                document.getElementById('akeys').innerText = "Admin key: " document.getElementById('adminkey').value;
+                document.getElementById('ausernames').innerText = "Admin username: " document.getElementById('uname').value;
+                $('#addadminsuccess').dialog('open');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+        });
+
+        $( "#adminReg" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            document.getElementById('akey').innerText = "Admin Key: "+ document.getElementById('adminkey').value;
+            document.getElementById('aname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
+            document.getElementById('aemail').innerText = "Admin Key: "+ document.getElementById('eadd').value;
+            document.getElementById('ausername').innerText = "Admin Key: "+ document.getElementById('uname').value;
+            $( "#addadmin" ).dialog( "open" );
+        });
+    //END OF ADD ADMIN MODALS
+
+    /**
+		*Add User Modals
+    */
+    $("#regsucc").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+                document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
+        $("#registerconf").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                $('#regsucc').dialog('open');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+        });
+
+        $( "#userRegister" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            document.getElementById('regname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
+            document.getElementById('regclass').innerText = "Classification: "+ document.getElementById('classi').value;
+            if(document.getElementById('classi').value === "Student"){
+                document.getElementById('regnum').innerText = "Student Number: "+ document.getElementById('stdNum').value;
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regcourse').innerText = "Course: "+ document.getElementById('course').value;
+            }
+            else{
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regnum').innerText = "Faculty Number: "+ document.getElementById('stdNum').value;
+            }
+
+            document.getElementById('regemail').innerText = "Email: "+ document.getElementById('eadd').value;
+            document.getElementById('reguser').innerText = "Username: "+ document.getElementById('uname').value;
+            $( "#registerconf" ).dialog( "open" );
+        });
+    //END OF ADD USER MODALS
     });
 		var form;
 	var button;
