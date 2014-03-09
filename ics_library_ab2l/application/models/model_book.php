@@ -19,6 +19,11 @@ class Model_book extends CI_Model {
 		$query = $this->db->get_where('book_subject', array('id' => $id));
 		return $query->result();
 	}
+
+	public function get_book_tags($id){
+		$query = $this->db->get_where('tag', array('id' => $id));
+		return $query->result();
+	}
 	
 	/*ADD Book*/
 	public function insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject, $tags){
@@ -44,7 +49,7 @@ class Model_book extends CI_Model {
 	
 
 	/*EDIT BOOK*/
-	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects){
+	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags){
 
 		$query = $this->db->where('id', $id);
 		$this->db->update('book', $book);
@@ -52,7 +57,9 @@ class Model_book extends CI_Model {
 		$this->clear_auth_subj($id, 'book_author');
 		$this->clear_auth_subj($id, 'book_subject');
 		$this->clear_auth_subj($id, 'book_call_number');
+		$this->clear_auth_subj($id, 'tag');
 		
+
 		if(isset($call_numbers)){
 			foreach ($call_numbers as $call_number) {
 				$call_number = trim($call_number);
@@ -88,6 +95,19 @@ class Model_book extends CI_Model {
 						'subject' => $book_subject
 					);
 					$this->db->insert('book_subject', $book_subject_info);
+				}
+			}
+		}
+
+		if(isset($tags)){
+			foreach ($tags as $tag) {
+				$tag = trim($tag);
+				if(!empty($tag)){
+					$tags_info = array(
+						'id' => $id,
+						'tag_name' => $tag
+					);
+					$this->db->insert('tag', $tags_info);
 				}
 			}
 		}

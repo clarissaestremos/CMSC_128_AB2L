@@ -211,6 +211,7 @@ class Controller_book extends Controller_log {
 		$call_numbers = array_unique ($this->input->post('call_number'));
 		$book_authors = array_unique ($this->input->post('author'));
 		$book_subjects = array_unique ($this->input->post('subject'));
+		$tags = array_unique ($this->input->post('tags'));
 		$isbn = $this->input->post('isbn');
 		$typeCheck = $this->input->post('type');
 		if ($typeCheck != "BOOK")
@@ -223,8 +224,9 @@ class Controller_book extends Controller_log {
 			'isbn' => $isbn,
 			'quantity' => sizeof($call_numbers),
 		);
+
 		//BUG: CHECK IF A COPY OF THE BOOK IS ON LOAN, THEN SUBTRACT NUMBER OF ON LOAN BOOKS IN QUANTITY THEN UPDATE NO. OF AVAILABLE
-		$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects);
+		$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags);
 		$this->add_log("Admin $session_user updated book with ID Number: $id", "Update Book");
 		$this->edit_success();
 

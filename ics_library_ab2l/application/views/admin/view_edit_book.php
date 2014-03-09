@@ -277,6 +277,38 @@
                             rowContainer.appendChild(button1);
                             rowContainer.appendChild(document.createElement("BR")); // add line break
                         }
+
+                        function addRow_tags(element, indentFlag){
+                            var maxFieldWidth = "500";
+                            var elementClassName = element.className; // this is the class name of the button that was clicked
+                            var fieldNumber = elementClassName.substr(3, elementClassName.length);
+
+                            var newFieldNumber = ++fieldNumber;
+                            var rowContainer = element.parentNode; // get the surrounding div so we can add new elements
+
+                            // create text field
+                            var textfield = document.createElement("input");
+                            textfield.type = "text";
+                            textfield.setAttribute("name", "tags[]");
+                            textfield.setAttribute("placeholder","Tags");
+                            textfield.setAttribute("class","background-white");
+                            
+
+                            // create buttons
+                            var button1 = document.createElement("input");
+                            button1.type = "button";
+                            button1.setAttribute("value", "Add Tags");
+                            button1.setAttribute("onclick", "addRow_tags(this, false)");
+                            button1.className = "row" + newFieldNumber;
+
+
+                            // add elements to page
+                            rowContainer.removeChild(element);
+                            rowContainer.appendChild(textfield);
+                            rowContainer.appendChild(document.createTextNode(" ")); // add space
+                            rowContainer.appendChild(button1);
+                            rowContainer.appendChild(document.createElement("BR")); // add line break
+                        }
 </script>
 <div id="thisbody" class="body width-fill background-white">
                     <div class="col">
@@ -429,31 +461,34 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col">
-                                                                    <div class="col width-1of4">
-                                                                        <div class="cell">
-                                                                            <label for="total">Quantity<span class="color-red"> *</span></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col width-fill">
-                                                                        <div class="cell">
-                                                                            <input id = "quantity" type = "number" name = "quantity" min=1 max=50 value="<?php echo $book[0]->quantity ;?>" />&nbsp;<span name="helpquantity" class="color-red"></span><br/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
 
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="total">No of Available<span class="color-red"> *</span></label>
+                                                                            <label for="subject">Tags<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col width-fill">
+                                                                    <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type = "text" name = "no_of_available" value="<?php echo $book[0]->no_of_available ;?>"/>&nbsp;<span name="helpquantity" class="color-red"></span><br/>
+                                                                            <?php 
+                                                                            $tags = $this->model_book->get_book_tags($book[0]->id);
+                                                                            foreach ($tags as $tag) {
+                                                                                echo '<input id = "tags" type = "text" name = "tags[]" value="'.$tag->tag_name.'" /><br/>';
+                                                                            }
+                                                                            ?>
+                                                                            <span name="help_tags" class="color-red"></span>
+                                                                            <input type="button" class="row2 cell" value="Add Tags" onclick="addRow_tags(this, false)"/>
+                                                                            <br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+
+                                                                
+                                                                            <input id = "quantity" type = "hidden" name = "quantity" min=1 max=50 value="<?php echo $book[0]->quantity ;?>" />
+
+                                                           
+                                                                            <input type = "hidden" name = "no_of_available" value="<?php echo $book[0]->no_of_available ;?>"/>
 
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
