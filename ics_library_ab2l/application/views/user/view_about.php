@@ -20,20 +20,23 @@
 												<img src="<?php echo base_url();?>images/home/ics.jpg" data-thumb="<?php echo base_url();?>images/home/ics.jpg" alt="" style="border: groove 5px #A80000; margin-left: 20px; width:500px;height:250px;"/>
 												</div>
 												<hr><br/>
-												<div class="width-2of5 float-left" >
-												<h2 class="color-black">About the Library</h2>
-												
-													<img src="<?php echo base_url();?>images/home/11.jpg" data-thumb="<?php echo base_url();?>images/home/10.jpg" alt="" style="border: groove 5px #A80000; width:400px;height:250px;"/>
-												</div>
-												<div class="cell justify width-3of5 float-left" style="width: 610px;">
+
+												<div class="cell justify width-3of5 float-left" style="width: 50%;">
+													<h2 class="color-black">About the Library</h2>
 												<p id="para">The ICS library started in 1996, a year after the foundation of the institute. From having only a few resources, the amount of information and innovative ideas began to cultivate year after year in the library with the increasing amount of reading materials like books, journals, theses, etc. The library was able to provide a warm environment where the faculty and students interact as both tries to deepen their understanding in Computer Science. And now, it strives to reach out anyone interested in the the course both in UPLB and beyond and have them experience that environment.</p>
-												</div><hr><br/><br/>
+												</div>
+												<div class="width-2of5 float-left">
+												
+												
+													<img src="<?php echo base_url();?>images/home/11.jpg" data-thumb="<?php echo base_url();?>images/home/10.jpg" alt="" style="border: groove 5px #A80000; margin-left:20px; margin-top: 30px;width:500px;height:310px;"/>
+												</div>
+												<hr><br/><br/>
 												<div class="cell justify width-3of5 float-left" style="width: 50%;">
 												<h2 class="color-black">About the Librarian</h2>
 												<p id="para">The current library administrative support is Marites M. Gironella. As the librarian for about 3 years and counting, she really enjoys it when she can interact with the users of the library and help them in their searches for the needed books to support in their academic life. She wants the library to be able to cater more people who wants to learn and provide the reading materials they need.</p>
 												</div>
 												<div class="width-2of5 float-left" >
-												<img src="<?php echo base_url();?>images/home/librarian.jpg" data-thumb="<?php echo base_url();?>images/home/librarian.jpg" alt="" style="border: groove 5px #A80000; margin-left: 20px; width:400px;height:250px;"/>
+												<img src="<?php echo base_url();?>images/home/librarian.jpg" data-thumb="<?php echo base_url();?>images/home/librarian.jpg" alt="" style="border: groove 5px #A80000; margin-left: 20px; margin-top: 30px; width:460px;height:290px;"/>
 												</div>
 												<hr><br/><br/>
 
@@ -45,8 +48,8 @@
 												<div id="tabs" class="tabs_rotate" style="border:0px solid black; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 1em; height:350px; overflow: scroll;">
 								        		<ul id="listing" style="border:0px solid black; border-bottom: 1px solid #aaa; border-radius: 0px;" class="background-white">
 								        			<li class="active"><a href="#tabs-1">Project Manager</a></li>
-								        			<li class="hide"><a href="#tabs-2">Team Leaders</a></li>
-								        			<li class="hide"><a href="#tabs-3">Developers</a></li>
+								        			<li><a href="#tabs-2">Team Leaders</a></li>
+								        			<li><a href="#tabs-3">Developers</a></li>
 								        		</ul>
 								        		<div class ="cell" id="tabs-1">
 								        		<h2 class="color-black">Clarissa Estremos</h2>
