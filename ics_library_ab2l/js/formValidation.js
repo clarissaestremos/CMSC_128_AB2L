@@ -1,4 +1,3 @@
-//edited
 	window.onload=function(){
 	
 
@@ -21,7 +20,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
-		else if (!str.match(/^[A-Za-z|\.\-\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+		else if (!str.match(/^[A-Za-z|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valFname")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -52,18 +51,39 @@
 				
 				msg="Invalid Input: ";
 				if(flag==="student"){
-					if (str=="") msg+="Student number is required";
-					else if (!str.match(/^[0-9]{4}\-[0-9]{5}$/))  msg+="Must be xxxx-xxxxx";
-					else if(msg="Invalid input") msg="";
-					document.getElementsByName("valNumber")[0].innerHTML=msg;
+					if (str==""){
+					msg+="Student number is required!";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+					}
+					else if (!str.match(/^[0-9]{4}\-[0-9]{5}$/)){
+					  msg+="Must be xxxx-xxxxx";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+					}
+					else if(msg="Invalid input"){
+						msg="";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+						if(getResultStdNo(str)) msg="";
+					}
 				}
 				else{
-					if (str=="") msg+="Employee number is required";
-					else if (!str.match(/^[0-9]{10}$/) )  msg+="Must be xxxxxxxxxx";
-					else if(msg="Invalid input") msg="";
-					document.getElementsByName("valNumber")[0].innerHTML=msg;
+					if (str==""){
+					msg+="Employee Number is required!";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+					}
+					else if (!str.match(/^[0-9]{10}$/)){
+					  msg+="Must be 10 numeric characters!";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+					}
+					else if(msg="Invalid input"){
+						msg="";
+						document.getElementsByName("valNumber")[0].innerHTML=msg;
+						if(getResultENo(str)) msg="";
+					}
 				}
+
 				if(msg=="") return true;
+				else return false;
+
 			}
 	function validateCollege(){
 				str=regForm.college.value;
@@ -142,7 +162,7 @@ function validateEmail(){
 				else if(str.length<5) msg+= "Password must be atleast 5 characters."
 				else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
 				else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
-				else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strong";
+				else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
 				else if(msg="") msg="";
 				document.getElementsByName("valPass")[0].innerHTML=msg;
 				if(msg!= "Password is required!" || msg!= "Password must be atleast 5 characters." || msg!= "Strength: Weak" ) return true;
