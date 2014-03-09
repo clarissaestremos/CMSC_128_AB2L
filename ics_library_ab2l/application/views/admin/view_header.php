@@ -224,6 +224,8 @@ $("#dsucc").dialog({
     	/**
     		*Outgoing books
     	*/
+
+
 		$("#confirmsuccess").dialog({
  	    	autoOpen: false,
  	        modal: true,
@@ -345,8 +347,8 @@ $("#dsucc").dialog({
         draggable: false,
         buttons : {
             "Yes": function() {
-                document.getElementById(form).submit();
-                alert('You have successfully extend the due date of a book!');
+            	$(this).dialog('close');
+            	$('#extendsucc').dialog('open');
             },
             "No": function() {
                 $(this).dialog('close');
@@ -354,6 +356,50 @@ $("#dsucc").dialog({
         }
 
     });
+
+
+    $("#extendsucc").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+              document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
+    $("#returnsucc").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+              document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
         $("#returndialog").dialog({
         autoOpen: false,
         modal: true,
@@ -370,14 +416,13 @@ $("#dsucc").dialog({
         draggable: false,
         buttons : {
             "Yes": function() {
-                document.getElementById(form).submit();
-                alert('You have successfully confirm that a book was properly returned!');
+                $(this).dialog('close');
+                $('#returnsucc').dialog('open');
             },
             "No": function() {
                 $(this).dialog('close');
             }
         }
-
     });
     $( "form[id^='borrret']" ).submit(function (e) {
         e.preventDefault();
@@ -403,7 +448,28 @@ $("#dsucc").dialog({
     /**
     	*View User Modal
     */
-    $("#confdialog").dialog({
+    $("#confsuccess").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+              document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
+        $("#confdialog").dialog({
         autoOpen: false,
         modal: true,
         closeOnEscape: true,
@@ -421,8 +487,8 @@ $("#dsucc").dialog({
         draggable: false,
         buttons : {
             "Yes": function() {
-                document.getElementById(form).submit();            
-                alert('You have successfully activate a user account');
+                $(this).dialog('close');
+                $('#confsuccess').dialog('open');
             },
             "No": function() {
                 $(this).dialog('close');
@@ -457,7 +523,6 @@ $("#dsucc").dialog({
         }
 
     });
-
         $( "form[id^='accountconfirm']" ).submit(function (e) {
             e.preventDefault();
                 form = $(this).get(0).id;
@@ -468,9 +533,68 @@ $("#dsucc").dialog({
                 form = $(this).get(0).id;
                 $( "#deactivatedialog" ).dialog( "open" );
         });
-	});
-	//END OF VIEW USER MODAL*********************************************************
+	//END OF USER MODAL*****************************************************
+	
 
+	/*
+		*Confirm book reservation
+	*/
+	$( "#confirmButton" ).click(function (e) {
+    	e.preventDefault();
+    	 link = $(this).attr('href');
+      $( "#dialog" ).dialog( "open" );
+    });
+
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      modal: true,
+      closeOnEscape: true,
+      closeText: true,
+      show: {
+        effect: "fadeIn",
+        duration: 500
+      },
+      hide: {
+        effect: "fadeOut",
+        duration: 500
+      },
+      draggable: false,
+      buttons : {
+      	"Yes": function() {
+      		$(this).dialog('close');
+      		$('#ressucc').dialog('open')
+      	},
+      	"No": function() {
+      		$(this).dialog('close');
+      	}
+      }
+    });
+
+    /*
+		*Dialog for the success of the reservation of books
+    */
+    $("#ressucc").dialog({
+		autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 200
+      	},
+      	draggable: false,
+      	close: function(event, ui){
+      		window.location.replace(link);
+      	},
+      	buttons : {
+        	"Ok": function() {
+            	window.location.replace(link);
+        	},
+      	}
+
+    });
+    //END OF RESERVE BOOK MODAL
+    });
 		var form;
 	var button;
 </script>

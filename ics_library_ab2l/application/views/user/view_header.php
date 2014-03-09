@@ -137,7 +137,7 @@
 								<a href="#" id="myaccount"><li>My Account
 									<ul class="">
 										<a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><li>View Profile</li></a>
-										<a href="<?php echo base_url(); ?>index.php/user/controller_book"><li>Reserved Books</li></a>
+										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><li>Reserved Books</li></a>
 										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><li>Borrowed Books</li></a>
 										<a href="<?php echo base_url(); ?>index.php/user/controller_logout"><li>Logout</li></a>
 									</ul>

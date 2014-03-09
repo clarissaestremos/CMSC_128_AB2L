@@ -48,10 +48,10 @@
 							*/
                             $base = base_url();
 							if($stat === "approve"){
-							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'><input type='button' class='background-blue' value='Click to borrow'/></a></td>";
+							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'><input type='button' style='background:#ccc;' value='Click to borrow'/></a></td>";
 							}
 							else{
-								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='confirmaccount$count' method='POST'>";
+								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
                                 echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
                                 echo "<input type='hidden' name='approve' value='approve'/>";
                                 echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";
@@ -85,74 +85,6 @@
 <div id="deactivatedialog" title="Deactivate Account Dialog">
     <h5>Do you really wish to deactivate all account?</h5>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#confdialog").dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        maxHeight: 640,
-        maxWidth: 320,
-        closeText: 'show',
-        show: {
-            effect: "fadeIn",
-            duration: 500
-        },
-        hide: {
-            effect: "fadeOut",
-            duration: 500
-        },
-        draggable: false,
-        buttons : {
-            "Yes": function() {
-                document.getElementById(form).submit();
-            },
-            "No": function() {
-                $(this).dialog('close');
-            }
-        }
-
-    });
-
-        $("#deactivatedialog").dialog({
-        autoOpen: false,
-        modal: true,
-        closeOnEscape: true,
-        maxHeight: 640,
-        maxWidth: 320,
-        closeText: 'show',
-        show: {
-            effect: "fadeIn",
-            duration: 500
-        },
-        hide: {
-            effect: "fadeOut",
-            duration: 500
-        },
-        draggable: false,
-        buttons : {
-            "Yes": function() {
-                document.getElementById(form).submit();
-            },
-            "No": function() {
-                $(this).dialog('close');
-            }
-        }
-
-    });
-
-        $( "form[id^='confirmaccount']" ).submit(function (e) {
-            e.preventDefault();
-                form = $(this).get(0).id;
-                $( "#confdialog" ).dialog( "open" );
-        });
-         $( "form[id='deactivateaccount']" ).submit(function (e) {
-                e.preventDefault();
-                form = $(this).get(0).id;
-                $( "#deactivatedialog" ).dialog( "open" );
-        });
-
-    });
-    var form;
-</script>
+<div id="confsuccess" title="Confirm User Account Success">
+    <p>You have successfully confirmed an user account!!</p>
+</div>

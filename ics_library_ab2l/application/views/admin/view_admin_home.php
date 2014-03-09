@@ -343,3 +343,12 @@ else{
 <div id="cancelsuccess" title="Cancel Reservation Success">
 	<p>You have successfully cancel a book reservation</p>
 </div>
+<div id="confsuccess" title="Confirm User Account Success">
+    <p>You have successfully confirmed an user account!!</p>
+</div>
+<div id="returnsucc" title="Return Book Success">
+    <p>You have successfully returned a book!</p>
+</div>
+<div id="extendsucc" title="Extend Book Success">
+    <p>You have successfully extend the due date of a book!</p>
+</div>
