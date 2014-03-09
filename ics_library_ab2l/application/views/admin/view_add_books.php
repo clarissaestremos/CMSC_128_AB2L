@@ -284,6 +284,40 @@
                             rowContainer.appendChild(document.createElement("BR")); // add line break
 
                         }
+
+                        function addRow_tags(element, indentFlag){
+                            var maxFieldWidth = "500";
+                            var elementClassName = element.className; // this is the class name of the button that was clicked
+                            var fieldNumber = elementClassName.substr(3, elementClassName.length);
+
+                            var newFieldNumber = ++fieldNumber;
+                            var rowContainer = element.parentNode; // get the surrounding div so we can add new elements
+
+                            // create text field
+                            var textfield = document.createElement("input");
+                            textfield.type = "text";
+                            textfield.setAttribute("name","tag[]");
+                            textfield.setAttribute("placeholder","Tags");
+                            textfield.setAttribute("class","background-white");
+
+                            // create buttons
+                            var button1 = document.createElement("input");
+                            button1.type = "button";
+                            button1.setAttribute("value", "Add Tags");
+                            button1.setAttribute("onclick", "addRow_tags(this, false)");
+                            button1.className = "row" + newFieldNumber;
+
+
+                            // add elements to page
+                            //
+                            rowContainer.appendChild(textfield);
+                            rowContainer.removeChild(element);
+                            rowContainer.appendChild(document.createTextNode(" ")); // add space
+                            rowContainer.appendChild(button1);
+                            rowContainer.appendChild(document.createElement("BR")); // add line break
+                            rowContainer.appendChild(document.createElement("BR")); // add line break
+
+                        }
 </script>
 <div id="thisbody" class="body width-fill background-white">
                     <div class="col">
@@ -420,6 +454,21 @@
                                                                         <div class="cell">
                                                                             <input type="text" id="isbn" name = "isbn" placeholder="ISBN">&nbsp;
                                                                             <br/><span name="help_isbn_key" class="color-red"></span><br/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                 <div class="col">
+                                                                    <div class="col width-1of4">
+                                                                        <div class="cell">
+                                                                            <label for="callno">Tags<span class="color-red"> *</span></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col width-fill">
+                                                                        <div class="cell">
+                                                                            <input type="text" id="tags" name = "tags[]" placeholder="Tags" >&nbsp;
+                                                                             <input type="button" class="row4 cell" value="Add tags" onclick="addRow_tags(this, false)">
+                                                                             <br/><span name="help_tags" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>

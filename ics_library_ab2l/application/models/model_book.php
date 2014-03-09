@@ -21,7 +21,7 @@ class Model_book extends CI_Model {
 	}
 	
 	/*ADD Book*/
-	public function insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject){
+	public function insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject, $tags){
 	$this->db->query("INSERT INTO book values(default, '$title', '$year_of_pub', '$type', $no_of_available, $quantity, $book_stat, '$isbn')");
 
 
@@ -34,10 +34,15 @@ class Model_book extends CI_Model {
 	foreach ($call_number as $value3) {
 		$this->db->query("INSERT INTO book_call_number values((SELECT max(id) FROM book), '$value3')");
 	}
+
+	foreach ($tags as $value4) {
+			$this->db->query("INSERT INTO tag values((SELECT max(id) FROM book), '$value4')");
+		}
 	
 		return $this->db->query("SELECT max(id) FROM book")->result();
 	}
 	
+
 	/*EDIT BOOK*/
 	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects){
 

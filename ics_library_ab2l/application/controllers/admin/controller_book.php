@@ -153,9 +153,10 @@ class Controller_book extends Controller_log {
 			$quantity = sizeof($call_number);
 			$no_of_available = $quantity;
 			$book_stat = 0;
+			$tags = array_unique ($_POST['tags']);
 			
 			$this->load->model("model_book");
-			$id = $this->model_book->insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject);
+			$id = $this->model_book->insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject, $tags);
 			if($type== "BOOK"){
 				$type = ucfirst($type);
 				$message = "Admin $session_user added a new $type with ISBN: $isbn";
