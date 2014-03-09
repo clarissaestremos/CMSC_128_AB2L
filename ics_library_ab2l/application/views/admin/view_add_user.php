@@ -254,8 +254,5 @@
     <p id='regemail'></p>
     <p id='reguser'></p>
 </div>
-<div id="regsucc">
-    <h5>You have successfuly register an account. You may now go to the library to activate your account. Thank you!</h5>
-</div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>

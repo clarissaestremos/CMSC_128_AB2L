@@ -116,7 +116,36 @@ class Controller_add_user extends Controller_log {
 			$this->model_user->approve_user($account_number);
 			$session_user = $this->session->userdata('logged_in')['username'];
 			$this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
-			echo "<script>alert('Account of $account_number has been successfully validated! User may check the email provided for confirmation.')</script>";
+			$base = base_url();
+			echo "
+					<div id='mysuccess' title='Add User Account Success'>
+						<h5>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h5>
+					</div>
+					<script src='$base/js/jquery-1.10.2.min.js'></script>
+					<script src='$base/js/jquery-ui.js'></script>
+					<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+					<script>
+							$('#mysuccess').dialog({
+					            modal: true,
+					            closeOnEscape: true,
+					            closeText: 'show',
+					            show: {
+					              effect: 'fadeIn',
+					              duration: 200
+					            },
+					            draggable: false,
+					            close: function(event, ui){
+					                window.location.replace('$base/index.php/user/controller_home');
+					            },
+					            buttons : {
+					              'Ok': function() {
+					                  window.location.replace('$base/index.php/user/controller_home');
+					              },
+					            }
+					 
+					        });
+						</script>";
+
 			$data['msg'] = "You've successfully registered and validated a user account.";
             $data['msg1'] = true;
 			//redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');

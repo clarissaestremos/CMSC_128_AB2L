@@ -252,33 +252,10 @@
     <p id='regemail'></p>
     <p id='reguser'></p>
 </div>
-<div id="regsucc">
-    <h5>You have successfuly register an account. You may now go to the library to activate your account. Thank you!</h5>
-</div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#regsucc").dialog({
-            autoOpen: false,
-            modal: true,
-            closeOnEscape: true,
-            closeText: 'show',
-            show: {
-              effect: "fadeIn",
-              duration: 200
-            },
-            draggable: false,
-            close: function(event, ui){
-                document.getElementById(form).submit();
-            },
-            buttons : {
-              "Ok": function() {
-                  document.getElementById(form).submit();
-              },
-            }
- 
-        });
 
         $("#registerconf").dialog({
         autoOpen: false,
@@ -297,7 +274,7 @@
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#regsucc').dialog('open');
+                document.getElementById(form).submit();
             },
             "No": function() {
                 $(this).dialog('close');

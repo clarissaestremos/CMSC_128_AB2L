@@ -114,9 +114,9 @@ class Controller_book extends Controller_log {
                                                 </form>
                                                 </td>
                                                 <td>
-                                                <form action='$base"."index.php/admin/controller_book/delete/' method='post'>
+                                                <form action='$base"."index.php/admin/controller_book/delete/' id='mydeleteform$count' method='post'>
                                                     <input type=\"hidden\"  name=\"id\" value=\"{$row->id}\" />
-                                                    <input type='submit' name='delete' class='background-red' value='Delete' onclick=\"return confirm('Are you sure you want to delete this book entry?\\nThis cannot be undone!')\" enabled/>
+                                                    <input type='submit' name='delete' class='background-red' value='Delete' onclick='return trySubmit(mydeleteform$count);' enabled/>
                                                 </form>
                                                 </td>
                                                 </tr>";
@@ -250,10 +250,35 @@ class Controller_book extends Controller_log {
 		$id = $_POST['id'];
 		$this->add_log("Admin $session_user deleted book with ID Number: $id", "Delete Book");
 		$this->model_book->delete_book($id);
-		echo "<script>
-				alert('You have successfully deleted a book.');
+		$base = base_url();
+		echo "
+		<div id='mysuccess' title='Delete Book Success'>
+			<h5>You have successfully deleted a book!!</h5>
+		</div>
+		<script src='$base/js/jquery-1.10.2.min.js'></script>
+		<script src='$base/js/jquery-ui.js'></script>
+		<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+		<script>
+				$('#mysuccess').dialog({
+		            modal: true,
+		            closeOnEscape: true,
+		            closeText: 'show',
+		            show: {
+		              effect: 'fadeIn',
+		              duration: 200
+		            },
+		            draggable: false,
+		            close: function(event, ui){
+		                window.location.replace('$base/index.php/admin/controller_book');
+		            },
+		            buttons : {
+		              'Ok': function() {
+		                  window.location.replace('$base/index.php/admin/controller_book');
+		              },
+		            }
+		 
+		        });
 			</script>";
-		redirect('index.php/admin/controller_book', 'refresh');
 	}
 
 

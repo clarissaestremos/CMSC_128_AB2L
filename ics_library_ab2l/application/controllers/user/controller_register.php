@@ -97,13 +97,40 @@ class Controller_register extends CI_Controller {
 			              $this->session->set_userdata('logged_in', $sess_array);
 			              $this->session->set_userdata('logged_in_type', "user");
 
-
-
+			             $base = base_url();
+			            echo "
+					<div id='mysuccess' title='User Register Success'>
+						<h5>You have successfully deleted a book!!</h5>
+					</div>
+					<script src='$base/js/jquery-1.10.2.min.js'></script>
+					<script src='$base/js/jquery-ui.js'></script>
+					<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+					<script>
+							$('#mysuccess').dialog({
+					            modal: true,
+					            closeOnEscape: true,
+					            closeText: 'show',
+					            show: {
+					              effect: 'fadeIn',
+					              duration: 200
+					            },
+					            draggable: false,
+					            close: function(event, ui){
+					                window.location.replace('$base/index.php/user/controller_home');
+					            },
+					            buttons : {
+					              'Ok': function() {
+					                  window.location.replace('$base/index.php/user/controller_home');
+					              },
+					            }
+					 
+					        });
+						</script>";
 			            if($this->session->userdata('logged_in_type')=="user"){
 			              if($this->session->userdata('id')){
-			                redirect('index.php/user/controller_reserve_book');
+			                //redirect('index.php/user/controller_reserve_book');
 			                }
-			                else redirect('index.php/user/controller_home', 'refresh');
+			                //else redirect('index.php/user/controller_home', 'refresh');
 			            }
 			           else{
 			            $session_user = $this->session->userdata('logged_in')['username'];
@@ -120,13 +147,6 @@ class Controller_register extends CI_Controller {
 				$this->load->helper(array('form','html'));
 				$this->load->view("user/view_header",$data);
 				$this->load->view("user/view_register",$data);
-				$this->load->view("user/view_navigation");
-				if($this->session->userdata('logged_in')){
-						$this->load->view("user/view_logged_in");
-				}
-				else{
-						 $this->load->view("user/view_not_logged");
-				}  
 				$this->load->view("user/view_footer");
 		}
 
@@ -135,13 +155,6 @@ class Controller_register extends CI_Controller {
 				$this->load->helper(array('form','html'));
 				$this->load->view("user/view_header",$data);
 				$this->load->view("user/view_register",$data);
-				$this->load->view("user/view_navigation");
-				if($this->session->userdata('logged_in')){
-						$this->load->view("user/view_logged_in");
-				}
-				else{
-						 $this->load->view("user/view_not_logged");
-				}  
 
 				$this->load->view("user/view_footer");
 		}

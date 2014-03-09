@@ -854,26 +854,6 @@ $("#dsucc").dialog({
     /**
 		*Add User Modals
     */
-    $("#regsucc").dialog({
-            autoOpen: false,
-            modal: true,
-            closeOnEscape: true,
-            closeText: 'show',
-            show: {
-              effect: "fadeIn",
-              duration: 200
-            },
-            draggable: false,
-            close: function(event, ui){
-                document.getElementById(form).submit();
-            },
-            buttons : {
-              "Ok": function() {
-                  document.getElementById(form).submit();
-              },
-            }
- 
-        });
 
         $("#registerconf").dialog({
         autoOpen: false,
@@ -892,7 +872,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#regsucc').dialog('open');
+                document.getElementById(form).submit();
             },
             "No": function() {
                 $(this).dialog('close');
