@@ -153,6 +153,9 @@
 			</div>
 <script>
 	$(document).ready(function() {
+	/**
+		Fixation of the navigation on the top
+	*/
     var s = $("#sticker");
     var pos = s.position();                    
     $(window).scroll(function() {
@@ -165,6 +168,9 @@
             s.css("position","relative");
         }
     });
+    /*
+		*Dialog for cancellation of reserved books.
+    */
     $( "#canceldialog" ).dialog({
       autoOpen: false,
       modal: true,
@@ -181,7 +187,8 @@
       draggable: false,
       buttons : {
       	"Yes": function() {
-      		document.getElementById(form).submit();
+      		$(this).dialog('close');
+      		$('#cancelsuccess').dialog('open');
       	},
       	"No": function() {
       		$(this).dialog('close');
@@ -189,6 +196,29 @@
       }
     });
 
+    $("#cancelsuccess").dialog({
+		autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 200
+      	},
+      	draggable: false,
+      	close: function(event, ui){
+      		document.getElementById(form).submit();
+      	},
+      	buttons : {
+        	"Ok": function() {
+            	document.getElementById(form).submit();
+        	},
+      	}
+
+    });
+    /*
+		*Dialog for reservation of books
+    */
     $( "#dialog" ).dialog({
       autoOpen: false,
       modal: true,
@@ -205,7 +235,8 @@
       draggable: false,
       buttons : {
       	"Yes": function() {
-      		window.location.replace(link);
+      		$(this).dialog('close');
+      		$('#ressucc').dialog('open')
       	},
       	"No": function() {
       		$(this).dialog('close');
@@ -213,12 +244,42 @@
       }
     });
 
+    /*
+		*Dialog for the success of the reservation of books
+    */
+    $("#ressucc").dialog({
+		autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 200
+      	},
+      	draggable: false,
+      	close: function(event, ui){
+      		window.location.replace(link);
+      	},
+      	buttons : {
+        	"Ok": function() {
+            	window.location.replace(link);
+        	},
+      	}
+
+    });
+
+     /*
+		Trigger for the cancellation of reserved books
+     */
      $( "form[id^='cancel']" ).submit(function (e) {
     	e.preventDefault();
     	form = $(this).get(0).id;
       $( "#canceldialog" ).dialog( "open" );
     });
 
+     /*
+		Trigger for the confirmation of the reservation of books
+     */
     $( "#confirmButton" ).click(function (e) {
     	e.preventDefault();
     	 link = $(this).attr('href');

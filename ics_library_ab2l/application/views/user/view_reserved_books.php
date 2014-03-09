@@ -10,22 +10,11 @@
 <div id="main-body" class="site-body">
                 <div class="site-center">
 <div class="cell body">
-									<p class="tiny">View Reserved Books</p>
-								</div>
-								 <div class="col">
+                                    <p class="tiny">View Reserved Books</p>
+                                </div>
+                                 <div class="col">
                                 <div class="cell">
-                                    <?php
-                                        if(isset($message)){
-                                    ?>
-                                    <div class="successmsg" style='margin: 3px 10px 3px 10px;'>
-                                        <div class="msgwraps">
-                                            <p class="color-green">
-                                                <p><?php echo $message; ?></p></p>
-                                        </div>
-                                    </div>
-                                    <?php 
-
-                                        }
+                                        <?php
                                             if($result != null){
                                         ?>
                                     <div class="panel datasheet">
@@ -61,7 +50,7 @@
                                                                 $subjects = $subjects."{$subject_list->subject}<br/>";
                                                             }
                                                             echo "<td>".$subjects."</td>";
-                                                           echo "<td><b>$row->title</b> <br/>";
+                                                           echo "<td id='booktitle$count'><b>$row->title</b> <br/>";
                                                             $data['multi_valued'] = $this->model_get_list->get_book_authors($row->id);
                                                             $authors="";
                                                             foreach($data['multi_valued'] as $authors_list){
@@ -116,4 +105,7 @@
                     </div>
 <div id="canceldialog" title="Reserved Book Cancellation Dialog">
   <h5>Do you really wish to cancel your book reservation?</h5>
+</div>
+<div id='cancelsuccess' title="Cancel Reservation Success">
+    <p id='succmsg'>Do you really wish to cancel your material reservation of </p>
 </div>

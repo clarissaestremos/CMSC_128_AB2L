@@ -16,10 +16,9 @@ class Controller_book extends CI_Controller {
 
 	public function index()
     {
-        $this->user_reserved_list(null);
     }
 
-    public function user_reserved_list($page){
+    public function user_reserved_list(){
         $this->load->helper(array('form','html'));
         if($this->model_check_session->check_session() == TRUE){
         
@@ -29,10 +28,6 @@ class Controller_book extends CI_Controller {
         $this->load->model("model_get_list");
         $data['result'] = $this->model_get_list->get_list($acc,"reserved",NULL,0,0);
         $data['titlepage'] = "Reserved books";
-        if($page !== null){
-            $page = urldecode($page);
-            $data['message'] = "You have successfully reserved the book $page";
-        }
         $this->load->view("user/view_header",$data);
         $this->load->view("user/view_reserved_books",$data);
         $this->load->view("/user/view_footer");

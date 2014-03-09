@@ -55,7 +55,7 @@ class Controller_reserve_book extends CI_Controller{
 		}
 	}
 
-	function confirm_reservation($title){
+	function confirm_reservation(){
 		if($this->session->userdata('id') != FALSE && $this->session->userdata('logged_in') != FALSE){
 			$data['id'] = $this->session->userdata('id');
 			$this->session->unset_userdata('id');
@@ -80,12 +80,12 @@ class Controller_reserve_book extends CI_Controller{
 					if($no_of_available > 0){
 						$this->model_reserve_book->add_reservation($data);
 						echo "<script>alert('You have successfully reserved a book. Please confirm it to the administrator.');</script>";
-						redirect('index.php/user/controller_book/user_reserved_list/'.$title,'refresh');
+						redirect('index.php/user/controller_book/user_reserved_list/','refresh');
 					}
 					else{
 						$this->model_reserve_book->waitlist_reservation($data);
 						echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
-						redirect('index.php/user/controller_book', 'refresh');
+						redirect('index.php/user/controller_book/user_reserved_list', 'refresh');
 
 					}	
 				}

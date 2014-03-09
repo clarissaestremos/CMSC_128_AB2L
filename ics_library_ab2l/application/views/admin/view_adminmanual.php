@@ -22,36 +22,39 @@
 #dialogoverlay{
 	display: none;
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 90%;
+	width: 100%;
 	
 
 }
 #dialogbox{
-	margin-top: 80px;
-	margin-left:200px;
-	background: #8B0000;
-	border-radius:7px; 
+	margin-top: 4%;
+	margin-left:16%;
+	background: #B00000 ;
+	border-radius:4%; 
 	width:70%;
-	height: 80%;
+	height: 85%;
 	z-index: 10;
 }
 
+#dialogboxhead{
+	margin-top: 2%;
+}
+
+#boxbody{
+	height: 97%;
+}
 #dialogboxbody{
-	width:95.7%;
-	height: 380px;
+	width:95.4%;
+	height: 72%;
 	overflow-x:auto;
-	background: white;
+	background:white;
 }
 
 
-
-#dialogbox > div{ background:#8B0000; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #B22222; font-size:19px; padding:10px; color:white; }
+#dialogbox > div{ background:#B80000  ; margin:8px; }
+#dialogbox > div > #dialogboxhead{ background: #B80000 ; font-size:19px; padding:10px; color:white; }
 #dialogbox > div > #dialogboxbody{ padding:20px; color:black; }
-#dialogbox > div > #dialogboxfoot{ background: #B22222; padding:10px; text-align:right;color:white; }
-
+#dialogbox > div > #dialogboxfoot{ background: #B80000 ; padding:10px; text-align:right;color:white; }
 <script>
 function CustomAlert(){
 	this.render = function(){
@@ -86,7 +89,7 @@ var Alert = new CustomAlert();
 	<body onload="Alert.render()">
 	<div id="dialogoverlay"></div>
 		<div id="dialogbox">
-		<div>
+		<div id="boxbody">
 			<div id="dialogboxhead">ADMINISTRATOR MANUAL</div>
 			<div id="dialogboxbody">
 		<a name="top"></a>
