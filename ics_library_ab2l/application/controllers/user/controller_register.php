@@ -51,11 +51,6 @@ class Controller_register extends CI_Controller {
 		 public function check_account( $account_number){
             $this->db->where('account_number',$account_number);
             $query = $this->db->get('user_account')->num_rows();
-            if($query == 0 ){
-                   
-                   echo 'userOk';
-              }
-            else echo 'userNo';
             
     	}
 
@@ -112,7 +107,7 @@ class Controller_register extends CI_Controller {
 			             $base = base_url();
 			            echo "
 					<div id='mysuccess' title='User Register Success'>
-						<h5>You have successfully deleted a book!!</h5>
+						<h5>You have successfully register!</h5>
 					</div>
 					<script src='$base/js/jquery-1.10.2.min.js'></script>
 					<script src='$base/js/jquery-ui.js'></script>

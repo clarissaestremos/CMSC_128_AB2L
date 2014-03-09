@@ -26,7 +26,7 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="Middle Initial is required!";
-        else if (!str.match(/^[a-zA-Z0-9]{1,3}$/))  msg+="Must be between 1-3 alpha character.<br/>";
+        else if (!str.match(/^[A-Z]{1,3}$/))  msg+="Must be between 1-3 capital alpha character.<br/>";
         else if(msg="Invalid input") msg="";
         document.getElementsByName("helpmname")[0].innerHTML=msg;
         if(msg=="") return true;

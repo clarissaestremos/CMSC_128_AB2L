@@ -15,7 +15,7 @@
                                                         <?php 
                                                             
                                                             if(isset($msg)){
-																if($msg1){
+																if($data){
                                                                     echo "<div class='color-green'>$msg</div>";
                                                                 }
                                                                 else{
@@ -288,7 +288,7 @@
             form = $(this).get(0).id;
             document.getElementById('regname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
             document.getElementById('regclass').innerText = "Classification: "+ document.getElementById('classi').value;
-            if(document.getElementById('classi').value === "Student"){
+            if(document.getElementById('classi').value === "student"){
                 document.getElementById('regnum').innerText = "Student Number: "+ document.getElementById('stdNum').value;
                 document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
                 document.getElementById('regcourse').innerText = "Course: "+ document.getElementById('course').value;

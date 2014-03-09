@@ -20,7 +20,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
-		else if (!str.match(/^[A-Za-z|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+		else if (!str.match(/^[A-Za-z|\.|\-|\s]{2,50}$/))  msg+="Must be between 2-50 capital alpha character!<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valFname")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -30,7 +30,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Middle Initial is required!";
-		else if (!str.match(/^[a-zA-Z0-9]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
+		else if (!str.match(/^[A-Z]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valInitial")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -40,7 +40,7 @@
 				msg="Invalid Input: ";
 				
 				if (str=="") msg+="Last name is required!";
-				else if (!str.match(/^[A-Z|a-z\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+				else if (!str.match(/^[A-Z|a-z\.|\-|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
 				else if(msg="Invalid input") msg="";
 				document.getElementsByName("valLname")[0].innerHTML=msg;
 				if(msg=="") return true;
