@@ -1,5 +1,13 @@
 
 <div id="main-body" class="site-body">
+	<style>
+		#para{ font-size: 20px;} 
+		#listing{ font-size: 15px;} 
+		.about{
+			font-family: Helvetica;
+		}
+	</style>
+<div id="main-body" class="site-body about">
 				<div class="site-center">
 <div class="cell body">
 
@@ -337,6 +345,8 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tabslet.min.js"></script>
 <script type="text/javascript">
@@ -344,7 +354,7 @@ $(window).ready(function() {
 	$('#slider').nivoSlider();
 });
 $(document).ready(function() {
-	$('.tabs_rotate').tabslet({
+	$('#tabs').tabslet({
 	autorotate: false,
 	delay: 5000,
 	active:0,

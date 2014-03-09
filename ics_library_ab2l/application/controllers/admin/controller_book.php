@@ -142,7 +142,7 @@ class Controller_book extends Controller_log {
 			$session_user = $this->session->userdata('logged_in')['username'];
 			if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');
-		if(isset($_POST['submit'])){
+		if(isset($_POST['sub'])){
 			$call_number = array_unique ($_POST['call_number']);
 			$title = htmlspecialchars($_POST['title1']);
 			$author = array_unique ($_POST['author']);

@@ -149,28 +149,10 @@
                             if(msg=="")
                                 return true;
                         }
-
-                        function validate_quantity() {
-                            msg="Invalid input: ";
-                            str=myform.quantity.value;
-                                
-                            if(str=="")
-                            msg+="Quantity is required!<br/>";
-                            if(msg=="Invalid input: ")
-                            msg="";
-                            else {
-                                document.getElementsByName("help_quantity")[0].style.fontSize="10px";
-                                document.getElementsByName("help_quantity")[0].style.fontFamily="verdana";
-                                document.getElementsByName("help_quantity")[0].style.color="red";
-                            }
-                            document.getElementsByName("help_quantity")[0].innerHTML=msg;
-                            if(msg=="")
-                                return true;
-                        }
                         
                         
                         function process_add() {
-                            if (validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_quantity() && validate_isbn_key()) {
+                            if (validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_isbn_key()) {
                                 <?php
                                     if(isset($_POST['submit'])){
                                         
@@ -345,7 +327,7 @@
                                                 <div class="cell">
                                                     <div class="col">
                                                         <div class="cell">
-                                                            <form name = "myform" action="<?php echo base_url() ?>index.php/admin/controller_book/call_add" method="post">
+                                                            <form id="addbookForm" name = "myform" action="<?php echo base_url() ?>index.php/admin/controller_book/call_add" method="post">
 
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
@@ -368,7 +350,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" id="author" name = "author[]" placeholder="Author's Name"  data-required="true">&nbsp;
+                                                                            <input type="text" class="authors" id="author" name = "author[]" placeholder="Author's Name"  data-required="true">&nbsp;
                                                                              <input type="button" class="row1 cell" value="Add author" onclick="addRow_author(this, false)">
                                                                              <br/><span name="help_author" class="color-red"></span>
                                                                            
@@ -388,7 +370,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true">&nbsp;
+                                                                            <input type="text" class="subjects" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true">&nbsp;
                                                                             <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
                                                                             <br/><span name="help_subject" class="color-red"></span>
                                                                             
@@ -405,7 +387,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true">&nbsp;
+                                                                            <input type="text" class="call_nos" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true">&nbsp;
                                                                              <input type="button" class="row3 cell" value="Add copy" onclick="addRow_callno(this, false)">
                                                                              <br/><span name="help_call_number" class="color-red"></span><br/>
                                                                         </div>
@@ -420,7 +402,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="number" id="yearpub" name = "year_of_pub" min=1900 max=<?php echo date("Y"); ?> value=<?php echo date("Y"); ?> data-required="true" required/>&nbsp;<br/><span name="help_year_pub" class="color-red"></span><br/>
+                                                                            <input type="number" id="yearpub" name="year_of_pub" min=1900 max=<?php echo date("Y"); ?> value=<?php echo date("Y"); ?> data-required="true" required/>&nbsp;<br/><span name="help_year_of_pub" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -466,7 +448,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" id="tags" name = "tags[]" placeholder="Tags" >&nbsp;
+                                                                            <input type="text" class="tag" id="tags" name = "tags[]" placeholder="Tags" >&nbsp;
                                                                              <input type="button" class="row4 cell" value="Add tags" onclick="addRow_tags(this, false)">
                                                                              <br/><span name="help_tags" class="color-red"></span><br/>
                                                                         </div>
@@ -478,7 +460,8 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <br/><input type = "submit" name = "submit" value = "Add Book" onclick="process_add()">
+                                                                            <input type='hidden' name='sub'/>
+                                                                            <br/><input type="submit"  value="Add Book"/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -493,3 +476,90 @@
                             </div>
                         </div>
                 </div>
+<div id='addbookconf' title='Add Book Confirmation'>
+    <h5>Are you sure that the following book details are true?</h5>
+    <p id="btitle"></p>
+    <p id="bauthors"></p>
+    <p id="bsubject"></p>
+    <p id="bcall"></p>
+    <p id="byear"></p>
+    <p id="btype"></p>
+    <p id="bisbn"></p>
+    <p id="btags"></p>
+</div>
+<script>
+    $(document).ready(function(){
+        $( "#addbookconf" ).dialog({
+      autoOpen: false,
+      modal: true,
+      closeOnEscape: true,
+      closeText: true,
+      show: {
+        effect: "fadeIn",
+        duration: 500
+      },
+      hide: {
+        effect: "fadeOut",
+        duration: 500
+      },
+      draggable: false,
+      buttons : {
+        "Yes": function() {
+            $(this).dialog('close');
+            console.log(document.getElementById(form).submit());
+        },
+        "No": function() {
+            $(this).dialog('close');
+        }
+      }
+    });
+
+        $( "#addbookForm" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            if(validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_isbn_key()){
+            document.getElementById('btitle').innerText = "Title: "+document.getElementById('title').value;
+            document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('yearpub').value;
+            document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
+            document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type_book').value;
+            var aut = document.getElementsByClassName("authors");
+            var author = '';
+            for(var i=0; i<aut.length; i++) {
+                author = author+aut[i].value + " ";
+                if(i <aut.length-1)
+                    author += ",";
+            }
+            var sub = document.getElementsByClassName("subjects");
+            var subject = '';
+            for(var i=0; i<sub.length; i++) {
+                subject =  subject+sub[i].value + " ";
+                if(i <aut.length-1)
+                    subject += ",";
+            }
+            var call = document.getElementsByClassName("call_nos");
+            var call_no = '';
+            for(var i=0; i<call.length; i++) {
+                call_no =  call_no+sub[i].value + " ";
+                if(i <aut.length-1)
+                    call_no += ",";
+            }
+            var t = document.getElementsByClassName("tag");
+            var tag = '';
+            for(var i=0; i<t.length; i++) {
+                tag =  tag + t[i].value + " ";
+                if(i <t.length-1)
+                    tag += ",";
+            }
+            document.getElementById('bauthors').innerText =  "Author: "+ author;
+            document.getElementById('bsubject').innerText = "Subject: "+ subject;
+            document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
+            document.getElementById('btags').innerText = "Tag: "+ tag;
+            console.log(form);
+            $( "#addbookconf" ).dialog( "open" );
+        }
+        });
+
+    });
+
+    var form;
+</script>

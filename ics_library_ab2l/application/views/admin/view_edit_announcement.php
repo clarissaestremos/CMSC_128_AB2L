@@ -68,6 +68,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id="buttoncancel" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
+													<a id="cancelbutton" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel editing this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
 													<input type = "hidden" name = "date" id = "date" value = "<?php echo $id;?>" />
 													<input type="hidden" name="save"/>
  													<input type="submit" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
@@ -89,6 +90,7 @@
 </div>
 <div id="announcementcancel" title="Cancel Add Announcement Dialog">
 	<h5>Do you really want to cancel editing this announcement?</h5>
+	<h5>Do you really want to cancel adding an announcement?</h5>
 </div>
 <script>
 	$(document).ready(function(){
@@ -161,6 +163,26 @@
       	}
 
     });
+		$("#cancelannouncement").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          window.location.replace(link);
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              window.location.replace(link);
+ 	          },
+ 	        }
+ 
+     	});
 
 		$( "#editannouncement" ).submit(function (e) {
     		e.preventDefault();
@@ -172,6 +194,10 @@
     		e.preventDefault();
     	 	link = $(this).attr('href');
       		$( "#announcementcancel" ).dialog( "open" );
+    	$( "#cancelbutton" ).submit(function (e) {
+    		e.preventDefault();
+    	 	link = $(this).attr('href');
+      		$( "#cancelannouncement" ).dialog( "open" );
     	});
 	});
 	var form;
