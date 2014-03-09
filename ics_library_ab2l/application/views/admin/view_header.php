@@ -784,37 +784,42 @@ $("#dsucc").dialog({
  
      	});
      	$("#cancelmsg").dialog({
- 	    	autoOpen: false,
- 	        modal: true,
- 	        closeOnEscape: true,
- 	        closeText: 'show',
- 	        show: {
- 	          effect: "fadeIn",
- 	          duration: 200
- 	        },
- 	        draggable: false,
- 	        close: function(event, ui){
- 	          window.location.replace(link);
- 	        },
- 	        buttons : {
- 	          "Ok": function() {
- 	              window.location.replace(link);
- 	          },
- 	        }
- 
-     	});
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+          effect: "fadeIn",
+          duration: 500
+        },
+        hide: {
+          effect: "fadeOut",
+          duration: 500
+        },
+        draggable: false,
+        buttons : {
+          "Yes": function() {
+            $(this).dialog('close');
+              window.location.replace(link);
+            },
+          "No": function() {
+              $(this).dialog('close');
+          }
+        }
+
+      });
  
 		$( "#form" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
       		$( "#passadmin" ).dialog( "open" );
     	});
-    	$( "#cancelset1" ).submit(function (e) {
+    	$( "#cancelset1" ).click(function (e) {
     		e.preventDefault();
     	 	link = $(this).attr('href');
       		$( "#cancelmsg" ).dialog( "open" );
     	});
-    	$( "#cancelset2" ).submit(function (e) {
+    	$( "#cancelset2" ).click(function (e) {
     		e.preventDefault();
     	 	link = $(this).attr('href');
       		$( "#cancelmsg" ).dialog( "open" );

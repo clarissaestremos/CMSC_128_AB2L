@@ -67,7 +67,7 @@
 										</div>
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
-													<a href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel editing this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
+													<a id="buttoncancel" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
 													<input type = "hidden" name = "date" id = "date" value = "<?php echo $id;?>" />
 													<input type="hidden" name="save"/>
  													<input type="submit" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
@@ -81,11 +81,14 @@
                         </div>
 				</div>
 			</div>
-<div id="announcementdialog" title="Add Announcement Confirmation Dialog">
+<div id="announcementdialog" title="Edit Announcement Confirmation Dialog">
 	<p>Are you sure that you want to edit this announcement?</o>
 </div>
 <div id='successdialog' title='Success Dialog'>
 	<h5>You have successfully edit the announcement!!</h5>
+</div>
+<div id="announcementcancel" title="Cancel Add Announcement Dialog">
+	<h5>Do you really want to cancel editing this announcement?</h5>
 </div>
 <script>
 	$(document).ready(function(){
@@ -132,11 +135,45 @@
       	}
 
     });
+
+		$("#announcementcancel").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	window.location.replace(link);
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+
 		$( "#editannouncement" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
       		$( "#announcementdialog" ).dialog( "open" );
     	});
+
+    	$( "#buttoncancel" ).click(function (e) {
+    		e.preventDefault();
+    	 	link = $(this).attr('href');
+      		$( "#announcementcancel" ).dialog( "open" );
+    	});
 	});
 	var form;
+	var link;
 </script>

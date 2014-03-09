@@ -67,7 +67,7 @@
 										</div>
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
-										<a href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel adding this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
+										<a id="addcancel" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
 										<input type='hidden' name='add'/>
 										<input type="submit" id="add" class="float-right" value="Add Anouncement"/>
 									</div>
@@ -83,6 +83,9 @@
 	<div id="addsucc" title="Add Announcement Success">
 		<p>You have successfully added a new announcement. This will be shown on the homepage of the website</o>
  	</div>
+<div id="canceladddialog" title="Cancel Add Announcement Dialog">
+	<h5>Do you really want to cancel adding an announcement?</h5>
+</div>
 <script>
 	$(document).ready(function(){
 		$("#announcementdialog").dialog({
@@ -131,6 +134,39 @@
  	        }
  
      	});
+
+     	$("#canceladddialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+             	window.location.replace(link);
+           	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+
+
+     	$( "#addcancel" ).click(function (e) {
+    		e.preventDefault();
+    	 	link = $(this).attr('href');
+      		$( "#canceladddialog" ).dialog( "open" );
+    	});
  
 		$( "#addannouncement" ).submit(function (e) {
     		e.preventDefault();
@@ -139,4 +175,5 @@
     	});
 	});
 	var form;
+	var link;
 </script>
