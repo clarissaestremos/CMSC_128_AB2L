@@ -15,6 +15,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/build-full.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/main-template.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css"><!--source: http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css-->
+    <link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/bootstrap.css"/>
   		<link rel="stylesheet" href="<?php echo base_url(); ?>style/user/slider.css" type="text/css" media="screen" />
   		<link rel="stylesheet" href="<?php echo base_url(); ?>default/default.css" type="text/css" media="screen" />
   		<link rel="icon" href="<?php echo base_url(); ?>images/ics_icon.png"/>
@@ -24,6 +25,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 
   		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/edit.css" media="all"/>
   		<script src="<?php echo  base_url() ?>js/jquery-1.10.2.min.js"></script>
+      <script src="<?php echo  base_url() ?>js/bootstrap.js"></script>
   		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
   		<script src="<?php echo  base_url() ?>js/main.js"></script>
   		<meta name="viewport" content="width=device-width"/>
@@ -49,6 +51,10 @@ if($this->session->userdata('logged_in_type')=='admin')
 			}
       #DAPPlugin{
         display:none;
+      }
+      #account-collapse{
+        line-height:20px;
+        border-bottom-style:none;
       }
 			
 			.itemhover { background-color:#d3d3d3 !important; color:black !important;}
@@ -84,51 +90,40 @@ if($this->session->userdata('logged_in_type')=='admin')
 							<?php
 								if(!$this->session->userdata('logged_in') ){
 							?>
-							<form action='<?php echo base_url(); ?>index.php/user/controller_verify_login' method="POST">
-								<input type="text" placeholder="Username" name="username" required="required" class="login float-left background-white"/>
-								<input type="password" placeholder="Password" name="password" required="required" class="login float-left background-white"/>
-								<input type="submit" value="Login" class="login float-left" style="background: #656565; color:white;"/>
-								<br/>
-								<a href="<?php echo base_url(); ?>index.php/user/controller_register" class="float-right" style="color:white;">Not yet a member? Register Here!</a></p>
-								
-							</form>
+							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
+                <form action='<?php echo base_url(); ?>index.php/user/controller_verify_login' method="POST">
+                  <input type="text" placeholder="Username" name="username" required="required" class="background-white float-left" style='margin: 2px 2px 2px 2px;'/>
+                  <input type="password" placeholder="Password" name="password" required="required" class="background-white float-left" style='margin: 2px 2px 2px 2px;'/>
+                  <input type="submit" value="Login" class=" float-left" style="background: #656565; color:white; margin: 2px 3px 3px 3px;"/>
+                  <br/>
+                  <a href="<?php echo base_url(); ?>index.php/user/controller_register" class="float-left" style="color:white;">Not yet a member? Register Here!</a></p>
+                  
+                </form>
+              </div>
 							<?php
 								}
 							
 								else if($this->session->userdata('logged_in') ){
 							?>
-							<div style = "background-color: #E7E7E1; box-shadow: 10px; margin-top:-3px; border-radius:5px;">
-								<p class='float-left' style="margin-left: 5px; margin-right: 5px; margin-top: 4px; color:black;background-image:url('<?php echo base_url();?>images/icn_user.png'); text-indent: 1.5em; background-size: contain; background-position: 0% 0%; background-repeat: no-repeat; font-weight: bold;"><?php
-									$session_data = $this->session->userdata('logged_in');
-	            					 echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
-								?>
-								(<a href='<?php echo base_url(); ?>index.php/user/controller_logout'>Logout</a>)
-								</p>
-							</div>
+							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
+                  <p class='float-left' style="color:white;background-image:url('<?php echo base_url();?>images/icn_user.png'); background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
+                    $session_data = $this->session->userdata('logged_in');
+                     echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
+              ?>
+                  <a class="btn btn-danger" href='<?php echo base_url(); ?>index.php/user/controller_logout'>Logout</a>
+                  </p>
+                </div>
 							<?php
 								}
 							}
 							?>
-							<!---<div class='clear-right'>
-		 							<form action='<?php //echo base_url(); ?>index.php/user/controller_search_book/' class='float-right'>
-		 								<input type='button' class='float-right search_button' style='margin: 1px 1px 1px 1px;'/>
-		 								<input type='search' id='headersinput' name='headersinput' class='background-white float-right' placeholder='Search...' placeceholder='Search...' style='margin: 1px 1px 1px 1px;'/>
-		 								<select id='headercategory' name='headercategory' class='width-fit float-right' style='margin: 1px 1px 1px 1px;'>
-		 									<option value='title'>Title</option>
-		 									<option value='author'>Author</option>
-		 									<option value='subject'>Subject</option>
-		 									<option value='year_of_pub'>Publication</option>
-		 									<option value='tag_name'>Tag</option>
-		 								</select>
-		 							</form>
-		 					</div>-->
 						</div>
             <?php 
               if($titlepage !== "Books - Search")
               {
 
             ?>
-            <div style ="padding: 3px 3px 5px 3px;" class="color-black">
+            <div class="collapse navbar-collapse menu login float-right color-black" id="account-collapse" style ="padding: 3px 3px 5px 3px;">
                 <form name="headerSearch" method="post" action='<?php echo base_url(); ?>index.php/user/controller_search_book' method="POST">
                   <select id="category" name="category">
                     <option value="title">Title</option>
@@ -137,7 +132,7 @@ if($this->session->userdata('logged_in_type')=='admin')
                     <option value="year_of_pub">Publication</option>
                     <option value="tag_name">Tag</option>
                   </select>
-                  <input type="search" required="required" placeholder="Search..." id="sinput" name="hinput"/>
+                  <input type="search" required="required" placeholder="Search..." class="background-white" id="sinput" name="hinput"/>
                   <input type="submit" value="Search" id="headerSearch"/> 
                   <!--<div class="autosuggest" id="autosuggest_list">-->
                 </form>
@@ -147,46 +142,74 @@ if($this->session->userdata('logged_in_type')=='admin')
 					
 				</div>
 			</div>
-			<div class="site-header" id="sticker" style="background-image:url('<?php echo base_url();?>images/navigation.png'); box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
-					<div id="navigation" class="width-6of8 center">
-						<ul>
-							<a  href="<?php echo base_url(); ?>"><li <?php if($titlepage === "ICS Library Home") echo 'id="active"'?> >Home</li></a>
-							<a href="<?php echo base_url(); ?>index.php/user/controller_books"><li <?php if($titlepage === "View all books") echo 'id="active"'?>>View Books</li></a>
-							<a href="<?php echo base_url(); ?>index.php/user/controller_search_book"><li <?php if($titlepage === "Books - Search") echo 'id="active"'?>>Search</li></a>
-							<a href="<?php echo base_url(); ?>index.php/user/controller_faq"><li <?php if($titlepage === "Frequently Asked Questions") echo 'id="active"'?>>FAQs</li></a>
-							<a href="<?php echo base_url(); ?>index.php/user/controller_contact"><li <?php if($titlepage === "Contact Us") echo 'id="active"'?>>Contacts</li></a>
-							<a href="<?php echo base_url(); ?>index.php/user/controller_stat"><li <?php if($titlepage === "Book Statistics") echo 'id="active"'?>>Statistics</li></a>
-							<?php
-								if(!$this->session->userdata('logged_in')){
-							?>
-								<a href="<?php echo base_url(); ?>index.php/user/controller_login"><li <?php if($titlepage === "Login") echo 'id="active"'?>>Login</li></a>
-							<?php
-								}
-								else{
-							?>
-								<a href="#" id="myaccount"><li>My Account
-									<ul class="">
-										<a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><li>View Profile</li></a>
-										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><li>Reserved Books</li></a>
-										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><li>Borrowed Books</li></a>
-										<a href="<?php echo base_url(); ?>index.php/user/controller_logout"><li>Logout</li></a>
-									</ul>
-								</li>
-								</a>
-								
-								
-							<?php
-								}
-							?>
-						</ul>
-					</div>
-			</div>
+			<nav id="headnav" class="navbar-default" role="navigation" style="background-image:url('<?php echo base_url();?>images/navigation.png'); box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
+        <div class="container-fluid center" id="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand color-white" href="<?php echo base_url();?>">
+            <?php if($titlepage === "ICS Library Home") echo "<span class='glyphicon glyphicon-home'></span>";
+              if($titlepage === "View all books") echo "<span class='glyphicon glyphicon-book'></span>";
+              if($titlepage === "Books - Search") echo "<span class='glyphicon glyphicon-search'></span>";
+              if($titlepage === "Frequently Asked Questions") echo "<span class='glyphicon glyphicon-list'></span>";
+              if($titlepage === "Book Statistics") echo "<span class='glyphicon glyphicon-stats'></span>";
+            ?>            
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse menu" id="menu-collapse">
+          <ul class="nav navbar-nav">
+          <?php if($titlepage === "ICS Library Home"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+          <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="glyphicon glyphicon-book"></span>  View Books</a></li>
+          <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class="glyphicon glyphicon-search"></span>  Search</a></li>
+          <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class="glyphicon glyphicon-list"></span>  FAQs</a></li>
+          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="glyphicon glyphicon-map-marker"></span>  Contacts</a></li>
+          <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="glyphicon glyphicon-stats"></span>  Statistics</a></li>
+          <li class="divider"></li>
+          <?php
+            if(!$this->session->userdata('logged_in')){
+          ?>
+            <?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li>'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
+          <?php
+              
+            }
+            else{
+          ?>
+            
+            <li class="dropdown">
+              <a class="color-white" id="accountanchor"  data-toggle="dropdown" href="#">
+                My Account <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu">
+                <ul>
+                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><span class="glyphicon glyphicon-user"></span>View Profile</a></li>
+                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><span class="glyphicon glyphicon-book"></span>Reserved Books</a></li>
+                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><span class="glyphicon glyphicon-tags"></span>Borrowed Books</a></li>
+                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                </ul>
+              </div>
+            </li>
+            
+          <?php
+            }
+          ?>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 <script>
 	$(document).ready(function() {
 	/**
 		Fixation of the navigation on the top
 	*/
-    var s = $("#sticker");
+    var s = $("#headnav");
     var pos = s.position();                    
     $(window).scroll(function() {
         var windowpos = $(window).scrollTop();

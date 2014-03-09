@@ -98,7 +98,7 @@
 
 
 div,main,article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,pre,.nav,.nav a,.width-fill,.width-fit img,blockquote small,address,button,.button,.nav ul,.nav li,.logo {
-    display:block;*zoom:1;
+    display:block;
 }
 
 .pipes .stat span,.menu .tiny {
@@ -149,7 +149,7 @@ audio:not([controls]) {
     float:none;
 }
 
-section,article,header,footer,aside,nav,img,.nav,.col,.tabs,.tab-content,.width-fit,.nav li,button,.button,.button-group,.nav a,.left li li,.tabs .left,.right li li {
+section,article,header,footer,aside,nav,img,.nav,.col,.tabs,.tab-content,.width-fit,button,.button,.button-group,.nav a,.left li li,.tabs .left,.right li li {
     float:left;
 }
 
@@ -265,7 +265,7 @@ ul,ol {
 }
 
 .pipes li{
-    margin:0 6px 0 -6px;
+    margin:0 7px 0 7px;
 }
 
 hr,.page-header {
@@ -582,7 +582,7 @@ table {
     border-style:none;
 }
 
-main,section,article,header,footer,aside,nav,div,table,col,th,td,img,figure,fieldset,pre,code,abbr,span,ol,ul,li,a,button,input,hr,select,textarea,blockquote,td input,.icon-border,.checkbox,.radio,.datasheet table.body {
+main,section,article,header,footer,aside,div,table,col,th,td,img,figure,fieldset,pre,code,abbr,span,ol,ul,li,a,button,input,hr,select,textarea,blockquote,td input,.icon-border,.checkbox,.radio,.datasheet table.body {
     border:0 solid #ccc;
 }
 
@@ -881,7 +881,7 @@ h3,.pipes .stat a,.tags .cloud .tag3 {
 }
 
 .tags .cloud .tag2,blockquote p,.site-header .nav a,.site-header-ghost .nav a {
-    font-size:120%;
+    font-size:100%;
 }
 
 .panel .header {

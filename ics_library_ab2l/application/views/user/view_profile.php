@@ -58,8 +58,8 @@
 
                                     <div id='name'>
                                         <ul>
-                                            <li style = "list-style: none;margin-top:-65px"><input  type = 'file' id= 'new_picture'name = 'userfile' required ></li>
-                                            <li style = "list-style: none;margin-top:-30px;margin-left:250px;"><input type="submit" name="Upload" value="Upload"></li>
+                                            <li style = "list-style: none;margin-top:-65px"><input  type = 'file' id= 'new_picture'name = 'userfile' class='background-white' required ></li>
+                                            <li style = "list-style: none;margin-top:-2.24em; margin-left:250px;"><input type="submit" name="Upload" value="Upload"></li>
                                         </ul>
                                     </div>
                                   <?php echo form_close();?>

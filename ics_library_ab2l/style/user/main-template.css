@@ -382,11 +382,11 @@ td{
 	float:left;
 	padding: 0.3em 3em 0.3em 3em;
 }
-#navigation > ul a{
+#navigation> ul a{
 	color: white;
 	font-weight: bold;
 }
-#navigation > ul li:hover{
+#menu-collapse> ul li[class='hov']:hover{
 	transition: background 1s;
 	background:#9d261d;
 }
