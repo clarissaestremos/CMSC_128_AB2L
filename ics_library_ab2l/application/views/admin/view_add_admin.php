@@ -31,7 +31,7 @@
                                                      ?></p>
                                                     </div>
                          <?php 
-                        $attributes = array('name' => 'regForm');
+                        $attributes = array('name' => 'regForm', 'id' => 'adminReg');
 
                         echo form_open("index.php/admin/controller_add_admin/registration", $attributes); ?>
                           <div class="col">
@@ -164,3 +164,15 @@
 
             <script src="<?php echo base_url() ?>js/validationAdmin.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
+            <div id="addadmin">
+                <h5>Are you sure that the following information is true?</h5>
+                <p id='akey'></p>
+                <p id='aname'></p>
+                <p id='aemail'></p>
+                <p id='ausername'></p>
+            </div>
+            <div id="addadminsuccess">
+                <h5>You have successfully added a new admin with</h5>
+                <p id='akeys'></p>
+                <p id='ausernames'></p>
+            </div>

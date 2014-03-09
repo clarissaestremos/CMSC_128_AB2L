@@ -4,6 +4,10 @@
 <script type = "text/javascript">
 	var base_url = "<?php echo base_url() ?>";
 </script>
+<?php
+if($this->session->userdata('logged_in_type')=='admin')
+                    redirect('index.php/admin/controller_admin_home', 'refresh');
+          ?>
 <html>
 	<head>
 		<title><?php echo $titlepage?></title>
@@ -44,7 +48,7 @@
 				clear: right;
 			}
 			
-			.itemhover { background-color:black !important; color:#ffffff !important;}
+			.itemhover { background-color:#d3d3d3 !important; color:black !important;}
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
 			#selectItems ul li { }
 			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
@@ -137,7 +141,7 @@
 								<a href="#" id="myaccount"><li>My Account
 									<ul class="">
 										<a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><li>View Profile</li></a>
-										<a href="<?php echo base_url(); ?>index.php/user/controller_book"><li>Reserved Books</li></a>
+										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><li>Reserved Books</li></a>
 										<a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><li>Borrowed Books</li></a>
 										<a href="<?php echo base_url(); ?>index.php/user/controller_logout"><li>Logout</li></a>
 									</ul>

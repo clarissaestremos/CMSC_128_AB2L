@@ -28,7 +28,7 @@
                         
                         
                          <?php 
-                        $attributes = array('name' => 'regForm');
+                        $attributes = array('name' => 'regForm', 'id' => 'userRegister');
 
                         echo form_open("index.php/user/controller_register/registration", $attributes); ?>
                         <div class="col">
@@ -242,5 +242,88 @@
                         </div>
                     </div>
                 </div>
+<div id='registerconf' title='Registration Confirmation Dialog'>
+    <h5>Are you sure that the following information is true?</h5>
+    <p id='regname'></p>
+    <p id='regclass'></p>
+    <p id='regnum'></p>
+    <p id='regcol'></p>
+    <p id='regcourse'></p>
+    <p id='regemail'></p>
+    <p id='reguser'></p>
+</div>
+<div id="regsucc">
+    <h5>You have successfuly register an account. You may now go to the library to activate your account. Thank you!</h5>
+</div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#regsucc").dialog({
+            autoOpen: false,
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: "fadeIn",
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+                document.getElementById(form).submit();
+            },
+            buttons : {
+              "Ok": function() {
+                  document.getElementById(form).submit();
+              },
+            }
+ 
+        });
+
+        $("#registerconf").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                $('#regsucc').dialog('open');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+        });
+
+        $( "#userRegister" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            document.getElementById('regname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
+            document.getElementById('regclass').innerText = "Classification: "+ document.getElementById('classi').value;
+            if(document.getElementById('classi').value === "Student"){
+                document.getElementById('regnum').innerText = "Student Number: "+ document.getElementById('stdNum').value;
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regcourse').innerText = "Course: "+ document.getElementById('course').value;
+            }
+            else{
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regnum').innerText = "Faculty Number: "+ document.getElementById('stdNum').value;
+            }
+
+            document.getElementById('regemail').innerText = "Email: "+ document.getElementById('eadd').value;
+            document.getElementById('reguser').innerText = "Username: "+ document.getElementById('uname').value;
+            $( "#registerconf" ).dialog( "open" );
+        });
+    });
+</script>

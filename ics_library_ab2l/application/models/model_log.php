@@ -10,10 +10,13 @@
 		{
 			if ($today === FALSE)
 			{
+				$query = $this->db->order_by("log_number", "desc");
 				$query = $this->db->get('admin_log'); //table name
 				return $query->result();
 			}else{
+				$query = $this->db->order_by("log_number", "desc");
 				$query = $this->db->get_where('admin_log', array('date' => $today));
+				 
 				return $query->result();
 			}
 		}
