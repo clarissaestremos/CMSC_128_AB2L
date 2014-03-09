@@ -67,17 +67,18 @@ class Controller_view_users extends Controller_log {
 		if($this->session->userdata('logged_in_type')!="admin")
 			redirect('index.php/user/controller_login', 'refresh');
 		include("./application/controllers/admin/controller_retrieve_email.php");
-		$config = array(
-			'protocol' => 'smtp',
-               'smtp_host' => 'ssl://smtp.googlemail.com',
-               'smtp_port' => 465,
-               'smtp_user' => $email,
-               'smtp_pass' => "$password",
-               'mailtype'  => 'text', 
-                'charset'   => 'iso-8859-1'
+        
+        $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => $email,
+                'smtp_pass' => $password,
+                'mailtype'  => 'html', 
+                'charset'   => 'utf-8'
 			);//config for the email
 		$subject='Re: ICS e-Lib Account Approval';
-		$from_email= "$email";
+		$from_email= $email;
 		$from_name='ICS e-Lib';
 
 		//Get user account in database
@@ -107,7 +108,12 @@ class Controller_view_users extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-		if($this->email->send()){
+		$this->load->model('model_user');
+        $this->model_user->approve_user($account_number);
+        $session_user = $this->session->userdata('logged_in')['username'];
+        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
+        
+        if($this->email->send()){
 			$this->load->model('model_user');
 			$this->model_user->approve_user($account_number);
 			$session_user = $this->session->userdata('logged_in')['username'];
