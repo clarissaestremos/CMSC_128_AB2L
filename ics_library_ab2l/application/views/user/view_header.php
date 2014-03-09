@@ -106,7 +106,8 @@ if($this->session->userdata('logged_in_type')=='admin')
 								else if($this->session->userdata('logged_in') ){
 							?>
 							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
-                  <p class='float-left' style="color:white;background-image:url('<?php echo base_url();?>images/icn_user.png'); background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
+                  <img src= "<?php echo base_url();?>images/icn_user.png" style="height: 23px;"/>
+                  <p class='float-left' style="color:white; background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
                     $session_data = $this->session->userdata('logged_in');
                      echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
               ?>
