@@ -8,6 +8,7 @@ class controller_editprofile extends CI_Controller {
             $this->load->model('model_viewUser');
              $this->load->model('user_model');
               $this->load->model('model_check_session');
+               $this->load->helper('form');
         }
 
     function index() {
@@ -57,6 +58,60 @@ class controller_editprofile extends CI_Controller {
             $value['info'] = $this->modelviewUser->getInfo($number);
             $this->load->view('viewAccount',$value);
         }
+
+
+
+/**
+Editing pictures / uploading them
+*/
+
+
+/*PROFILE PICTUREEEEEEEEEEEES src: http://jamshidhashimi.com/2011/06/14/image-upload-with-codeigniter-2/*/
+  function uploadImage()
+    {
+     $this->load->model('user_model');
+     $username= $this->session->userdata('logged_in')['username'];
+      //  echo "Uploading";
+       $config['upload_path']   =   "imgs/";
+       $config['allowed_types'] =   "gif|jpg|jpeg|png"; 
+       $config['max_size']      =   "6000";
+       $config['max_width']     =   "4000";
+       $config['max_height']    =   "4000";
+
+       $this->load->library('upload',$config);
+       $this->upload->overwrite = true;
+
+       if(!$this->upload->do_upload())
+       {
+           echo $this->upload->display_errors();
+       }
+       else
+       {
+       $data = array('upload_data' => $this->upload->data()); 
+           $file = $data['upload_data']['file_name'];
+           //$ext = $data['upload_data']['file_ext'];
+        $file_name = $this->user_model->getAccntNum($username);//['account_number'].'.'.'jpg';
+        $file_name = $file_name[0]->account_number.'.'.'jpg'; 
+    //echo $file;
+    //echo $file_name[0]->account_number;
+          rename(  $config['upload_path'] . $file,   $config['upload_path'] .  $file_name);        
+           /* You can view content of the $finfo with the code block below
+           echo '<pre>';
+           print_r($finfo);
+           echo '</pre>';*/
+       }
+       //Go to private area
+       if($this->session->userdata('logged_in_type')=="user"){
+        if($this->session->userdata('id')){
+          redirect('index.php/user/controller_reserve_book');
+        }
+        else{       
+            $this->session->set_flashdata('success_username', 'Successfully Uploaded your picture.');
+            redirect('index.php/user/controller_editprofile', 'refresh');         
+            }
+        }
+        else redirect('index.php/admin/controller_admin_home', 'refresh'); // */
+}
 
 
       /**

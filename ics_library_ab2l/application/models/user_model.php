@@ -227,5 +227,12 @@ class User_Model extends CI_Model
               }
             else return false;
 	}
+	public function getAccntNum($uname){
+	
+		$this->db->where('username', $uname);
+		$num = $this->db->get('user_account');
+		$num = $num->result(); 
+		return $num;
+	}
 }
 
