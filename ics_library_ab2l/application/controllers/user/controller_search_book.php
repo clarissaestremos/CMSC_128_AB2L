@@ -11,6 +11,8 @@ class Controller_search_book extends CI_Controller {
 	}
 
     function index() {
+    	if(isSet($_POST['category'])) $data['category']=addslashes($this->input->post('category'));
+    	if(isSet($_POST['hinput'])) $data['text']=addslashes($this->input->post('hinput'));
     	$data['titlepage'] = "Books - Search";
 
         $this->load->helper(array('form','html'));

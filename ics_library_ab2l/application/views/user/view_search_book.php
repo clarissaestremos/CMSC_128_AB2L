@@ -24,10 +24,18 @@
 	 		}
  		}
     });
-   		
+    <?php
+    if(isSet($text) && isSet($category))
+   		echo "$(document).ready(function(){
+   				$('#category').val('$category');
+   				$('#sinput').val('$text');
+   				if($('#sinput').val!=''){
+   					get_data('user','search_form');
+   				}
+   			})";
+   ?>
  });
-</script>
-<div id="main-body" class="site-body" style="">
+</script><div id="main-body" class="site-body" style="">
 				<div class="cell site-center" style="border-radius: 10px 10px 10px 10px;">
 <div class="body width-fill background-white">
 	<div class="cell">
