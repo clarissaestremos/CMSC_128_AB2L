@@ -79,6 +79,8 @@ class Controller_verify_login extends Controller_log {
                              //set session with value from database
                              //$this->session->set_userdata('logged_in1', $sess_array);
                              //$this->session->set_userdata('logged_in_type', "admin");
+                             $sess_username = $row->username;
+			     $this->session->set_userdata('logged_username', $sess_username);
                              redirect('index.php/user/controller_admin_key', 'refresh');
                              }
                          return TRUE;
