@@ -185,7 +185,7 @@ if($this->session->userdata('logged_in_type')=='admin')
             
             <li class="dropdown">
               <a class="color-white" id="accountanchor"  data-toggle="dropdown" href="#">
-                My Account <span class="caret"></span>
+                <span class="glyphicon glyphicon-pencil"></span>My Account <span class="caret"></span>
               </a>
               <div class="dropdown-menu">
                 <ul>

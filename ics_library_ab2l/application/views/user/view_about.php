@@ -1,7 +1,4 @@
-	<style>
-		#para{ font-size: 20px;} 
-		#listing{ font-size: 15px;} 
-	</style>
+
 <div id="main-body" class="site-body">
 				<div class="site-center">
 <div class="cell body">
@@ -352,3 +349,7 @@ $(document).ready(function() {
 	});
 	});
 </script>
+	<style>
+		#para{ font-size: 20px;} 
+		#listing{ font-size: 15px;} 
+	</style>

@@ -46,8 +46,8 @@
                                     <?php echo  form_open_multipart('index.php/user/controller_editprofile/uploadImage')?>
                                     <!--div id = "frame" style = "width: 220px;height:220px;border-radius:110px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFFFFF;"-->
 
-                                      <object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "padding: 2.5em; length: 250px;width:250px;">
-                                        <img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "padding: 2.5em; length: 250px;width:250px;"/>
+                                      <object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "length: 200px;width:200px; margin-left: 50px;">
+                                        <img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "padding: 2.5em; height: 200px;width:200px;  margin-left: 50px;"/>
                                       </object>
 
                                       <!--img  alt = "Oops, something went wrong. " style = "padding: 2.5em; length: 250px;width:250px;" src="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>">
@@ -67,7 +67,7 @@
                                         
                                 </div>
                                
-                               <div style = "margin-top:-370px;margin-left:350px;">
+                               <div style = "margin-top:-420px;margin-left:320px; ">
                                 <div class="col">
                                     <div class="cell">
                                         
@@ -94,8 +94,8 @@
                                             endif; 
                                          ?>
 
-                                     <div class="col">
-                                                <div class="cell panel">
+                                     <div class="col" >
+                                                <div class="cell panel" >
                                                     <div class="body">
                                                         <div class="cell">
                                                            <span id="label_username" class = "main">Username:</span><em id= "username"><?php echo  $user_details->username?></em> <a id = "edit_username">Edit</a><br>
