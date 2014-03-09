@@ -11,7 +11,7 @@ class Controller_reserve_book extends CI_Controller{
 
 	function index(){
 		if($this->session->userdata('id') == FALSE){
-			redirect('index.php/admin/controller_view_users', 'refresh');
+			redirect('index.php/admin/controller_search_book', 'refresh');
 		}
 		$data['page_title'] = 'Reservation Page';
 		$data['id'] = urldecode($this->session->userdata('id'));
@@ -34,9 +34,10 @@ class Controller_reserve_book extends CI_Controller{
 			}
 		}
 		$data['borrower'] = $this->session->userdata('borrower');
-		date_default_timezone_set('Asia/Manila'); // CDT
-		$data['date_reserved'] = getdate();
-		$data['date_expire'] = $this->model_reserve_book->getExpiration($data['date_reserved']);
+		$row = $this->model_reserve_book->fetch_user2($data['borrower']);
+		foreach ($row->result() as $value) {
+			$data['borrower_username'] = $value->username;
+		}
 		$data['parent'] = "Books";
     	$data['current'] = "Reserve";
 
@@ -80,31 +81,34 @@ class Controller_reserve_book extends CI_Controller{
 				}
 				$num_borrowed = $this->model_reserve_book->fetch_user_reservation($data['borrower'])->num_rows();
 				if($num_borrowed < 3){
-					$row = $this->model_reserve_book->fetch_book($data['id']);
-					if($row->num_rows() == 1){
-						foreach ($row->result() as $value) {
-							$no_of_available = $value->no_of_available;
-						}
+					$row = $this->model_reserve_book->fetch_user2($data['borrower']);
+					foreach ($row->result() as $value) {
+						$user_status = $value->status;
 					}
-					$row2 = $this->model_reserve_book->fetch_breservation2($data['id']);
-	                $available = 0;
-	                foreach($row2->result() as $val){
-	                	if($val->rank == 1)
-	                		$available++;
-	                }
-	                $available = $no_of_available - $available;
-	                
-					if($available > 0){
-						$this->model_reserve_book->add_reservation($data);
-						echo "<script>alert('You have successfully reserved a book. Please confirm it to the administrator.');</script>";
-						redirect('index.php/admin/controller_outgoing_books','refresh');
+					if($user_status == 'approve'){
+						$row = $this->model_reserve_book->fetch_book($data['id']);
+						if($row->num_rows() == 1){
+							foreach ($row->result() as $value) {
+								$no_of_available = $value->no_of_available;
+							}
+						}
+						
+						if($no_of_available > 0){
+							$this->model_reserve_book->add_reservation($data);
+							echo "<script>alert('You have successfully reserved a book for user ".$data['borrower'].". Please confirm it.');</script>";
+							redirect('index.php/admin/controller_outgoing_books','refresh');
+						}
+						else{
+							$this->model_reserve_book->waitlist_reservation($data);
+							echo "<script>alert('There is not enough number of books available. User ".$data['borrower']." is waitlisted.');</script>";
+							redirect('index.php/admin/controller_admin_home', 'refresh');
+						}	
 					}
 					else{
-						$this->model_reserve_book->waitlist_reservation($data);
-						echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
-						redirect('index.php/admin/controller_admin_home', 'refresh');
-
+						echo "<script>alert('Your account is not yet activated. Please confirm it to the administrator.');</script>";
+						redirect('index.php/user/controller_home','refresh');
 					}
+					
 				}
 				else{
 					echo "<script>alert('A user is allowed to borrow at most 3 books');</script>";

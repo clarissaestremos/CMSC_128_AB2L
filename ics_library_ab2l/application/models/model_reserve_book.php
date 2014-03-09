@@ -174,15 +174,20 @@
 			return $this->db->get();
 		}
 
-
-
-
-
-
 		function fetch_user($username){
-			$query="account_number
+			$query="*
 			FROM user_account
 			WHERE username LIKE '$username'";
+			//execute query
+			$this->db->select($query,FALSE);
+			
+			return $this->db->get();
+		}
+
+		function fetch_user2($account_number){
+			$query="*
+			FROM user_account
+			WHERE account_number LIKE '$account_number'";
 			//execute query
 			$this->db->select($query,FALSE);
 			
@@ -220,7 +225,8 @@
 			WHERE account_number LIKE '".$account_number."'
 			AND
 			(status LIKE 'borrowed'
-			OR status LIKE 'overdue')";
+			OR status LIKE 'overdue'
+			OR 'reserved')";
 			//execute query
 			$this->db->select($query,FALSE);
 			

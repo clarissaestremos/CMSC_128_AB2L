@@ -65,34 +65,46 @@ class Controller_reserve_book extends CI_Controller{
 			}
 			$num_borrowed = $this->model_reserve_book->fetch_user_reservation($data['borrower'])->num_rows();
 			if($num_borrowed < 3){
-				$row = $this->model_reserve_book->fetch_book($data['id']);
-				if($row->num_rows() == 1){
-					foreach ($row->result() as $value) {
-						$no_of_available = $value->no_of_available;
-					}
+				$row = $this->model_reserve_book->fetch_user2($data['borrower']);
+				foreach ($row->result() as $value) {
+					$user_status = $value->status;
 				}
-				
-				if($no_of_available > 0){
-					$this->model_reserve_book->add_reservation($data);
-					echo "<script>alert('You have successfully reserved a book. Please confirm it to the administrator.');</script>";
-					redirect('index.php/user/controller_book/user_reserved_list/'.$title,'refresh');
+				if($user_status == 'approve'){
+					$row = $this->model_reserve_book->fetch_book($data['id']);
+					if($row->num_rows() == 1){
+						foreach ($row->result() as $value) {
+							$no_of_available = $value->no_of_available;
+						}
+					}
+					
+					if($no_of_available > 0){
+						$this->model_reserve_book->add_reservation($data);
+						echo "<script>alert('You have successfully reserved a book. Please confirm it to the administrator.');</script>";
+						redirect('index.php/user/controller_book/user_reserved_list/'.$title,'refresh');
+					}
+					else{
+						$this->model_reserve_book->waitlist_reservation($data);
+						echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
+						redirect('index.php/user/controller_book', 'refresh');
+
+					}	
 				}
 				else{
-					$this->model_reserve_book->waitlist_reservation($data);
-					echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
-					redirect('index.php/user/controller_book', 'refresh');
-
+					echo "<script>alert('Your account is not yet activated. Please confirm it to the administrator.');</script>";
+					redirect('index.php/user/controller_home','refresh');
 				}
+				
 			}
 			else{
-				echo "<script>alert('A user is allowed to borrow at most 3 books');</script>";
+				echo "<script>alert('A user is allowed to borrow and reserve at most 3 books');</script>";
 					redirect('index.php/user/controller_book/user_borrowed_list', 'refresh');
 			}
 			
 		}
 		else{
-				$this->session->unset_userdata('id');
-				redirect('index.php/user/controller_reserve_book/verify_login', 'refresh');
+			if($this->session->userdata('logged_in'))
+				redirect('index.php/user/controller_search_book', 'refresh');
+			else redirect('index.php/user/controller_login', 'refresh');
 			
 		}
 		
