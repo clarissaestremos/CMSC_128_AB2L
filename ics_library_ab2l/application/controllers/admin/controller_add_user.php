@@ -178,6 +178,13 @@ class Controller_add_user extends Controller_log {
             $this->load->view("admin/view_add_user",$data);
             $this->load->view("admin/view_footer");
     }
+
+	public function check_std_no( $account_number){
+            $this->db->where('account_number',$account_number);
+            $query = $this->db->get('user_account')->num_rows();
+            if($query == 0 ) echo 'userOk';
+            else echo 'userNo';
+    }
 }
 /* End of file home_controller.php */
 /* Location: ./application/controllers/user/controller_home.php */
