@@ -48,7 +48,7 @@
 							*/
                             $base = base_url();
 							if($stat === "approve"){
-							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
+							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'><input type='button' class='background-blue' value='Click to borrow'/></a></td>";
 							}
 							else{
 								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='confirmaccount$count' method='POST'>";

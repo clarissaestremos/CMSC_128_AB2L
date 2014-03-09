@@ -86,3 +86,391 @@
 					</div>
 				</div>
 			</header>
+<script>
+	$(document).ready(function() {
+		$('#tabs').tabs();
+		/**
+			*Announcements Deletes
+		*/
+		$("#deleteconfirm").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	$(this).dialog('close');
+              $('#dasucc').dialog('open');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+      });
+$("#dsucc").dialog({
+    autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+          effect: "fadeIn",
+          duration: 200
+        },
+        draggable: false,
+        close: function(event, ui){
+          button.closest('form').submit();
+        },
+        buttons : {
+          "Ok": function() {
+              button.closest('form').submit();
+          },
+        }
+
+    });
+
+    $("#dasucc").dialog({
+    autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+          effect: "fadeIn",
+          duration: 200
+        },
+        draggable: false,
+        close: function(event, ui){
+          document.getElementById(form).submit();
+        },
+        buttons : {
+          "Ok": function() {
+              document.getElementById(form).submit();
+          },
+        }
+
+    });
+		$("#deletealldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+    			$(this).dialog('close');
+            	$('#deleteconfirm').dialog("open");
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+    	$("#deletedialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+ 				$(this).dialog('close');
+              $('#dsucc').dialog('open');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    	});
+
+		$( "form#deleteall" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#deletealldialog" ).dialog( "open" );
+    	});
+    	$( "input[id^='delete']" ).click(function (e) {
+    		e.preventDefault();
+    	 	button = $(this);
+      		$( "#deletedialog" ).dialog( "open" );
+    	});
+    	//END OF DELETE ANNOUNCEMENTS**********************************************************
+
+    	/**
+    		*Outgoing books
+    	*/
+		$("#confirmsuccess").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          document.getElementById(form).submit();
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              document.getElementById(form).submit();
+ 	          },
+ 	        }
+     	});
+
+		$("#confirmdialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+        		$(this).dialog('close');
+        		$('#confirmsuccess').dialog('open');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+    });
+		$( "form[id^='confirm']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#confirmdialog" ).dialog( "open" );
+    	});
+
+    	$("#canceldialog").dialog({
+        autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 500
+      	},
+      	hide: {
+        	effect: "fadeOut",
+        	duration: 500
+      	},
+      	draggable: false,
+      	buttons : {
+        	"Yes": function() {
+            	$(this).dialog('close');
+            	$('#cancelsuccess').dialog('open');
+        	},
+        	"No": function() {
+            	$(this).dialog('close');
+        	}
+      	}
+
+    });
+    	$("#cancelsuccess").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          document.getElementById(form).submit();
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              document.getElementById(form).submit();
+ 	          },
+ 	        }
+     	});
+
+		$( "form[id^='cancel']" ).submit(function (e) {
+    		e.preventDefault();
+    	 	form = $(this).get(0).id;
+      		$( "#canceldialog" ).dialog( "open" );
+    	});
+    //END OF OUTGOING BOOK MODAL***********************************************************
+
+    /*
+    	*Overdue book modal
+    */
+	$("#extenddialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully extend the due date of a book!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+        $("#returndialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+                alert('You have successfully confirm that a book was properly returned!');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+    $( "form[id^='borrret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='borrext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+    $( "form[id^='overret']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#returndialog" ).dialog( "open" );
+    });
+    $( "form[id^='overext']" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $( "#extenddialog" ).dialog( "open" );
+    });
+
+    /**
+    	*View User Modal
+    */
+    $("#confdialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();            
+                alert('You have successfully activate a user account');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $("#deactivatedialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                document.getElementById(form).submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
+        $( "form[id^='accountconfirm']" ).submit(function (e) {
+            e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#confdialog" ).dialog( "open" );
+        });
+         $( "form[id='deactivateaccount']" ).submit(function (e) {
+                e.preventDefault();
+                form = $(this).get(0).id;
+                $( "#deactivatedialog" ).dialog( "open" );
+        });
+	});
+	//END OF VIEW USER MODAL*********************************************************
+
+		var form;
+	var button;
+</script>

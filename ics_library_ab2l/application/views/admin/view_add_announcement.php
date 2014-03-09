@@ -68,7 +68,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 										<a href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel adding this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
-										<input type='hiddent' name='add'/>
+										<input type='hidden' name='add'/>
 										<input type="submit" id="add" class="float-right" value="Add Anouncement"/>
 									</div>
 									</form>
@@ -81,7 +81,7 @@
 	<p>Are you sure that you want to add this announcement?</o>
 </div>
 	<div id="addsucc" title="Add Announcement Success">
-		<p>Are you sure that you want to add this announcement?</o>
+		<p>You have successfully added a new announcement. This will be shown on the homepage of the website</o>
  	</div>
 <script>
 	$(document).ready(function(){

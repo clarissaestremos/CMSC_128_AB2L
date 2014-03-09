@@ -129,7 +129,7 @@ $(window).ready(function() {
 $(document).ready(function() {
 	$('.tabs_rotate').tabslet({
 	autorotate: true,
-	delay: 15000,
+	delay: 10000,
 	active:1,
 	animation:true
 	});

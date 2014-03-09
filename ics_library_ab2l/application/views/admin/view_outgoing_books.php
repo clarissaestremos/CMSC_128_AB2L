@@ -78,70 +78,9 @@
 <div id="canceldialog" title="Cancel Reservation Confirmation">
 	<p>Are you sure that you want to cancel the reservation of this book?</o>
 </div>
-<script>
-	$(document).ready(function(){
-		$("#confirmdialog").dialog({
-        autoOpen: false,
-      	modal: true,
-      	closeOnEscape: true,
-      	closeText: 'show',
-      	show: {
-       	 	effect: "fadeIn",
-        	duration: 500
-      	},
-      	hide: {
-        	effect: "fadeOut",
-        	duration: 500
-      	},
-      	draggable: false,
-      	buttons : {
-        	"Yes": function() {
-            	document.getElementById(form).submit();
-            	alert('You have successfully canceled a reserved book!');
-        	},
-        	"No": function() {
-            	$(this).dialog('close');
-        	}
-      	}
-
-    });
-		$( "form[id^='confirm']" ).submit(function (e) {
-    		e.preventDefault();
-    	 	form = $(this).get(0).id;
-      		$( "#confirmdialog" ).dialog( "open" );
-    	});
-
-    	$("#canceldialog").dialog({
-        autoOpen: false,
-      	modal: true,
-      	closeOnEscape: true,
-      	closeText: 'show',
-      	show: {
-       	 	effect: "fadeIn",
-        	duration: 500
-      	},
-      	hide: {
-        	effect: "fadeOut",
-        	duration: 500
-      	},
-      	draggable: false,
-      	buttons : {
-        	"Yes": function() {
-            	document.getElementById(form).submit();
-            	alert('You have successfully canceled a reserved book!');
-        	},
-        	"No": function() {
-            	$(this).dialog('close');
-        	}
-      	}
-
-    });
-		$( "form[id^='cancel']" ).submit(function (e) {
-    		e.preventDefault();
-    	 	form = $(this).get(0).id;
-      		$( "#canceldialog" ).dialog( "open" );
-    	});
-
-	});
-	var form;
-</script>
+<div id='confirmsuccess' title="Confirm Borrowing Book Success">
+	<p>You have successfuly confirm an outgoing book</p>
+</div>
+<div id="cancelsuccess" title="Cancel Reservation Success">
+	<p>You have successfully cancel a book reservation</p>
+</div>
