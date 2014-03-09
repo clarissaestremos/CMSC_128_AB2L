@@ -9,7 +9,6 @@
     function __construct()
  
     {
- 
         parent::__construct();
  
         $this->load->helper('form');
@@ -54,7 +53,6 @@
        else
  
        {
- 
            $finfo=$this->upload->data();
  
            $this->_createThumbnail($finfo['file_name']);

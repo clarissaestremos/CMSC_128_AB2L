@@ -42,23 +42,8 @@
                                     <div id = "frame" style = "width: 240px;height:250px;border-radius:360px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFF8DC;"></div></br></br></br>
                                     
                                     </div>
-                
-                                    <!-- <div class="col"> -->
-                                        <!-- <div class="cell panel"> -->
-                                            <!-- <div class="body"> -->
-                                                <!-- <div class="cell"> -->
-                                                    <!-- <a>Change Profile Picture</a> -->
-                                                     <form action = "controller_upload/uploadImage" method="post" enctype="multipart/form-data">
-                                                       <?php
-                                                        $this->load->view('user/view_upload');
-                                                       ?>
-                                                      </form>
-                                                <!-- </div> -->
-                                            <!-- </div> -->
-                                        <!-- </div> -->
-                                    <!-- </div> -->
-     
-                               
+                                   <?php $this->load->view('user/view_upload'); ?>
+
                                     
                                         
                                 </div>
