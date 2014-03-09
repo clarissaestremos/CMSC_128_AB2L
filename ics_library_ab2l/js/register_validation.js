@@ -102,6 +102,68 @@ else{
 
             }
 
+            window.getResultStdNo =  function (key){
+               // var baseurl = <?php echo base_url()?>;
+               var bool= false;
+                $('#span_sno').append("<span id = 'helpstdno'></span>");
+                $("#helpstdno").text("Checking availability...");
+                $.ajax({
+                    url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
+                    cache : false,
+                    async:false,
+                    success : function(response){
+
+                        $('#helpstdno').delay(1000).removeClass('preloader');
+                        if(response == 'userOk'){
+                            $('#helpstdno').removeClass('userNo').addClass('userOk');
+                            $('#helpstdno').text("Student Number available!");
+                            
+                          bool= true;
+                        }
+                        else{
+                            $('#helpstdno').removeClass('userOk').addClass('color-red');;
+                            $("#helpstdno").text("Student Number not available.");
+                           bool= false;
+                        }
+                    }
+                })
+
+              
+                return bool;
+
+            }
+
+             window.getResultENo =  function (key){
+               // var baseurl = <?php echo base_url()?>;
+               var bool= false;
+                $('#span_sno').append("<span id = 'helpeno'></span>");
+                $("#helpeno").text("Checking availability...");
+                $.ajax({
+                    url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
+                    cache : false,
+                    async:false,
+                    success : function(response){
+
+                        $('#helpeno').delay(1000).removeClass('preloader');
+                        if(response == 'userOk'){
+                            $('#helpeno').removeClass('userNo').addClass('userOk');
+                            $('#helpeno').text("Employee Number available!");
+                            
+                          bool= true;
+                        }
+                        else{
+                            $('#helpeno').removeClass('userOk').addClass('color-red');;
+                            $("#helpeno").text("Employee Number not available.");
+                           bool= false;
+                        }
+                    }
+                })
+
+              
+                return bool;
+
+            }
+
        })
 
 function courseChecker(){
