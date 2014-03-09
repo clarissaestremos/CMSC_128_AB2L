@@ -74,3 +74,71 @@ function serialize_form1()
                         </div>
                     </div>
                 </div>
+<div id='mydeletebook' title='Delete Book Confirmation'>
+    <h5>Do you really wish to delete this book?</h5>
+</div>
+<div id='deletebookconfirm' title='Delete Book Confirmation'>
+    <h5>Are you 100% sure that you want to delete this book? Doing so will delete the book in the database.</h5>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#mydeletebook").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+               $('#deletebookconfirm').dialog('open');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+        });
+
+        $("#deletebookconfirm").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+               thisform.submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+        });
+    });
+
+    function trySubmit(myformid){
+        thisform = myformid;
+        $('#mydeletebook').dialog('open');
+        console.log(thisform);
+        return false;
+    }
+
+    var thisform;
+</script>

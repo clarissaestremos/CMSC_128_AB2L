@@ -25,7 +25,6 @@
 					$("#side-navigation").css("height",$heightbody);
 				}
 			});
-
 			base_url= "<?php echo base_url() ?>";
 		</script>
 		<style type="text/css">
@@ -34,6 +33,9 @@
 			#selectItems ul li { }
 			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
 			#sorry{text-align: center; padding: 10px;}
+      #DAPPlugin{
+        display:none;
+      }
 		</style>
 	</head>
 
@@ -424,6 +426,31 @@ $("#dsucc").dialog({
             }
         }
     });
+        $("#notifydialog").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                document.getElementById(form).submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+      });
+
     $( "form[id^='borrret']" ).submit(function (e) {
         e.preventDefault();
         form = $(this).get(0).id;
@@ -443,6 +470,12 @@ $("#dsucc").dialog({
         e.preventDefault();
         form = $(this).get(0).id;
         $( "#extenddialog" ).dialog( "open" );
+    });
+
+    $('#notifyall').submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+        $('#notifydialog').dialog('open');;
     });
 
     /**
@@ -854,26 +887,6 @@ $("#dsucc").dialog({
     /**
 		*Add User Modals
     */
-    $("#regsucc").dialog({
-            autoOpen: false,
-            modal: true,
-            closeOnEscape: true,
-            closeText: 'show',
-            show: {
-              effect: "fadeIn",
-              duration: 200
-            },
-            draggable: false,
-            close: function(event, ui){
-                document.getElementById(form).submit();
-            },
-            buttons : {
-              "Ok": function() {
-                  document.getElementById(form).submit();
-              },
-            }
- 
-        });
 
         $("#registerconf").dialog({
         autoOpen: false,
@@ -892,7 +905,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#regsucc').dialog('open');
+                document.getElementById(form).submit();
             },
             "No": function() {
                 $(this).dialog('close');

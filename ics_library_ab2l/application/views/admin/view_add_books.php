@@ -170,7 +170,7 @@
                         
                         
                         function process_add() {
-                            if (validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()) {
+                            if (validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_quantity() && validate_isbn_key()) {
                                 <?php
                                     if(isset($_POST['submit'])){
                                         

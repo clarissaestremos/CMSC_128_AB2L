@@ -9,6 +9,7 @@ var searchform;
 /**
 	For navigating through autosuggest list using up and down keys
 */
+
 $(window).keydown(function Event(e) {
 		switch(e.keyCode) { 
 			// User pressed "up" arrow
@@ -113,7 +114,7 @@ function showAutoSuggestResultinBody(str,user,form,clicked){
 		$('#list_area').css("opacity",".5");
 		showResultInBody=false;
 	}
-	if(size % 5 == 0 || size % 2 == 0 || size % 3 == 0){
+	if(size % 5 == 0 || size % 2 == 0){
 		if (size==0){
 			$('#list_area').fadeOut();
 		}else if(size >5 || size>=15){

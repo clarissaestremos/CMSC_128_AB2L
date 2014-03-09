@@ -109,7 +109,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><br/><span class = "color-red valClass" name = "valNumber"></span>
+                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><br/><span class = "color-red valClass" id="span_sno" name = "valNumber"></span>
                                 </div>
                             </div>
                         </div>
@@ -253,9 +253,6 @@
     <p id='regcourse'></p>
     <p id='regemail'></p>
     <p id='reguser'></p>
-</div>
-<div id="regsucc">
-    <h5>You have successfuly register an account. You may now go to the library to activate your account. Thank you!</h5>
 </div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>

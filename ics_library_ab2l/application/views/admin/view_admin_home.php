@@ -73,7 +73,7 @@
                                     <li><a href="#">Next</a></li>
                                 </ul>
                             </div>
-                                <form action="<?php echo $base ?>index.php/admin/controller_outgoing_books/send_email" method='post' class="float-right">
+                                <form action="<?php echo $base ?>index.php/admin/controller_outgoing_books/send_email" method='post' id='notifyall' class="float-right">
                                    <input type='submit' name='notify_all' value='Notify All' enabled/>
                                 </form>
 	                    </div>
@@ -82,7 +82,7 @@
                             }
                             else{
                                 echo "<hr>";
-                                echo "<h4 class='color-grey'>There is no currently overdue books!</h4>";
+                                echo "<h4 class='color-grey'>There are no currently overdue books!</h4>";
                                 echo "<hr>";
                             }
                         ?>
@@ -151,7 +151,7 @@
 	                    	}
 	                    	else{
 	                    		echo "<hr>";
-                                echo "<h4 class='color-grey'>There is no currently outgoing books!</h4>";
+                                echo "<h4 class='color-grey'>There are no currently outgoing books!</h4>";
                                 echo "<hr>";
 	                    	}
 	                    ?>
@@ -225,7 +225,7 @@
 				           	}
 				           	else{
 				           		echo "<hr>";
-                                echo "<h4 class='color-grey'>There is no currently pending user account!</h4>";
+                                echo "<h4 class='color-grey'>There are no currently pending user account!</h4>";
                                 echo "<hr>";
 				           	}
 
@@ -351,4 +351,7 @@ else{
 </div>
 <div id="extendsucc" title="Extend Book Success">
     <p>You have successfully extend the due date of a book!</p>
+</div>
+<div id='notifydialog' title='Notify Overdue Books Dialog'>
+    <p>Do you really want to notify all users regarding their overdue books?</p>
 </div>
