@@ -4,6 +4,9 @@
 <script type = "text/javascript">
 	var base_url = "<?php echo base_url() ?>";
 </script>
+if($this->session->userdata('logged_in_type')=='admin')
+                    redirect('index.php/admin/controller_admin_home', 'refresh');
+          ?>
 <html>
 	<head>
 		<title><?php echo $titlepage?></title>

@@ -829,8 +829,8 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                document.getElementById('akeys').innerText = "Admin key: " document.getElementById('adminkey').value;
-                document.getElementById('ausernames').innerText = "Admin username: " document.getElementById('uname').value;
+                document.getElementById('akeys').innerText = "Admin key: " + document.getElementById('adminkey').value;
+                document.getElementById('ausernames').innerText = "Admin username: " + document.getElementById('uname').value;
                 $('#addadminsuccess').dialog('open');
             },
             "No": function() {
