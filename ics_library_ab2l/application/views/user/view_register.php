@@ -105,7 +105,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><span class = "cell color-red validmsg valClass" name = "valNumber"></span>
+                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><span class = "cell color-red validmsg valClass" id = "span_account" name = "valNumber"></span>
                                 </div>
                             </div>
                         </div>

@@ -54,12 +54,18 @@
 				if(flag==="student"){
 					if (str=="") msg+="Student number is required";
 					else if (!str.match(/^[0-9]{4}\-[0-9]{5}$/))  msg+="Must be xxxx-xxxxx";
+					else if(!getResultNum(str)){
+						msg+="Student already exist.";
+					}
 					else if(msg="Invalid input") msg="";
 					document.getElementsByName("valNumber")[0].innerHTML=msg;
 				}
 				else{
 					if (str=="") msg+="Employee number is required";
 					else if (!str.match(/^[0-9]{10}$/) )  msg+="Must be xxxxxxxxxx";
+					else if(!getResultNum(str)){
+						msg+="Faculty already exist.";
+					}
 					else if(msg="Invalid input") msg="";
 					document.getElementsByName("valNumber")[0].innerHTML=msg;
 				}
@@ -198,6 +204,38 @@ function validateEmail(){
                         else{
                             $('#helpusername').removeClass('userOk').addClass('color-red');;
                             $("#helpusername").text("Username not available.");
+                           bool= false;
+                        }
+                    }
+                })
+
+              
+                return bool;
+
+            }
+
+            window.getResultNum = 	function (number){
+               // var baseurl = <?php echo base_url()?>;
+
+               var bool= false;
+                $('#span_account').append("<span id = 'helpaccount'></span>");
+                $("#helpusername").text("Checking availability...");
+                $.ajax({
+                    url : base_url + 'index.php/user/controller_register/check_account/' + number,
+                    cache : false,
+                    async:false,
+                    success : function(response){
+
+                        $('#helpusername').delay(1000).removeClass('preloader');
+                        if(response == 'userOk'){
+                            $('#helpusername').removeClass('userNo').addClass('userOk');
+                            $('#helpusername').text("Username available!");
+                            
+                          bool= true;
+                        }
+                        else{
+                            $('#helpaccount').removeClass('userOk').addClass('color-red');;
+                            $("#helpaccount").text("Student already exist.");
                            bool= false;
                         }
                     }
