@@ -37,9 +37,7 @@ function serialize_form1()
                         <div id="success" class="widht-fill">
                             <div id="check" class="cell">
                                 <p>
-                                <?php
-                                    echo $message;          
-                                ?>
+                              
                                 </p>
                             </div>
                         </div>
