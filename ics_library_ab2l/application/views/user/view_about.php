@@ -45,7 +45,7 @@
 										
 												<p>The developers of this system came from the class of CMSC 128 AB-2L under their instructors Reginald Recario and Kim Samaniego. Despite the diversity, everyone wanted to create a simple integrated library system that prioritizes the needs of its user. </p><br/>
     
-												<div id="tabs" class="tabs_rotate" style="border:0px solid black; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 1em;">
+												<div id="tabs" class="tabs_rotate" style="border:0px solid black; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size: 1em; height:350px; overflow: scroll;">
 								        		<ul style="border:0px solid black; border-bottom: 1px solid #aaa; border-radius: 0px;" class="background-white">
 								        			<li><a href="#tabs-1">Project Manager</a></li>
 								        			<li><a href="#tabs-2">Team Leaders</a></li>
@@ -62,45 +62,259 @@
 								        		</div>
 
 												<div class="cell" id="tabs-2">
-												<p>Team Leader: Krystel Arriane Cortez (handled the Administrator Privileges)<p>
+											
 												
-												<p>Team Leader: Paul Ivann Granada (handled the System Front End)</p>
-												
-												<p>Team Leader: Edelweis Valdellon (handled the User/Administrator Accounts Management)</p>
-												
-												<p>Team Leader: Christine Villaruel (handled the Booklist Database)</p>
-												
-												<p>Team Leader: Kara Lane Zurbano (handled the Search Book/User Modules)</p>
-												
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black"> Edelweis Valdellon - Booklist Database</h2>
+												<li><b>Interests:</b> Watching American TV series</li>
+												<li><b>Short Description:</b> I want a little danger in life.</li>
+												<li><b>Org:</b> University of the Philippines Gawad Kalinga - Los Banos</li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web development /C,Java,PHP</li>
+												</div><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black"> Christine Villaruel - Accounts Management</h2>
+												<li><b>Interests:</b>  playing musical instruments, programming, animation</li>
+												<li><b>Short Description:</b> Junior BS Computer Science student,a person who loves to learn </li>
+												<li><b>Org:</b> Young Software Engineers' Society</li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web development, Mobile Development</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black"> Paul Ivann Granada - System Front End</h2>
+												<li><b>Interests:</b>  Watching movies,animes,series, fandom </li><br/>
+												<li><b>Short Description:</b> Just a simple guy leading a simple life. </li>
+												<li><b>Org:</b> N/A</li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web Development/Networking(trying), Java, PHP, SQLs, HTML,CSS, Javascript</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black"> Kara Lane Zurbano - Search Book/User Modules</h2>
+												<li><b>Interests:</b>  Composing songs, computer gaming, voice dubbing, Fairy Tail</li><br/>
+												<li><b>Short Description:</b> I am just a simple girl with a constant desire to be on a meaningful path. I am easygoing, selfless, patient and loyal. </li>
+												<li><b>Org:</b> N/A</li>
+												<li><b>Field/Preferred Language/technical skills:</b> Java, C, Back-end Web Dev</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Krystel Arriane Cortez - Administrator Privileges</h2>
+												<li><b>Interests:</b>reading, watching movies, listening to music, eating </li><br/>
+												<li><b>Short Description:</b> N/A </li>
+												<li><b>Org:</b> N/A</li>
+												<li><b>Field/Preferred Language/technical skills:</b>  Web Development, PHP, MySQL, HTML, C, C#, Java</li>
+												</div>
+												<hr><br/>
+
 											</div>
 											<div class="cell" id="tabs-3">
-													<ul>
-													<li>Ann Lois Abendante</li>
-													<li>Dyanara Dela Rosa</li>
-													<li>Nyreen Delos Santos</li>
-													<li>Clarissa Estremos</li>
-												</ul>
-												<ul>	
-													<li>Anne Muriel Gonzales</li>
-													<li>Al Josef Rai Tan</li>
-													<li>Yumiko Yoshida</li>
-												</ul>
-												<ul>
-													<li>Maraiah Gene Garcia</li>
-													<li>Erica Jimenez</li>
-													<li>Gabriel Luis Borjal</li>
-													<li>Jonathan Joseph Pe&ntilde;a</li>
-												</ul>
-												<ul>
-													<li>Cris Joseph Ramos</li>
-													<li>Aristotle Martinez</li>
-													<li>Odyzza Daleon</li>
-												</ul>
-												<ul>
-													<li>Gerald Benedict Emalada</li>
-													<li>Klarence Kim Manangan</li>
-													<li>Kebeno Martinez</li>
-												</ul>
+												<h1>Administrator Privileges</h1>
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Ann Lois Abendante</h2>
+												<li><b>Interests:</b>Movies, series, music, foods </li><br/>
+												<li><b>Short Description:</b> Skinny but awesome</li>
+												<li><b>Org:</b> UPLB Computer Science Society</li>
+												<li><b>Field/Preferred Language/technical skills:</b>   Mobile dev, Java, HTML, CSS, C, MySQL</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Nyreen Delos Santos</h2>
+												<li><b>Interests:</b>singing </li><br/>
+												<li><b>Short Description:</b> Someone who doesn't give up without a good fight. Mehe.</li>
+												<li><b>Org:</b> UP Banahaw </li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web dev,C, Java</li>
+												</div>
+												<hr><br/><br/>
+
+												<h1>System Front-End</h1>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Anne Muriel Gonzales</h2>
+												<li><b>Interests:</b>reading young adult novels, anime, manga, travelling</li><br/>
+												<li><b>Short Description:</b>  Focusing on the bright side of life</li>
+												<li><b>Org:</b>N/A </li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web Dev, Java, php, c, MySQL</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Al Josef Rai Tan</h2>
+												<li><b>Interests:</b>Computer Games, Watching TV Series/Movies, Listening to Music, Coding, Food</li><br/>
+												<li><b>Short Description:</b> An Eating Machine </li>
+												<li><b>Org:</b>N/A </li>
+												<li><b>Field/Preferred Language/technical skills:</b> Web Dev / C, Java</li>
+												</div>
+												<hr><br/>
+
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Yumiko Yoshida</h2>
+												<li><b>Interests:</b>Foodtrip with friends, watching TV series, bonding with friends</li><br/>
+												<li><b>Short Description:</b>simple and boring </li>
+												<li><b>Org:</b>N/A </li>
+												<li><b>Field/Preferred Language/technical skills:</b>web dev, php, c#, c</li>
+												</div>
+												<hr><br/><br/>
+
+												<h1>Booklist Database</h1>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Maraiah Gene Garcia</h2>
+												<li><b>Interests:</b>Listening to music, watching movies, playing computer games, cooking</li><br/>
+												<li><b>Short Description:</b> Average student, responsible enough, simple, nice and friendly</li>
+												<li><b>Org:</b>N/A </li>
+												<li><b>Field/Preferred Language/technical skills:</b>Web dev.,/ C, Java</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Gabriel Luis G. Borjal</h2>
+												<li><b>Interests:</b>Dota, Lawn Tennis, ANime, FPS</li><br/>
+												<li><b>Short Description:</b> Awesome</li>
+												<li><b>Org:</b>Project Committee Head, UPLB Computer Science Society </li>
+												<li><b>Field/Preferred Language/technical skills:</b> Php, mysql,javascript,css3,boostrap,java</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Erica Jimenez</h2>
+												<li><b>Interests:</b>Food and adventure! </li><br/>
+												<li><b>Short Description:</b>I try.</li>
+												<li><b>Org:</b> UPLB Debate Society</li>
+												<li><b>Field/Preferred Language/technical skills:</b>Web development</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Jonathan Joseph Pe&ntilde;a</h2>
+												<li><b>Interests:</b> Coding, Sports, Computer Games</li><br/>
+												<li><b>Short Description:</b>Big Guy with a big heart.</li>
+												<li><b>Org:</b> MVMSI Inc. (Part time Programmer);  UPLB COmputer Science Society; UP BBall </li>
+												<li><b>Field/Preferred Language/technical skills:</b>Mobile Dev, Web dev</li>
+												</div>
+												<hr><br/><br/>
+
+												<h1>Accounts Management</h1>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Cris Joseph Ramos</h2>
+												<li><b>Interests:</b>watching anime, listening to music</li><br/>
+												<li><b>Short Description:</b> simple</li>
+												<li><b>Org:</b>UPLB Computer Science Society</li>
+												<li><b>Field/Preferred Language/technical skills:</b>Mobile, Web Dev / C, Java</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Aristotle Martinez</h2>
+												<li><b>Interests:</b>anime, movies, books, animals, sleep chocolates </li><br/>
+												<li><b>Short Description:</b>hardworking but sometimes shows lazy syndrome</li>
+												<li><b>Org:</b>  UP SOMA SOSHIKi-member</li>
+												<li><b>Field/Preferred Language/technical skills:</b>Programming in C, C#, Java Web dev, game dev</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Odyzza Daleon</h2>
+												<li><b>Interests:</b> Reading, watching movies and anime</li><br/>
+												<li><b>Short Description:</b>Just me</li>
+												<li><b>Org:</b> Social and Alumni Relations Committee Junior Head, UP Oroquieta</li>
+												<li><b>Field/Preferred Language/technical skills:</b>c , java, html, css</li>
+												</div>
+												<hr><br/><br/>
+
+												<h1>User/Book Search Module</h1>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Klarence Kim Manangan</h2>
+												<li><b>Interests:</b>Layout Design, Languages, Photography, People</li><br/>
+												<li><b>Short Description:</b>I am saved by grace</li>
+												<li><b>Org:</b>State Varsity Christian Fellowship-UPLB (Junior Executive Committee, Membership Committee Head)</li>
+												<li><b>Field/Preferred Language/technical skills:</b>PHP, Javascript, CSS, Photo manipulation and layout skills</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Kebeno Martinez</h2>
+												<li><b>Interests:</b>Potato</li><br/>
+												<li><b>Short Description:</b>Derp</li>
+												<li><b>Org:</b>Kappan Chronicler at UP Kappa Phi Sigma-Conservation and Development Society</li>
+												<li><b>Field/Preferred Language/technical skills:</b>Web, Mobile, Software/Engurish/C, C++, C#, Java tapos yung mga sa web development.</li>
+												</div>
+												<hr><br/>
+
+												<div style="float:left;">
+												<img src="<?php echo base_url();?>images/home/1.jpg" data-thumb="<?php echo base_url();?>images/home/1.jpg" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
+												</div>
+												<div  style="width: 637px; height: 170px;margin-left: 80px; float:left;">
+												<h2 class="color-black">Gerald Benedict C. Emalada</h2>
+												<li><b>Interests:</b>Books, movies, basketball</li><br/>
+												<li><b>Short Description:</b> A Möbius strip of what-ifs/li>
+												<li><b>Org:</b> UPLB Computer Science Society, Filipino Freethinkers - UPLB, UP BBALL</li>
+												<li><b>Field/Preferred Language/technical skills:</b>Web Development, Photo manipulation, vector graphics</li>
+												</div>
+												<hr><br/>
+
 											</div>
 											</div>
 											</div>
@@ -118,7 +332,7 @@ $(window).ready(function() {
 });
 $(document).ready(function() {
 	$('.tabs_rotate').tabslet({
-	autorotate: true,
+	autorotate: false,
 	delay: 5000,
 	active:0,
 	animation:true
