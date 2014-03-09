@@ -69,14 +69,20 @@ else{
 
 		";
 ?>
-<div id="deletealldialog" title="Add Announcement Confirmation Dialog">
+<div id="deletealldialog" title="Delete All Announcement Confirmation">
 	<p>Are you sure that you want to delete all the announcement?</o>
 </div>
-<div id="deletedialog" title="Add Announcement Confirmation Dialog">
+<div id="deletedialog" title="Delete Announcement Confirmation">
 	<p>Are you sure that you want to delete this announcement?</o>
 </div>
-<div id="deleteconfirm" title="Add Announcement Confirmation Dialog">
+<div id="deleteconfirm" title="Delete All Announcement Confirmation">
 	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
+</div>
+<div id="dsucc" title="Delete Announcement Success">
+   <p>You have successfuly deleted an announcement</p>
+</div>
+<div id="dasucc" title="Delete All Announcement Success">
+  <p>You have successfully deleted all the announcement!</p>
 </div>
 <script>
 	$(document).ready(function(){
@@ -96,15 +102,56 @@ else{
       	draggable: false,
       	buttons : {
         	"Yes": function() {
-            	document.getElementById(form).submit();
+            	$(this).dialog('close');
+              $('#dasucc').dialog('open');
         	},
         	"No": function() {
             	$(this).dialog('close');
         	}
       	}
       });
+$("#dsucc").dialog({
+    autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+          effect: "fadeIn",
+          duration: 200
+        },
+        draggable: false,
+        close: function(event, ui){
+          button.closest('form').submit();
+        },
+        buttons : {
+          "Ok": function() {
+              button.closest('form').submit();
+          },
+        }
 
-		$("#deletealldialog").dialog({
+    });
+
+    $("#dasucc").dialog({
+    autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+          effect: "fadeIn",
+          duration: 200
+        },
+        draggable: false,
+        close: function(event, ui){
+          document.getElementById(form).submit();
+        },
+        buttons : {
+          "Ok": function() {
+              document.getElementById(form).submit();
+          },
+        }
+
+    });
+	$("#deletealldialog").dialog({
         autoOpen: false,
       	modal: true,
       	closeOnEscape: true,
@@ -146,7 +193,8 @@ else{
       	draggable: false,
       	buttons : {
         	"Yes": function() {
- 				button.closest('form').submit();
+ 				$(this).dialog('close');
+              $('#dsucc').dialog('open');
         	},
         	"No": function() {
             	$(this).dialog('close');

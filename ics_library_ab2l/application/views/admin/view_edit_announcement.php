@@ -84,6 +84,9 @@
 <div id="announcementdialog" title="Add Announcement Confirmation Dialog">
 	<p>Are you sure that you want to edit this announcement?</o>
 </div>
+<div id='successdialog' title='Success Dialog'>
+	<h5>You have successfully edit the announcement!!</h5>
+</div>
 <script>
 	$(document).ready(function(){
 		$("#announcementdialog").dialog({
@@ -102,11 +105,30 @@
       	draggable: false,
       	buttons : {
         	"Yes": function() {
-            	document.getElementById(form).submit();
+            	$('#successdialog').dialog('open');
         	},
         	"No": function() {
             	$(this).dialog('close');
         	}
+      	}
+	});
+		$("#successdialog").dialog({
+		autoOpen: false,
+      	modal: true,
+      	closeOnEscape: true,
+      	closeText: 'show',
+      	show: {
+       	 	effect: "fadeIn",
+        	duration: 200
+      	},
+      	draggable: false,
+      	close: function(event, ui){
+      		document.getElementById(form).submit();
+      	},
+      	buttons : {
+        	"Ok": function() {
+            	document.getElementById(form).submit();
+        	},
       	}
 
     });

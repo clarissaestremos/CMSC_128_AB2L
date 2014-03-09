@@ -17,7 +17,6 @@
 
 									<li><b>Borrower: </b><?=$borrower;?></li>
 									<li><b>Title: </b><?=$title;
-										$title = urldecode($title);
 										$tbook = urlencode($title);
 									?></li>
 									<li><b>Author/s: </b>

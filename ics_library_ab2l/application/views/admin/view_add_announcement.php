@@ -80,6 +80,9 @@
 <div id="announcementdialog" title="Add Announcement Confirmation Dialog">
 	<p>Are you sure that you want to add this announcement?</o>
 </div>
+	<div id="addsucc" title="Add Announcement Success">
+		<p>Are you sure that you want to add this announcement?</o>
+ 	</div>
 <script>
 	$(document).ready(function(){
 		$("#announcementdialog").dialog({
@@ -98,14 +101,37 @@
       	draggable: false,
       	buttons : {
         	"Yes": function() {
-            	document.getElementById(form).submit();
-        	},
+        		$(this).dialog('close');
+             	$('#addsucc').dialog('open');
+           	},
         	"No": function() {
             	$(this).dialog('close');
         	}
       	}
 
     });
+
+		$("#addsucc").dialog({
+ 	    	autoOpen: false,
+ 	        modal: true,
+ 	        closeOnEscape: true,
+ 	        closeText: 'show',
+ 	        show: {
+ 	          effect: "fadeIn",
+ 	          duration: 200
+ 	        },
+ 	        draggable: false,
+ 	        close: function(event, ui){
+ 	          document.getElementById(form).submit();
+ 	        },
+ 	        buttons : {
+ 	          "Ok": function() {
+ 	              document.getElementById(form).submit();
+ 	          },
+ 	        }
+ 
+     	});
+ 
 		$( "#addannouncement" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;

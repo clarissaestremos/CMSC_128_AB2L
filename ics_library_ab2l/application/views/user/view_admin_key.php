@@ -10,10 +10,18 @@
 	<div id="sign" class="col" >
 		<div class="col" >
 			<span>
-			<div class="color-red logerror width-fill cell"><?php echo validation_errors(); ?></div>
+			<?php
+				if(validation_errors()){
+			?>
+			<div class="errormsg" style='margin: 3px 10px 3px 10px;'>
+				<div class="msgwrape">
+					<p class="color-red"><?php echo validation_errors(); ?></p>
+				</div></div>
+			<?php
+				}
+			?>
 		</span>
 	 <?php
-	 	echo validation_errors();
 	 	$attributes = array('name' =>'admin_login', 'id' => 'admin_login');
      echo form_open('index.php/user/controller_verify_admin_key', $attributes); ?>
      
