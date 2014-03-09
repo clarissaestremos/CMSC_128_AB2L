@@ -492,11 +492,11 @@ $("#dsucc").dialog({
             },
             draggable: false,
             close: function(event, ui){
-              document.getElementById(form).submit();
+              thisform.submit();
             },
             buttons : {
               "Ok": function() {
-                  document.getElementById(form).submit();
+                  thisform.submit();
               },
             }
  
@@ -940,6 +940,13 @@ $("#dsucc").dialog({
         });
     //END OF ADD USER MODALS
     });
+    function confirmUser(myformid){
+        thisform = myformid;
+        $('#confdialog').dialog('open');
+        console.log(thisform);
+        return false;
+    }
 		var form;
-	var button;
+    var thisform;
+	 var button;
 </script>
