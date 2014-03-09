@@ -27,7 +27,7 @@
 									?></li>
 									<li><b>Year of Publication: </b><?=$year_of_pub?>
 									<li><b>Type: </b><?=$type?></li>
-									<a id="confirmButton" href="<?php echo base_url().'index.php/user/controller_reserve_book/confirm_reservation/'.$tbook; ?>"><input type="button" value="Confirm Reservation"></a>
+									<a id="confirmButton" href="<?php echo base_url().'index.php/user/controller_reserve_book/confirm_reservation/' ?>"><input type="button" value="Confirm Reservation"></a>
 								</div>
 							</form>
 						</div>
@@ -40,7 +40,18 @@
 </div>
 </div>
 </div>
-
 <div id="dialog" title="Book Confirmation Dialog">
-  <h5>Do you really wish to reserved this book?</h5>
+  <h5>Do you really wish to reserved this material?</h5>
+  <p>Title: <?php echo $title?></p>
+  <p>Author/s: <?php 
+  	foreach ($author as $value) {
+		echo $value."<br/>";
+	}
+  ?></p>
+  <p>Year of Publication: <?php echo $year_of_pub?></p>
+</div>
+
+<div id="ressucc" title="Book Reservation Success">
+  <h5>You have successfully reserved the book:</h5>
+  <p='booktitle'><?php echo $title ?></p>
 </div>
