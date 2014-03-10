@@ -173,10 +173,33 @@ class Controller_book extends Controller_log {
 	}
 
 	public function call_success(){
-			echo "<script>
-				alert('You have successfully add a material');
+			echo "<div id='mysuccess' title='Delete Book Success'>
+			<h5>You have successfully added a new material!!</h5>
+			</div>
+			<script src='$base/js/jquery-1.10.2.min.js'></script>
+			<script src='$base/js/jquery-ui.js'></script>
+			<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+			<script>
+					$('#mysuccess').dialog({
+			            modal: true,
+			            closeOnEscape: true,
+			            closeText: 'show',
+			            show: {
+			              effect: 'fadeIn',
+			              duration: 200
+			            },
+			            draggable: false,
+			            close: function(event, ui){
+			                window.location.replace('$base/index.php/admin/controller_add_books');
+			            },
+			            buttons : {
+			              'Ok': function() {
+			                  window.location.replace('$base/index.php/admin/controller_add_books');
+			              },
+			            }
+			 
+			        });
 			</script>";
-			redirect('index.php/admin/controller_add_books', 'refresh');
 	}
 	
 	/*UPDATE book*/
@@ -235,10 +258,33 @@ class Controller_book extends Controller_log {
 	function edit_success(){
 		$session_user = $this->session->userdata('logged_in')['username'];
 
-		echo "<script>
-				alert('You have successfully updated a book.');
+		echo "<div id='mysuccess' title='Delete Book Success'>
+					<h5>You have successfully edited the material!!</h5>
+				</div>
+				<script src='$base/js/jquery-1.10.2.min.js'></script>
+				<script src='$base/js/jquery-ui.js'></script>
+				<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+				<script>
+						$('#mysuccess').dialog({
+				            modal: true,
+				            closeOnEscape: true,
+				            closeText: 'show',
+				            show: {
+				              effect: 'fadeIn',
+				              duration: 200
+				            },
+				            draggable: false,
+				            close: function(event, ui){
+				                window.location.replace('$base/index.php/admin/controller_book');
+				            },
+				            buttons : {
+				              'Ok': function() {
+				                  window.location.replace('$base/index.php/admin/controller_book');
+				              },
+				            }
+				 
+				        });
 			</script>";
-		header("refresh:0;url=../controller_book");
 	}
 	
 	//DELETE
@@ -253,7 +299,7 @@ class Controller_book extends Controller_log {
 		$base = base_url();
 		echo "
 		<div id='mysuccess' title='Delete Book Success'>
-			<h5>You have successfully deleted a book!!</h5>
+			<h5>You have successfully deleted a material!!</h5>
 		</div>
 		<script src='$base/js/jquery-1.10.2.min.js'></script>
 		<script src='$base/js/jquery-ui.js'></script>
