@@ -65,7 +65,7 @@ class Controller_reserve_book extends CI_Controller{
 				$data['borrower'] = $value->account_number;
 			}
 			$num_borrowed = $this->model_reserve_book->fetch_user_reservation($data['borrower'])->num_rows();
-			if($num_borrowed < 3){
+				if($num_borrowed < 3){
 				$row = $this->model_reserve_book->fetch_user2($data['borrower']);
 				foreach ($row->result() as $value) {
 					$user_status = $value->status;
@@ -80,7 +80,7 @@ class Controller_reserve_book extends CI_Controller{
 					
 					if($no_of_available > 0){
 						$this->model_reserve_book->add_reservation($data);
-						echo "<div id='mysuccess' title='Delete Book Success'>
+						echo "<div id='mysuccess' title='Success: Reserved'>
 									<h5>You have successfully reserved a book. Please confirm it to the administrator..</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -110,7 +110,7 @@ class Controller_reserve_book extends CI_Controller{
 					}
 					else{
 						$this->model_reserve_book->waitlist_reservation($data);
-						echo "<div id='mysuccess' title='Delete Book Success'>
+						echo "<div id='mysuccess' title='Success: Waitlisted'>
 									<h5>There is not enough number of books available. You are waitlisted.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -140,7 +140,7 @@ class Controller_reserve_book extends CI_Controller{
 					}	
 				}
 				else{
-					echo "<div id='mysuccess' title='Delete Book Success'>
+					echo "<div id='mysuccess' title='Error: Account Activation'>
 									<h5>Your account is not yet activated. Please confirm it to the administrator.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -171,7 +171,7 @@ class Controller_reserve_book extends CI_Controller{
 				
 			}
 			else{
-				echo "<div id='mysuccess' title='Delete Book Success'>
+				echo "<div id='mysuccess' title='Error: Reservation Limitation'>
 									<h5>A user is allowed to borrow and reserve at most 3 books</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>

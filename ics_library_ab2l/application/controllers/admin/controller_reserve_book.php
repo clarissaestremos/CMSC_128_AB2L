@@ -96,7 +96,7 @@ class Controller_reserve_book extends CI_Controller{
 						
 						if($no_of_available > 0){
 							$this->model_reserve_book->add_reservation($data);
-							echo "<div id='mysuccess' title='Delete Book Success'>
+							echo "<div id='mysuccess' title='Success: Reserved'>
 									<h5>You have successfully reserved a book for user ".$data['borrower'].". Please confirm it.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -126,7 +126,7 @@ class Controller_reserve_book extends CI_Controller{
 						}
 						else{
 							$this->model_reserve_book->waitlist_reservation($data);
-							echo "<div id='mysuccess' title='Delete Book Success'>
+							echo "<div id='mysuccess' title='Success: Waitlisted'>
 									<h5>There is not enough number of books available. User ".$data['borrower']." is waitlisted.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -156,7 +156,7 @@ class Controller_reserve_book extends CI_Controller{
 						}	
 					}
 					else{
-						echo "<div id='mysuccess' title='Delete Book Success'>
+						echo "<div id='mysuccess' title='Error: Account Activation'>
 									<h5>Your account is not yet activated. Please confirm it to the administrator.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -188,8 +188,8 @@ class Controller_reserve_book extends CI_Controller{
 					
 				}
 				else{
-					echo "<div id='mysuccess' title='Delete Book Success'>
-									<h5>A user is allowed to borrow at most 3 books</h5>
+					echo "<div id='mysuccess' title='Error: Reservation Limitation'>
+									<h5>A user is allowed to borrow and reserve at most 3 books</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
 								<script src='$base/js/jquery-ui.js'></script>
