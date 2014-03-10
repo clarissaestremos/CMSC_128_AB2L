@@ -48,7 +48,7 @@
 				if (validate_epass()) {
 					<?php
 						if(isset($_POST['submit'])){
-							
+							return true;
 						}
 					?>
 				}
@@ -90,6 +90,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id='cancelset1' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
+													<input type='hidden' name='submit' value='emailsettings'/>
 													<input type="submit" name="save" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
 									</form>
 									</div>	
@@ -118,6 +119,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id='cancelset2' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
+													<input type='hidden' name='submit' value='passwordsettings'/>
 													<input type="submit" name="save" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
 													
 									</form>

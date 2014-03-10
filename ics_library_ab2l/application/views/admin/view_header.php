@@ -687,6 +687,7 @@ $("#dsucc").dialog({
 		$( "#myform" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
+        if(process_add())
       		$( "#elibmail" ).dialog( "open" );
     	});
 
@@ -791,6 +792,7 @@ $("#dsucc").dialog({
 		$( "#form" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
+        if(process_add())
       		$( "#passadmin" ).dialog( "open" );
     	});
     	$( "#cancelset1" ).click(function (e) {

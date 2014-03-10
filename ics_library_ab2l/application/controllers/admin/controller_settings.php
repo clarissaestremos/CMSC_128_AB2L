@@ -73,7 +73,6 @@ class Controller_settings extends Controller_log {
 					$fp = fopen('./application/third_party/e99b386ab2e00f9ad17b.txt', "w");
 					fwrite($fp, $savestring);
 					fclose($fp);
-					echo "<script>alert('You have successfully changed ICS e-Lib settings.');</script>";
 					$session_user = $this->session->userdata('logged_in')['username'];
 					$this->add_log("Admin $session_user changed ICS e-Lib settings.", "System Settings");
 
