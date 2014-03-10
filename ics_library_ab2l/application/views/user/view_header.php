@@ -64,7 +64,8 @@ if($this->session->userdata('logged_in_type')=='admin')
 			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
       #category {width: 100px;}
       #sinput{width: 200px;}
-      #autosuggest_list{ padding: 10px 10px 10px 10px;}
+      #autosuggest_list{ padding: 50px 0px 0px 0px;}
+	  .howver:hover{background-color:#d3d3d3 !important; color:black !important;}
 		</style>
   		<?php
   		 if($this->session->userdata('logged_in_type')=='admin')

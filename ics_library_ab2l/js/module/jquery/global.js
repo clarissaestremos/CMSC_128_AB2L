@@ -9,8 +9,8 @@ var searchform;
 /**
 	For navigating through autosuggest list using up and down keys
 */
-
 $(window).keydown(function Event(e) {
+		$("#selectItems ul li").removeClass("howver");
 		switch(e.keyCode) { 
 			// User pressed "up" arrow
 			case 38:
@@ -50,6 +50,7 @@ $(window).keydown(function Event(e) {
 				sinput = '';
 			});
 });
+	
 /*
 	Function that hovers through the autosuggest list
 */
