@@ -16,6 +16,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/main-template.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css"><!--source: http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css-->
     <link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/bootstrap.css"/>
+    <link rel="stylesheet" href="<?php echo  base_url() ?>style/user/font-awesome.min.css">
   		<link rel="stylesheet" href="<?php echo base_url(); ?>style/user/slider.css" type="text/css" media="screen" />
   		<link rel="stylesheet" href="<?php echo base_url(); ?>default/default.css" type="text/css" media="screen" />
   		<link rel="icon" href="<?php echo base_url(); ?>images/ics_icon.png"/>
@@ -156,11 +157,11 @@ if($this->session->userdata('logged_in_type')=='admin')
           <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand color-white" href="<?php echo base_url();?>">
-            <?php if($titlepage === "ICS Library Home") echo "<span class='glyphicon glyphicon-home'></span>";
-              if($titlepage === "View all books") echo "<span class='glyphicon glyphicon-book'></span>";
-              if($titlepage === "Books - Search") echo "<span class='glyphicon glyphicon-search'></span>";
-              if($titlepage === "Frequently Asked Questions") echo "<span class='glyphicon glyphicon-list'></span>";
-              if($titlepage === "Book Statistics") echo "<span class='glyphicon glyphicon-stats'></span>";
+            <?php if($titlepage === "ICS Library Home") echo "<span class='fa icon-home'></span>";
+              if($titlepage === "View all books") echo "<span class='fa icon-bookmark'></span>";
+              if($titlepage === "Books - Search") echo "<span class='fa icon-search'></span>";
+              if($titlepage === "Frequently Asked Questions") echo "<span class='fa icon-map-marker'></span>";
+              if($titlepage === "Book Statistics") echo "<span class='fa icon-bar-chart'></span>";
             ?>            
           </a>
         </div>
@@ -168,12 +169,12 @@ if($this->session->userdata('logged_in_type')=='admin')
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse menu" id="menu-collapse">
           <ul class="nav navbar-nav">
-          <?php if($titlepage === "ICS Library Home"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
-          <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="glyphicon glyphicon-book"></span>  View Books</a></li>
-          <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class="glyphicon glyphicon-search"></span>  Search</a></li>
-          <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class="glyphicon glyphicon-list"></span>  FAQs</a></li>
-          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="glyphicon glyphicon-map-marker"></span>  Contacts</a></li>
-          <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="glyphicon glyphicon-stats"></span>  Statistics</a></li>
+          <?php if($titlepage === "ICS Library Home"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>"><span class='fa icon-home'></span>  Home</a></li>
+          <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="fa icon-bookmark"></span>  View Books</a></li>
+          <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class='fa icon-search'></span>  Search</a></li>
+          <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class='fa icon-th-list'></span>  FAQs</a></li>
+          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="fa icon-map-marker"></span>  Contacts</a></li>
+          <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="fa icon-bar-chart"></span>  Statistics</a></li>
           <li class="divider"></li>
           <?php
             if(!$this->session->userdata('logged_in')){
