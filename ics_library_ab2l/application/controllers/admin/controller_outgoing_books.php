@@ -6,7 +6,7 @@ class Controller_outgoing_books extends Controller_log{
         $this->load->model('model_reservation');
         $data['parent'] = "Books";
         $data['current'] = "Outgoing Books";
-        $data['query'] = $this->model_reservation->show_all_user_book_reservation("reserved");   
+        $data['query'] = $this->model_reservation->show_all_user_book_reservation("reserved",0,0);   
         
             $this->load->view("admin/view_header",$data);
             $this->load->view("admin/view_aside");

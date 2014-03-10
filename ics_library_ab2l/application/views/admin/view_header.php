@@ -406,11 +406,11 @@ $("#dsucc").dialog({
             },
             draggable: false,
             close: function(event, ui){
-              document.getElementById(form).submit();
+              thisform.submit();
             },
             buttons : {
               "Ok": function() {
-                  document.getElementById(form).submit();
+                  thisform.submit();
               },
             }
  
@@ -430,11 +430,11 @@ $("#dsucc").dialog({
             },
             draggable: false,
             close: function(event, ui){
-              document.getElementById(form).submit();
+              thisform.submit();
             },
             buttons : {
               "Ok": function() {
-                  document.getElementById(form).submit();
+                  thisform.submit();
               },
             }
  
@@ -1024,6 +1024,20 @@ $("#dsucc").dialog({
     function confirmDeleteReserve(myformid){
         thisform = myformid;
        $( "#canceldialog" ).dialog( "open" );
+        console.log(thisform);
+        return false;
+    }
+
+    function extendBook(myformid){
+        thisform = myformid;
+       $( "#extenddialog" ).dialog( "open" );
+        console.log(thisform);
+        return false;
+    }
+
+    function returnBook(myformid){
+        thisform = myformid;
+       $( "#returndialog" ).dialog( "open" );
         console.log(thisform);
         return false;
     }
