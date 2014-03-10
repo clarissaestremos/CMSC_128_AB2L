@@ -98,7 +98,7 @@ class Controller_books extends CI_Controller {
                         $count++;
                             }
             echo" </tbody>
-        </table><div class='footer pagination'>";
+        </table><div class='pagination'>";
                                            echo $links;
                                         echo "</div>";
     }

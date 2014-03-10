@@ -87,7 +87,7 @@
                  </tbody>
             </table>
             
-            <div class="footer pagination">
+            <div class="pagination">
                 
             </div>
 
@@ -161,7 +161,7 @@
                  </tbody>
             </table>
             
-            <div class="footer pagination">
+            <div class="fpagination">
                 
             </div>
 

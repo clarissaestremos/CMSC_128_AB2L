@@ -116,6 +116,7 @@ if($this->session->userdata('logged_in_type')=='admin')
                   <p class='float-left' style="color:white; background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
                     $session_data = $this->session->userdata('logged_in');
                      echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
+                     $name = $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
               ?>
                   <a class="btn btn-danger" href='<?php echo base_url(); ?>index.php/user/controller_logout'>Logout</a>
                   </p>
@@ -165,6 +166,10 @@ if($this->session->userdata('logged_in_type')=='admin')
               if($titlepage === "Books - Search") echo "<span class='fa icon-search'></span>";
               if($titlepage === "Frequently Asked Questions") echo "<span class='fa icon-map-marker'></span>";
               if($titlepage === "Book Statistics") echo "<span class='fa icon-bar-chart'></span>";
+              if($titlepage === "Reserved books") echo "<span class='glyphicon glyphicon-book'></span>";
+              if($titlepage === "Borrowed Books") echo "<span class='glyphicon glyphicon-tags'></span>";
+              if(isset($name))
+                if($titlepage == $name) echo "<span class='glyphicon glyphicon-user'></span>";
             ?>            
           </a>
         </div>

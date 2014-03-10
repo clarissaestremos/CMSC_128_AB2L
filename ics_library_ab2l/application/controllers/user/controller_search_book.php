@@ -141,7 +141,7 @@ class Controller_search_book extends CI_Controller {
 				                    $count++;
 				                        }
 				        echo" </tbody>
-				    </table><div class='footer pagination'>";
+				    </table><div class='pagination'>";
 				    echo $links;
 
 	                "</div></div>";

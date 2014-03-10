@@ -1,26 +1,3 @@
-<style>
-    .main{
-        margin-left: 20px;
-        font-size: 15px;
-        color: #413839;
-    }
-
-    span{
-        margin-left: 50px;
-    }
-
-    #pic{
-        display: none;
-    }
-
-    #frame:hover ~ div[id='sib']{
-        display: block;
-    }
-    div[id='sib']{
-    }
-
-
-</style>
 <div id="main-body" class="site-body">
                 <div class="site-center">
 <div class="cell body">
@@ -129,7 +106,7 @@
                                                         <div class="cell">
                                                             <span class = "main" id="label_email">Email:</span><em id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
                                                             <form id= 'form_email' method= 'post' action = 'controller_editprofile/edit_email'>
-                                                            <span id="label_email1">Email Address:</span><input type = 'text' id= 'input_email'name = 'new_email' value="<?php echo  $user_details->email?>" required><span id = "helpemail"></span>
+                                                            <span id="label_email1">Email Address:</span>  <input type = 'text' id= 'input_email'name = 'new_email' value="<?php echo  $user_details->email?>" required><span id = "helpemail"></span></br>
                                                             <span>Enter password:</span><input type= 'password' id ='pword_for_email' class="background-white" name ='pword_for_email' required><br>
                                                              <input style = "margin-left: 60px; margin-top: 10px;" type='button' id = "cancel_email" value= 'Cancel'>
                                                             <input style = "margin-left: 10px; margin-top: 10px;" type='submit'  onclick= "return  validate_email()" value= 'Save'><br/><br/><br>

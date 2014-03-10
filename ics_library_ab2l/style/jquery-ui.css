@@ -398,10 +398,14 @@ button.ui-button::-moz-focus-inner {
 	left: 0;
 	padding: .2em;
 	outline: 0;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .ui-dialog .ui-dialog-titlebar {
 	padding: .4em 1em;
 	position: relative;
+	background:#9d261d;
+	
+	color: white;
 }
 .ui-dialog .ui-dialog-title {
 	float: left;
@@ -426,6 +430,7 @@ button.ui-button::-moz-focus-inner {
 	padding: .5em 1em;
 	background: none;
 	overflow: auto;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .ui-dialog .ui-dialog-buttonpane {
 	text-align: left;

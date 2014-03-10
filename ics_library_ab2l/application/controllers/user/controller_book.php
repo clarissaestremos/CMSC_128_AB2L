@@ -111,7 +111,7 @@ echo  ' <table class="body fixed">
                                         
                     }
     echo" </tbody>
-</table><div class='footer pagination'>";
+</table><div class='pagination'>";
 echo $links;
 echo "</div>";
 }

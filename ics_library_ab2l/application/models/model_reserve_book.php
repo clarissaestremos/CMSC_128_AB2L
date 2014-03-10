@@ -60,96 +60,153 @@
 		}
 
 		function add_reservation($data){
+			$flag = true;
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
 				$call_number = $book_details->call_number;
 				$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
 				if($row2->num_rows > 0){
-					echo "<script>alert('Error. You currently have the copy or already reserved/waitlisted for that book.');</script>";
-					redirect('index.php/user/controller_home', 'refresh');
+					$flag = false;
+					echo "<div id='mysuccess' title='Error: Duplication of Copy'>
+									<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
+								</div>
+								<script src='".base_url()."/js/jquery-1.10.2.min.js'></script>
+								<script src='".base_url()."/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='".base_url()."/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('".base_url()."/index.php/user/controller_book/user_reserved_list');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('".base_url()."/index.php/user/controller_book/user_reserved_list');
+								              },
+								            }
+								 
+								        });
+							</script>";
+						break;
 					break;
 				}
 			}
-			$date_reserved = getdate();
-			$date_expired = $this->model_reserve_book->getExpiration($date_reserved);
-			$due_date = $date_expired['year']."-".$date_expired['mon']."-".$date_expired['mday'];
-			$due_date = date("Y-m-d", strtotime($due_date));
+			if($flag){
+						$date_reserved = getdate();
+						$date_expired = $this->model_reserve_book->getExpiration($date_reserved);
+						$due_date = $date_expired['year']."-".$date_expired['mon']."-".$date_expired['mday'];
+						$due_date = date("Y-m-d", strtotime($due_date));
+						
+						$row = $this->model_reserve_book->fetch_book($data['id']);
+						foreach ($row->result() as $value) {
+							$no_of_available = $value->no_of_available;
+							$book_stat = $value->book_stat;
+						}
+						$row = $this->model_reserve_book->fetch_available_book($data['id']);
+						foreach ($row->result() as $book_details) {
+							$data['call_number'] = $book_details->call_number;
+							break;
+						}
 			
-			$row = $this->model_reserve_book->fetch_book($data['id']);
-			foreach ($row->result() as $value) {
-				$no_of_available = $value->no_of_available;
-				$book_stat = $value->book_stat;
-			}
-			$row = $this->model_reserve_book->fetch_available_book($data['id']);
-			foreach ($row->result() as $book_details) {
-				$data['call_number'] = $book_details->call_number;
-				break;
-			}
-
-			$status = "reserved";
-			$rank = 1;
-			$call_number = $data['call_number'];
-			$newdata = array(
-				'rank' => $rank,
-				'status' => $status,
-				'due_date' => $due_date,
-				'date_borrowed' => NULL,
-				'date_returned' => NULL,
-				'call_number' => $call_number,
-				'account_number' => $data['borrower']
-				);
-			$this->db->insert('book_reservation', $newdata);
-
-			$book_stat++;
-			$no_of_available--;
-			$newdata2 = array(
-				'no_of_available' => $no_of_available,
-				'book_stat' => $book_stat
-				);
-			$this->db->where('id', $data['id']);
-			$this->db->update('book', $newdata2);
+						$status = "reserved";
+						$rank = 1;
+						$call_number = $data['call_number'];
+						$newdata = array(
+							'rank' => $rank,
+							'status' => $status,
+							'due_date' => $due_date,
+							'date_borrowed' => NULL,
+							'date_returned' => NULL,
+							'call_number' => $call_number,
+							'account_number' => $data['borrower']
+							);
+						$this->db->insert('book_reservation', $newdata);
+			
+						$book_stat++;
+						$no_of_available--;
+						$newdata2 = array(
+							'no_of_available' => $no_of_available,
+							'book_stat' => $book_stat
+							);
+						$this->db->where('id', $data['id']);
+						$this->db->update('book', $newdata2);}
 		}
 
 		function waitlist_reservation($data){
+			$flag = false;
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
 					$call_number = $book_details->call_number;
 					$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
 					if($row2->num_rows > 0){
-						echo "<script>alert('Error. You currently have the copy or already reserved/waitlisted for that book.');</script>";
-						redirect('index.php/user/controller_home', 'refresh');
+						$flag = true;
+						echo "<div id='mysuccess' title='Error: Duplication of Copy'>
+									<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
+								</div>
+								<script src='".base_url()."/js/jquery-1.10.2.min.js'></script>
+								<script src='".base_url()."/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='".base_url()."/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('".base_url()."/index.php/user/controller_home');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('".base_url()."/index.php/user/controller_home');
+								              },
+								            }
+								 
+								        });
+							</script>";
 						break;
 					}
 					$row2 = $this->model_reserve_book->fetch_breservation($call_number);
 					$rank = $row2->num_rows();
 					break;
 			}
-			$status = "reserved";
-			$rank++;
-			$newdata = array(
-				'rank' => $rank,
-				'status' => $status,
-				'due_date' => NULL,
-				'date_borrowed' => NULL,
-				'date_returned' => NULL,
-				'call_number' => $call_number,
-				'account_number' => $data['borrower']
-				);
-
-			$this->db->insert('book_reservation', $newdata);
-
-			$row = $this->model_reserve_book->fetch_book($data['id']);
-			if($row->num_rows() > 0){
-				foreach ($row->result() as $book_details) {
-					$book_stat = $book_details->book_stat;
-				}
-			}
-			$book_stat++;
-			$newdata2 = array(
-				'book_stat' => $book_stat
-				);
-			$this->db->where('id', $data['id']);
-			$this->db->update('book', $newdata2);
+			if($flag == false){
+						$status = "reserved";
+						$rank++;
+						$newdata = array(
+							'rank' => $rank,
+							'status' => $status,
+							'due_date' => NULL,
+							'date_borrowed' => NULL,
+							'date_returned' => NULL,
+							'call_number' => $call_number,
+							'account_number' => $data['borrower']
+							);
+			
+						$this->db->insert('book_reservation', $newdata);
+			
+						$row = $this->model_reserve_book->fetch_book($data['id']);
+						if($row->num_rows() > 0){
+							foreach ($row->result() as $book_details) {
+								$book_stat = $book_details->book_stat;
+							}
+						}
+						$book_stat++;
+						$newdata2 = array(
+							'book_stat' => $book_stat
+							);
+						$this->db->where('id', $data['id']);
+						$this->db->update('book', $newdata2);}
 		}
 
 		function fetch_book($id){
