@@ -32,6 +32,7 @@ if($this->session->userdata('logged_in_type')=='admin')
   		<style type="text/css">
   			body,html{
   				height: 100%;
+          overflow-x: hidden;
   			}
 			#main-body{
 				background-image:url('<?php echo base_url();?>images/g.jpg'); 
@@ -290,7 +291,7 @@ if($this->session->userdata('logged_in_type')=='admin')
       buttons : {
       	"Yes": function() {
       		$(this).dialog('close');
-      		$('#ressucc').dialog('open')
+      		window.location.replace(link);
       	},
       	"No": function() {
       		$(this).dialog('close');
@@ -301,27 +302,6 @@ if($this->session->userdata('logged_in_type')=='admin')
     /*
 		*Dialog for the success of the reservation of books
     */
-    $("#ressucc").dialog({
-		autoOpen: false,
-      	modal: true,
-      	closeOnEscape: true,
-      	closeText: 'show',
-      	show: {
-       	 	effect: "fadeIn",
-        	duration: 200
-      	},
-      	draggable: false,
-      	close: function(event, ui){
-      		window.location.replace(link);
-      	},
-      	buttons : {
-        	"Ok": function() {
-            	window.location.replace(link);
-        	},
-      	}
-
-    });
-
      /*
 		Trigger for the cancellation of reserved books
      */
