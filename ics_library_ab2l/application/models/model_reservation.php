@@ -161,23 +161,45 @@ class Model_reservation extends CI_Model {
 	
 
 	public function show_reservation($status, $data, $limit, $start){
-		$query= $this->db->query("SELECT *
-			FROM book b, book_reservation br, user_account ua, book_call_number cn
-			WHERE br.account_number=ua.account_number
-			AND br.call_number = cn.call_number
-			AND cn.id = b.id
-			AND br.status='$status'");
-
-		if($limit>0){
-		if ($start == NULL)
-				$start = 0;
+		if($status == "reserved"){
 			$query= $this->db->query("SELECT *
 			FROM book b, book_reservation br, user_account ua, book_call_number cn
 			WHERE br.account_number=ua.account_number
 			AND br.call_number = cn.call_number
 			AND cn.id = b.id
 			AND br.status='$status'
-			LIMIT $start,$limit");
+			AND br.rank = 1");
+		}
+		else{
+			$query= $this->db->query("SELECT *
+			FROM book b, book_reservation br, user_account ua, book_call_number cn
+			WHERE br.account_number=ua.account_number
+			AND br.call_number = cn.call_number
+			AND cn.id = b.id
+			AND br.status='$status'");
+		}
+		if($limit>0){
+		if ($start == NULL)
+				$start = 0;
+			if($status == "reserved"){
+				$query= $this->db->query("SELECT *
+				FROM book b, book_reservation br, user_account ua, book_call_number cn
+				WHERE br.account_number=ua.account_number
+				AND br.call_number = cn.call_number
+				AND cn.id = b.id
+				AND br.status='$status'
+				AND br.rank = 1
+				LIMIT $start,$limit");
+			}
+			else{
+				$query= $this->db->query("SELECT *
+				FROM book b, book_reservation br, user_account ua, book_call_number cn
+				WHERE br.account_number=ua.account_number
+				AND br.call_number = cn.call_number
+				AND cn.id = b.id
+				AND br.status='$status'
+				LIMIT $start,$limit");
+			}
 		}
 		return $query->result();
 	}
