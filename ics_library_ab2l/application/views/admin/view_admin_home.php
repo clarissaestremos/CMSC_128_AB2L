@@ -291,7 +291,8 @@ else{
 	echo "<div class='cell'><h2>There is no announcement to display!</h2></div><hr/>";
 }
 	echo "<form action='$base/index.php/admin/controller_announcement/deleteAll' id='deleteall' class='float-right' style='margin-left: 5px;' method='post'>
-			<input type='submit' name='delete_all' value='Delete All Announcements' enabled/>
+			<input type='hidden' name='delete_all' value='del'/>
+			<input type='submit'' value='Delete All Announcements' enabled/>
 		</form>
 		<form action='$base/index.php/admin/controller_announcement/viewForm' class='float-right' method='post'>
 			<input type='submit' name='new' value='Add New Announcement' enabled/>
