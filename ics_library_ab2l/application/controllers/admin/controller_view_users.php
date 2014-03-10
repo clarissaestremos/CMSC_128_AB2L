@@ -114,10 +114,6 @@ class Controller_view_users extends Controller_log {
         $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
         
         if($this->email->send()){
-			$this->load->model('model_user');
-			$this->model_user->approve_user($account_number);
-			$session_user = $this->session->userdata('logged_in')['username'];
-			$this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
 			echo "<script>alert('Account of $account_number has been successfully validated! User may check the email provided for confirmation.')</script>";
 			redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');
 		}else{
