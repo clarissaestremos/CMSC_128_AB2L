@@ -193,38 +193,3 @@ function validateEmail(){
 	return true;
 
 	}
-
-
-       $( document ).ready(function(){   
-       
-       	 window.getResult = 	function (name){
-               // var baseurl = <?php echo base_url()?>;
-               var bool= false;
-                $('#span_un').append("<span id = 'helpusername'></span>");
-                $("#helpusername").text("Checking availability...");
-                $.ajax({
-                    url : base_url + 'index.php/user/controller_editprofile/check_username/' + name,
-                    cache : false,
-                    async:false,
-                    success : function(response){
-
-                        $('#helpusername').delay(1000).removeClass('preloader');
-                        if(response == 'userOk'){
-                            $('#helpusername').removeClass('userNo').addClass('userOk');
-                            $('#helpusername').text("Username available!");
-                            
-                          bool= true;
-                        }
-                        else{
-                            $('#helpusername').removeClass('userOk').addClass('color-red');;
-                            $("#helpusername").text("Username not available.");
-                           bool= false;
-                        }
-                    }
-                })
-
-              
-                return bool;
-
-            }
-       })

@@ -420,7 +420,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="number" id="yearpub" name = "year_of_pub" min=1900 max=<?php echo date("Y"); ?> value=<?php echo date("Y"); ?> data-required="true" />&nbsp;<br/><span name="help_year_pub" class="color-red"></span><br/>
+                                                                            <input type="number" id="yearpub" name = "year_of_pub" min=1900 max=<?php echo date("Y"); ?> value=<?php echo date("Y"); ?> data-required="true" required/>&nbsp;<br/><span name="help_year_pub" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
