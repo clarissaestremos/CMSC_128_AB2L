@@ -8,7 +8,7 @@
                 regForm.uname.onblur=validateUser;
                 regForm.pass.onblur=validatePass;
                 regForm.cpass.onblur=validateCpass;
-                regForm.onsubmit=validateAll;
+                regForm.onclick=validateAll;
             }
             
     function validateFname(){
