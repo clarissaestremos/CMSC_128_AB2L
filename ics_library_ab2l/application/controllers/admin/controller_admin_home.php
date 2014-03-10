@@ -78,7 +78,6 @@ class Controller_admin_home extends CI_Controller {
                                         <th style='width: 2%;'>#</th>
                                         <th style='width: 17%;'>Borrower</th>
                                         <th style='width: 40%;'>Material</th>
-                                        <th style='width: 12%;'>Date Borrowed</th>
                                         <th style='width: 11%;'>Due Date</th>
                                         <th style='width: 9%;'></th>
                                         <th style='width: 10%;'></th>
@@ -87,7 +86,59 @@ class Controller_admin_home extends CI_Controller {
         echo "<tbody>";
         $this->print_books($row, $data['links']);
     }
+<<<<<<< HEAD
     function print_books($overdue,$link){
+=======
+    function print_books($overdue,$link,$out){
+        $base=base_url();
+        $date = date("Y-m-d");
+        $count = 1;
+        foreach($overdue as $row){
+            echo "<tr>
+            <td>$count</td>
+            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
+            <td><b>{$row->title}</b><br/>";
+
+            $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+            $authors="";
+                                                    foreach($data['multi_valued'] as $authors_list){
+                                                        $authors = $authors."{$authors_list->author},";
+                                                    }
+                                                    echo "$authors ($row->year_of_pub)<br/>
+                                                    Call Number: {$row->call_number}</td>";
+
+                                                echo "</td>";
+                                                if ($row->date_borrowed!=NULL){
+                                                	echo "<td>{$row->date_borrowed}</td>";
+                                               	}
+                                                echo "<td>{$row->due_date}</td>";
+                                            if($out=="outgoing"){
+                                            echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                                <input type='submit' class='background-red' name='reserve' onclick='return confirmBookReserve(confirm$count);' value='Confirm' />
+                                            </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
+                                            echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                                <input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(cancel$count);' value='Cancel' />
+                                            </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
+                                            }else if($out=="overdue"){
+                                            echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
+                                                    <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                                    <input type='submit' class='background-red' name='extend' value='Extend' />
+                                                </form></td>";
+                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
+                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                                <input type='submit' class='background-red' name='return' value='Return' />
+                                            </form></td>";
+                                        }
+                                        echo "</tr>";
+                                        $count++;
+    }
+    echo "</tbody></table><div id='footer pagination'>";
+    echo $link."</div>";
+}
+ function print_books2($overdue,$link){
+>>>>>>> fdc3acc399fe60df3fc57d561bc1667c4aebc2cf
         $base=base_url();
         $date = date("Y-m-d");
         $count = 1;
