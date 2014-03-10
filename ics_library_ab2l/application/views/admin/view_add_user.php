@@ -109,7 +109,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><br/><span class = "color-red valClass" name = "valNumber"></span>
+                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><br/><span class = "color-red valClass" id="span_sno" name = "valNumber"></span>
                                 </div>
                             </div>
                         </div>
