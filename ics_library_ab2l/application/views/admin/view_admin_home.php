@@ -128,11 +128,11 @@
 												<td>{$row->due_date}</td>";
 											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' id='confirm$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
-												<input type='submit' class='background-red' name='reserve' value='Confirm' />
+												<input type='submit' class='background-red' name='reserve'  onclick='return confirmBookReserve(confirm$count); 'value='Confirm' />
 											</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
 											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
-												<input type='submit' class='background-red' name='cancel' value='Cancel' />
+												<input type='submit' class='background-red' name='cancel' onclick='return confirmBookReserve(confirm$count);' value='Cancel' />
 											</form></td>";	
 											echo "</tr>";echo "</tr>";
 

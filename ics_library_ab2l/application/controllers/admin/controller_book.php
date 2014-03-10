@@ -173,6 +173,9 @@ class Controller_book extends Controller_log {
 	}
 
 	public function call_success(){
+			if($this->session->userdata('logged_in_type')!="admin")
+            redirect('index.php/user/controller_login', 'refresh');
+			$base = base_url();
 			echo "<div id='mysuccess' title='Delete Book Success'>
 			<h5>You have successfully added a new material!!</h5>
 			</div>
@@ -256,8 +259,10 @@ class Controller_book extends Controller_log {
 	}
 
 	function edit_success(){
+		if($this->session->userdata('logged_in_type')!="admin")
+            redirect('index.php/user/controller_login', 'refresh');
 		$session_user = $this->session->userdata('logged_in')['username'];
-
+		$base = base_url();
 		echo "<div id='mysuccess' title='Delete Book Success'>
 					<h5>You have successfully edited the material!!</h5>
 				</div>
