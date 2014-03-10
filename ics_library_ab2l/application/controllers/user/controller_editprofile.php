@@ -83,7 +83,37 @@ Editing pictures / uploading them
 
        if(!$this->upload->do_upload())
        {
-           echo $this->upload->display_errors();
+           $error = $this->upload->display_errors();
+           $base = base_url();
+
+           echo "<div id='mysuccess' title='Delete Book Success'>
+            <h5>We found some error while upload your file:</h5>
+            <p style='color:red;'>$error</p>
+            </div>
+            <script src='$base/js/jquery-1.10.2.min.js'></script>
+            <script src='$base/js/jquery-ui.js'></script>
+            <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+            <script>
+                $('#mysuccess').dialog({
+                        modal: true,
+                        closeOnEscape: true,
+                        closeText: 'show',
+                        show: {
+                          effect: 'fadeIn',
+                          duration: 200
+                        },
+                        draggable: false,
+                        close: function(event, ui){
+                            window.location.replace('$base/index.php/user/controller_editprofile');
+                        },
+                        buttons : {
+                          'Ok': function() {
+                              window.location.replace('$base/index.php/user/controller_editprofile');
+                          },
+                        }
+             
+                    });
+            </script>";
        }
        else
        {
@@ -99,18 +129,20 @@ Editing pictures / uploading them
            echo '<pre>';
            print_r($finfo);
            echo '</pre>';*/
-       }
+
+           if($this->session->userdata('logged_in_type')=="user"){
+          if($this->session->userdata('id')){
+            redirect('index.php/user/controller_reserve_book');
+          }
+          else{
+              $this->session->set_flashdata('success_username', 'Successfully Uploaded your picture.');
+              redirect('index.php/user/controller_editprofile', 'refresh');         
+              }
+          }
+          else redirect('index.php/admin/controller_admin_home', 'refresh'); // */
+         }
        //Go to private area
-       if($this->session->userdata('logged_in_type')=="user"){
-        if($this->session->userdata('id')){
-          redirect('index.php/user/controller_reserve_book');
-        }
-        else{       
-            $this->session->set_flashdata('success_username', 'Successfully Uploaded your picture.');
-            redirect('index.php/user/controller_editprofile', 'refresh');         
-            }
-        }
-        else redirect('index.php/admin/controller_admin_home', 'refresh'); // */
+       
 }
 
 

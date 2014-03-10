@@ -73,7 +73,8 @@
                                 </ul>
                             </div>
                                 <form action='controller_outgoing_books/send_email' method='post' id='notifyall' class="float-right">
-                                   <input type='submit' name='notify_all' value='Notify All' enabled/>
+                                    <input type='hidden' name='notify_all' value='notif'/>
+                                   <input type='submit' value='Notify All' enabled/>
                                 </form>
 	                    </div>
                         <?php
