@@ -14,6 +14,7 @@
 	        active = $( "#accordion" ).accordion( "option", "active" );
 	 		if(active == 1){
 	 			$('#sinput').val("");
+	 			$('#autosuggest_list').hide();
 	 		}
 	 		else{
 	 			$('#title').val("");

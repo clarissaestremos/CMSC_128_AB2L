@@ -31,7 +31,7 @@ class Controller_search_book extends CI_Controller {
 		// echo a list where each li has a set_activity function bound to its onclick() event
 		echo "<div id='selectItems'><ul>";
 		foreach ($row->result() as $activity) {
-			echo '<li id="'.$activity->$category.'" onclick="setActivity(\''.$activity->$category.'\',\'search_form\')"><a>'.$activity->$category.'</a></li>'; 
+			echo '<li id="'.$activity->$category.'" class="howver" onclick="setActivity(\''.$activity->$category.'\',\'search_form\')"><a>'.$activity->$category.'</a></li>'; 
 		}
 		echo "</ul></div>";
 	}
