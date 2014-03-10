@@ -142,11 +142,7 @@ function validateEmail(){
 				else if(msg="Invalid input"){
 					msg="";
 					document.getElementsByName("valUser")[0].innerHTML=msg;
-					if(getResult(str))
-					{
-						msg="";
-					}
-
+					if(getResult(str)) msg="";
 				}
 
 				if(msg=="") return true;
@@ -193,3 +189,4 @@ function validateEmail(){
 	return true;
 
 	}
+

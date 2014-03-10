@@ -37,15 +37,27 @@ class Controller_register extends CI_Controller {
 				else {return TRUE;}         
 		}
 
-		public function check_dupes_acctNum($str3)
+
+		public function check_dupes_accntNum($str3)
 		{
 
 			 $sql=$this->db->query("select account_number from user_account where account_number like '$str3' ");
 
-	 if($sql->num_rows()!=0)
+			 if($sql->num_rows()!=0)
 					{return FALSE;}
 				else {return TRUE;}         
 		}
+
+		 public function check_account( $account_number){
+            $this->db->where('account_number',$account_number);
+            $query = $this->db->get('user_account')->num_rows();
+            if($query == 0 ){
+                   
+                   echo 'userOk';
+              }
+            else echo 'userNo';
+            
+    	}
 
 
 		public function registration()
@@ -56,7 +68,7 @@ class Controller_register extends CI_Controller {
 					$this->form_validation->set_rules('minit', 'Middle Initial', 'trim|required|xss_clean');
 					$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_alpha_space|xss_clean');
 
-					 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|alpha_dash|xss_clean|callback_check_dupes_accntNum');
+					 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|alpha_dash|xss_clean|callback_check_account');
 					 $this->form_validation->set_message('check_dupes_acctNum', 'You have a duplicate Student/Employee number');
 
 					$this->form_validation->set_rules('college', 'College', 'trim|min_length[2]|alpha|xss_clean');

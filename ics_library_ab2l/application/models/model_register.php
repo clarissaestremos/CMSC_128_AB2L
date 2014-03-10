@@ -54,7 +54,7 @@ $this->db->insert('user_account',$data);
 
 
   $this->db->insert('user_account',$data);
-  echo "ADDED FACULTY!";
+ // echo "ADDED FACULTY!";
 
  }
 
