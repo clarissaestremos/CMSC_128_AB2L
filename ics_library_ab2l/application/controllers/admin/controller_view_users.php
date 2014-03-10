@@ -114,11 +114,63 @@ class Controller_view_users extends Controller_log {
         $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
         
         if($this->email->send()){
-			echo "<script>alert('Account of $account_number has been successfully validated! User may check the email provided for confirmation.')</script>";
-			redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');
+            echo "
+                    <div id='mysuccess' title='Add User Account Success'>
+                        <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
+                    </div>
+                    <script src='$base/js/jquery-1.10.2.min.js'></script>
+                    <script src='$base/js/jquery-ui.js'></script>
+                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+                    <script>
+                            $('#mysuccess').dialog({
+                                modal: true,
+                                closeOnEscape: true,
+                                closeText: 'show',
+                                show: {
+                                  effect: 'fadeIn',
+                                  duration: 200
+                                },
+                                draggable: false,
+                                close: function(event, ui){
+                                    window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
+                                },
+                                buttons : {
+                                  'Ok': function() {
+                                      window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
+                                  },
+                                }
+                     
+                            });
+                        </script>";
 		}else{
-			echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send. Please check your internet connection.')</script>";
-			redirect('index.php/admin/controller_view_users','refresh');
+            echo "
+                    <div id='mysuccess' title='Add User Account Success'>
+                        <h6>The account of $account_number was not successfully validated! Error: Email failed to send. Please check your internet connection.</h6>
+                    </div>
+                    <script src='$base/js/jquery-1.10.2.min.js'></script>
+                    <script src='$base/js/jquery-ui.js'></script>
+                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+                    <script>
+                            $('#mysuccess').dialog({
+                                modal: true,
+                                closeOnEscape: true,
+                                closeText: 'show',
+                                show: {
+                                  effect: 'fadeIn',
+                                  duration: 200
+                                },
+                                draggable: false,
+                                close: function(event, ui){
+                                    window.location.replace('$base/index.php/admin/controller_view_users');
+                                },
+                                buttons : {
+                                  'Ok': function() {
+                                      window.location.replace('$base/index.php/admin/controller_view_users');
+                                  },
+                                }
+                     
+                            });
+                        </script>";
 		}
 	}
         
@@ -133,15 +185,68 @@ class Controller_view_users extends Controller_log {
              if($count === 0){  //no more books at hand of users, all books are returned in th library
                  $this->load->model('model_user');
                  $this->model_user->deactivate_users();
-                 echo "<script>alert('You have successfully deactivated the accounts of all users.')</script>";
+                 echo "
+                    <div id='mysuccess' title='Add User Account Success'>
+                        <h6>You have successfully deactivated the accounts of all users.</h6>
+                    </div>
+                    <script src='$base/js/jquery-1.10.2.min.js'></script>
+                    <script src='$base/js/jquery-ui.js'></script>
+                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+                    <script>
+                            $('#mysuccess').dialog({
+                                modal: true,
+                                closeOnEscape: true,
+                                closeText: 'show',
+                                show: {
+                                  effect: 'fadeIn',
+                                  duration: 200
+                                },
+                                draggable: false,
+                                close: function(event, ui){
+                                    window.location.replace('$base/index.php/admin/controller_view_users');
+                                },
+                                buttons : {
+                                  'Ok': function() {
+                                      window.location.replace('$base/index.php/admin/controller_view_users');
+                                  },
+                                }
+                     
+                            });
+                        </script>";
                  $session_user = $this->session->userdata('logged_in')['username'];
                  $this->add_log("Admin $session_user deactivated all user accounts.", "Deactivate Users");
              }else{
-                echo "<script>alert('You cannot deactivate all user accounts yet. Some users still have books on loan. Make sure all users have returned their borrowed materials before deactivating all user accounts.')</script>";
+                echo "
+                    <div id='mysuccess' title='Add User Account Success'>
+                        <h6>You cannot deactivate all user accounts yet. Some users still have books on loan. Make sure all users have returned their borrowed materials before deactivating all user accounts.</h6>
+                    </div>
+                    <script src='$base/js/jquery-1.10.2.min.js'></script>
+                    <script src='$base/js/jquery-ui.js'></script>
+                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+                    <script>
+                            $('#mysuccess').dialog({
+                                modal: true,
+                                closeOnEscape: true,
+                                closeText: 'show',
+                                show: {
+                                  effect: 'fadeIn',
+                                  duration: 200
+                                },
+                                draggable: false,
+                                close: function(event, ui){
+                                    window.location.replace('$base/index.php/admin/controller_view_users');
+                                },
+                                buttons : {
+                                  'Ok': function() {
+                                      window.location.replace('$base/index.php/admin/controller_view_users');
+                                  },
+                                }
+                     
+                            });
+                        </script>";
              }
              unset($_POST['deactivate']);
          }
-        redirect('index.php/admin/controller_view_users','refresh');
     }
     
     function borrow($borrower){

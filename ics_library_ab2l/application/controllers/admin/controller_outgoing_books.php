@@ -111,6 +111,7 @@ class Controller_outgoing_books extends Controller_log{
     }//END OF return_book()
     
     public function reserve(){
+        $flag = true;
 		if($this->session->userdata('logged_in_type')!="admin")
                 redirect('index.php/user/controller_login', 'refresh');
         $res_number=$_POST['res_number'];
@@ -120,10 +121,39 @@ class Controller_outgoing_books extends Controller_log{
 			$session_user = $this->session->userdata('logged_in')['username'];
             $this->add_log("Admin $session_user confirmed a book reservation with Reservation Number: $res_number", "Confirm Reservation");
 		}else{
-			echo "<script>alert('Maximum number of allowable books to be borrowed has been reached! Please return other books on hand to be able to borrow new books again.')</script>";
+            $flag = false;
+            echo "
+                    <div id='mysuccess' title='Add User Account Success'>
+                        <h6>Maximum number of allowable books to be borrowed has been reached! Please return other books on hand to be able to borrow new books again.</h6>
+                    </div>
+                    <script src='$base/js/jquery-1.10.2.min.js'></script>
+                    <script src='$base/js/jquery-ui.js'></script>
+                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+                    <script>
+                            $('#mysuccess').dialog({
+                                modal: true,
+                                closeOnEscape: true,
+                                closeText: 'show',
+                                show: {
+                                  effect: 'fadeIn',
+                                  duration: 200
+                                },
+                                draggable: false,
+                                close: function(event, ui){
+                                    window.location.replace('$base/index.php/admin/controller_reservation');
+                                },
+                                buttons : {
+                                  'Ok': function() {
+                                      window.location.replace('$base/index.php/admin/controller_reservation');
+                                  },
+                                }
+                     
+                            });
+                        </script>";
 			$this->model_reservation->delete_book_reservation($res_number);
 		}
-		redirect('index.php/admin/controller_reservation','refresh');
+        if($flag)
+		  redirect('index.php/admin/controller_reservation','refresh');
     }//END OF reserve()
     
     public function cancel(){

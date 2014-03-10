@@ -119,7 +119,7 @@ class Controller_add_user extends Controller_log {
 			$base = base_url();
 			echo "
 					<div id='mysuccess' title='Add User Account Success'>
-						<h5>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h5>
+						<h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
 					</div>
 					<script src='$base/js/jquery-1.10.2.min.js'></script>
 					<script src='$base/js/jquery-ui.js'></script>
@@ -152,8 +152,34 @@ class Controller_add_user extends Controller_log {
 		}else{
 			$data['msg']= "The account of $account_number was not successfully validated! Email failed to send";
 			$data['msg1']= false;
-			//echo "<script>alert('The account of $account_number was not successfully validated!\nError: Email failed to send.')</script>";
-			//redirect('index.php/admin/controller_add_user','refresh');
+			echo "
+					<div id='mysuccess' title='Add User Account Success'>
+						<h6>The account of $account_number was not successfully validated! Error: Email failed to send.</h6>
+					</div>
+					<script src='$base/js/jquery-1.10.2.min.js'></script>
+					<script src='$base/js/jquery-ui.js'></script>
+					<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+					<script>
+							$('#mysuccess').dialog({
+					            modal: true,
+					            closeOnEscape: true,
+					            closeText: 'show',
+					            show: {
+					              effect: 'fadeIn',
+					              duration: 200
+					            },
+					            draggable: false,
+					            close: function(event, ui){
+					                window.location.replace('$base/index.php/admin/controller_add_user');
+					            },
+					            buttons : {
+					              'Ok': function() {
+					                  window.location.replace('$base/index.php/admin/controller_add_user');
+					              },
+					            }
+					 
+					        });
+						</script>";
 		}
 		$this->success($data);
 	}
