@@ -153,13 +153,13 @@
 		msg="";
 
 		if (str=="") msg+="Password is required!";
-		else if(str.length<5) msg+= "Password must be atleast 5 characters."
+		else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
 		else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
 		else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
 		else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
 		else if(msg="") msg="";
 		document.getElementsByName("valPass")[0].innerHTML=msg;
-		if(msg!= "Password is required!" || msg!= "Password must be atleast 5 characters." || msg!= "Strength: Weak" ) return true;
+		if(msg === "Strength: Medium" || msg==="Strength: Strong") return true;
 		else return false;
 	}		
 	function validateCpass(){
