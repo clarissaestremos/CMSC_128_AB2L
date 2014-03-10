@@ -1,6 +1,6 @@
 <!-- edited -->
 <div id="thisbody" class="body width-fill">
-					<div class="col">
+                    <div class="col">
                             <div id="whoscell" class="cell">
                                 <div class="page-header cell">
                                         <h1>Admin <small>Add Users</small></h1>
@@ -192,7 +192,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" class="background-white" name="uname" id = "uname" required/><br/><span class = "color-red" name = "valUser" id="span_un"></span>
+                                    <input type="text" class="background-white" name="uname" id = "uname" placeholder="Your username" required/><br/><span class = "color-red" name = "valUser" id="span_un"></span>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="password" class="background-white" name="pass" id = "pass" required/><br/><span  class = "color-red" name = "valPass"></span>
+                                    <input type="password" class="background-white" name="pass" id = "pass" placeholder="Your password" required/><br/><span  class = "color-red" name = "valPass"></span>
                                 </div>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="password" class="background-white" name="cpass" id = "cpass" required/><br/><span class = "color-red" name = "valCpass"></span>
+                                    <input type="password" class="background-white" name="cpass" id = "cpass" placeholder="Rety-pe Password" required/><br/><span class = "color-red" name = "valCpass"></span>
                                 </div>
                             </div>
                         </div>
@@ -243,9 +243,9 @@
                                 </div>
                             </div>
                         </div>
-				</div>
+                </div>
 <div id='registerconf' title='Registration Confirmation Dialog'>
-    <h6>Are you sure that the following information is true?</h6>
+    <h5>Are you sure that the following information is true?</h5>
     <p id='regname'></p>
     <p id='regclass'></p>
     <p id='regnum'></p>
@@ -256,3 +256,53 @@
 </div>
             <script src="<?php echo base_url() ?>js/formValidation.js"></script>
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#registerconf").dialog({
+        autoOpen: false,
+        modal: true,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                document.getElementById(form).submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+        });
+
+        $( "#userRegister" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            document.getElementById('regname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
+            document.getElementById('regclass').innerText = "Classification: "+ document.getElementById('classi').value;
+            if(document.getElementById('classi').value === "student"){
+                document.getElementById('regnum').innerText = "Student Number: "+ document.getElementById('stdNum').value;
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regcourse').innerText = "Course: "+ document.getElementById('course').value;
+            }
+            else{
+                document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
+                document.getElementById('regnum').innerText = "Faculty Number: "+ document.getElementById('stdNum').value;
+            }
+
+            document.getElementById('regemail').innerText = "Email: "+ document.getElementById('eadd').value;
+            document.getElementById('reguser').innerText = "Username: "+ document.getElementById('uname').value;
+            $( "#registerconf" ).dialog( "open" );
+        });
+    });
+</script>
