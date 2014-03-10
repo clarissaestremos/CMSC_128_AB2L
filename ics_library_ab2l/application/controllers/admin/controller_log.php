@@ -53,7 +53,7 @@
 		public function remove_unclaimed(){
 			$date = date("Y-m-d");
 			$this->load->model('model_reservation');
-			$data['query'] = $this->model_reservation->show_all_user_book_reservation("reserved");
+			$data['query'] = $this->model_reservation->show_all_user_book_reservation("reserved",0,0);
 			foreach($data['query'] as $reservation){
 				if(($reservation->due_date < $date) && ($reservation->rank == 1)){ //if due date is yesterday, or older and is reserved
 					$this->model_reservation->delete_book_reservation($reservation->res_number);
@@ -64,7 +64,7 @@
 		public function update_reservation_status(){
 			$date = date("Y-m-d");
 			$this->load->model('model_reservation');
-			$data['query'] = $this->model_reservation->show_all_user_book_reservation("borrowed");
+			$data['query'] = $this->model_reservation->show_all_user_book_reservation("borrowed",0,0);
 			foreach($data['query'] as $reservation){
 				if($reservation->due_date < $date){		//if due date is yesterday, or older meaning reservation is already overdue
 					$this->model_reservation->update_book_reservation($reservation->res_number, "auto");
