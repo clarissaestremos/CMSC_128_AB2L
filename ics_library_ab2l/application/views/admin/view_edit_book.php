@@ -354,7 +354,7 @@
                                                                                 $authors = $this->model_book->get_book_authors($book[0]->id);
                                                                                 $count = 0;
                                                                                 foreach ($authors as $author) {
-                                                                                    echo '<input id  = "author" type = "text" name = "author[]" value="'.$author->author.'"><br />';
+                                                                                    echo '<input id  = "author" class="authors" type = "text" name = "author[]" value="'.$author->author.'"><br />';
                                                                                     $count++;
                                                                                 }
                                                                             ?><span name="help_author" class="color-red"></span>
@@ -377,7 +377,7 @@
                                                                            <?php 
                                                                             $call_numbers = $this->model_book->get_book_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<input id = "call_number" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><br/>';
+                                                                                echo '<input id = "call_number" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><br/>';
                                                                             }
                                                                             ?><span name="help_call_number" class="color-red"></span>
                                                                             <input type="button" class="row1 cell" value="Add copy" onclick="addRow_call_number(this, false)">
@@ -396,7 +396,7 @@
                                                                             <?php 
                                                                             $subjects = $this->model_book->get_book_subjects($book[0]->id);
                                                                             foreach ($subjects as $subject) {
-                                                                                echo '<input id = "subject" type = "text" name = "subject[]" value="'.$subject->subject.'" /><br/>';
+                                                                                echo '<input id = "subject" type = "text" class="subjects" name = "subject[]" value="'.$subject->subject.'" /><br/>';
                                                                             }
                                                                             ?>
                                                                             <span name="help_subject" class="color-red"></span>
@@ -511,3 +511,89 @@
                             </div>
                         </div>
                 </div>
+<div id='addbookconf' title='Add Book Confirmation'>
+    <h5>Are you sure that the following book details are true?</h5>
+    <p id="btitle"></p>
+    <p id="bauthors"></p>
+    <p id="bsubject"></p>
+    <p id="bcall"></p>
+    <p id="byear"></p>
+    <p id="btype"></p>
+    <p id="bisbn"></p>
+    <p id="btags"></p>
+</div>
+<script>
+    $(document).ready(function(){
+        $( "#addbookconf" ).dialog({
+      autoOpen: false,
+      modal: true,
+      closeOnEscape: true,
+      closeText: true,
+      show: {
+        effect: "fadeIn",
+        duration: 500
+      },
+      hide: {
+        effect: "fadeOut",
+        duration: 500
+      },
+      draggable: false,
+      buttons : {
+        "Yes": function() {
+            $(this).dialog('close');
+            console.log(document.getElementById(form).submit());
+        },
+        "No": function() {
+            $(this).dialog('close');
+        }
+      }
+    });
+
+        $( "#addbookForm" ).submit(function (e) {
+            e.preventDefault();
+            form = $(this).get(0).id;
+            if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
+            document.getElementById('btitle').innerText = "Title: "+document.getElementById('title1').value;
+            document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
+            document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
+            document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type').value;
+            var aut = document.getElementsByClassName("authors");
+            var author = '';
+            for(var i=0; i<aut.length; i++) {
+                author = author+aut[i].value + " ";
+                if(i <aut.length-1)
+                    author += ",";
+            }
+            var sub = document.getElementsByClassName("subjects");
+            var subject = '';
+            for(var i=0; i<sub.length; i++) {
+                subject =  subject+sub[i].value + " ";
+                if(i <aut.length-1)
+                    subject += ",";
+            }
+            var call = document.getElementsByClassName("call_nos");
+            var call_no = '';
+            for(var i=0; i<call.length; i++) {
+                call_no =  call_no+sub[i].value + " ";
+                if(i <aut.length-1)
+                    call_no += ",";
+            }
+            var t = document.getElementsByClassName("tag");
+            var tag = '';
+            for(var i=0; i<t.length; i++) {
+                tag =  tag + t[i].value + " ";
+                if(i <t.length-1)
+                    tag += ",";
+            }
+            document.getElementById('bauthors').innerText =  "Author: "+ author;
+            document.getElementById('bsubject').innerText = "Subject: "+ subject;
+            document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
+            document.getElementById('btags').innerText = "Tag: "+ tag;
+            console.log(form);
+            $( "#addbookconf" ).dialog( "open" );
+        }
+        });
+
+    });
+
+    var form;
