@@ -48,7 +48,28 @@
 			return $expired_date;
 		}
 
+		function check_user_and_book($call_number, $borrower){
+			$query="*
+			FROM book_reservation
+			WHERE account_number LIKE '$borrower'
+			AND call_number LIKE '$call_number'";
+			//execute query
+			$this->db->select($query,FALSE);
+			
+			return $this->db->get();
+		}
+
 		function add_reservation($data){
+			$row = $this->model_reserve_book->fetch_call_number($data['id']);
+			foreach ($row->result() as $book_details) {
+				$call_number = $book_details->call_number;
+				$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
+				if($row2->num_rows > 0){
+					echo "<script>alert('Error. You currently have the copy or already reserved/waitlisted for that book.');</script>";
+					redirect('index.php/user/controller_home', 'refresh');
+					break;
+				}
+			}
 			$date_reserved = getdate();
 			$date_expired = $this->model_reserve_book->getExpiration($date_reserved);
 			$due_date = $date_expired['year']."-".$date_expired['mon']."-".$date_expired['mday'];
@@ -93,6 +114,12 @@
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
 					$call_number = $book_details->call_number;
+					$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
+					if($row2->num_rows > 0){
+						echo "<script>alert('Error. You currently have the copy or already reserved/waitlisted for that book.');</script>";
+						redirect('index.php/user/controller_home', 'refresh');
+						break;
+					}
 					$row2 = $this->model_reserve_book->fetch_breservation($call_number);
 					$rank = $row2->num_rows();
 					break;
