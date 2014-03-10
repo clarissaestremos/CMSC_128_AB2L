@@ -497,13 +497,11 @@
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
                                                                             </br><input type = "submit" name = "sub" value = "Submit">
+                                                                            <a id='cancelEditBook' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type='button' value='Cancel'/></a>
                                                                             <input type = "hidden" name = "id" value="<?php echo $book[0]->id ;?>" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </form>
-                                                            <form action="<?php echo base_url() ?>index.php/admin/controller_book/edit_cancel" ?>
-                                                                <input type="submit" value="Cancel">
                                                             </form>
                                                         </div>
                                                     </div>
@@ -526,6 +524,9 @@
     <p id="bisbn"></p>
     <p id="btags"></p>
     <p id="bquant"></p>
+</div>
+<div id="editcancelbook" title="Cancel Edit Confirmation">
+        <p>Do you really wish to cancel editing this book? Doing so will retain the old details of the book.</p>
 </div>
 <script>
     $(document).ready(function(){
@@ -557,6 +558,39 @@
         }
       }
     });
+        $( "#editcancelbook" ).dialog({
+      autoOpen: false,
+      modal: true,
+      resizable: false,
+      width: 300,
+      minHeight: 200,
+      closeOnEscape: true,
+      closeText: true,
+      show: {
+        effect: "fadeIn",
+        duration: 500
+      },
+      hide: {
+        effect: "fadeOut",
+        duration: 500
+      },
+      draggable: false,
+      buttons : {
+        "Yes": function() {
+            $(this).dialog('close');
+            window.location.replace(link);
+        },
+        "No": function() {
+            $(this).dialog('close');
+        }
+      }
+        });
+
+        $( "#cancelEditBook" ).click(function (e) {
+            e.preventDefault();
+            link = $(this).attr('href');
+            $( "#editcancelbook" ).dialog( "open" );
+        });
 
         $( "#editbookForm" ).submit(function (e) {
             e.preventDefault();
@@ -604,6 +638,6 @@
         });
 
     });
-
+    var link;
     var form;
 </script>

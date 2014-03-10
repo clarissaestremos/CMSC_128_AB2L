@@ -503,7 +503,8 @@
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
                                                                             <input type='hidden' name='sub'/>
-                                                                            <br/><input type="submit"  value="Add Book"/>
+                                                                            <input type="submit"  value="Add Book"/>
+                                                                            <a id='cancelAddBook' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type='button' value='Cancel'/></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -518,8 +519,8 @@
                             </div>
                         </div>
                 </div>
-<div id='addbookconf' title='Add Book Confirmation'>
-    <h6>Are you sure that the following book details are true?</h6>
+<div id='addbookconf' title='Add Material Confirmation'>
+    <h6>Are you sure that the following material details are true?</h6>
     <p id="btitle"></p>
     <p id="bauthors"></p>
     <p id="bsubject"></p>
@@ -528,6 +529,9 @@
     <p id="btype"></p>
     <p id="bisbn"></p>
     <p id="btags"></p>
+</div>
+<div id="addcancelbook" title="Cancel Add Confirmation">
+        <p>Do you really wish not to add this material?</p>
 </div>
 <script>
     $(document).ready(function(){
@@ -600,8 +604,42 @@
             $( "#addbookconf" ).dialog( "open" );
         }
         });
+    
+    $( "#addcancelbook" ).dialog({
+      autoOpen: false,
+      modal: true,
+      resizable: false,
+      width: 300,
+      minHeight: 200,
+      closeOnEscape: true,
+      closeText: true,
+      show: {
+        effect: "fadeIn",
+        duration: 500
+      },
+      hide: {
+        effect: "fadeOut",
+        duration: 500
+      },
+      draggable: false,
+      buttons : {
+        "Yes": function() {
+            $(this).dialog('close');
+            window.location.replace(link);
+        },
+        "No": function() {
+            $(this).dialog('close');
+        }
+      }
+        });
+
+        $( "#cancelAddBook" ).click(function (e) {
+            e.preventDefault();
+            link = $(this).attr('href');
+            $( "#addcancelbook" ).dialog( "open" );
+        });
 
     });
-
+    var link;
     var form;
 </script>
