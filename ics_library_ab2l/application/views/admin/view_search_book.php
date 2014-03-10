@@ -35,7 +35,7 @@
 		<div id="accordion">
 			<h3>Basic Search<h3>
 			<div class="col body">
-				<form method="post" id="search_form" name="search_form" class="col width-3of4">
+				<form method="post" id="search_form" name="search_form" autocomplete="off" class="col width-3of4">
 					<select id="category" name="category" class="form-elements" onchange="autosuggest(sinput.value, this.value, 'admin');showAutoSuggestResultinBody(sinput.value,'admin','search_form', false);">
 						<option value="title">Title</option>
 						<option value="author">Author</option>
