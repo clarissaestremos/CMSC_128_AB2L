@@ -58,9 +58,6 @@ if($this->session->userdata('logged_in_type')=='admin')
         line-height:20px;
         border-bottom-style:none;
       }
-      .myaccount:hover{
-        background: #9d261d;
-      }
 		
       .itemhover { background-color:#d3d3d3 !important; color:black !important;}
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
@@ -151,71 +148,70 @@ if($this->session->userdata('logged_in_type')=='admin')
 				</div>
 			</div>
 			<nav id="headnav" class="navbar-default" role="navigation" style="background-image:url('<?php echo base_url();?>images/navigation.png'); box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
-        <div class="container-fluid center" id="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand color-white" href="<?php echo base_url();?>">
-            <?php if($titlepage === "ICS Library Home") echo "<span class='fa icon-home'></span>";
-              if($titlepage === "View all books") echo "<span class='fa icon-bookmark'></span>";
-              if($titlepage === "Books - Search") echo "<span class='fa icon-search'></span>";
-              if($titlepage === "Frequently Asked Questions") echo "<span class='fa icon-map-marker'></span>";
-              if($titlepage === "Book Statistics") echo "<span class='fa icon-bar-chart'></span>";
-              if($titlepage === "Reserved books") echo "<span class='glyphicon glyphicon-book'></span>";
-              if($titlepage === "Borrowed Books") echo "<span class='glyphicon glyphicon-tags'></span>";
-              if(isset($name))
-                if($titlepage == $name) echo "<span class='glyphicon glyphicon-user'></span>";
-            ?>            
-          </a>
-        </div>
+				<div class="container-fluid center" id="navigation">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand color-white" href="<?php echo base_url();?>">
+					<?php if($titlepage === "ICS Library Home") echo "<span class='fa icon-home'></span>";
+					  if($titlepage === "View all books") echo "<span class='fa icon-bookmark'></span>";
+					  if($titlepage === "Books - Search") echo "<span class='fa icon-search'></span>";
+					  if($titlepage === "Frequently Asked Questions") echo "<span class='fa icon-th-list'></span>";
+					  if($titlepage === "Contact Us") echo "<span class='fa icon-map-marker'></span>";
+					  if($titlepage === "Book Statistics") echo "<span class='fa icon-bar-chart'></span>";
+					  if($titlepage === "Reserved books") echo "<span class='glyphicon glyphicon-book'></span>";
+					  if($titlepage === "Borrowed Books") echo "<span class='glyphicon glyphicon-tags'></span>";
+					  if(isset($name))
+						if($titlepage == $name) echo "<span class='glyphicon glyphicon-user'></span>";
+					?>            
+				  </a>
+				</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse menu" id="menu-collapse">
-          <ul class="nav navbar-nav">
-          <?php if($titlepage === "ICS Library Home"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>"><span class='fa icon-home'></span>  Home</a></li>
-          <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="fa icon-bookmark"></span>  View Books</a></li>
-          <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class='fa icon-search'></span>  Search</a></li>
-          <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class='fa icon-th-list'></span>  FAQs</a></li>
-          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="fa icon-map-marker"></span>  Contacts</a></li>
-          <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="fa icon-bar-chart"></span>  Statistics</a></li>
-          <li class="divider"></li>
-          <?php
-            if(!$this->session->userdata('logged_in')){
-          ?>
-            <?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
-          <?php
-              
-            }
-            else{
-          ?>
-            
-            <li class="dropdown myaccount">
-              <a class="color-white" id="accountanchor"  data-toggle="dropdown" href="#">
-                <span class="glyphicon glyphicon-pencil"></span>My Account <span class="caret"></span>
-              </a>
-              <div class="dropdown-menu">
-                <ul>
-                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><span class="glyphicon glyphicon-user"></span>View Profile</a></li>
-                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><span class="glyphicon glyphicon-book"></span>Reserved Books</a></li>
-                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><span class="glyphicon glyphicon-tags"></span>Borrowed Books</a></li>
-                  <li><a href="<?php echo base_url(); ?>index.php/user/controller_logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-                </ul>
-              </div>
-            </li>
-            
-          <?php
-            }
-          ?>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu" id="menu-collapse">
+				  <ul class="nav navbar-nav">
+				  <?php if($titlepage === "ICS Library Home"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>"><span class='fa icon-home'></span>  Home</a></li>
+				  <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="fa icon-bookmark"></span>  View Books</a></li>
+				  <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class='fa icon-search'></span>  Search</a></li>
+				  <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class='fa icon-th-list'></span>  FAQs</a></li>
+				  <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="fa icon-map-marker"></span>  Contacts</a></li>
+				  <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="fa icon-bar-chart"></span>  Statistics</a></li>
+				  <li class="divider"></li>
+				  <?php
+					if(!$this->session->userdata('logged_in')){
+				  ?>
+					<?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
+				  <?php
+					  
+					}
+					else{
+				  ?>
+					<li class="dropdown">
+						<a class="color-white" data-toggle="dropdown">
+							My Account <span class="caret"></span>
+						</a>
+						<div class="dropdown-menu" id= "ddown">
+							<ul >
+								<li><a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><span class='glyphicon glyphicon-user'></span>  View Profile</a></li>
+								<li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><span class="glyphicon glyphicon-book"></span>  Reserved Books</a></li>
+								<li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><span class="glyphicon glyphicon-tags"></span>  Borrowed Books</a></li>
+								<li><a href="<?php echo base_url(); ?>index.php/user/controller_logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+							</ul>
+						</div>
+					</li>
+				  <?php
+					}
+				  ?>
 
-          </ul>
-        </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+				  </ul>
+				</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			  </nav>
 <script>
 	$(document).ready(function() {
 	/**

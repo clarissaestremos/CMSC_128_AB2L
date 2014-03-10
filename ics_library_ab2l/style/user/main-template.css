@@ -390,7 +390,13 @@ td{
 	transition: background 1s;
 	background:#9d261d;
 }
-
+#ddown{
+	width:inherit;
+	left:-10px;
+	background: url('../../images/navigation.png');
+	
+}
+/*
 #navigation ul ul{
 	position:absolute;
 	opacity: 0;
@@ -429,7 +435,7 @@ td{
 	-moz-transition: height 1s,background 1s;
 	-o-transition: height 1s,background 1s;
 	-ms-transition: height 1s,background 1s;
-}
+}*/
 .center{
 	margin:0 auto;
 }
