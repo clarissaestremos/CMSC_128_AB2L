@@ -1,3 +1,26 @@
+<script type="text/javascript">
+        var base_url = "<?php echo base_url() ?>";
+        window.onload = get_data1;
+
+        function get_data1(){ 
+         
+            $.ajax({
+                
+                url: base_url+"index.php/admin/controller_outgoing_books/get_info",     //EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
+                
+                type: 'POST',
+                async: false,
+                    success: function(result){
+                    $('#change_here').html(result);
+                    $('#change_here').fadeIn(1000);
+                    $('#change_here').removeClass('loading');
+                }
+            });
+
+        }
+
+</script>
+
 <div id="thisbody" class="body width-fill background-white">
 					<div class="cell">
 						<div class="page-header cell">
@@ -10,57 +33,7 @@
 	                        <div class="header background-red">
 	                            List of outgoing books
 	                        </div>
-	                        <table class="body">
-	                            <thead>
-	                                <tr>
-	                                    <th style="width: 2%;">#</th>
-	                                    <th style="width: 20%;">Borrower</th>
-	                                    <th style="width: 40%;">Material</th>
-										<th style="width: 10%;">Due Date</th>
-	                                    <th style="width: 10%;"></th>
-	                                    <th style="width: 10%;"></th>
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-	                            	<?php
-	                            	$count = 1;
-	                                foreach($query as $row) {
-										echo "<tr>
-											<td>$count</td>
-											<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
-											<td><b>{$row->title}</b><br/>";
-
-                                                	$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-					                                $authors="";
-					                                foreach($data['multi_valued'] as $authors_list){
-					                                    $authors = $authors."{$authors_list->author},";
-					                                }
-					                                echo "$authors ($row->year_of_pub)<br/>
-					                                Call Number: {$row->call_number}</td>";
-
-                                                echo "</td>
-											<td>{$row->due_date}</td>";
-										echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-											<input type='hidden' name='res_number' value='{$row->res_number}' />
-											<input type='submit' class='background-red' name='reserve' value='Confirm' />
-										</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
-										echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-											<input type='hidden' name='res_number' value='{$row->res_number}' />
-											<input type='submit' class='background-red' name='cancel' value='Cancel' />
-										</form></td>";				//button to be clicked if the reservation will be cancelled; functionality of this not included
-										echo "</tr>";
-
-										$count++;
-									}
-									?>
-	                            </tbody>
-	                        </table>
-	                        <div class="footer pagination">
-	                            <ul class="nav">
-	                                <li><a href="#">Prev</a></li>
-	                                <li><a href="#">Next</a></li>
-	                            </ul>
-	                        </div>
+	                        <div id = "change_here"> </div>
 	                    </div>
 	                    <?php
 	                    	}

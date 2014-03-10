@@ -134,6 +134,79 @@ class Controller_outgoing_books extends Controller_log{
         $this->model_reservation->delete_book_reservation($res_number);
         redirect('index.php/admin/controller_outgoing_books','refresh');
     }//END OF cancel()
+
+    function get_info() {
+        $this->load->model('model_reservation');
+        $status = "reserved";
+
+        $data['result_all']  = $this->model_reservation->show_reservation($status,NULL,0,0);
+
+        //configuration of the ajax pagination  library.
+        $config['base_url'] = base_url().'index.php/admin/controller_outgoing_books/get_info';        //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
+        $config['total_rows'] = count($data['result_all']);
+        $config['per_page'] = '10';
+        $config['div'] = '#change_here';
+      //  $config['additional_param']  = 'serialize_form1()';
+
+        $page=$this->uri->segment(4);       // splits the URI segment by /
+        
+        $data['result'] = $this->model_reservation->show_reservation($status,$data['result_all'],$config['per_page'],$page);
+        $this->jquery_pagination->initialize($config);
+        //$this->pagination->initialize($config);
+        $data['links'] = $this->jquery_pagination->create_links();
+        $this->print_info($data['result'],$data['links']); 
+    }
+
+     function print_info($query,$links) {
+
+                    echo '<table class="body">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 2%;">#</th>
+                                        <th style="width: 20%;">Borrower</th>
+                                        <th style="width: 40%;">Material</th>
+                                        <th style="width: 10%;">Due Date</th>
+                                        <th style="width: 10%;"></th>
+                                        <th style="width: 10%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                                    $count = 1;
+                                    foreach($query as $row) {
+                                        echo "<tr>
+                                            <td>$count</td>
+                                            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
+                                            <td><b>{$row->title}</b><br/>";
+
+                                                    $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+                                                    $authors="";
+                                                    foreach($data['multi_valued'] as $authors_list){
+                                                        $authors = $authors."{$authors_list->author},";
+                                                    }
+                                                    echo "$authors ($row->year_of_pub)<br/>
+                                                    Call Number: {$row->call_number}</td>";
+
+                                                echo "</td>
+                                            <td>{$row->due_date}</td>";
+                                        echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                            <input type='submit' class='background-red' name='reserve' value='Confirm' />
+                                        </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
+                                        echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
+                                            <input type='submit' class='background-red' name='cancel' value='Cancel' />
+                                        </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
+                                        echo "</tr>";
+
+                                        $count++;
+                                    }
+                                
+                            echo'    </tbody>
+                            </table>
+                            <div class="footer pagination">';
+                                echo $links;
+                            echo "</div>";
+    }
     
 
 }
