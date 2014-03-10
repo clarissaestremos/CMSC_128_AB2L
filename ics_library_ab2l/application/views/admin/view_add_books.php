@@ -106,6 +106,7 @@
                         }
 
 
+                        
                         function validate_isbn_key(){
                             var selected = document.getElementById('type_book').value;
                             msg="Invalid input: ";
@@ -118,7 +119,7 @@
                             else if(!getResultIsbn(str)){
                                  msg+="ISBN alreay exist."
                             }
-                            else if(msg=="Invalid input: ")
+                            else if(msg=="Invalid input: " && getResultIsbn(str))
                             msg="";
                             
                             else {
@@ -170,7 +171,7 @@
                                         success : function(response){
 
                                                 $('#helpekey').delay(1000).removeClass('preloader');
-                                                if(response == 'userOk'){
+                                                if(response.trim() == 'userOk'){
                                                         //$('#helpekey').removeClass('userNo').addClass('userOk');
                                                        // $('#helpekey').text("I available!");
                                                         
