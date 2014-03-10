@@ -192,7 +192,7 @@ class Controller_book extends Controller_log {
             redirect('index.php/user/controller_login', 'refresh');
 			$base = base_url();
 			echo "<div id='mysuccess' title='Delete Book Success'>
-			<h5>You have successfully added a new material!!</h5>
+			<h6>You have successfully added a new material!!</h6>
 			</div>
 			<script src='$base/js/jquery-1.10.2.min.js'></script>
 			<script src='$base/js/jquery-ui.js'></script>
@@ -201,6 +201,9 @@ class Controller_book extends Controller_log {
 					$('#mysuccess').dialog({
 			            modal: true,
 			            closeOnEscape: true,
+			            resizable: false,
+					      width: 300,
+					      minHeight: 200,
 			            closeText: 'show',
 			            show: {
 			              effect: 'fadeIn',
@@ -279,7 +282,7 @@ class Controller_book extends Controller_log {
 		$session_user = $this->session->userdata('logged_in')['username'];
 		$base = base_url();
 		echo "<div id='mysuccess' title='Delete Book Success'>
-					<h5>You have successfully edited the material!!</h5>
+					<h6>You have successfully edited the material!!</h6>
 				</div>
 				<script src='$base/js/jquery-1.10.2.min.js'></script>
 				<script src='$base/js/jquery-ui.js'></script>
@@ -288,6 +291,9 @@ class Controller_book extends Controller_log {
 						$('#mysuccess').dialog({
 				            modal: true,
 				            closeOnEscape: true,
+				            resizable: false,
+						      width: 300,
+						      minHeight: 200,
 				            closeText: 'show',
 				            show: {
 				              effect: 'fadeIn',
@@ -319,7 +325,7 @@ class Controller_book extends Controller_log {
 		$base = base_url();
 		echo "
 		<div id='mysuccess' title='Delete Book Success'>
-			<h5>You have successfully deleted a material!!</h5>
+			<h6>You have successfully deleted a material!!</h6>
 		</div>
 		<script src='$base/js/jquery-1.10.2.min.js'></script>
 		<script src='$base/js/jquery-ui.js'></script>
@@ -329,6 +335,9 @@ class Controller_book extends Controller_log {
 		            modal: true,
 		            closeOnEscape: true,
 		            closeText: 'show',
+		            resizable: false,
+				    width: 300,
+				    minHeight: 200,
 		            show: {
 		              effect: 'fadeIn',
 		              duration: 200

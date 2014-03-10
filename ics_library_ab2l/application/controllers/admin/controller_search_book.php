@@ -73,6 +73,7 @@ class Controller_search_book extends CI_Controller {
 
 	public function print_books($row, $links){
 		//display data from database
+		$base = base_url();
 		if($row->num_rows()>0){
 			echo"<div class='panel datasheet'>
                 <div class='header text-center background-red'>
@@ -87,6 +88,8 @@ class Controller_search_book extends CI_Controller {
                         <th style='width: 50%;' nowrap='nowrap'>Material</th>
                         <th style='width: 5%;' nowrap='nowrap'>Type</th>
                         <th style='width: 8%;' nowrap='nowrap'>Availability</th>
+                        <th style='width: 13%;' nowrap='nowrap'>Action</th>
+                        <th style='width: 13%;' nowrap='nowrap'>Action</th>
                         <th style='width: 13%;' nowrap='nowrap'>Action</th>
                     </tr>
                 </thead>
@@ -123,6 +126,18 @@ class Controller_search_book extends CI_Controller {
 				                                echo "<td><img title = 'THESIS/SP' width = 30px height = 30px src='../../images/type_thesis.png' /></td>";
 
 				                            echo "<td>".$row->no_of_available. "/" . $row->quantity."</td>";
+				                            echo "
+				                            <td><form action='$base"."index.php/admin/controller_book/edit/' method='post'>
+                                                    <input type=\"hidden\" name=\"id\" value=\"{$row->id}\" />
+                                                    <input type='submit' class='background-red' name='edit' value='Edit' enabled/>
+                                                </form>
+                                                </td>
+                                                <td>
+                                                <form action='$base"."index.php/admin/controller_book/delete/' id='mydeleteform$count' method='post'>
+                                                    <input type=\"hidden\"  name=\"id\" value=\"{$row->id}\" />
+                                                    <input type='submit' name='delete' class='background-red' value='Delete' onclick='return trySubmit(mydeleteform$count);' enabled/>
+                                                </form>
+                                                </td>";
 				                            if($row->no_of_available != 0)
 				                                echo "<td><form method='POST' action='controller_reserve_book/verify_login/$row->id'>
 				                                        <input type='submit' class='background-red table-button' value='Reserve Book'>                                                       </form>
@@ -135,7 +150,7 @@ class Controller_search_book extends CI_Controller {
 				                    $count++;
 				                        }
 				        echo" </tbody>
-				    </table><div class='footer pagination'>";
+				    </table><div class='pagination'>";
 				    echo $links;
 
 	                "</div></div>";

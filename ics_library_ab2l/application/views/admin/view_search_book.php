@@ -122,3 +122,79 @@
     </div>
 	<div id="list_area" class="cell"></div>
 </div>
+
+<div id='mydeletebook' title='Delete Book Confirmation'>
+    <p>Do you really wish to delete this book?</p>
+</div>
+<div id='deletebookconfirm' title='Delete Book Confirmation'>
+    <p>Are you 100% sure that you want to delete this book? Doing so will delete the book in the database.</p>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#mydeletebook").dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+               $('#deletebookconfirm').dialog('open');
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+        });
+
+        $("#deletebookconfirm").dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
+        closeOnEscape: true,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+               thisform.submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+        });
+    });
+
+    function trySubmit(myformid){
+        thisform = myformid;
+        $('#mydeletebook').dialog('open');
+        console.log(thisform);
+        return false;
+    }
+
+    var thisform;
+</script>
