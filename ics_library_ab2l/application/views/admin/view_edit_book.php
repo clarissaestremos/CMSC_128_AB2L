@@ -554,7 +554,7 @@
         $( "#editbookForm" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
-            //if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
+            if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
             document.getElementById('btitle').innerText = "Title: "+document.getElementById('title1').value;
             document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
             document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
@@ -593,7 +593,7 @@
             document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
             document.getElementById('btags').innerText = "Tag: "+ tag;
             $( "#editbookconf" ).dialog( "open" );
-        //}
+        }
         });
 
     });
