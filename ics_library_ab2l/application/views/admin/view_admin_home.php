@@ -110,7 +110,7 @@
 	                            	<?php
 	                            	$count = 1;
 	                                foreach($reserved as $row) {
-										echo "<tr>
+										if($row->rank == 1){echo "<tr>
 											<td>$count</td>
 											<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
 											<td><b>{$row->title}</b><br/>";
@@ -124,18 +124,19 @@
 					                                Call Number: {$row->call_number}</td>";
 
                                                 echo "</td>
-											<td>{$row->due_date}</td>";
-										echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-											<input type='hidden' name='res_number' value='{$row->res_number}' />
-											<input type='submit' class='background-red' name='reserve' value='Confirm' />
-										</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
-										echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-											<input type='hidden' name='res_number' value='{$row->res_number}' />
-											<input type='submit' class='background-red' name='cancel' value='Cancel' />
-										</form></td>";	
-										echo "</tr>";echo "</tr>";
+												<td>{$row->due_date}</td>";
+											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+												<input type='hidden' name='res_number' value='{$row->res_number}' />
+												<input type='submit' class='background-red' name='reserve' value='Confirm' />
+											</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
+											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+												<input type='hidden' name='res_number' value='{$row->res_number}' />
+												<input type='submit' class='background-red' name='cancel' value='Cancel' />
+											</form></td>";	
+											echo "</tr>";echo "</tr>";
 
-										$count++;
+											$count++;
+										}
 									}
 									?>
 	                            </tbody>

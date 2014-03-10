@@ -173,32 +173,34 @@ class Controller_outgoing_books extends Controller_log{
                                 <tbody>';
                                     $count = 1;
                                     foreach($query as $row) {
-                                        echo "<tr>
-                                            <td>$count</td>
-                                            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
-                                            <td><b>{$row->title}</b><br/>";
+										if($row->rank == 1){
+	                                        echo "<tr>
+	                                            <td>$count</td>
+	                                            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
+	                                            <td><b>{$row->title}</b><br/>";
 
-                                                    $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-                                                    $authors="";
-                                                    foreach($data['multi_valued'] as $authors_list){
-                                                        $authors = $authors."{$authors_list->author},";
-                                                    }
-                                                    echo "$authors ($row->year_of_pub)<br/>
-                                                    Call Number: {$row->call_number}</td>";
+	                                                    $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+	                                                    $authors="";
+	                                                    foreach($data['multi_valued'] as $authors_list){
+	                                                        $authors = $authors."{$authors_list->author},";
+	                                                    }
+	                                                    echo "$authors ($row->year_of_pub)<br/>
+	                                                    Call Number: {$row->call_number}</td>";
 
-                                                echo "</td>
-                                            <td>{$row->due_date}</td>";
-                                        echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                            <input type='submit' class='background-red' name='reserve' value='Confirm' />
-                                        </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
-                                        echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                            <input type='submit' class='background-red' name='cancel' value='Cancel' />
-                                        </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
-                                        echo "</tr>";
+	                                                echo "</td>
+	                                            <td>{$row->due_date}</td>";
+	                                        echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+	                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
+	                                            <input type='submit' class='background-red' name='reserve' value='Confirm' />
+	                                        </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
+	                                        echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+	                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
+	                                            <input type='submit' class='background-red' name='cancel' value='Cancel' />
+	                                        </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
+	                                        echo "</tr>";
 
-                                        $count++;
+	                                        $count++;
+										}
                                     }
                                 
                             echo'    </tbody>

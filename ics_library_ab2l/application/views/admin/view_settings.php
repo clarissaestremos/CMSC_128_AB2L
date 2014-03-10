@@ -80,9 +80,9 @@
 													<input type="email" name="icsmail" id="icsmail" placeholder="New Email" class="background-white" style="width: 95%; margin-left: 3%;" required/>
 													<label>ICS e-Lib Email Password: ********************</label><br/>
 													<input type="password" name="icsmailpw" id="icsmailpw" placeholder="New Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><br /><br/>
-													<input type="password" name="icsmailpw1" id="icsmailpw1" placeholder="Retype Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><br /><br/>
+													<input type="password" name="icsmailpw1" id="icsmailpw1" placeholder="Retype Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><span name="help_epass" class="color-red"></span><br /><br/>
 													<label>Enter your Administrator Password</label><br/>
-													<input type="password" name="admin_pass" id="admin_pass" placeholder="Admin Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><span name="help_epass" class="color-red"></span><br /><br/>
+													<input type="password" name="admin_pass" id="admin_pass" placeholder="Admin Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><br /><br/>
 													</div>
 												</div>
 												<br/><br/>
@@ -110,7 +110,7 @@
 													<input type="password" name="admin_password" id="admin_password" placeholder="New Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><br /><br/>
 													<input type="password" name="admin_password1" id="admin_password1" placeholder="Retype Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><span name="help_apass" class="color-red"></span><br /><br/>
 													<label>Current Password</label><br/>
-													<input type="password" name="admin_pass" id="admin_pass" placeholder="Current Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><span name="help_content" class="color-red"><br /><br/>
+													<input type="password" name="admin_pass" id="admin_pass" placeholder="Current Password" class="background-white" style="width: 95%; margin-left: 3%;" required/><br /><br/>
 													</div>
 												</div>
 												<br/><br/>
