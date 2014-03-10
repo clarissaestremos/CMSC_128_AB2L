@@ -173,6 +173,9 @@
     	 	form = $(this).get(0).id;
       		$( "#announcementdialog" ).dialog( "open" );
     	});
+
+
+     	
 	});
 	var form;
 	var link;

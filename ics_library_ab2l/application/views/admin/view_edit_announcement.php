@@ -90,7 +90,6 @@
 </div>
 <div id="announcementcancel" title="Cancel Add Announcement Dialog">
 	<h5>Do you really want to cancel editing this announcement?</h5>
-	<h5>Do you really want to cancel adding an announcement?</h5>
 </div>
 <script>
 	$(document).ready(function(){
@@ -163,43 +162,20 @@
       	}
 
     });
-		$("#cancelannouncement").dialog({
- 	    	autoOpen: false,
- 	        modal: true,
- 	        closeOnEscape: true,
- 	        closeText: 'show',
- 	        show: {
- 	          effect: "fadeIn",
- 	          duration: 200
- 	        },
- 	        draggable: false,
- 	        close: function(event, ui){
- 	          window.location.replace(link);
- 	        },
- 	        buttons : {
- 	          "Ok": function() {
- 	              window.location.replace(link);
- 	          },
- 	        }
+		$( "#buttoncancel" ).click(function (e) {
+        e.preventDefault();
+        link = $(this).attr('href');
+          $( "#announcementcancel" ).dialog( "open" );
+      });
  
-     	});
-
-		$( "#editannouncement" ).submit(function (e) {
-    		e.preventDefault();
-    	 	form = $(this).get(0).id;
-      		$( "#announcementdialog" ).dialog( "open" );
-    	});
-
-    	$( "#buttoncancel" ).click(function (e) {
-    		e.preventDefault();
-    	 	link = $(this).attr('href');
-      		$( "#announcementcancel" ).dialog( "open" );
-    	$( "#cancelbutton" ).submit(function (e) {
-    		e.preventDefault();
-    	 	link = $(this).attr('href');
-      		$( "#cancelannouncement" ).dialog( "open" );
-    	});
+    $( "#editannouncement" ).submit(function (e) {
+        e.preventDefault();
+        form = $(this).get(0).id;
+          $( "#announcementdialog" ).dialog( "open" );
+      });
 	});
+
+
 	var form;
 	var link;
 </script>
