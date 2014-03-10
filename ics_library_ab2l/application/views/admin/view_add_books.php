@@ -116,7 +116,7 @@
                                 msg+="Must start and end in number and 13 digits.<br/>";
 
                             else if(!getResultIsbn(str)){
-                            
+                                 msg+="ISBN alreay exist."
                             }
                             else if(msg=="Invalid input: ")
                             msg="";
@@ -159,7 +159,8 @@
                         $( document ).ready(function(){   
                          window.getResultIsbn =  function (key){
                              // var baseurl = <?php echo base_url()?>;
-                             var bool= false;
+                            var bool= false;
+                             
                                 $('#help_isbn_key').append("<span id = 'helpkey'></span>");
                                 $("#helpkey").text("Checking availability...");
                                 $.ajax({
@@ -170,14 +171,15 @@
 
                                                 $('#helpekey').delay(1000).removeClass('preloader');
                                                 if(response == 'userOk'){
-                                                        $('#helpekey').removeClass('userNo').addClass('userOk');
+                                                        //$('#helpekey').removeClass('userNo').addClass('userOk');
                                                        // $('#helpekey').text("I available!");
                                                         
                                                     bool= true;
+
                                                 }
                                                 else{
-                                                        $('#helpekey').removeClass('userOk').addClass('color-red');;
-                                                        $("#helpekey").text("ISBN already exist.");
+                                                       // $('#helpekey').removeClass('userOk').addClass('color-red');;
+                                                        //$("#helpekey").text("ISBN already exist.");
                                                      bool= false;
                                                 }
                                         }

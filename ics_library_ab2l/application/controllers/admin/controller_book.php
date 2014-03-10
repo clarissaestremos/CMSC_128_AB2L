@@ -172,7 +172,7 @@ class Controller_book extends Controller_log {
 		}
 	}
 	
-	public function checkisbn($isbn){
+	public function check_isbn($isbn){
 
 		 $this->db->where('isbn',$isbn);
             $query = $this->db->get('book')->num_rows();
