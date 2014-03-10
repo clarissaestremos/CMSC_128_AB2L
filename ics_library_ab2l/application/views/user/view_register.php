@@ -34,7 +34,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="firstname">First name<span class="color-red"> *</span></label>
+                                    <label for="fname">First name<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -48,7 +48,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="firstname">Middle Initial<span class="color-red"> *</span></label>
+                                    <label for="minit">Middle Initial<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -62,7 +62,7 @@
 
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="lastname">Last name<span class="color-red"> *</span></label>
+                                    <label for="lname">Last name<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -76,7 +76,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    </br><label for="classification">Classification <span class="cell color-red validmsg"> *</span></label>
+                                    </br><label for="classi">Classification <span class="cell color-red validmsg"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -84,7 +84,7 @@
                                     <br/>
                                     <select id = "classi" name = "classi" onchange = "checker()" required >
                                     <option value="default" disabled selected="selected">Select Classification</option>
-                                    <option value="student">Student</option>
+                                    <option value="student">Student </option>
                                     <option value="faculty">Faculty</option>
                                     </select>
                                 </div>
@@ -100,12 +100,12 @@
                          <div class="col" id= "numDiv">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="studno" id = "labelNum">Student Number<span id="labelNum" class="color-red"> *</span></label>
+                                    <label for="stdNum" id = "labelNum">Student Number<span id="labelNum" class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><span class = "cell color-red validmsg valClass" id = "span_account" name = "valNumber"></span>
+                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><span class = "cell color-red validmsg valClass" id = "span_sno" name = "valNumber"></span>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                                 <div class="cell">
                                     <br/>
                                     <select id = "college" name = "college" onblur = "courseChecker()"><span name = "valCollege" class= "valClass cell color-red validmsg"></span>
-                                    <option value="default" disabled selected="selected">Select College</option>
+                                    <option value="default" disabled selected="selected" required>Select College</option>
                                     <option value="CA">CA</option>
                                     <option value="CAS">CAS</option>
                                     <option value="CDC">CDC</option>
@@ -148,7 +148,7 @@
                         <div class="col" id= "courseDiv">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    </br><label for="college">Course <span class="color-red"> *</span></label>
+                                    </br><label for="course">Course <span class="color-red"> *</span></label>
                                 </div>
                             </div>
                         <div class="col width-fill">
@@ -168,7 +168,7 @@
                         <div class="col" id = "divEadd">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Email Address<span class="color-red"> *</span></label>
+                                    <label for="eadd">Email Address<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -183,7 +183,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Username:<span class="color-red"> *</span></label>
+                                    <label for="uname">Username:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -196,7 +196,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Password:<span class="color-red"> *</span></label>
+                                    <label for="pass">Password:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -209,7 +209,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="occupation">Confirm Password:<span class="color-red"> *</span></label>
+                                    <label for="cpass">Confirm Password:<span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">

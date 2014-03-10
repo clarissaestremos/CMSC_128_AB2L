@@ -178,6 +178,8 @@ function validateEmail(){
 			return true;
 		}
 	function validateAll(){
+		flag  = document.getElementById("classi").value;
+		console.log(flag);
 		if(validateFname()&&validateMinitial()&&validateLname()&&validateNumber()&&validateClassification()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
 		{
 			return true;
