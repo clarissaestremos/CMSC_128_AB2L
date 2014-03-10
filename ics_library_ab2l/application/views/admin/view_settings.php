@@ -130,22 +130,22 @@
 				</div>
 			</div>
 <div id="elibmail" title="Email E-Lib Settings Confirmation">
-		<p>Note that changing the password here does not change the password of your email account. It only modifies the stored password that will be used to facilitate the system in sending and receiving necessary messages. If you want to continue, press Yes</o>
+		<p>Note that changing the password here does not change the password of your email account. It only modifies the stored password that will be used to facilitate the system in sending and receiving necessary messages. If you want to continue, press Yes.</p>
 </div>
 <div id="elibmailconf" title="Email E-Lib Settings Confirmation">
-		<p>Are you really really sure to change E-Lib's email? Doing so will permanently change the settings.</o>
+		<p>Are you sure you want to change E-Lib's email? Doing so will permanently change the settings.</p>
 </div>
 <div id="elibmailsucc" title="Email E-Lib Settings Success">
-		<p>You have successfully change E-Lib's email settings.</o>
+		<p>You have successfully changed E-Lib's email settings.</p>
 </div>
 <div id="passadmin" title="Email E-Lib Settings Confirmation">
-		<p>Do you really wish to chang your admin account password?</o>
+		<p>Do you really wish to change your admin account password?</p>
 </div>
 <div id="passadminconf" title="Email E-Lib Settings Confirmation">
-		<p>Are you really really sure to change your admin account password? Doing so will permanently change the settings.</o>
+		<p>Are you sure you want to change your admin account password? Doing so will permanently change the settings.</p>
 </div>
 <div id="passadminsucc" title="Email E-Lib Settings Success">
-		<p>You have successfully change you admin account password</o>
+		<p>You have successfully changed your admin account password.</p>
 </div>
 <div id='cancelmsg' Title="Cancel Settings Confirmation">
 	<p>Do you really want to cancel changing the administrator's settings?</p>
