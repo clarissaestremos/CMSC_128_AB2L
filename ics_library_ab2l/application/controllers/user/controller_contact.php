@@ -57,8 +57,10 @@ class Controller_contact extends CI_Controller {
             $this->email->subject($this->input->post('subject'));
             $this->email->message($this->input->post('message')."\n\nContact Number: ".$this->input->post('contactnum'));
             
-            if(! $this->email->send())
-                show_error($this->email->print_debugger());
+            if(! $this->email->send()){
+                echo "<script>alert('Error sending email. Try again.');</script>";
+                redirect('index.php/user/controller_contact', 'refresh');
+            }
             else{
                 echo "<script>alert('Your email has been sent.');</script>";
                 redirect('index.php/user/controller_contact', 'refresh');
