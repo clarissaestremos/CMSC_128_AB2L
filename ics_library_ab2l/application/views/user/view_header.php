@@ -52,6 +52,9 @@ if($this->session->userdata('logged_in_type')=='admin')
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
 			#selectItems ul li { }
 			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
+      #category {width: 100px;}
+      #sinput{width: 200px;}
+      #autosuggest_list{ padding: 10px 10px 10px 10px;}
 		</style>
   		<?php
   		 if($this->session->userdata('logged_in_type')=='admin')
@@ -117,6 +120,26 @@ if($this->session->userdata('logged_in_type')=='admin')
 		 							</form>
 		 					</div>-->
 						</div>
+            <?php 
+              if($titlepage !== "Books - Search")
+              {
+
+            ?>
+            <div style ="padding: 3px 3px 5px 3px;" class="color-black">
+                <form name="headerSearch" method="post" action='<?php echo base_url(); ?>index.php/user/controller_search_book' method="POST">
+                  <select id="category" name="category">
+                    <option value="title">Title</option>
+                    <option value="author">Author</option>
+                    <option value="subject">Subject</option>
+                    <option value="year_of_pub">Publication</option>
+                    <option value="tag_name">Tag</option>
+                  </select>
+                  <input type="search" required="required" placeholder="Search..." id="sinput" name="hinput"/>
+                  <input type="submit" value="Search" id="headerSearch"/> 
+                  <!--<div class="autosuggest" id="autosuggest_list">-->
+                </form>
+            </div>
+            <?php }?>
 					</div>
 					
 				</div>

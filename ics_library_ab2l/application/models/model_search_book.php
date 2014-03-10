@@ -50,6 +50,7 @@
 		function fetch_book_data($data,$limit,$start){
 			$orCheck = false;
 			$andCheck=false;
+
 			//The first call of the function will skip the limit since we will be using it to compute for the total rows
 			//this condition will be used later when we are fetching the actual data.
 			if($limit>0){	//checks the limit if it is set to greater than 0.
@@ -57,7 +58,7 @@
 			}
 			//querry for the data fetching
 			//As long as the $data['str'] is not an empty string, it will dominate over the advance search forms,
-			$query='*
+			$query='DISTINCT *
 				FROM book
 				WHERE ';
 			$str = $data['str'];
