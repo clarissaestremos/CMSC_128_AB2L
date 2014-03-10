@@ -6,15 +6,27 @@ class Model_reservation extends CI_Model {
 		$query = $this->db->get('book_reservation');
 		return $query->result();
 	}
-	
+	public function countRows($status){
+		$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
+		AND br.call_number = cn.call_number
+		AND cn.id = b.id
+		AND br.status='$status'";
+		$this->db->select($query,false);
+		$rows=$this->db->get();
+		return $rows->num_rows();
+	}
 	/*Return necessary data from user and their conrresponding book reservations */
-	public function show_all_user_book_reservation($status){
-		$query= $this->db->query("SELECT *
+	public function show_all_user_book_reservation($status,$limit,$start){
+		if($limit>0){	//checks the limit if it is set to greater than 0.
+			$this->db->limit($limit, $start);
+		}
+		$this->db->select("*
 		FROM book b, book_reservation br, user_account ua, book_call_number cn
 		WHERE br.account_number=ua.account_number
 		AND br.call_number = cn.call_number
 		AND cn.id = b.id
-		AND br.status='$status'");
+		AND br.status='$status'",false);
+		$query=$this->db->get(); 
 		return $query->result();
 	}
 	/*
