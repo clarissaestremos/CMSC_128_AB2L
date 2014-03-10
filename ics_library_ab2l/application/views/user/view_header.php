@@ -47,6 +47,9 @@ if($this->session->userdata('logged_in_type')=='admin')
 			.clear-right{
 				clear: right;
 			}
+      #DAPPlugin{
+        display:none;
+      }
 			
 			.itemhover { background-color:#d3d3d3 !important; color:black !important;}
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}

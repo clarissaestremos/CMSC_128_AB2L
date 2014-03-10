@@ -8,10 +8,11 @@
                             <li><a href="#tabs-1">Overdue Books</a></li>
                             <li><a href="#tabs-2">Borrowed Books</a></li>
                         </ul>
+                        <div id='tabs-1'>
                         <?php
                             if($overdue != NULL){
                         ?>
-                        <div id='tabs-1'>
+                        
 						<div class="panel datasheet cell">
 	                        <div class="header background-red">
 	                            List of overdue books
@@ -71,7 +72,7 @@
                                     <li><a href="#">Next</a></li>
                                 </ul>
                             </div>
-                                <form action='controller_outgoing_books/send_email' method='post' class="float-right">
+                                <form action='controller_outgoing_books/send_email' method='post' id='notifyall' class="float-right">
                                    <input type='submit' name='notify_all' value='Notify All' enabled/>
                                 </form>
 	                    </div>
@@ -79,13 +80,16 @@
                             }
                             else{
                                 echo "<hr>";
-                                echo "<h2 class='color-grey'>There is no currently overdue books!</h2>";
+                                echo "<h2 class='color-grey'>There are no currently overdue books!</h2>";
                                 echo "<hr>";
                             }
-                            echo "</div>";
+                        ?>
+                            </div>
+                            <div id='tabs-2'>
+                        <?php
                             if($query != NULL){
                         ?>
-                        <div id='tabs-2'>
+                        
                         <div class="panel datasheet cell">
                             <div class="header background-red">
                                 List of borrowed books
@@ -161,19 +165,21 @@
                                 echo "<hr>";
 
                             }
-                            echo "</div>";
                         ?>
 	       </div>
 </div>
 <div id="returndialog" title="Return Book Dialog">
-    <p>Are you sure that you want to confirm that this book was properly returned?</o>
+    <p>Are you sure that this book was properly returned?</o>
 </div>
 <div id="extenddialog" title="Extend Book Dialog">
-    <p>Are you sure that you want to extend the due date of this book?</o>
+    <p>Do you really want to extend the due date of this book?</o>
 </div>
 <div id="returnsucc" title="Return Book Success">
     <p>You have successfully returned a book!</p>
 </div>
 <div id="extendsucc" title="Extend Book Success">
     <p>You have successfully extend the due date of a book!</p>
+</div>
+<div id='notifydialog' title='Notify Overdue Books Dialog'>
+    <p>Do you really want to notify all users regarding their overdue books?</p>
 </div>
