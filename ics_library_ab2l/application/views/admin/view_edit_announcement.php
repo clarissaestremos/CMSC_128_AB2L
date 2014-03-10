@@ -68,7 +68,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id="buttoncancel" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
-													<a id="cancelbutton" href="<?php echo base_url(); ?>index.php/admin/controller_announcement"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" onclick="return confirm('Are you sure you want to cancel editing this announcement?')" style="margin: 0px 5px 0px 5px;"/></a>
+												
 													<input type = "hidden" name = "date" id = "date" value = "<?php echo $id;?>" />
 													<input type="hidden" name="save"/>
  													<input type="submit" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />

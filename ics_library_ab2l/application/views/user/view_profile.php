@@ -53,7 +53,7 @@
                                       <!--img  alt = "Oops, something went wrong. " style = "padding: 2.5em; length: 250px;width:250px;" src="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>">
                                     <!--a class="col width-fill" id = "edit_picture">Edit</a-->
                                     </div><br/><br/><br/>
-                                    <h4 style = "color: #413839; padding-left: 37px; font-size: 22px;font-family:'Lucida Console', Monaco, monospace"><?php echo $name?></h4>
+                                    
                                     <!--/div-->
 
                                     <div id='name'>
@@ -95,6 +95,7 @@
                                          ?>
 
                                      <div class="col" >
+                                        <h4 style = "color: #413839; padding-left: 37px; font-size: 22px;font-family:'Lucida Console', Monaco, monospace"><?php echo $name?></h4>
                                                 <div class="cell panel" >
                                                     <div class="body">
                                                         <div class="cell">
