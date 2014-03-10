@@ -239,11 +239,11 @@ $("#dsucc").dialog({
  	        },
  	        draggable: false,
  	        close: function(event, ui){
- 	          document.getElementById(form).submit();
+ 	          thisform.submit();
  	        },
  	        buttons : {
  	          "Ok": function() {
- 	              document.getElementById(form).submit();
+ 	              thisform.submit();
  	          },
  	        }
      	});
@@ -314,11 +314,11 @@ $("#dsucc").dialog({
  	        },
  	        draggable: false,
  	        close: function(event, ui){
- 	          document.getElementById(form).submit();
+ 	          thisform.submit();
  	        },
  	        buttons : {
  	          "Ok": function() {
- 	              document.getElementById(form).submit();
+ 	              thisform.submit();
  	          },
  	        }
      	});
@@ -946,6 +946,21 @@ $("#dsucc").dialog({
         console.log(thisform);
         return false;
     }
+
+    function confirmBookReserve(myformid){
+        thisform = myformid;
+        $( "#confirmdialog" ).dialog( "open" );
+        console.log(thisform);
+        return false;
+    }
+
+    function confirmDeleteReserve(myformid){
+        thisform = myformid;
+       $( "#canceldialog" ).dialog( "open" );
+        console.log(thisform);
+        return false;
+    }
+
 		var form;
     var thisform;
 	 var button;
