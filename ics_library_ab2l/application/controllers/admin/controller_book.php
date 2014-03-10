@@ -171,6 +171,21 @@ class Controller_book extends Controller_log {
 			$this->call_success();
 		}
 	}
+	
+	public function checkisbn($isbn){
+
+		 $this->db->where('isbn',$isbn);
+            $query = $this->db->get('book')->num_rows();
+            if($query == 0 ){
+                  
+                       echo 'userOk';
+                       return true;
+                     
+              }
+            else{ echo 'userNo';
+            	return false;
+            }
+	}
 
 	public function call_success(){
 			if($this->session->userdata('logged_in_type')!="admin")
