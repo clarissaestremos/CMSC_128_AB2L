@@ -99,6 +99,9 @@
 		$("#deleteconfirm").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -123,6 +126,9 @@
 $("#dsucc").dialog({
     autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -144,6 +150,9 @@ $("#dsucc").dialog({
     $("#dasucc").dialog({
     autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -164,6 +173,9 @@ $("#dsucc").dialog({
 		$("#deletealldialog").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -190,6 +202,9 @@ $("#dsucc").dialog({
     	$("#deletedialog").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -233,6 +248,9 @@ $("#dsucc").dialog({
 		$("#confirmsuccess").dialog({
  	    	autoOpen: false,
  	        modal: true,
+          resizable: false,
+          width: 300,
+          minHeight: 200,
  	        closeOnEscape: true,
  	        closeText: 'show',
  	        show: {
@@ -253,6 +271,9 @@ $("#dsucc").dialog({
 		$("#confirmdialog").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -283,6 +304,9 @@ $("#dsucc").dialog({
     	$("#canceldialog").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -308,6 +332,9 @@ $("#dsucc").dialog({
     	$("#cancelsuccess").dialog({
  	    	autoOpen: false,
  	        modal: true,
+          resizable: false,
+          width: 300,
+          minHeight: 200,
  	        closeOnEscape: true,
  	        closeText: 'show',
  	        show: {
@@ -338,6 +365,9 @@ $("#dsucc").dialog({
 	$("#extenddialog").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -365,6 +395,9 @@ $("#dsucc").dialog({
     $("#extendsucc").dialog({
             autoOpen: false,
             modal: true,
+            resizable: false,
+            width: 300,
+            minHeight: 200,
             closeOnEscape: true,
             closeText: 'show',
             show: {
@@ -386,6 +419,9 @@ $("#dsucc").dialog({
     $("#returnsucc").dialog({
             autoOpen: false,
             modal: true,
+            resizable: false,
+            width: 300,
+            minHeight: 200,
             closeOnEscape: true,
             closeText: 'show',
             show: {
@@ -407,6 +443,9 @@ $("#dsucc").dialog({
         $("#returndialog").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -431,6 +470,9 @@ $("#dsucc").dialog({
         $("#notifydialog").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -486,6 +528,9 @@ $("#dsucc").dialog({
     $("#confsuccess").dialog({
             autoOpen: false,
             modal: true,
+            resizable: false,
+            width: 300,
+            minHeight: 200,
             closeOnEscape: true,
             closeText: 'show',
             show: {
@@ -507,6 +552,9 @@ $("#dsucc").dialog({
         $("#confdialog").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         maxHeight: 640,
         maxWidth: 320,
@@ -535,6 +583,9 @@ $("#dsucc").dialog({
         $("#deactivatedialog").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         maxHeight: 640,
         maxWidth: 320,
@@ -583,6 +634,9 @@ $("#dsucc").dialog({
     $( "#dialog" ).dialog({
       autoOpen: false,
       modal: true,
+      resizable: false,
+      width: 300,
+      minHeight: 200,
       closeOnEscape: true,
       closeText: true,
       show: {
@@ -614,6 +668,9 @@ $("#dsucc").dialog({
     $("#elibmail").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -640,6 +697,9 @@ $("#dsucc").dialog({
 		$("#elibmailconf").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -666,6 +726,9 @@ $("#dsucc").dialog({
 		$("#elibmailsucc").dialog({
  	    	autoOpen: false,
  	        modal: true,
+          resizable: false,
+          width: 300,
+          minHeight: 200,
  	        closeOnEscape: true,
  	        closeText: 'show',
  	        show: {
@@ -694,6 +757,9 @@ $("#dsucc").dialog({
     	$("#passadmin").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+          width: 300,
+          minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -720,6 +786,9 @@ $("#dsucc").dialog({
 		$("#passadminconf").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -746,6 +815,9 @@ $("#dsucc").dialog({
 		$("#passadminsucc").dialog({
  	    	autoOpen: false,
  	        modal: true,
+          resizable: false,
+          width: 300,
+          minHeight: 200,
  	        closeOnEscape: true,
  	        closeText: 'show',
  	        show: {
@@ -766,6 +838,9 @@ $("#dsucc").dialog({
      	$("#cancelmsg").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -813,6 +888,9 @@ $("#dsucc").dialog({
     $("#addadminsuccess").dialog({
             autoOpen: false,
             modal: true,
+            resizable: false,
+            width: 300,
+            minHeight: 200,
             closeOnEscape: true,
             closeText: 'show',
             show: {
@@ -834,6 +912,9 @@ $("#dsucc").dialog({
         $("#addadmin").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+          width: 300,
+          minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -877,6 +958,9 @@ $("#dsucc").dialog({
         $("#registerconf").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {

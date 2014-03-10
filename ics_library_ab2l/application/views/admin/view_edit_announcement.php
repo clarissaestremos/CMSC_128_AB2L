@@ -86,16 +86,19 @@
 	<p>Are you sure that you want to edit this announcement?</o>
 </div>
 <div id='successdialog' title='Success Dialog'>
-	<h5>You have successfully edit the announcement!!</h5>
+	<p>You have successfully edit the announcement!!</p>
 </div>
 <div id="announcementcancel" title="Cancel Add Announcement Dialog">
-	<h5>Do you really want to cancel editing this announcement?</h5>
+	<p>Do you really want to cancel editing this announcement?</p>
 </div>
 <script>
 	$(document).ready(function(){
 		$("#announcementdialog").dialog({
         autoOpen: false,
       	modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -119,6 +122,9 @@
 		$("#successdialog").dialog({
 		autoOpen: false,
       	modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
       	closeOnEscape: true,
       	closeText: 'show',
       	show: {
@@ -141,6 +147,9 @@
         autoOpen: false,
       	modal: true,
       	closeOnEscape: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
       	closeText: 'show',
       	show: {
        	 	effect: "fadeIn",

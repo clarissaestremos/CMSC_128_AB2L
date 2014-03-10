@@ -73,16 +73,19 @@ function serialize_form1()
                     </div>
                 </div>
 <div id='mydeletebook' title='Delete Book Confirmation'>
-    <h5>Do you really wish to delete this book?</h5>
+    <p>Do you really wish to delete this book?</p>
 </div>
 <div id='deletebookconfirm' title='Delete Book Confirmation'>
-    <h5>Are you 100% sure that you want to delete this book? Doing so will delete the book in the database.</h5>
+    <p>Are you 100% sure that you want to delete this book? Doing so will delete the book in the database.</p>
 </div>
 <script>
     $(document).ready(function(){
         $("#mydeletebook").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {
@@ -108,6 +111,9 @@ function serialize_form1()
         $("#deletebookconfirm").dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
+      width: 300,
+      minHeight: 200,
         closeOnEscape: true,
         closeText: 'show',
         show: {

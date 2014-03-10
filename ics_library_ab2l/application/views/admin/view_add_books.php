@@ -518,7 +518,7 @@
                         </div>
                 </div>
 <div id='addbookconf' title='Add Book Confirmation'>
-    <h5>Are you sure that the following book details are true?</h5>
+    <h6>Are you sure that the following book details are true?</h6>
     <p id="btitle"></p>
     <p id="bauthors"></p>
     <p id="bsubject"></p>

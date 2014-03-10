@@ -78,13 +78,13 @@
 				</div>
 			</div>
 <div id="announcementdialog" title="Add Announcement Confirmation Dialog">
-	<p>Are you sure that you want to add this announcement?</o>
+	<p>Are you sure that you want to add this announcement?</p>
 </div>
 	<div id="addsucc" title="Add Announcement Success">
-		<p>You have successfully added a new announcement. This will be shown on the homepage of the website</o>
+		<p>You have successfully added a new announcement. This will be shown on the homepage of the website</p>
  	</div>
 <div id="canceladddialog" title="Cancel Add Announcement Dialog">
-	<h5>Do you really want to cancel adding an announcement?</h5>
+	<p>Do you really want to cancel adding an announcement?</p>
 </div>
 <script>
 	$(document).ready(function(){

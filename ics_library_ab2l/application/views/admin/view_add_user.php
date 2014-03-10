@@ -245,7 +245,7 @@
                         </div>
 				</div>
 <div id='registerconf' title='Registration Confirmation Dialog'>
-    <h5>Are you sure that the following information is true?</h5>
+    <h6>Are you sure that the following information is true?</h6>
     <p id='regname'></p>
     <p id='regclass'></p>
     <p id='regnum'></p>

@@ -513,7 +513,7 @@
                         </div>
                 </div>
 <div id='editbookconf' title='Edit Book Confirmation'>
-    <h5>Are you sure that the following book details are true?</h5>
+    <h6>Are you sure that the following book details are true?</h6>
     <p id="btitle"></p>
     <p id="bauthors"></p>
     <p id="bsubject"></p>
@@ -529,6 +529,9 @@
         $( "#editbookconf" ).dialog({
       autoOpen: false,
       modal: true,
+      resizable: false,
+      width: 300,
+      minHeight: 200,
       closeOnEscape: true,
       closeText: true,
       show: {

@@ -170,17 +170,17 @@
 	       </div>
 </div>
 <div id="returndialog" title="Return Book Dialog">
-    <p>Are you sure that this book was properly returned?</o>
+    <p>Are you sure that this material was properly returned?</o>
 </div>
 <div id="extenddialog" title="Extend Book Dialog">
-    <p>Do you really want to extend the due date of this book?</o>
+    <p>Do you really want to extend the due date of this material?</o>
 </div>
 <div id="returnsucc" title="Return Book Success">
-    <p>You have successfully returned a book!</p>
+    <p>You have successfully returned a material!</p>
 </div>
 <div id="extendsucc" title="Extend Book Success">
-    <p>You have successfully extend the due date of a book!</p>
+    <p>You have successfully extend the due date of a material!</p>
 </div>
 <div id='notifydialog' title='Notify Overdue Books Dialog'>
-    <p>Do you really want to notify all users regarding their overdue books?</p>
+    <p>Do you really want to notify all users regarding their overdue material?</p>
 </div>

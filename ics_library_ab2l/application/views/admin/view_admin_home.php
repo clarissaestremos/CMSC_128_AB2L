@@ -133,7 +133,7 @@
 											</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
 											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
-												<input type='submit' class='background-red' name='cancel' onclick='return confirmBookReserve(confirm$count);' value='Cancel' />
+												<input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(confirm$count);' value='Cancel' />
 											</form></td>";	
 											echo "</tr>";echo "</tr>";
 
@@ -328,11 +328,11 @@ else{
 </div>
 
 <div id="confdialog" title="Confirm Account Dialog">
-    <h5>Are you sure that you want to activate this user account?</h5>
+    <p>Are you sure that you want to activate this user account?</p>
 </div>
 
 <div id="deactivatedialog" title="Deactivate Account Dialog">
-    <h5>Do you really wish to deactivate all account?</h5>
+    <p>Do you really wish to deactivate all account?</p>
 </div>
 <div id="dsucc" title="Delete Announcement Success">
    <p>You have successfuly deleted an announcement</p>
