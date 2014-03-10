@@ -94,7 +94,7 @@
                                             }
                                         else{ 
                                             echo "<hr>";
-                                            echo "<h2 class='color-grey'>There is no currently reserved books!</h2>";
+                                            echo "<h2 class='color-grey'>There are no currently reserved books!</h2>";
                                             echo "<hr>";
                                         }
 

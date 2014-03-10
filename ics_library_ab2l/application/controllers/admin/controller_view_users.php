@@ -170,6 +170,85 @@ class Controller_view_users extends Controller_log {
                 redirect('index.php/admin/controller_view_users', 'refresh');
         }
     }
+
+    /*All functions from here to end of file is For pagination */
+    function get_info() {
+        $this->load->model('model_users');
+        
+        $data['result_all']  = $this->model_users->getAllUsers2(NULL,0,0);
+ 
+         //configuration of the ajax pagination  library.
+        $config['base_url'] = base_url().'index.php/admin/controller_view_users/get_info';        //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
+        $config['total_rows'] = count($data['result_all']);
+        $config['per_page'] = '15';
+        $config['div'] = '#change_here';
+      //  $config['additional_param']  = 'serialize_form1()';
+
+        $page=$this->uri->segment(4);       // splits the URI segment by /
+        
+        $data['result'] = $this->model_users->getAllUsers2($data['result_all'],$config['per_page'],$page);
+        $this->jquery_pagination->initialize($config);
+        //$this->pagination->initialize($config);
+        $data['links'] = $this->jquery_pagination->create_links();
+        $this->print_info($data['result'],$data['links']); 
+    }
+
+
+   function print_info($results,$links) {
+
+         echo '<table class="body">
+                <thead>
+                    <tr>
+                        <th style="width: 2%;">#</th>
+                        <th style="width: 8%;">Student Number</th>
+                        <th style="width: 20%;">Name</th>
+                        <th style="width: 5%;">Course</th>
+                        <th style="width: 20%;">Email</th>
+                        <th style="width: 8%;">Classification</th>
+                        <th style="width: 10%;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>';
+                        $count = 1;
+                        foreach ($results as $row) {
+                            echo "<tr>";
+                            echo "<td>$count</td>";
+                            echo "<td>".$row->account_number."</td>";
+                            $fullName = $row->first_name." ".$row->middle_initial.". ".$row->last_name;
+                            echo "<td>".$fullName."</td>";
+                            echo "<td>".$row->course."</td>";
+                            echo "<td>".$row->email."</td>";
+                            echo "<td>".$row->classification."</td>";
+                            $stat = $row->status;
+
+                            /*
+                                If status not yet 'approve', meaning the account was not yet validated,
+                                a button with a value 'Validate' will be seen in the status column.
+                                If status is already 'approve', meaning the account was already validated,
+                                'Registered' will be displayed on the said column. 
+                            */
+                            $base = base_url();
+                            if($stat === "approve"){
+                            echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'><input type='button' style='background:#ccc;' value='Click to borrow'/></a></td>";
+                            }
+                            else{
+                                echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
+                                echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
+                                echo "<input type='hidden' name='approve' value='approve'/>";
+                                echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";
+                                echo "</form>";
+                            }
+                            
+                            echo "</tr>";
+                            $count++;
+                        }
+
+               echo'</tbody>
+            </table>
+            <div class="footer pagination">';
+                echo $links;
+            echo "</div>";
+    }
 }
 /* End of file home_controller.php */
 /* Location: ./application/controllers/user/controller_home.php */

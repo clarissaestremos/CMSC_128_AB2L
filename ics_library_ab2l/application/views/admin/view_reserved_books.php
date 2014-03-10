@@ -36,7 +36,7 @@
                                     foreach($overdue as $row){
                                         echo "<tr>
                                                 <td>$count</td>
-                                                <td><b>{$row->first_name} {$row->middle_initial} {$row->last_name} </b><br/>{$row->account_number}</td>
+                                                <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
                                                 <td><b>{$row->title}</b><br/>";
 
                                                     $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
@@ -115,7 +115,7 @@
                                     foreach($query as $row){
                                         echo "<tr>
                                                 <td>$count</td>
-                                                <td><b>{$row->first_name} {$row->middle_initial} {$row->last_name} </b><br/>{$row->account_number}</td>
+                                                <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
                                                 <td><b>{$row->title}</b><br/>";
 
                                                     $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
@@ -161,7 +161,7 @@
                             }
                             else{
                                 echo "<hr>";
-                                echo "<h2 class='color-grey'>There is no currently borrowed books!</h2>";
+                                echo "<h2 class='color-grey'>There are no currently borrowed books!</h2>";
                                 echo "<hr>";
 
                             }

@@ -32,6 +32,26 @@ function getPendingUsers(){
 	$query = $this->db->query($sqlQuery);
 	return $query->result();
 	}
+
+	/*Function for getting data for pagination*/
+function getAllUsers2($data,$limit,$start){
+	$sqlQuery = "SELECT account_number, first_name, middle_initial, last_name, 
+					course, email,classification, status FROM user_account
+					ORDER BY status desc";
+	$query = $this->db->query($sqlQuery);
+
+	if($limit>0){
+		if ($start == NULL)
+			$start=0;
+			$sqlQuery = "SELECT account_number, first_name, middle_initial, last_name, 
+					course, email,classification, status FROM user_account
+					ORDER BY status desc LIMIT $start,$limit";
+					$query = $this->db->query($sqlQuery);
+	}	
+
+	return $query->result();
+	
+}
 }
 
 ?>

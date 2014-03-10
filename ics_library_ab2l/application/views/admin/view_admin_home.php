@@ -39,7 +39,7 @@
                                     foreach($overdue as $row){
                                         echo "<tr>
                                                 <td>$count</td>
-                                                <td><b>{$row->first_name} {$row->middle_initial} {$row->last_name} </b><br/>{$row->account_number}</td>
+                                                <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
                                                 <td><b>{$row->title}</b><br/>";
 
                                                 	$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
@@ -112,7 +112,7 @@
 	                                foreach($reserved as $row) {
 										echo "<tr>
 											<td>$count</td>
-											<td><b>{$row->first_name} {$row->middle_initial}{$row->last_name}</b><br/>{$row->account_number}</td>
+											<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
 											<td><b>{$row->title}</b><br/>";
 
                                                 	$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
@@ -183,7 +183,7 @@
 											echo "<tr>";
 											echo "<td>$count</td>";
 											echo "<td>".$row->account_number."</td>";
-											$fullName = $row->first_name." ".$row->middle_initial." ".$row->last_name;
+											$fullName = $row->first_name." ".$row->middle_initial.". ".$row->last_name;
 											echo "<td>".$fullName."</td>";
 											echo "<td>".$row->course."</td>";
 											echo "<td>".$row->email."</td>";

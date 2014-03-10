@@ -1,3 +1,26 @@
+<script type="text/javascript">
+        var base_url = "<?php echo base_url() ?>";
+        window.onload = get_data1;
+
+        function get_data1(){ 
+         
+            $.ajax({
+                
+                url: base_url+"index.php/admin/controller_view_users/get_info",     //EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
+                
+                type: 'POST',
+                async: false,
+                    success: function(result){
+                    $('#change_here').html(result);
+                    $('#change_here').fadeIn(1000);
+                    $('#change_here').removeClass('loading');
+                }
+            });
+
+        }
+
+</script>
+
 <div id="thisbody" class="body width-fill background-white">
 	<div class="cell">
         <div class="page-header cell">
@@ -14,62 +37,8 @@
             <div class="header background-red">
                 List of Users
             </div>
-            <table class="body">
-                <thead>
-                    <tr>
-                        <th style="width: 2%;">#</th>
-                        <th style="width: 8%;">Student Number</th>
-                        <th style="width: 20%;">Name</th>
-                        <th style="width: 5%;">Course</th>
-                        <th style="width: 20%;">Email</th>
-                        <th style="width: 8%;">Classification</th>
-                        <th style="width: 10%;">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                	<?php
-                    	$count = 1;
-                        foreach ($results as $row) {
-							echo "<tr>";
-							echo "<td>$count</td>";
-							echo "<td>".$row->account_number."</td>";
-							$fullName = $row->first_name." ".$row->middle_initial." ".$row->last_name;
-							echo "<td>".$fullName."</td>";
-							echo "<td>".$row->course."</td>";
-							echo "<td>".$row->email."</td>";
-							echo "<td>".$row->classification."</td>";
-							$stat = $row->status;
 
-							/*
-								If status not yet 'approve', meaning the account was not yet validated,
-								a button with a value 'Validate' will be seen in the status column.
-								If status is already 'approve', meaning the account was already validated,
-								'Registered' will be displayed on the said column. 
-							*/
-                            $base = base_url();
-							if($stat === "approve"){
-							echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'><input type='button' style='background:#ccc;' value='Click to borrow'/></a></td>";
-							}
-							else{
-								echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
-                                echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
-                                echo "<input type='hidden' name='approve' value='approve'/>";
-                                echo "<td>"."<input type ='submit' class='background-red' name='approve' value = 'Confirm'>"."</td>";
-                                echo "</form>";
-						    }
-							
-							echo "</tr>";
-							$count++;
-						}
-					?>
-                </tbody>
-            </table>
-            <div class="footer pagination">
-                <ul class="nav">
-                    <li><a href="#">Prev</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
+            <div id = "change_here"> </div>
 			<form action='<?php echo base_url();?>index.php/admin/controller_view_users/deactivate' id='deactivateaccount' method='POST' class="float-right">
                 <input type='hidden' name='deactivate' id='deactivate' value='deact'/>
 				<input type ='submit' class='background-white' value = 'Deactivate All User Accounts'>
