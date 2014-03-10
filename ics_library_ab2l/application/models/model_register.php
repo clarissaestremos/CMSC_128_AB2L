@@ -36,9 +36,9 @@ $this->db->insert('user_account',$data);
  }
  else{
    $data=array(
-    'first_name'=>strtoupper($this->input->post('fname')),
-    'middle_initial'=>strtoupper($this->input->post('minit')),
-    'last_name'=>strtoupper($this->input->post('lname')),
+    'first_name'=>ucfirst($this->input->post('fname')),
+    'middle_initial'=>ucfirst($this->input->post('minit')),
+    'last_name'=>ucfirst($this->input->post('lname')),
     
     'account_number'=>$this->input->post('stdNum'),
     
