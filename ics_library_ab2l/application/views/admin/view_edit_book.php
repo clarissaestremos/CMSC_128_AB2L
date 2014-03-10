@@ -192,7 +192,7 @@
                             textfield.setAttribute("name","author[]");
                             textfield.setAttribute("placeholder","Author's Name");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white authors");
 
                             // create buttons
                             var button1 = document.createElement("input");
@@ -226,7 +226,7 @@
                             textfield.setAttribute("name", "call_number[]");
                             textfield.setAttribute("placeholder","Book Call Number");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white call_nos");
                             
 
                             // create buttons
@@ -259,7 +259,7 @@
                             textfield.setAttribute("name", "subject[]");
                             textfield.setAttribute("placeholder","Book Subject");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white subjects");
                             
 
                             // create buttons
@@ -291,7 +291,7 @@
                             textfield.type = "text";
                             textfield.setAttribute("name", "tags[]");
                             textfield.setAttribute("placeholder","Tags");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white tags");
                             
 
                             // create buttons
@@ -327,7 +327,7 @@
                                                 <div class="cell">
                                                     <div class="col">
                                                         <div class="cell">
-                                                            <form name = "myform" action="<?php echo base_url() ?>index.php/admin/controller_book/edit_book" method="post">
+                                                            <form id='editbookForm' name = "myform" action="<?php echo base_url() ?>index.php/admin/controller_book/edit_book" method="post">
 
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
@@ -495,7 +495,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            </br><input type = "submit" name = "submit" value = "Submit" onclick="process_add()">
+                                                                            </br><input type = "submit" name = "sub" value = "Submit">
                                                                             <input type = "hidden" name = "id" value="<?php echo $book[0]->id ;?>" />
                                                                         </div>
                                                                     </div>
@@ -511,7 +511,7 @@
                             </div>
                         </div>
                 </div>
-<div id='addbookconf' title='Add Book Confirmation'>
+<div id='editbookconf' title='Edit Book Confirmation'>
     <h5>Are you sure that the following book details are true?</h5>
     <p id="btitle"></p>
     <p id="bauthors"></p>
@@ -521,10 +521,11 @@
     <p id="btype"></p>
     <p id="bisbn"></p>
     <p id="btags"></p>
+    <p id="bquant"></p>
 </div>
 <script>
     $(document).ready(function(){
-        $( "#addbookconf" ).dialog({
+        $( "#editbookconf" ).dialog({
       autoOpen: false,
       modal: true,
       closeOnEscape: true,
@@ -541,7 +542,8 @@
       buttons : {
         "Yes": function() {
             $(this).dialog('close');
-            console.log(document.getElementById(form).submit());
+            console.log(document.getElementById('editbookForm'));
+            document.getElementById('editbookForm').submit();
         },
         "No": function() {
             $(this).dialog('close');
@@ -549,51 +551,52 @@
       }
     });
 
-        $( "#addbookForm" ).submit(function (e) {
+        $( "#editbookForm" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
-            if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
+            //if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
             document.getElementById('btitle').innerText = "Title: "+document.getElementById('title1').value;
             document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
             document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
             document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type').value;
+            document.getElementById('bquant').innerText = "Quantity: "+ document.getElementById('quantity').value;
             var aut = document.getElementsByClassName("authors");
             var author = '';
             for(var i=0; i<aut.length; i++) {
                 author = author+aut[i].value + " ";
-                if(i <aut.length-1)
+                if(i <aut.length)
                     author += ",";
             }
             var sub = document.getElementsByClassName("subjects");
             var subject = '';
             for(var i=0; i<sub.length; i++) {
                 subject =  subject+sub[i].value + " ";
-                if(i <aut.length-1)
+                if(i <aut.length)
                     subject += ",";
             }
             var call = document.getElementsByClassName("call_nos");
             var call_no = '';
             for(var i=0; i<call.length; i++) {
-                call_no =  call_no+sub[i].value + " ";
-                if(i <aut.length-1)
+                call_no =  call_no+call[i].value + " ";
+                if(i < aut.length)
                     call_no += ",";
             }
             var t = document.getElementsByClassName("tag");
             var tag = '';
             for(var i=0; i<t.length; i++) {
                 tag =  tag + t[i].value + " ";
-                if(i <t.length-1)
+                if(i <t.length)
                     tag += ",";
             }
             document.getElementById('bauthors').innerText =  "Author: "+ author;
             document.getElementById('bsubject').innerText = "Subject: "+ subject;
             document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
             document.getElementById('btags').innerText = "Tag: "+ tag;
-            console.log(form);
-            $( "#addbookconf" ).dialog( "open" );
-        }
+            $( "#editbookconf" ).dialog( "open" );
+        //}
         });
 
     });
 
     var form;
+</script>

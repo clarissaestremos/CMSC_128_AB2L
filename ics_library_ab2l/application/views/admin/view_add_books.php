@@ -177,7 +177,7 @@
                             textfield.setAttribute("name","author[]");
                             textfield.setAttribute("placeholder","Author's Name");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white authors");
 
                             // create buttons
                             var button1 = document.createElement("input");
@@ -212,7 +212,7 @@
                             textfield.setAttribute("name", "subject[]");
                             textfield.setAttribute("placeholder","Book Subject");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white subjects");
                             
 
                             // create buttons
@@ -246,7 +246,7 @@
                             textfield.setAttribute("name","call_number[]");
                             textfield.setAttribute("placeholder","Call Number of the Book");
                             textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white call_nos");
 
                             // create buttons
                             var button1 = document.createElement("input");
@@ -280,7 +280,7 @@
                             textfield.type = "text";
                             textfield.setAttribute("name","tag[]");
                             textfield.setAttribute("placeholder","Tags");
-                            textfield.setAttribute("class","background-white");
+                            textfield.setAttribute("class","background-white tag");
 
                             // create buttons
                             var button1 = document.createElement("input");
@@ -539,7 +539,7 @@
             var call = document.getElementsByClassName("call_nos");
             var call_no = '';
             for(var i=0; i<call.length; i++) {
-                call_no =  call_no+sub[i].value + " ";
+                call_no =  call_no+call[i].value + " ";
                 if(i <aut.length-1)
                     call_no += ",";
             }
