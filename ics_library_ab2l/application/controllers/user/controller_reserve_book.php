@@ -56,6 +56,7 @@ class Controller_reserve_book extends CI_Controller{
 	}
 
 	function confirm_reservation(){
+		$base = base_url();
 		if($this->session->userdata('id') != FALSE && $this->session->userdata('logged_in') != FALSE){
 			$data['id'] = $this->session->userdata('id');
 			$this->session->unset_userdata('id');
@@ -79,25 +80,124 @@ class Controller_reserve_book extends CI_Controller{
 					
 					if($no_of_available > 0){
 						$this->model_reserve_book->add_reservation($data);
-						echo "<script>alert('You have successfully reserved a book. Please confirm it to the administrator.');</script>";
-						redirect('index.php/user/controller_book/user_reserved_list/','refresh');
+						echo "<div id='mysuccess' title='Delete Book Success'>
+									<h5>You have successfully reserved a book. Please confirm it to the administrator..</h5>
+								</div>
+								<script src='$base/js/jquery-1.10.2.min.js'></script>
+								<script src='$base/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('$base/index.php/user/controller_book/user_reserved_list/');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('$base/index.php/user/controller_book/user_reserved_list/');
+								              },
+								            }
+								 
+								        });
+							</script>";
 					}
 					else{
 						$this->model_reserve_book->waitlist_reservation($data);
-						echo "<script>alert('There is not enough number of books available. You are waitlisted.');</script>";
-						redirect('index.php/user/controller_book/user_reserved_list', 'refresh');
-
+						echo "<div id='mysuccess' title='Delete Book Success'>
+									<h5>There is not enough number of books available. You are waitlisted.</h5>
+								</div>
+								<script src='$base/js/jquery-1.10.2.min.js'></script>
+								<script src='$base/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('$base/index.php/user/controller_book/user_reserved_list/');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('$base/index.php/user/controller_book/user_reserved_list/');
+								              },
+								            }
+								 
+								        });
+							</script>";
 					}	
 				}
 				else{
-					echo "<script>alert('Your account is not yet activated. Please confirm it to the administrator.');</script>";
-					redirect('index.php/user/controller_home','refresh');
+					echo "<div id='mysuccess' title='Delete Book Success'>
+									<h5>Your account is not yet activated. Please confirm it to the administrator.</h5>
+								</div>
+								<script src='$base/js/jquery-1.10.2.min.js'></script>
+								<script src='$base/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('$base/index.php/user/controller_home');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('$base/index.php/user/controller_home');
+								              },
+								            }
+								 
+								        });
+							</script>";
 				}
 				
 			}
 			else{
-				echo "<script>alert('A user is allowed to borrow and reserve at most 3 books');</script>";
-					redirect('index.php/user/controller_book/user_borrowed_list', 'refresh');
+				echo "<div id='mysuccess' title='Delete Book Success'>
+									<h5>A user is allowed to borrow and reserve at most 3 books</h5>
+								</div>
+								<script src='$base/js/jquery-1.10.2.min.js'></script>
+								<script src='$base/js/jquery-ui.js'></script>
+								<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+								<script>
+										$('#mysuccess').dialog({
+								            modal: true,
+								            closeOnEscape: true,
+								            closeText: 'show',
+								            show: {
+								              effect: 'fadeIn',
+								              duration: 200
+								            },
+								            draggable: false,
+								            close: function(event, ui){
+								                window.location.replace('$base/index.php/user/controller_book/user_borrowed_list');
+								            },
+								            buttons : {
+								              'Ok': function() {
+								                  window.location.replace('$base/index.php/user/controller_book/user_borrowed_list');
+								              },
+								            }
+								 
+								        });
+							</script>";
 			}
 			
 		}
