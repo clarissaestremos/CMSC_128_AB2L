@@ -47,6 +47,7 @@
                         function validate_isbn_key(){
                             msg="Invalid input: ";
                             str=myform.isbn.value;
+                            var selected = document.getElementById('type').value;
                             if(str=="")
                                 msg+="ISBN is required!<br/>";
                             if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
@@ -147,7 +148,7 @@
                                 return true;
                         }
 
-                        function validate_quantity() {
+                        /*function validate_quantity() {
                             msg="Invalid input: ";
                             str=myform.quantity.value;
                                 
@@ -163,7 +164,7 @@
                             document.getElementsByName("help_quantity")[0].innerHTML=msg;
                             if(msg=="")
                                 return true;
-                        }
+                        }*/
                         
                         
                         function process_add() {
@@ -414,7 +415,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input id  = "year_of_pub" type = "number" name = "year_of_pub" min=1900 max="<?php echo date("Y"); ?>" value="<?php echo $book[0]->year_of_pub ;?>" />&nbsp;<span name="help_year_pub" class="color-red"></span><br/>
+                                                                            <input id  = "year_of_pub" type = "number" name = "year_of_pub" min=1900 max="<?php echo date("Y"); ?>" value="<?php echo $book[0]->year_of_pub ;?>" />&nbsp;<span name="help_year_of_pub" class="color-red"></span><br/>
                                                                             
                                                                         </div>
                                                                     </div>
@@ -554,7 +555,7 @@
         $( "#editbookForm" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
-            if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()){
+            if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub()){
             document.getElementById('btitle').innerText = "Title: "+document.getElementById('title1').value;
             document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
             document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
