@@ -32,6 +32,7 @@ if($this->session->userdata('logged_in_type')=='admin')
   		<style type="text/css">
   			body,html{
   				height: 100%;
+          overflow-x: hidden;
   			}
 			#main-body{
 				background-image:url('<?php echo base_url();?>images/g.jpg'); 

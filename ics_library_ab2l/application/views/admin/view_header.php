@@ -595,7 +595,7 @@ $("#dsucc").dialog({
       buttons : {
       	"Yes": function() {
       		$(this).dialog('close');
-      		$('#ressucc').dialog('open')
+      		window.location.replace(link);
       	},
       	"No": function() {
       		$(this).dialog('close');
@@ -603,29 +603,6 @@ $("#dsucc").dialog({
       }
     });
 
-    /*
-		*Dialog for the success of the reservation of books
-    */
-    $("#ressucc").dialog({
-		autoOpen: false,
-      	modal: true,
-      	closeOnEscape: true,
-      	closeText: 'show',
-      	show: {
-       	 	effect: "fadeIn",
-        	duration: 200
-      	},
-      	draggable: false,
-      	close: function(event, ui){
-      		window.location.replace(link);
-      	},
-      	buttons : {
-        	"Ok": function() {
-            	window.location.replace(link);
-        	},
-      	}
-
-    });
     //END OF RESERVE BOOK MODAL
     
 
@@ -922,21 +899,23 @@ $("#dsucc").dialog({
         $( "#userRegister" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
+            if(validateAll()){
             document.getElementById('regname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
             document.getElementById('regclass').innerText = "Classification: "+ document.getElementById('classi').value;
-            if(document.getElementById('classi').value === "Student"){
+            if(document.getElementById('classi').value === "student"){
                 document.getElementById('regnum').innerText = "Student Number: "+ document.getElementById('stdNum').value;
                 document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
                 document.getElementById('regcourse').innerText = "Course: "+ document.getElementById('course').value;
             }
-            else{
+            else if(document.getElementById('classi').value === "faculty"){
                 document.getElementById('regcol').innerText = "College: "+ document.getElementById('college').value;
-                document.getElementById('regnum').innerText = "Faculty Number: "+ document.getElementById('stdNum').value;
+                document.getElementById('regnum').innerText = "Employee Number: "+ document.getElementById('stdNum').value;
             }
 
             document.getElementById('regemail').innerText = "Email: "+ document.getElementById('eadd').value;
             document.getElementById('reguser').innerText = "Username: "+ document.getElementById('uname').value;
             $( "#registerconf" ).dialog( "open" );
+          }
         });
     //END OF ADD USER MODALS
     });

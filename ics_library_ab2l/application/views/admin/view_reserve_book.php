@@ -39,8 +39,3 @@
   ?></p>
   <p>Year of Publication: <?php echo $year_of_pub?></p>
 </div>
-
-<div id="ressucc" title="Book Reservation Success">
-  <h5>You have successfully reserved the book:</h5>
-  <p='booktitle'><?php echo $title ?></p>
-</div>

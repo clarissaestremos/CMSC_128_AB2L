@@ -175,6 +175,9 @@ function validateEmail(){
 			}
 			else if(msg="") msg="";
 			document.getElementsByName("valCpass")[0].innerHTML=msg;
+			if(msg==='Invalid Input: Password Mismatch')
+				return false;
+
 			return true;
 		}
 	function validateAll(){
