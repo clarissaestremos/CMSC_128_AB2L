@@ -654,7 +654,7 @@ $("#dsucc").dialog({
       	buttons : {
         	"Yes": function() {
         		$(this).dialog('close');
-             	$('#elibmainsucc').dialog('open');
+             	$('#elibmailsucc').dialog('open');
            	},
         	"No": function() {
             	$(this).dialog('close');
@@ -733,7 +733,7 @@ $("#dsucc").dialog({
       	buttons : {
         	"Yes": function() {
         		$(this).dialog('close');
-             	$('#elibmainsucc').dialog('open');
+             	$('#passadminsucc').dialog('open');
            	},
         	"No": function() {
             	$(this).dialog('close');

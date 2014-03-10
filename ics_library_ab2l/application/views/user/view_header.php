@@ -58,6 +58,9 @@ if($this->session->userdata('logged_in_type')=='admin')
         line-height:20px;
         border-bottom-style:none;
       }
+      .myaccount:hover{
+        background: #9d261d;
+      }
 		
       .itemhover { background-color:#d3d3d3 !important; color:black !important;}
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
@@ -179,14 +182,14 @@ if($this->session->userdata('logged_in_type')=='admin')
           <?php
             if(!$this->session->userdata('logged_in')){
           ?>
-            <?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li>'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
+            <?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
           <?php
               
             }
             else{
           ?>
             
-            <li class="dropdown">
+            <li class="dropdown myaccount">
               <a class="color-white" id="accountanchor"  data-toggle="dropdown" href="#">
                 <span class="glyphicon glyphicon-pencil"></span>My Account <span class="caret"></span>
               </a>
