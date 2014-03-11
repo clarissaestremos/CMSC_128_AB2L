@@ -6,9 +6,9 @@
      echo form_open('admin/controller_admin_verify_login', $attributes); ?>
   
      <p id= "validation_error"><?php echo validation_errors(); ?></p>
-      <label>Username:</label> <input type = "text" name= "username" required= "required"  >
+      <label for= "username">Username:</label> <input type = "text" name= "username" id="username"required= "required"  >
       <span id = "helpusername2"></span><br>
-      <label>Password:</label> <Input type= "password" name = "password" required= "required" >
+      <label for= "password">Password:</label> <Input type= "password" name = "password" id = "password" required= "required" >
       <span id = "helppword2"></span><br>
       <input type="submit" value= "Login"  onclick = "return validate_admin_login()"name = "login_button">
 
