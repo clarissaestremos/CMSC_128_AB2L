@@ -112,7 +112,7 @@ class Controller_view_users extends Controller_log {
         $this->model_user->approve_user($account_number);
         $session_user = $this->session->userdata('logged_in')['username'];
         $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
-        
+        $base = base_url();
         if($this->email->send()){
             echo "
                     <div id='mysuccess' title='Add User Account Success'>
