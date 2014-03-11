@@ -105,7 +105,7 @@ else{
 						window.getResultStdNo =  function (key){
 							 // var baseurl = <?php echo base_url()?>;
 							 var bool= false;
-								$('#span_sno').append("<span id = 'helpstdno'></span>");
+								$('#span_snum').append("<span id = 'helpstdno'></span>");
 								$("#helpstdno").text("Checking availability...");
 								$.ajax({
 										url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
@@ -136,7 +136,7 @@ else{
 						 window.getResultENo =  function (key){
 							 // var baseurl = <?php echo base_url()?>;
 							 var bool= false;
-								$('#span_sno').append("<span id = 'helpeno'></span>");
+								$('#span_snum').append("<span id = 'helpeno'></span>");
 								$("#helpeno").text("Checking availability...");
 								$.ajax({
 										url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
@@ -166,82 +166,99 @@ else{
 
 			 })
 
+
+
 function courseChecker(){
 var selected = document.getElementById('college').value;
 var obj = document.getElementById('course')
 obj.disabled = false;
 var length = obj.options.length;
-
+msg="Invalid Input: ";
 
 
 while (obj.hasChildNodes())
 		obj.removeChild(obj.firstChild);
 
-
-if(selected === 'CA'){
-	obj.options[obj.options.length] = new Option("BSA","BSA");
-	obj.options[obj.options.length] = new Option("BSFT","BSFT");
-	obj.options[obj.options.length] = new Option("BSAB","BSAB");
-	obj.options[obj.options.length] = new Option("BSAC","BSAC");
+if(selected == "default"){
+	msg+="College is required!";
 	
 }
-else if(selected === 'CAS'){
-	obj.options[obj.options.length] = new Option("BACA","BACA");
-	obj.options[obj.options.length] = new Option("BA Philo","BA Philo");
-	obj.options[obj.options.length] = new Option("BA Socio","BA Socio");
-	obj.options[obj.options.length] = new Option("BS AMATH","BS AMATH");
 
-	obj.options[obj.options.length] = new Option("BS APHY","BS APHY");
-	obj.options[obj.options.length] = new Option("BS BIO","BS BIO");
-	obj.options[obj.options.length] = new Option("BS CHEM","BS CHEM");
-	obj.options[obj.options.length] = new Option("BSCS","BSCS");
+else{
+	obj.options[obj.options.length] = new Option("Select Course","default", false, false);
+	obj.options[0].disabled= true;
+		if(selected === 'CA'){
+			
+			obj.options[obj.options.length] = new Option("BSA","BSA");
+			obj.options[obj.options.length] = new Option("BSFT","BSFT");
+			obj.options[obj.options.length] = new Option("BSAB","BSAB");
+			obj.options[obj.options.length] = new Option("BSAC","BSAC");
+			
+		}
+		else if(selected === 'CAS'){
+			obj.options[obj.options.length] = new Option("BACA","BACA");
+			obj.options[obj.options.length] = new Option("BA Philo","BA Philo");
+			obj.options[obj.options.length] = new Option("BA Socio","BA Socio");
+			obj.options[obj.options.length] = new Option("BS AMATH","BS AMATH");
 
-	obj.options[obj.options.length] = new Option("BS MATH","BS MATH");
-	obj.options[obj.options.length] = new Option("BS MST","BS MST");
-	obj.options[obj.options.length] = new Option("BS STAT","BS STAT");
-}
-else if(selected === 'CDC'){
-	obj.options[obj.options.length] = new Option("BSDC","BSDC");
-}
-else if(selected === 'CEAT'){
-	obj.options[obj.options.length] = new Option("BS ABE","BS ABE");
-	obj.options[obj.options.length] = new Option("BSChemE","BSChemE");
-	obj.options[obj.options.length] = new Option("BSCE","BSCE");
-	obj.options[obj.options.length] = new Option("BSEE","BSEE");
+			obj.options[obj.options.length] = new Option("BS APHY","BS APHY");
+			obj.options[obj.options.length] = new Option("BS BIO","BS BIO");
+			obj.options[obj.options.length] = new Option("BS CHEM","BS CHEM");
+			obj.options[obj.options.length] = new Option("BSCS","BSCS");
 
-	obj.options[obj.options.length] = new Option("BSIE","BSIE");
-}
-else if(selected === 'CEM'){
-	obj.options[obj.options.length] = new Option("BS AE","BS AE");
-	obj.options[obj.options.length] = new Option("BSE","BSE");
-	obj.options[obj.options.length] = new Option("BSAM","BSAM");
+			obj.options[obj.options.length] = new Option("BS MATH","BS MATH");
+			obj.options[obj.options.length] = new Option("BS MST","BS MST");
+			obj.options[obj.options.length] = new Option("BS STAT","BS STAT");
+		}
+		else if(selected === 'CDC'){
+			obj.options[obj.options.length] = new Option("BSDC","BSDC");
+		}
+		else if(selected === 'CEAT'){
+			obj.options[obj.options.length] = new Option("BS ABE","BS ABE");
+			obj.options[obj.options.length] = new Option("BSChemE","BSChemE");
+			obj.options[obj.options.length] = new Option("BSCE","BSCE");
+			obj.options[obj.options.length] = new Option("BSEE","BSEE");
 
-}
-else if(selected === 'SESAM'){
-	obj.options[obj.options.length] = new Option("PhD EnSci","PhD EnSci");
-	obj.options[obj.options.length] = new Option("MS EnSci","MS EnSci");
-}
-else if(selected === 'CFNR'){
-	obj.options[obj.options.length] = new Option("BSF","BSF");
+			obj.options[obj.options.length] = new Option("BSIE","BSIE");
+		}
+		else if(selected === 'CEM'){
+			obj.options[obj.options.length] = new Option("BS AE","BS AE");
+			obj.options[obj.options.length] = new Option("BSE","BSE");
+			obj.options[obj.options.length] = new Option("BSAM","BSAM");
 
-}
-else if(selected === 'CHE'){
-obj.options[obj.options.length] = new Option("BSHE","BSHE");
-obj.options[obj.options.length] = new Option("BSN","BSN");
+		}
+		else if(selected === 'SESAM'){
+			obj.options[obj.options.length] = new Option("PhD EnSci","PhD EnSci");
+			obj.options[obj.options.length] = new Option("MS EnSci","MS EnSci");
+		}
+		else if(selected === 'CFNR'){
+			obj.options[obj.options.length] = new Option("BSF","BSF");
 
-}
-else if(selected === 'GS'){
+		}
+		else if(selected === 'CHE'){
+		obj.options[obj.options.length] = new Option("BSHE","BSHE");
+		obj.options[obj.options.length] = new Option("BSN","BSN");
 
-}
-else if(selected === 'CPaf'){
+		}
+		else if(selected === 'GS'){
 
-}
-else if(selected === 'CVM'){
-obj.options[obj.options.length] = new Option("DVM","DVM");
-obj.options[obj.options.length] = new Option("MSVM","MSVM");
-obj.options[obj.options.length] = new Option("MSV","MSV");
-}
+		}
+		else if(selected === 'CPaf'){
 
-
+		}
+		else if(selected === 'CVM'){
+		obj.options[obj.options.length] = new Option("DVM","DVM");
+		obj.options[obj.options.length] = new Option("MSVM","MSVM");
+		obj.options[obj.options.length] = new Option("MSV","MSV");
+		}
+}
+if(selected != "default"){
+	msg= "";
+}
+ document.getElementsByName("valCollege")[0].innerHTML=msg;
+ if(selected != "default"){
+	return false;
+}
+return true;
 //alert(checker);
 }
