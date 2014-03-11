@@ -49,7 +49,7 @@
                                     <input type='submit' disabled= "return false" value= 'Save'>
                                     </form>
                                     
-                                    <span>Status:</span><em><?php echo  $user_details->status?></em><br/>
+                                    <span>Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em><br/>
 
                             
 
