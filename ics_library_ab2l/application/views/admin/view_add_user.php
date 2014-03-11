@@ -91,14 +91,10 @@
                                     <option value="student">Student</option>
                                     <option value="faculty">Faculty</option>
                                     </select>
+                                    <br/><span class = "color-red valClass" id="span_sno" name = "valClass"></span>
                                 </div>
                             </div>
-                            <div class="col width-fill">
-                                <div class="cell">
-                                    <input style="display:none;" data-required="true" data-error-message="Classification is required">
-                                    <br/><span class = "color-red" name = "valClass" class = "valClass">
-                                </div>
-                            </div>
+                           
                         </div>
 
                          <div class="col" id= "numDiv">

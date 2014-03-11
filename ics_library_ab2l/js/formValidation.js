@@ -105,10 +105,10 @@
 		str=regForm.classi.value;
 		msg="Invalid Input: ";
 		
-		if (str=="") msg+="Classification is required!";
+		if (str=="default") msg+="Classification is required!";
 		else if (!str.match(/^(student|faculty)$/))  msg+="Must be a student or faculty!<br/>";
 		else if(msg=="Invalid Input: ") msg="";
-		//document.getElementsByName("valClass")[0].innerHTML=msg;
+		document.getElementsByName("valClass")[0].innerHTML=msg;
 		if(msg=="") return true;
 	}	
 			
