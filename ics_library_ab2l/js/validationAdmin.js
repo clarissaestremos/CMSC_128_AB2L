@@ -1,14 +1,14 @@
 //edited
  window.onload=function(){
-                regForm.adminkey.onblur=validateAdminkey;
+              /*  regForm.adminkey.onblur=validateAdminkey;
                 regForm.fname.onblur=validateFname;
                 regForm.minit.onblur=validateMinitial;
                 regForm.lname.onblur=validateLname;
                 regForm.eadd.onblur=validateEmail;
                 regForm.uname.onblur=validateUser;
                 regForm.pass.onblur=validatePass;
-                regForm.cpass.onblur=validateCpass;
-                regForm.onclick=validateAll;
+                regForm.cpass.onblur=validateCpass; */
+                regForm.add_admin.onclick=validateAll;
             }
             
     function validateFname(){
@@ -131,7 +131,7 @@
             return true;
         }
     function validateAll(){
-        if(validateFname()&&validateMinitial()&&validateLname()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
+        if(validateAdminkey() && validateFname()&&validateMinitial()&&validateLname()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
         {
             return true;
         }
