@@ -502,6 +502,9 @@
                                                                     </div>
                                                                 </div>
                                                             </form>
+                                                            <form action="<?php echo base_url() ?>index.php/admin/controller_book/edit_cancel" ?>
+                                                                <input type="submit" value="Cancel">
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

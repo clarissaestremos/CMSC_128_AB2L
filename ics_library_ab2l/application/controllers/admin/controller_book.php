@@ -356,7 +356,9 @@ class Controller_book extends Controller_log {
 			</script>";
 	}
 
-
+	function edit_cancel(){
+        redirect('index.php/admin/controller_book', 'refresh');
+	}
 }
  ?>
 
