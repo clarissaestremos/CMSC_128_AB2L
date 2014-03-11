@@ -32,6 +32,12 @@ function getPendingUsers(){
 	$query = $this->db->query($sqlQuery);
 	return $query->result();
 	}
+function countPendingUsers(){
+	$this->db->select( "* FROM user_account where status ='pending'
+					ORDER BY status desc",false);
+	$query=$this->db->get();
+	return $query->num_rows();
+	}
 
 	/*Function for getting data for pagination*/
 function getAllUsers2($data,$limit,$start){

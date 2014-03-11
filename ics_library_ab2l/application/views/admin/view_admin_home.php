@@ -20,59 +20,36 @@
 	                        <div class="header background-red">
 	                            List of overdue books
 	                        </div>
-	                        <table class="body">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 2%;">#</th>
-                                        <th style="width: 17%;">Borrower</th>
-                                        <th style="width: 40%;">Material</th>
-                                        <th style="width: 12%;">Date Borrowed</th>
-                                        <th style="width: 11%;">Due Date</th>
-                                        <th style="width: 9%;"></th>
-                                        <th style="width: 10%;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    $date = date("Y-m-d");
-                                    $count = 1;
-                                    foreach($overdue as $row){
-                                        echo "<tr>
-                                                <td>$count</td>
-                                                <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
-                                                <td><b>{$row->title}</b><br/>";
-
-                                                	$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-					                                $authors="";
-					                                foreach($data['multi_valued'] as $authors_list){
-					                                    $authors = $authors."{$authors_list->author},";
-					                                }
-					                                echo "$authors ($row->year_of_pub)<br/>
-					                                Call Number: {$row->call_number}</td>";
-
-                                                echo "</td>
-                                                <td>{$row->date_borrowed}</td>
-                                                <td>{$row->due_date}</td>";
-                                        echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
-                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                <input type='submit' class='background-red' name='extend' value='Extend' />
-                                                </form></td>";
-                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
-                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                <input type='submit' class='background-red' name='return' value='Return' />
-                                            </form></td>";
-                                        echo "</tr>";
-                                        $count++;
-                                    }
-                                ?>
-                                </tbody>
-                            </table>
-                            <div class="footer pagination">
-                                <ul class="nav">
-                                    <li><a href="#">Prev</a></li>
-                                    <li><a href="#">Next</a></li>
-                                </ul>
-                            </div>
+	                        <div id="displayBook"></div>
+                                <script type="text/javascript">
+                                $(document).ready(function(){
+                                	//alert('LUL');
+                                	$.ajax({
+										url: base_url+"index.php/admin/controller_admin_home/get_book_data",					//no need to edit this
+										type: 'POST',
+										async: true,
+										success: function(result){					//displays result.
+											$('#displayBook').html(result);
+										}
+									});
+									$.ajax({
+										url: base_url+"index.php/admin/controller_admin_home/get_book_data2",					//no need to edit this
+										type: 'POST',
+										async: true,
+										success: function(result){					//displays result.
+											$('#displayOutgoing').html(result);
+										}
+									});
+									 $.ajax({
+                                        url: base_url+"index.php/admin/controller_admin_home/get_users",                    //no need to edit this
+                                        type: 'POST',
+                                        async: true,
+                                        success: function(result){                  //displays result.
+                                            $('#displayUsers').html(result);
+                                        }
+                                    });
+                                });
+                                </script>
                                 <form action="<?php echo $base ?>index.php/admin/controller_outgoing_books/send_email" method='post' id='notifyall' class="float-right">
                                 	<input type='hidden' name='notify_all' value='notify'/>
                                    <input type='submit' value='Notify All' enabled/>
@@ -96,59 +73,7 @@
 	                        <div class="header background-red">
 	                            List of outgoing books
 	                        </div>
-	                        <table class="body">
-	                            <thead>
-	                                <tr>
-	                                    <th style="width: 2%;">#</th>
-	                                    <th style="width: 20%;">Borrower</th>
-	                                    <th style="width: 40%;">Material</th>
-										<th style="width: 10%;">Due Date</th>
-	                                    <th style="width: 10%;"></th>
-	                                    <th style="width: 10%;"></th>
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-	                            	<?php
-	                            	$count = 1;
-	                                foreach($reserved as $row) {
-										if($row->rank ==1){
-											echo "<tr>
-												<td>$count</td>
-												<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
-												<td><b>{$row->title}</b><br/>";
-
-	                                                	$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-						                                $authors="";
-						                                foreach($data['multi_valued'] as $authors_list){
-						                                    $authors = $authors."{$authors_list->author},";
-						                                }
-						                                echo "$authors ($row->year_of_pub)<br/>
-						                                Call Number: {$row->call_number}</td>";
-
-	                                                echo "</td>
-												<td>{$row->due_date}</td>";
-											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-												<input type='hidden' name='res_number' value='{$row->res_number}' />
-												<input type='submit' class='background-red' name='reserve'  onclick='return confirmBookReserve(confirm$count); 'value='Confirm' />
-											</form></td>";				//button to be clicked if the reservation will be approved; functionality of this not included
-											echo "<td><form action='$base/index.php/admin/controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-												<input type='hidden' name='res_number' value='{$row->res_number}' />
-												<input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(confirm$count);' value='Cancel' />
-											</form></td>";	
-											echo "</tr>";echo "</tr>";
-
-											$count++;
-										}
-									}
-									?>
-	                            </tbody>
-	                        </table>
-	                        <div class="footer pagination">
-	                            <ul class="nav">
-	                                <li><a href="#">Prev</a></li>
-	                                <li><a href="#">Next</a></li>
-	                            </ul>
-	                        </div>
+	                        <div id="displayOutgoing"></div>
 	                    </div>
 	                    <?php
 	                    	}
@@ -167,62 +92,7 @@
 				            <div class="header background-red">
 				                List of Users
 				            </div>
-				            <table class="body">
-				                <thead>
-				                    <tr>
-				                        <th style="width: 2%;">#</th>
-				                        <th style="width: 8%;">ID Number</th>
-				                        <th style="width: 20%;">Name</th>
-				                        <th style="width: 5%;">Course</th>
-				                        <th style="width: 20%;">Email</th>
-				                        <th style="width: 8%;">Classification</th>
-				                        <th style="width: 10%;">Status</th>
-				                    </tr>
-				                </thead>
-				                <tbody>
-				                	<?php
-				                    	$count = 1;
-				                        foreach ($users as $row) {
-											echo "<tr>";
-											echo "<td>$count</td>";
-											echo "<td>".$row->account_number."</td>";
-											$fullName = $row->first_name." ".$row->middle_initial.". ".$row->last_name;
-											echo "<td>".$fullName."</td>";
-											echo "<td>".$row->course."</td>";
-											echo "<td>".$row->email."</td>";
-											echo "<td>".$row->classification."</td>";
-											$stat = $row->status;
-
-											/*
-												If status not yet 'approve', meaning the account was not yet validated,
-												a button with a value 'Validate' will be seen in the status column.
-												If status is already 'approve', meaning the account was already validated,
-												'Registered' will be displayed on the said column. 
-											*/
-
-											if($stat === "approve"){
-											echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
-											}
-											else{
-												echo "<form action='$base/index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
-				                                echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
-				                                 echo "<input type='hidden' name='approve' value='approve'/>";
-				                                echo "<td>"."<input type ='submit' class='background-red' name='approve' onclick='return confirmUser(accountconfirm$count);' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
-				                                echo "</form>";	//'Validate' button. Functionality not included here.
-										    }
-											
-											echo "</tr>";
-											$count++;
-										}
-									?>
-				                </tbody>
-				            </table>
-				            <div class="footer pagination">
-				                <ul class="nav">
-				                    <li><a href="#">Prev</a></li>
-				                    <li><a href="#">Next</a></li>
-				                </ul>
-				            </div>
+				            <div id="displayUsers"></div>
 				           </div>
 				           <?php
 				           	}
@@ -271,7 +141,7 @@ foreach($rows as $row => $data)
 				<input type='hidden' name='date' ' value='{$info[$row]['date']}' />
 				<input type='hidden' name='delete'/>
 				<input type='submit' name='edit' style='height:1.5em; font-size: 10px; line-height: 0px;' value='Edit' enabled/>
-				<input type='submit' name='delete' id='delete$count' value='Delete' style='height:1.5em; font-size:10px; line-height: 0px;'enabled/>
+				<input type='submit' name='delete' id='delete$counter' value='Delete' style='height:1.5em; font-size:10px; line-height: 0px;'enabled/>
 				</form><br/>
 		Date: {$info[$row]['date']}
 				</div>";
