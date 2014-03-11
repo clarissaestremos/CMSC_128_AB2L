@@ -1,9 +1,29 @@
 <script type="text/javascript">
 			window.onload=function() {
+        myform.title.onblur=validate_title;
 				myform.content.onblur=validate_content;
 				myform.onsubmit=process_add;
 			}
-					
+				function validate_title() {
+        msg="Invalid input: ";
+        str=myform.title.value;
+        
+        if(str=="")
+        msg+="Please provide a title to your announcement!<br/>";
+        if(!str.match(/^[a-zA-Z0-9\ \'\,\.\-\!]+[a-zA-Z0-9\ \'\,\.\-\!]*$/))
+          msg+="Must be between 1-100 alpha numeric character!<br/>";
+        if(msg=="Invalid input: ")
+        msg="";
+        else {
+          document.getElementsByName("help_title")[0].style.fontSize="10px";
+          document.getElementsByName("help_title")[0].style.fontFamily="verdana";
+          document.getElementsByName("help_title")[0].style.color="red";
+        }
+        document.getElementsByName("help_title")[0].innerHTML=msg;
+        if(msg=="")
+          return true;
+      }
+
 			function validate_content() {
 				msg="Invalid input: ";
 				str=myform.content.value;
@@ -24,7 +44,7 @@
 
 			
 			function process_add() {
-				if (validate_content()) {
+				if (validate_title()&& validate_content() ) {
 					<?php
 						if(isset($_POST['submit'])){
 							
@@ -49,11 +69,11 @@
                                 		</div>
                                 		<div class="cell">		
 										<div id="add" class="cell">
-											<form action="../controller_announcement/saveChanges" id="editannouncement" method="post">
+											<form action="../controller_announcement/saveChanges" id="editannouncement" name="myform" method="post">
 												<div class="panel cell" style="background: #f6f6f6;border: 1px solid #9BA0AF;">
 													<div class="cell">
 														<label>ANNOUNCEMENT TITLE</label><br/>
-														<input type="text" name="title" id="title" class="background-white" style="width: 95%; margin-left: 3%;" value="<?php echo $title;?>" required="required" /><br/><br/>
+														<input type="text" name="title" id="title" class="background-white" style="width: 95%; margin-left: 3%;" value="<?php echo $title;?>" required="required" /><br/><span name="help_title" class="color-red"></span><br/>
 													</div>
 												</div>
 												<div class="cell panel" style="background: #f6f6f6; margin-top: 1.5em; border: 1px solid #9BA0AF;">
