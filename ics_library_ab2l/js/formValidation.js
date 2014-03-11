@@ -18,7 +18,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
-		else if (!str.match(/^[A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
+        else if (!str.match(/^[A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valFname")[0].innerHTML=msg;
 		if(msg=="") return true;
