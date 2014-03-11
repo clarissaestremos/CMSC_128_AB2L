@@ -78,7 +78,6 @@ class Controller_admin_home extends CI_Controller {
                                         <th style='width: 2%;'>#</th>
                                         <th style='width: 17%;'>Borrower</th>
                                         <th style='width: 40%;'>Material</th>
-                                        <th style='width: 12%;'>Date Borrowed</th>
                                         <th style='width: 11%;'>Due Date</th>
                                         <th style='width: 9%;'></th>
                                         <th style='width: 10%;'></th>
@@ -105,9 +104,11 @@ class Controller_admin_home extends CI_Controller {
                                                     echo "$authors ($row->year_of_pub)<br/>
                                                     Call Number: {$row->call_number}</td>";
 
-                                                echo "</td>
-                                                <td>{$row->date_borrowed}</td>
-                                                <td>{$row->due_date}</td>";
+                                                echo "</td>";
+                                                if ($row->date_borrowed!=NULL){
+                                                	echo "<td>{$row->date_borrowed}</td>";
+                                               	}
+                                                echo "<td>{$row->due_date}</td>";
                                             if($out=="outgoing"){
                                             echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
