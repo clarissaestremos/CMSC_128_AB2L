@@ -23,11 +23,11 @@ class Controller_contact extends CI_Controller {
     }
     function emailsender(){
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('sender_name', 'required');                   //form validation
-        $this->form_validation->set_rules('sender_email', 'required|valid_email');
-        $this->form_validation->set_rules('contactnum', 'required');
-        $this->form_validation->set_rules('subject', 'required');
-        $this->form_validation->set_rules('message', 'required');
+        $this->form_validation->set_rules('sender_name', 'trim|xss_clean|required');                   //form validation
+        $this->form_validation->set_rules('sender_email', 'trim|required|valid_email|xss_clean');
+        $this->form_validation->set_rules('contactnum', 'min_length[10]|max_length[10]|numeric|required|xss_clean');
+        $this->form_validation->set_rules('subject', 'required|xss_clean');
+        $this->form_validation->set_rules('message', 'required|xss_clean');
         if ($this->form_validation->run() == FALSE)
         {
 
