@@ -112,11 +112,15 @@
                             str=myform.isbn.value;
                             if(str=="")
                                 msg+="ISBN is required!<br/>";
-                            if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
+                            else if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
                                 msg+="Must start and end in number and 13 digits.<br/>";
 
-                            if(msg=="Invalid input: ")
+                            else if(!getResultIsbn(str)){
+                            
+                            }
+                            else if(msg=="Invalid input: ")
                             msg="";
+                            
                             else {
                                 document.getElementsByName("help_isbn_key")[0].style.fontSize="10px";
                                 document.getElementsByName("help_isbn_key")[0].style.fontFamily="verdana";
@@ -150,6 +154,41 @@
                                 return true;
                         }
                         
+                        
+                        
+                        $( document ).ready(function(){   
+                         window.getResultIsbn =  function (key){
+                             // var baseurl = <?php echo base_url()?>;
+                             var bool= false;
+                                $('#help_isbn_key').append("<span id = 'helpkey'></span>");
+                                $("#helpkey").text("Checking availability...");
+                                $.ajax({
+                                        url : base_url + 'index.php/admin/controller_book/check_isbn/' + key,
+                                        cache : false,
+                                        async:false,
+                                        success : function(response){
+
+                                                $('#helpekey').delay(1000).removeClass('preloader');
+                                                if(response == 'userOk'){
+                                                        $('#helpekey').removeClass('userNo').addClass('userOk');
+                                                       // $('#helpekey').text("I available!");
+                                                        
+                                                    bool= true;
+                                                }
+                                                else{
+                                                        $('#helpekey').removeClass('userOk').addClass('color-red');;
+                                                        $("#helpekey").text("ISBN already exist.");
+                                                     bool= false;
+                                                }
+                                        }
+                                })
+
+                            
+                                return bool;
+
+                        }
+
+                    })
                         
                         function process_add() {
                             if (validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_isbn_key()) {
