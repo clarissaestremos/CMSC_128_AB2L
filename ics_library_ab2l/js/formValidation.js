@@ -154,7 +154,7 @@
 
 		if (str=="") msg+="Password is required!";
 		else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
-		else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
+		else if (str.match(/^[a-z]{5,20}$/))  msg+="Invalid Input: Strength: Weak";
 		else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
 		else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
 		else if(msg="") msg="";
