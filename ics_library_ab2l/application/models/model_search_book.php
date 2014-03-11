@@ -85,8 +85,11 @@
 						ORDER BY t.tag_name LIKE '$str%' DESC";
 				}
 				else{
-					$query=$query.$data['category']." LIKE '%$str%'
-						ORDER BY ".$data['category']." LIKE '$str%' DESC";	
+					$query="DISTINCT *
+						FROM book b, book b2
+						WHERE b.id=b2.id
+						AND b.".$data['category']." LIKE '%$str%'
+						ORDER BY b.".$data['category']." LIKE '$str%' DESC";	
 				}
 			}
 				
