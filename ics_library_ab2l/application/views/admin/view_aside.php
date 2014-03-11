@@ -3,7 +3,7 @@
 		<div class="col width-1of1">
 			<div class="cell width-1of1">
 				<?php echo form_open(base_url().'index.php/admin/controller_view_users/search_user'); ?>
-					<input id="search_bar" type="search" name="s_user" class="col width-7of8 background-white" placeholder="Search..." required/>
+					<input id="search_bar" type="search" name="s_user" class="col width-7of8 background-white" placeholder="Search user by account number" required/>
 					<input id="search_submit" type="submit" value="" class="width-fit"/>
 				</form>
 			</div>
