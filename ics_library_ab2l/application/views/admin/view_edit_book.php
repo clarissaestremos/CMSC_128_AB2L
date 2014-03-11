@@ -370,7 +370,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="callno">Call Number<span class="color-red"> *</span></label>
+                                                                            <label for="call_number">Call Number<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -410,7 +410,7 @@
                                                                  <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="yearpub">Year of Publication<span class="color-red"> *</span></label>
+                                                                            <label for="year_of_pub">Year of Publication<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -424,7 +424,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="booktype">Type of the Book<span class="color-red"> *</span></label>
+                                                                            <label for="type">Type of the Book<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -466,7 +466,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="subject">Tags<span class="color-red"> *</span></label>
+                                                                            <label for="tags">Tags<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fit">

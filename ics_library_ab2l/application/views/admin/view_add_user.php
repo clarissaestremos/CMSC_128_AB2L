@@ -80,7 +80,7 @@
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    </br><label for="classification">Classification <span class="color-red"> *</span></label>
+                                    </br><label for="classi">Classification <span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">

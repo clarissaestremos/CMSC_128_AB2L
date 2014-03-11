@@ -72,13 +72,13 @@
 											<form action="../controller_announcement/saveChanges" id="editannouncement" name="myform" method="post">
 												<div class="panel cell" style="background: #f6f6f6;border: 1px solid #9BA0AF;">
 													<div class="cell">
-														<label>ANNOUNCEMENT TITLE</label><br/>
+														<label for="title">ANNOUNCEMENT TITLE</label><br/>
 														<input type="text" name="title" id="title" class="background-white" style="width: 95%; margin-left: 3%;" value="<?php echo $title;?>" required="required" /><br/><span name="help_title" class="color-red"></span><br/>
 													</div>
 												</div>
 												<div class="cell panel" style="background: #f6f6f6; margin-top: 1.5em; border: 1px solid #9BA0AF;">
 													<div class="cell">
-													<label>ANNOUNCEMENT CONTENTS</label><br/>
+													<label for="content" >ANNOUNCEMENT CONTENTS</label><br/>
 													<textarea cols="40" rows="5" name="content" class="background-white" style="width: 95%; margin-left: 3%;" id="content" required="required"><?php echo $content;?></textarea><span name="help_content" class="color-red"><br /><br/>
 													
 													</div>
