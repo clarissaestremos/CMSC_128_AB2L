@@ -69,7 +69,7 @@
 					$flag = false;
 					echo "<div id='mysuccess' title='Error: Duplication of Copy'>
 									<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
-								</div>
+							</div>
 								<script src='".base_url()."/js/jquery-1.10.2.min.js'></script>
 								<script src='".base_url()."/js/jquery-ui.js'></script>
 								<link rel='stylesheet' href='".base_url()."/style/jquery-ui.css'/>
@@ -136,7 +136,9 @@
 							'book_stat' => $book_stat
 							);
 						$this->db->where('id', $data['id']);
-						$this->db->update('book', $newdata2);}
+						$this->db->update('book', $newdata2);
+			}
+			return $flag;
 		}
 
 		function waitlist_reservation($data){
@@ -207,6 +209,7 @@
 							);
 						$this->db->where('id', $data['id']);
 						$this->db->update('book', $newdata2);}
+			return $flag;
 		}
 
 		function fetch_book($id){

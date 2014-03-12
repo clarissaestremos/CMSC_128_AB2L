@@ -122,7 +122,7 @@ foreach($rows as $row => $data)
 	$counter = $counter + 1;
 	$data1 = explode("^",$data);
 	$info[$row]['date'] = $data1[0]; 
-	$info[$row]['tc'] = $data1[1];
+	//$info[$row]['tc'] = $data1[1];
 
 	if($counter>5) break;
 	//echo 'Date: ' . ($date=$info[$row]['date']) . '<br />';

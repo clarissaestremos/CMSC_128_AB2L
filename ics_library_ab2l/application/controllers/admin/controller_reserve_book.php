@@ -95,7 +95,7 @@ class Controller_reserve_book extends CI_Controller{
 						}
 						
 						if($no_of_available > 0){
-							$this->model_reserve_book->add_reservation($data);
+							if($this->model_reserve_book->add_reservation($data)){
 							echo "<div id='mysuccess' title='Success: Reserved'>
 									<h5>You have successfully reserved a book for user ".$data['borrower'].". Please confirm it.</h5>
 								</div>
@@ -122,11 +122,13 @@ class Controller_reserve_book extends CI_Controller{
 								            }
 								 
 								        });
-							</script>";
+							</script>";	
+							}
+							
 						}
 						else{
-							$this->model_reserve_book->waitlist_reservation($data);
-							echo "<div id='mysuccess' title='Success: Waitlisted'>
+							if($this->model_reserve_book->waitlist_reservation($data)){
+								echo "<div id='mysuccess' title='Success: Waitlisted'>
 									<h5>There is not enough number of books available. User ".$data['borrower']." is waitlisted.</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -153,6 +155,8 @@ class Controller_reserve_book extends CI_Controller{
 								 
 								        });
 							</script>";
+							}
+							
 						}	
 					}
 					else{
