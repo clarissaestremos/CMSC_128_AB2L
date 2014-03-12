@@ -68,7 +68,7 @@
         msg="Invalid Input: ";
     
         if (str=="") msg+="Email is required!";
-        else if (!str.match(/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z]{3,8}\.[A-Za-z]{3,5}$/))  msg+="Enter valid email.";
+        else if (!str.match(/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}(\.[A-Za-z]{2,3}){0,1}$/))  msg+="Enter valid email.";
         else if(msg="Invalid Input: ") msg="";
         document.getElementsByName("helpemail")[0].innerHTML=msg;
         if(msg=="") return true;
