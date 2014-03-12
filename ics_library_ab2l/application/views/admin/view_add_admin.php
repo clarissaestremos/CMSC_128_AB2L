@@ -37,7 +37,7 @@
                           <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="firstname">Administrator Key<span class="color-red"> *</span></label>
+                                                                            <label for="adminkey">Administrator Key<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -50,7 +50,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="firstname">First name<span class="color-red"> *</span></label>
+                                                                            <label for="fname">First name<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -63,7 +63,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="firstname">Middle initial<span class="color-red"> *</span></label>
+                                                                            <label for="minit">Middle initial<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
