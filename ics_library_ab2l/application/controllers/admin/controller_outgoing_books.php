@@ -111,6 +111,7 @@ class Controller_outgoing_books extends Controller_log{
     }//END OF return_book()
     
     public function reserve(){
+        $base = base_url();
         $flag = true;
 		if($this->session->userdata('logged_in_type')!="admin")
                 redirect('index.php/user/controller_login', 'refresh');
