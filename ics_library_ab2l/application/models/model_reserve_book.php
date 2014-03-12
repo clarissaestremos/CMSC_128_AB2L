@@ -142,13 +142,13 @@
 		}
 
 		function waitlist_reservation($data){
-			$flag = false;
+			$flag = true;
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
 					$call_number = $book_details->call_number;
 					$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
 					if($row2->num_rows > 0){
-						$flag = true;
+						$flag = false;
 						echo "<div id='mysuccess' title='Error: Duplication of Copy'>
 									<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
 								</div>
@@ -182,7 +182,7 @@
 					$rank = $row2->num_rows();
 					break;
 			}
-			if($flag == false){
+			if($flag){
 						$status = "reserved";
 						$rank++;
 						$newdata = array(
