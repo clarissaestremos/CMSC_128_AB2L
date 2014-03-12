@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'sql212.byethost7.com';
-$db['default']['username'] = 'b7_14476939';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'ab2l';
 $db['default']['password'] = 'cmsc128ab2l';
-$db['default']['database'] = 'b7_14476939_icslibraryab2l';
+$db['default']['database'] = 'ics_library';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
