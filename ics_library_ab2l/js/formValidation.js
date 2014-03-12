@@ -1,24 +1,22 @@
 	window.onload=function(){
-	
-
-				regForm.fname.onblur=validateFname;
-				regForm.minit.onblur=validateMinitial;
-				regForm.lname.onblur=validateLname;
-				regForm.stdNum.onblur=validateNumber;
-				regForm.classi.onblur=validateClassification;
-				regForm.eadd.onblur=validateEmail;
-				regForm.uname.onblur=validateUser;
-				regForm.pass.onblur=validatePass;
-				regForm.cpass.onblur=validateCpass;
-				
-			}
+		regForm.fname.onblur=validateFname;
+		regForm.minit.onblur=validateMinitial;
+		regForm.lname.onblur=validateLname;
+		regForm.stdNum.onblur=validateNumber;
+		regForm.classi.onblur=validateClassification;
+		regForm.eadd.onblur=validateEmail;
+		regForm.uname.onblur=validateUser;
+		regForm.pass.onblur=validatePass;
+		regForm.cpass.onblur=validateCpass;
+		
+	}
 			
 	function validateFname(){
 		str=regForm.fname.value;
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
-        else if (!str.match(/^[A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
+        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valFname")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -28,7 +26,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Middle Initial is required!";
-		else if (!str.match(/^[a-zA-Z|Ñ]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
+		else if (!str.match(/^[a-zA-Z|Ñ|ñ]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valInitial")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -38,7 +36,7 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Last name is required!";
-		else if (!str.match(/^[A-Z|a-z\.|\-|\s|ñ|Ñ]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+		else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
 		else if(msg="Invalid input") msg="";
 		document.getElementsByName("valLname")[0].innerHTML=msg;
 		if(msg=="") return true;
@@ -159,7 +157,10 @@
 		else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
 		else if(msg="") msg="";
 		document.getElementsByName("valPass")[0].innerHTML=msg;
-		if(msg === "Strength: Medium" || msg==="Strength: Strong") return true;
+		if(msg === "Strength: Medium" || msg==="Strength: Strong"){
+			validateCPass();
+			return true;
+		}
 		else return false;
 	}		
 	function validateCpass(){

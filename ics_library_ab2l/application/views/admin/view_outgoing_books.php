@@ -46,14 +46,14 @@
 	                </div>				
 	            </div>
 <div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
-	<p>Are you sure that you want confirm the borrowing of this book?</o>
+	<p>Are you sure that you want to borrow this book?</o>
 </div>
 <div id="canceldialog" title="Cancel Reservation Confirmation">
 	<p>Are you sure that you want to cancel the reservation of this book?</o>
 </div>
 <div id='confirmsuccess' title="Confirm Borrowing Book Success">
-	<p>You have successfuly confirm an outgoing book</p>
+	<p>You have successfuly confirmed an outgoing book.</p>
 </div>
 <div id="cancelsuccess" title="Cancel Reservation Success">
-	<p>You have successfully cancel a book reservation</p>
+	<p>You have successfully cancelled a book reservation.</p>
 </div>
