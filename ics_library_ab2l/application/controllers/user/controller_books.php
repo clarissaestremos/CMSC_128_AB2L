@@ -92,7 +92,7 @@ class Controller_books extends CI_Controller {
                                         </td>";
                                 else
                                     echo "<td><form method='POST' action='controller_reserve_book/verify_login/$row->id'>
-                                            <input type='submit' class='background-red table-button' value='Waitlist'></td>";
+                                            <input type='submit' class='background-red table-button' value='Waitlist'></form></td>";
                                 
                                 echo "</tr>";
                         $count++;
