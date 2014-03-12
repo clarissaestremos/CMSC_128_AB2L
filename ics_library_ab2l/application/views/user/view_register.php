@@ -72,11 +72,10 @@
                             </div>
                         </div>
 
-
                         <div class="col">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    </br><label for="classi">Classification <span class="cell color-red validmsg"> *</span></label>
+                                    </br><label for="classi">Classification <span class="color-red"> *</span></label>
                                 </div>
                             </div>
                             <div class="col width-fill">
@@ -84,28 +83,25 @@
                                     <br/>
                                     <select id = "classi" name = "classi" onchange = "checker()" required >
                                     <option value="default" disabled selected="selected">Select Classification</option>
-                                    <option value="student">Student </option>
+                                    <option value="student">Student</option>
                                     <option value="faculty">Faculty</option>
                                     </select>
+                                    <br/><span class = "color-red valClass" id="span_sno" name = "valClass"></span>
                                 </div>
                             </div>
-                            <div class="col width-fill">
-                                <div class="cell">
-                                    <input style="display:none;" data-required="true" data-error-message="Classification is required">
-                                    <span class = "color-red" name = "valClass" class = "valClass">
-                                </div>
-                            </div>
+                           
                         </div>
 
                          <div class="col" id= "numDiv">
                             <div class="col width-1of4">
                                 <div class="cell">
-                                    <label for="stdNum" id = "labelNum">Student Number<span id="labelNum" class="color-red"> *</span></label>
+                                    <label for="stdNum" id = "labelNum">Student Number<span class="color-red"> *</span></label>
                                 </div>
+
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><span class = "cell color-red validmsg valClass" id = "span_sno" name = "valNumber"></span>
+                                    <input type="text" name="stdNum" class="background-white" placeholder="Your ID number" id = "stdNum" required/><br/><span class = "color-red valClass" id="span_snum" name = "valNumber"></span>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +115,8 @@
                             <div class="col width-fill">
                                 <div class="cell">
                                     <br/>
-                                    <select id = "college" name = "college" onblur = "courseChecker()"><span name = "valCollege" class= "valClass cell color-red validmsg"></span>
-                                    <option value="default" disabled selected="selected" required>Select College</option>
+                                    <select id = "college" name = "college" onblur = "courseChecker()"><br/><span name = "valCollege" class= "valClass color-red"></span>
+                                    <option value="default" disabled selected="selected">Select College</option>
                                     <option value="CA">CA</option>
                                     <option value="CAS">CAS</option>
                                     <option value="CDC">CDC</option>
@@ -136,13 +132,10 @@
                                     <option value="CPAf">CPAf</option-->
                                     
                                     </select>
+                                    <br/><span class = "color-red valClass" id="span_college" name = "valCollege"></span>
                                 </div>
                             </div>
-                            <div class="col width-fill">
-                                <div class="cell">
-                                    <input style="display:none;" data-required="true" data-error-message="College is required">
-                                </div>
-                            </div>
+                           
                         </div>
 
                         <div class="col" id= "courseDiv">
@@ -153,16 +146,13 @@
                             </div>
                         <div class="col width-fill">
                                 <div class="cell"><br/>
-                                    <select id = "course" name = "course" onfocus = "courseChecker()" >
-                                    
+                                    <select id = "course" name = "course" onblur = "validateCourse()" >
+                                    <option value="default" disabled selected="selected">Select Course</option>
                                     </select>
+                                     <br/><span class = "color-red valClass" id="span_course" name = "valCourse"></span>
                                 </div>
                             </div>
-                            <div class="col width-fill">
-                                <div class="cell">
-                                    <input style="display:none;" data-required="true" data-error-message="Course is required">
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div class="col" id = "divEadd">

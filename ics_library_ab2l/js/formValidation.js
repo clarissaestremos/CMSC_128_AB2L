@@ -91,26 +91,39 @@
 		document.getElementsByName("valCollege")[0].innerHTML=msg;
 		if(msg=="") return true;
 	}
-	function validateCourse(){
-		str=regForm.course.value;
-		msg="Invalid Input: ";
-		
-		if (str=="") msg+="Course is required!";
-		else if (!str.match(/^[A-Z]{4,8}$/))  msg+="Must be an acronym!<br/>";
-		else if(msg=="Invalid Input: ") msg="";
-		document.getElementsByName("valCourse")[0].innerHTML=msg;
-		if(msg=="") return true;
-	}
+
 	function validateClassification(){
 		str=regForm.classi.value;
 		msg="Invalid Input: ";
 		
-		if (str=="") msg+="Classification is required!";
+		if (str=="default") msg+="Classification is required!";
 		else if (!str.match(/^(student|faculty)$/))  msg+="Must be a student or faculty!<br/>";
 		else if(msg=="Invalid Input: ") msg="";
-		//document.getElementsByName("valClass")[0].innerHTML=msg;
+		document.getElementsByName("valClass")[0].innerHTML=msg;
+		if(msg=="") return true;
+	}
+	function validateCourse(){
+		str=regForm.course.value;
+		msg="Invalid Input: ";
+		classi= regForm.classi.value;
+		if(classi== "faculty") return true;
+		if (str=="default") msg+="Course  is required!";
+		
+		else if(msg=="Invalid Input: ") msg="";
+		document.getElementsByName("valCourse")[0].innerHTML=msg;
 		if(msg=="") return true;
 	}	
+	function validateCollege(){
+		str=regForm.college.value;
+		msg="Invalid Input: ";
+		
+		if (str=="default") msg+="College  is required!";
+		
+		else if(msg=="Invalid Input: ") msg="";
+		document.getElementsByName("valCollege")[0].innerHTML=msg;
+		if(msg=="") return true;
+		else return false;
+	}
 			
 	function validateEmail(){
 		str=regForm.eadd.value;
@@ -181,11 +194,18 @@
 	function validateAll(){
 		flag  = document.getElementById("classi").value;
 		console.log(flag);
-		if(validateFname()&&validateMinitial()&&validateLname()&&validateNumber()&&validateClassification()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
+		bool = true;
+		if(validateFname()&&validateMinitial()&&validateLname()&&validateClassification()&&validateNumber()&&validateCollege() && validateCourse()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
 		{
+
 			return true;
+		
 		}
 		else{return false;}
-	return true;
+
+
+	
+
+	
 	}
 
