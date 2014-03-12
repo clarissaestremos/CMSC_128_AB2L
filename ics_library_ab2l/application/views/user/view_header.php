@@ -181,7 +181,7 @@ if($this->session->userdata('logged_in_type')=='admin')
           <?php if($titlepage === "View all books"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_books"><span class="fa icon-bookmark"></span>  View Books</a></li>
           <?php if($titlepage === "Books - Search"){ echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_search_book"><span class='fa icon-search'></span>  Search</a></li>
           <?php if($titlepage === "Frequently Asked Questions") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_faq"><span class='fa icon-th-list'></span>  FAQs</a></li>
-          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="fa icon-map-marker"></span>  Contacts</a></li>
+          <?php if($titlepage === "Contact Us") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_contact"><span class="fa icon-map-marker"></span>  Contact Us</a></li>
           <?php if($titlepage === "Book Statistics") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_stat"><span class="fa icon-bar-chart"></span>  Statistics</a></li>
           <li class="divider"></li>
           <?php

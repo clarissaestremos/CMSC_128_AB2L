@@ -82,7 +82,7 @@
             document.getElementsByName("helpusername")[0].innerHTML=msg;
         }
         else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{4,20}$/)){
-          msg+="Must be between 5-20 characters.<br/>";
+          msg+="Must be between 5-20 alphanumeric characters.<br/>";
             document.getElementsByName("helpusername")[0].innerHTML=msg;
         }
         else if(msg=="Invalid Input: "){
