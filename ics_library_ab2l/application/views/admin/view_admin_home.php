@@ -218,7 +218,7 @@ else{
 	<p>You have successfully cancel a book reservation!</p>
 </div>
 <div id="confsuccess" title="Confirm User Account Success">
-    <p>You have successfully confirmed an user account!</p>
+    <p>You have successfully confirmed a user account!</p>
 </div>
 <div id="returnsucc" title="Return Book Success">
     <p>You have successfully returned a book!</p>

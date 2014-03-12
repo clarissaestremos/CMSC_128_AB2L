@@ -41,7 +41,7 @@
 </div>
 </div>
 <div id="dialog" title="Book Confirmation Dialog">
-  <h5>Do you really wish to reserved this material?</h5>
+  <h5>Do you really wish to reserve this material?</h5>
   <p>Title: <?php echo $title?></p>
   <p>Author/s: <?php 
   	foreach ($author as $value) {
