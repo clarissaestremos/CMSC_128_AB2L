@@ -61,7 +61,7 @@ class Controller_admin_home extends CI_Controller {
     }
     function get_book_data2(){
        $row_number=$this->model_reservation->countRows("reserved");
-        //echo "<h1>$row_number<h1>";
+        //echo "<h1>$row_number</h1>";
         $config['base_url'] = base_url().'index.php/admin/controller_admin_home/get_book_data2';     //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
         $config['total_rows'] = $row_number;
         $config['per_page'] = 5;
@@ -91,45 +91,67 @@ class Controller_admin_home extends CI_Controller {
         $date = date("Y-m-d");
         $count = 1;
         foreach($overdue as $row){
-            echo "<tr>
-            <td>$count</td>
-            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
-            <td><b>{$row->title}</b><br/>";
+			if($out=="outgoing"){
+				if($row->rank == 1){
+					echo "<tr>
+						<td>$count</td>
+						<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
+						<td><b>{$row->title}</b><br/>";
 
-            $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-            $authors="";
-                                                    foreach($data['multi_valued'] as $authors_list){
-                                                        $authors = $authors."{$authors_list->author},";
-                                                    }
-                                                    echo "$authors ($row->year_of_pub)<br/>
-                                                    Call Number: {$row->call_number}</td>";
+						$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+						$authors="";
+							foreach($data['multi_valued'] as $authors_list){
+								$authors = $authors."{$authors_list->author},";
+							}
+							echo "$authors ($row->year_of_pub)<br/>
+							Call Number: {$row->call_number}</td>";
 
-                                                echo "</td>";
-                                                if ($row->date_borrowed!=NULL){
-                                                	echo "<td>{$row->date_borrowed}</td>";
-                                               	}
-                                                echo "<td>{$row->due_date}</td>";
-                                            if($out=="outgoing"){
-                                            echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                <input type='submit' class='background-red' name='reserve' onclick='return confirmBookReserve(confirm$count);' value='Confirm' />
-                                            </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
-                                            echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                <input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(cancel$count);' value='Cancel' />
-                                            </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
-                                            }else if($out=="overdue"){
-                                            echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
-                                                    <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                    <input type='submit' class='background-red' name='extend' onclick='return extendBook(overext$count);' value='Extend' />
-                                                </form></td>";
-                                        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
-                                                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                                                <input type='submit' class='background-red' name='return' onclick='return returnBook(overret$count);' value='Return' />
-                                            </form></td>";
-                                        }
-                                        echo "</tr>";
-                                        $count++;
+						echo "</td>";
+						if ($row->date_borrowed!=NULL){
+							echo "<td>{$row->date_borrowed}</td>";
+						}
+						echo "<td>{$row->due_date}</td>";
+					echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+						<input type='hidden' name='res_number' value='{$row->res_number}' />
+						<input type='submit' class='background-red' name='reserve' onclick='return confirmBookReserve(confirm$count);' value='Confirm' />
+					</form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
+					echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+						<input type='hidden' name='res_number' value='{$row->res_number}' />
+						<input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(cancel$count);' value='Cancel' />
+					</form></td>";             //button to be clicked if the reservation will be cancelled; functionality of this not included
+					$count++;
+				}
+			}else if($out=="overdue"){
+				echo "<tr>
+						<td>$count</td>
+						<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
+						<td><b>{$row->title}</b><br/>";
+
+						$data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+						$authors="";
+							foreach($data['multi_valued'] as $authors_list){
+								$authors = $authors."{$authors_list->author},";
+							}
+							echo "$authors ($row->year_of_pub)<br/>
+							Call Number: {$row->call_number}</td>";
+
+						echo "</td>";
+						if ($row->date_borrowed!=NULL){
+							echo "<td>{$row->date_borrowed}</td>";
+						}
+						echo "<td>{$row->due_date}</td>";
+				echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
+						<input type='hidden' name='res_number' value='{$row->res_number}' />
+						<input type='submit' class='background-red' name='extend' onclick='return extendBook(overext$count);' value='Extend' />
+					</form></td>";
+				echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
+						<input type='hidden' name='res_number' value='{$row->res_number}' />
+						<input type='submit' class='background-red' name='return' onclick='return returnBook(overret$count);' value='Return' />
+					</form></td>";
+					$count++;
+			}
+		echo "</tr>";
+                                        
     }
     echo "</tbody></table><div id='footer pagination'>";
     echo $link."</div>";

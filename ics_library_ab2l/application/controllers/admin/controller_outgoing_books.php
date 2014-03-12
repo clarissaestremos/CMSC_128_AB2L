@@ -78,9 +78,9 @@ class Controller_outgoing_books extends Controller_log{
                 $this->email->subject($subject);
                 $this->email->message($message);
                 //Send the email
-                if($this->email->send()){
+                //if($this->email->send()){
                     $this->model_reservation->update_user_date_notif($account_number);
-                }	
+                //}	
             }
             unset($_POST['notify_all']);
             $date = date("Y-m-d");

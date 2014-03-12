@@ -106,7 +106,7 @@
 	<p>Are you sure that you want to edit this announcement?</o>
 </div>
 <div id='successdialog' title='Success Dialog'>
-	<p>You have successfully edit the announcement!!</p>
+	<p>You have successfully edited the announcement!!</p>
 </div>
 <div id="announcementcancel" title="Cancel Add Announcement Dialog">
 	<p>Do you really want to cancel editing this announcement?</p>

@@ -102,7 +102,7 @@
 	<p>Are you sure that you want to add this announcement?</p>
 </div>
 	<div id="addsucc" title="Add Announcement Success">
-		<p>You have successfully added a new announcement. This will be shown on the homepage of the website</p>
+		<p>You have successfully added a new announcement. This announcement will be shown on the homepage of the website.</p>
  	</div>
 <div id="canceladddialog" title="Cancel Add Announcement Dialog">
 	<p>Do you really want to cancel adding an announcement?</p>

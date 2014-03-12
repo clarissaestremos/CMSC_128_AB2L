@@ -108,12 +108,12 @@ class Controller_view_users extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-		$this->load->model('model_user');
-        $this->model_user->approve_user($account_number);
-        $session_user = $this->session->userdata('logged_in')['username'];
-        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
         $base = base_url();
-        if($this->email->send()){
+    //    if($this->email->send()){
+			$this->load->model('model_user');
+	        $this->model_user->approve_user($account_number);
+	        $session_user = $this->session->userdata('logged_in')['username'];
+	        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
             echo "
                     <div id='mysuccess' title='Add User Account Success'>
                         <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
@@ -142,9 +142,9 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-		}else{
+		/**}else{
             echo "
-                    <div id='mysuccess' title='Add User Account Success'>
+                    <div id='mysuccess' title='Add User Account Failed'>
                         <h6>The account of $account_number was not successfully validated! Error: Email failed to send. Please check your internet connection.</h6>
                     </div>
                     <script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -171,7 +171,7 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-		}
+		}*/
 	}
         
     function deactivate(){

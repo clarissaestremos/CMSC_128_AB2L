@@ -5,7 +5,7 @@ class controller_editprofile extends CI_Controller {
     public function __construct(){
             parent::__construct();
             $this->load->helper('url');
-            $this->load->model('model_viewUser');
+            $this->load->model('model_viewuser');
              $this->load->model('user_model');
               $this->load->model('model_check_session');
                $this->load->helper('form');
@@ -23,7 +23,7 @@ class controller_editprofile extends CI_Controller {
                $data['username']= $this->session->userdata('logged_in')['username'];
                 $data['start']= "true";
                 //get the details of the user
-               $user_details = $this->model_viewUser->get_info($data['username']);
+               $user_details = $this->model_viewuser->get_info($data['username']);
              //  var_dump($user_details[0]['classification']);
 
                foreach ($user_details as $user) {
@@ -55,8 +55,8 @@ class controller_editprofile extends CI_Controller {
     public function viewInfo($number){
             //$data['title']= 'Home';
            
-            $value['info'] = $this->modelviewUser->getInfo($number);
-            $this->load->view('viewAccount',$value);
+            $value['info'] = $this->model_viewuser->getInfo($number);
+            $this->load->view('user/viewAccount',$value);
         }
 
 

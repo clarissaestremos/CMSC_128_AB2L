@@ -69,8 +69,8 @@ class Controller_settings extends Controller_log {
 					}
 					//save content to string
 					//overwrite the text file with the new settings
-					$savestring = $new_email."\n".$new_password;
-					$fp = fopen('./application/third_party/e99b386ab2e00f9ad17b.txt', "w");
+					$savestring = '<?php\n\t\t$email = "'.$new_email.'";\n\t\t$password = "'.$new_password.'";\n?>';
+					$fp = fopen('./application/controllers/admin/controller_retrieve_email.php', "w");
 					fwrite($fp, $savestring);
 					fclose($fp);
 					$session_user = $this->session->userdata('logged_in')['username'];

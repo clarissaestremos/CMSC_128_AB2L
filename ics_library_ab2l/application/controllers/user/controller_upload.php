@@ -29,7 +29,7 @@
  
     {
  
-       $config['upload_path']   =   "uploads/";
+       $config['upload_path']   =   "../../../uploads/";
        chmod("uploads/", 0755);  // octal; correct value of mode
  
        $config['allowed_types'] =   "gif|jpg|jpeg|png"; 
