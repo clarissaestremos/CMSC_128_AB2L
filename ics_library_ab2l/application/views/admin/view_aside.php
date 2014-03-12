@@ -59,7 +59,7 @@
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_announcement/viewForm" class="nav-a">Add Announcements</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_announcement" class="nav-a">View Announcements</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_stat" class="nav-a">View Statistics</a></li>
-						<li><a href="<?php echo base_url() ?>index.php/admin/controller_log/today" class="nav-a">View Logs</a></li>
+						<li><a href="<?php echo base_url() ?>index.php/admin/controller_log" class="nav-a">View Logs</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_settings" class="nav-a">View Settings</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_logout" class="nav-a">Logout</a></li>
 					</ul>
