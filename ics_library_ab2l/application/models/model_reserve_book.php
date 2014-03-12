@@ -84,11 +84,11 @@
 								            },
 								            draggable: false,
 								            close: function(event, ui){
-								                window.location.replace('".base_url()."/index.php/user/controller_book/user_reserved_list');
+								                window.location.replace('".base_url()."/index.php/user/controller_home');
 								            },
 								            buttons : {
 								              'Ok': function() {
-								                  window.location.replace('".base_url()."/index.php/user/controller_book/user_reserved_list');
+								                  window.location.replace('".base_url()."/index.php/user/controller_home');
 								              },
 								            }
 								 
