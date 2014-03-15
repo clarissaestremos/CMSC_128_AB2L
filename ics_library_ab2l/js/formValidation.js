@@ -16,9 +16,18 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
-		else if(str.length>50  || str.length<2) msg+="Must be between 2-50 alpha characters!<br/>"
-        else if (!str.match(/^[A-Za-z|ñ|Ñ|\s]{1,}[\.\-]{0,1}[A-Za-z|ñ|Ñ|\s]{0,}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
-		else if(msg=="Invalid Input: ") msg="";
+		else if(str.length>50  || str.length<2) msg+="Must be between 2-50 alpha characters!<br/>";
+		else if(str.match(/([A-Za-z]*\-[A-Za-z]*\-)+/)){ 
+        	msg+="Invalid Name!<br/>";
+        	
+        	
+        }
+        else if (!str.match(/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/)){ 
+        	 	   msg+="Must be between 2-50 alpha characters!<br/>";
+        	 }
+       
+
+		if(msg=="Invalid Input: ") msg="";
 		document.getElementsByName("valFname")[0].innerHTML=msg;
 		if(msg=="") return true;
 	}	
