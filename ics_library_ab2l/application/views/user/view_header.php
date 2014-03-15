@@ -160,7 +160,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 				  <span class="icon-bar"></span>
 				  <span class="icon-bar"></span>
 				  </button>
-				  <a class="navbar-brand color-white" href="<?php echo base_url();?>">
+				  <span class="navbar-brand color-white" href="<?php echo base_url();?>">
 					<?php if($titlepage === "ICS Library Home") echo "<span class='fa icon-home'></span>";
 					  if($titlepage === "View all books") echo "<span class='fa icon-bookmark'></span>";
 					  if($titlepage === "Books - Search") echo "<span class='fa icon-search'></span>";
@@ -172,7 +172,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 					  if(isset($name))
 						if($titlepage == $name) echo "<span class='glyphicon glyphicon-user'></span>";
 					?>            
-				  </a>
+				  </span>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu" id="menu-collapse">
