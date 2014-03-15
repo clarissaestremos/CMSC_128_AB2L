@@ -150,7 +150,7 @@ if($this->session->userdata('logged_in_type')=='admin')
 					
 				</div>
 			</div>
-			<nav id="headnav" class="navbar-default" role="navigation" style="background-image:url('<?php echo base_url();?>images/navigation.png'); box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
+			<nav id="headnav" class="navbar-default" role="navigation" style="background:#e04545; box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
 				<div class="container-fluid center" id="navigation">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
