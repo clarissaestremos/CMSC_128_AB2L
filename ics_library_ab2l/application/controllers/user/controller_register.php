@@ -107,7 +107,7 @@ class Controller_register extends CI_Controller {
 			             $base = base_url();
 			            echo "
 					<div id='mysuccess' title='User Register Success'>
-						<h5>You have successfully register!</h5>
+						<h5>You have successfully registered!</h5>
 					</div>
 					<script src='$base/js/jquery-1.10.2.min.js'></script>
 					<script src='$base/js/jquery-ui.js'></script>

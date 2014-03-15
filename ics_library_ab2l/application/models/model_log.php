@@ -15,7 +15,7 @@
 				return $query->result();
 			}else{
 				$query = $this->db->order_by("log_number", "desc");
-				$query = $this->db->get_where('admin_log', array('date' => $today));
+				$query = $this->db->get_where('admin_log', array('date' => 'NOW()'));
 				 
 				return $query->result();
 			}

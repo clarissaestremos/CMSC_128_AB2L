@@ -115,7 +115,7 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Status:</span><em><?php echo  $user_details->status?></em>
+                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">

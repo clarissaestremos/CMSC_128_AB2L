@@ -41,6 +41,7 @@ class Controller_reserve_book extends CI_Controller{
 	}
 
 	function verify_login($id){
+		echo "<script>alert('$id');</script>";
 		$id = urldecode($id);
 			$newdata = array(
 				'id' => $id
@@ -79,8 +80,8 @@ class Controller_reserve_book extends CI_Controller{
 					}
 					
 					if($no_of_available > 0){
-						$this->model_reserve_book->add_reservation($data);
-						echo "<div id='mysuccess' title='Success: Reserved'>
+						if($this->model_reserve_book->add_reservation($data)){
+							echo "<div id='mysuccess' title='Success: Reserved'>
 									<h5>You have successfully reserved a book. Please confirm it to the administrator..</h5>
 								</div>
 								<script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -107,9 +108,11 @@ class Controller_reserve_book extends CI_Controller{
 								 
 								        });
 							</script>";
+						}
+						
 					}
 					else{
-						$this->model_reserve_book->waitlist_reservation($data);
+						if($this->model_reserve_book->waitlist_reservation($data)){
 						echo "<div id='mysuccess' title='Success: Waitlisted'>
 									<h5>There is not enough number of books available. You are waitlisted.</h5>
 								</div>
@@ -136,7 +139,10 @@ class Controller_reserve_book extends CI_Controller{
 								            }
 								 
 								        });
-							</script>";
+							</script>";	
+						}
+
+						
 					}	
 				}
 				else{

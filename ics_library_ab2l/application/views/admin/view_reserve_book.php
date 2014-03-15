@@ -30,7 +30,7 @@
 </div>
 </div>
 <div id="dialog" title="Book Confirmation Dialog">
-  <h6>Do you really wish to reserved this material?</h6>
+  <h6>Do you really wish to reserve this material?</h6>
   <p>Title: <?php echo $title?></p>
   <p>Author/s: <?php 
   	foreach ($author as $value) {

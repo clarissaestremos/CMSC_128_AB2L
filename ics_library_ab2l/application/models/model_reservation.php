@@ -7,10 +7,18 @@ class Model_reservation extends CI_Model {
 		return $query->result();
 	}
 	public function countRows($status){
-		$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
-		AND br.call_number = cn.call_number
-		AND cn.id = b.id
-		AND br.status='$status'";
+		if($status=="reserved"){
+			$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
+			AND br.call_number = cn.call_number
+			AND cn.id = b.id
+			AND br.status='$status'
+			AND br.rank=1";
+		}else{
+			$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
+			AND br.call_number = cn.call_number
+			AND cn.id = b.id
+			AND br.status='$status'";
+		}
 		$this->db->select($query,false);
 		$rows=$this->db->get();
 		return $rows->num_rows();
@@ -20,12 +28,22 @@ class Model_reservation extends CI_Model {
 		if($limit>0){	//checks the limit if it is set to greater than 0.
 			$this->db->limit($limit, $start);
 		}
-		$this->db->select("*
-		FROM book b, book_reservation br, user_account ua, book_call_number cn
-		WHERE br.account_number=ua.account_number
-		AND br.call_number = cn.call_number
-		AND cn.id = b.id
-		AND br.status='$status'",false);
+		if($status=="reserved"){
+			$this->db->select("*
+			FROM book b, book_reservation br, user_account ua, book_call_number cn
+			WHERE br.account_number=ua.account_number
+			AND br.call_number = cn.call_number
+			AND cn.id = b.id
+			AND br.status='$status'
+			AND br.rank=1",false);
+		}else{
+			$this->db->select("*
+			FROM book b, book_reservation br, user_account ua, book_call_number cn
+			WHERE br.account_number=ua.account_number
+			AND br.call_number = cn.call_number
+			AND cn.id = b.id
+			AND br.status='$status'",false);
+		}
 		$query=$this->db->get(); 
 		return $query->result();
 	}

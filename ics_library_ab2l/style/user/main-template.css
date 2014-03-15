@@ -386,7 +386,7 @@ td{
 	color: white;
 	font-weight: bold;
 }
-#menu-collapse> ul li[class='hov']:hover{
+#menu-collapse > ul li[class='hov']:hover{
 	transition: background 1s;
 	background:#9d261d;
 }

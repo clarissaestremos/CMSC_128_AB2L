@@ -65,6 +65,7 @@ class Controller_add_user extends Controller_log {
     }
 	
 	function email_confirm_account($account_number){
+		$base = base_url();
 		if($this->session->userdata('logged_in_type')!="admin")
 			redirect('index.php/user/controller_login', 'refresh');
 		include("./application/controllers/admin/controller_retrieve_email.php");
@@ -111,7 +112,7 @@ class Controller_add_user extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-		if($this->email->send()){
+		//if($this->email->send()){
 			$this->load->model('model_user');
 			$this->model_user->approve_user($account_number);
 			$session_user = $this->session->userdata('logged_in')['username'];
@@ -149,7 +150,7 @@ class Controller_add_user extends Controller_log {
 			$data['msg'] = "You've successfully registered and validated a user account.";
             $data['msg1'] = true;
 			//redirect('index.php/admin/controller_view_users/viewUser/'.$account_number,'refresh');
-		}else{
+		/**}else{
 			$data['msg']= "The account of $account_number was not successfully validated! Email failed to send";
 			$data['msg1']= false;
 			echo "
@@ -180,7 +181,7 @@ class Controller_add_user extends Controller_log {
 					 
 					        });
 						</script>";
-		}
+		}*/
 		$this->success($data);
 	}
 

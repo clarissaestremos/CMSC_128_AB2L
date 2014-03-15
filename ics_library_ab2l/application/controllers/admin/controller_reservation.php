@@ -116,10 +116,14 @@ class Controller_reservation extends Controller_log{
                                                 echo "</td>
                                                 <td>{$row->date_borrowed}</td>
                                                 <td>{$row->due_date}</td>";
+										if($row->due_date <= $date){
 										echo "<td><form action='controller_reservation/extend' id='overext$count' method='post'>
 												<input type='hidden' name='res_number' value='{$row->res_number}' />
 												<input type='submit' class='background-red' name='extend' onclick='return extendBook(overext$count);' value='Extend' />
 												</form></td>";
+										}else{
+											echo "<td></td>";
+										}
 										echo	"<td><form action='controller_outgoing_books/return_book/' id='overret$count' method='post'>
                                                 <input type='hidden' name='res_number' value='{$row->res_number}' />
                                                 <input type='submit' class='background-red' name='return' onclick='return returnBook(overret$count);' value='Return' />

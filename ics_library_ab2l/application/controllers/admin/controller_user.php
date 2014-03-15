@@ -100,13 +100,13 @@ class Controller_user extends Controller_log{
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-	/*	if($this->email->send()){
+	//	if($this->email->send()){
 			$this->load->view("admin/view_success_validate_user");
 			//edit parameters of add_log to the specific function that your function is doing
 			//first parameter: message
 			//second parameter: type
 			$this->add_log("Admin 1 verified account of $account_number", "Verify User");
-		}*/
+	//	}
 	}
 }
 ?>

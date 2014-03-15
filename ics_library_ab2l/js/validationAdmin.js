@@ -1,14 +1,14 @@
 //edited
  window.onload=function(){
-                regForm.adminkey.onblur=validateAdminkey;
+               regForm.adminkey.onblur=validateAdminkey;
                 regForm.fname.onblur=validateFname;
                 regForm.minit.onblur=validateMinitial;
                 regForm.lname.onblur=validateLname;
                 regForm.eadd.onblur=validateEmail;
                 regForm.uname.onblur=validateUser;
                 regForm.pass.onblur=validatePass;
-                regForm.cpass.onblur=validateCpass;
-                regForm.onclick=validateAll;
+                regForm.cpass.onblur=validateCpass; 
+                regForm.add_admin.onclick=validateAll;
             }
             
     function validateFname(){
@@ -16,8 +16,8 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="First name is required!";
-        else if (!str.match(/^[A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
-        else if(msg="Invalid input") msg="";
+        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
+        else if(msg=="Invalid Input: ") msg="";
         document.getElementsByName("helpfname")[0].innerHTML=msg;
         if(msg=="") return true;
     }
@@ -26,8 +26,8 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="Middle Initial is required!";
-        else if (!str.match(/^[a-zA-Z|Ñ]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
-        else if(msg="Invalid input") msg="";
+        else if (!str.match(/^[a-zA-Z|Ñ|ñ]{1,3}$/))  msg+="Must be between 1-3 alpha characters.<br/>";
+        else if(msg=="Invalid Input: ") msg="";
         document.getElementsByName("helpmname")[0].innerHTML=msg;
         if(msg=="") return true;
     }
@@ -36,8 +36,8 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="Last name is required!";
-        else if (!str.match(/^[A-Z|a-z\.|\-|\s|ñ|Ñ]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
-        else if(msg="Invalid input") msg="";
+        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+        else if(msg=="Invalid Input: ") msg="";
         document.getElementsByName("helplname")[0].innerHTML=msg;
         if(msg=="") return true;
     }
@@ -49,11 +49,11 @@
             msg+="Admin key is required!";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }
-        else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{7,9}$/)){
+        else if (!str.match(/^[A-Za-z0-9][A-Za-z0-9._]{6,8}$/)){
           msg+="Must be between 8-10 alphanumeric character!<br/>";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }
-        else if(msg="Invalid input"){
+        else if(msg=="Invalid Input: "){
             msg="";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
             if(getResultAdminKey(str)) msg="";
@@ -68,7 +68,7 @@
         msg="Invalid Input: ";
     
         if (str=="") msg+="Email is required!";
-        else if (!str.match(/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z]{3,8}\.[A-Za-z]{3,5}$/))  msg+="Enter valid email.";
+        else if (!str.match(/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}(\.[A-Za-z]{2,3}){0,1}$/))  msg+="Enter valid email.";
         else if(msg="Invalid Input: ") msg="";
         document.getElementsByName("helpemail")[0].innerHTML=msg;
         if(msg=="") return true;
@@ -82,10 +82,10 @@
             document.getElementsByName("helpusername")[0].innerHTML=msg;
         }
         else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{4,20}$/)){
-          msg+="Must be between 5-20 characters.<br/>";
+          msg+="Must be between 5-20 alphanumeric characters.<br/>";
             document.getElementsByName("helpusername")[0].innerHTML=msg;
         }
-        else if(msg="Invalid input"){
+        else if(msg=="Invalid Input: "){
             msg="";
             document.getElementsByName("helpusername")[0].innerHTML=msg;
             if(getResult(str)) msg="";
@@ -100,38 +100,34 @@
         msg="";
 
         if (str=="") msg+="Password is required!";
-        else if (str.length<6) msg+="Password must be atleast 6 characters.";
-        else if (str.match(/^([a-z]{5,}|\d{5,})$/))  msg+="Invalid Input: Strength: Weak";
-        else if (str.match(/^[a-zA-Z]{5,}$/))  msg+="Strength: Medium";
-        else if (str.match(/^[a-zA-Z0-9]{5,}$/))  msg+="Strength: Strong";
-        else if (str== "") msg="";
+        else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
+        else if (str.match(/^[a-z]{5,20}$/))  msg+="Invalid Input: Strength: Weak";
+        else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
+        else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
+        else if (msg=="") msg="Invalid Input: Strength: Weak";
+
         document.getElementsByName("helppassword")[0].innerHTML=msg;
-        console.log(msg);
-        // if(msg!="" && msg!="Invalid Input: Strength: Weak" && msg!="Password is required!" && msg!="Password must be atleast 6 characters."){
-        if(msg == "Strength: Strong" || msg == "Strength: Medium"){
-            console.log("totoo");
+        if(msg === "Strength: Strong" || msg === "Strength: Medium"){
             return true;
         }
-        console.log("return false");
-        return false;
+        else return false;
     }     
     function validateCpass(){
-            str=regForm.pass.value;
-            str2=regForm.cpass.value;
-            msg="Invalid Input: ";
-            
-            if(str2=="") msg+="Confirmation of password is required!";
-            else if (str2!=str){
-                msg+="Password Mismatch"
-            }
-            else if(msg="") msg="";
-            // console.log(msg);
-            document.getElementsByName("helpcpassword")[0].innerHTML=msg;
-            if(msg!="") return false;
-            return true;
+        str=regForm.pass.value;
+        str2=regForm.cpass.value;
+        msg="";
+        
+        if(str2=="") msg+="Invalid Input: Confirmation of password is required!";
+        else if (str2!=str){
+            msg+="Invalid Input: Password Mismatch"
         }
+        else if(msg=="") msg="";
+        document.getElementsByName("helpcpassword")[0].innerHTML=msg;
+        if(msg!="") return false;
+        return true;
+    }
     function validateAll(){
-        if(validateFname()&&validateMinitial()&&validateLname()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
+        if(validateAdminkey() && validateFname()&&validateMinitial()&&validateLname()&&validateEmail()&&validateUser()&&validatePass()&&validateCpass())
         {
             return true;
         }

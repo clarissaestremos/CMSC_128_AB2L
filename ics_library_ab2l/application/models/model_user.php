@@ -34,7 +34,7 @@ class Model_user extends CI_Model {
 
 	public function approve_user($account_number){
 		$query = $this->db->query("UPDATE user_account 
-			SET status='approve', date_notif=curdate() 
+			SET status='approved', date_notif=curdate() 
 			WHERE account_number='{$account_number}'");
 	}
 

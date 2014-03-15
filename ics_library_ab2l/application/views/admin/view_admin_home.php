@@ -122,7 +122,7 @@ foreach($rows as $row => $data)
 	$counter = $counter + 1;
 	$data1 = explode("^",$data);
 	$info[$row]['date'] = $data1[0]; 
-	$info[$row]['tc'] = $data1[1];
+	//$info[$row]['tc'] = $data1[1];
 
 	if($counter>5) break;
 	//echo 'Date: ' . ($date=$info[$row]['date']) . '<br />';
@@ -160,11 +160,11 @@ foreach($rows as $row => $data)
 else{
 	echo "<div class='cell'><h2>There is no announcement to display!</h2></div><hr/>";
 }
-	echo "<form action='$base/index.php/admin/controller_announcement/deleteAll' id='deleteall' class='float-right' style='margin-left: 5px;' method='post'>
+	echo "<form action='$base"."index.php/admin/controller_announcement/deleteAll' id='deleteall' class='float-right' style='margin-left: 5px;' method='post'>
 			<input type='hidden' name='delete_all' value='del'/>
 			<input type='submit'' value='Delete All Announcements' enabled/>
 		</form>
-		<form action='$base/index.php/admin/controller_announcement/viewForm' class='float-right' method='post'>
+		<form action='$base"."index.php/admin/controller_announcement/viewForm' class='float-right' method='post'>
 			<input type='submit' name='new' value='Add New Announcement' enabled/>
 		</form>
 
@@ -177,25 +177,25 @@ else{
 </div>
 </div>
 <div id="deletealldialog" title="Add Announcement Confirmation Dialog">
-	<p>Are you sure that you want to delete all the announcement?</o>
+	<p>Are you sure that you want to delete all the announcement?</p>
 </div>
 <div id="deletedialog" title="Add Announcement Confirmation Dialog">
-	<p>Are you sure that you want to delete this announcement?</o>
+	<p>Are you sure that you want to delete this announcement?</p>
 </div>
 <div id="deleteconfirm" title="Add Announcement Confirmation Dialog">
 	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
 </div>
 <div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
-	<p>Are you sure that you want confirm the borrowing of this book?</o>
+	<p>Are you sure that you want confirm the borrowing of this book?</p>
 </div>
 <div id="canceldialog" title="Cancel Reservation Confirmation">
-	<p>Are you sure that you want to cancel the reservation of this book?</o>
+	<p>Are you sure that you want to cancel the reservation of this book?</p>
 </div>
 <div id="returndialog" title="Return Book Dialog">
-    <p>Are you sure that you want to confirm that this book was properly returned?</o>
+    <p>Are you sure that you want to confirm that this book was properly returned?</p>
 </div>
 <div id="extenddialog" title="Extend Book Dialog">
-    <p>Are you sure that you want to extend the due date of this book?</o>
+    <p>Are you sure that you want to extend the due date of this book?</p>
 </div>
 
 <div id="confdialog" title="Confirm Account Dialog">
@@ -203,22 +203,22 @@ else{
 </div>
 
 <div id="deactivatedialog" title="Deactivate Account Dialog">
-    <p>Do you really wish to deactivate all account?</p>
+    <p>Do you really wish to deactivate all user accounts?</p>
 </div>
 <div id="dsucc" title="Delete Announcement Success">
-   <p>You have successfuly deleted an announcement</p>
+   <p>You have successfuly deleted an announcement!</p>
 </div>
 <div id="dasucc" title="Delete All Announcement Success">
-  <p>You have successfully deleted all the announcement!</p>
+  <p>You have successfully deleted all the announcements!</p>
 </div>
 <div id='confirmsuccess' title="Confirm Borrowing Book Success">
-	<p>You have successfuly confirm an outgoing book</p>
+	<p>You have successfuly confirm an outgoing book!</p>
 </div>
 <div id="cancelsuccess" title="Cancel Reservation Success">
-	<p>You have successfully cancel a book reservation</p>
+	<p>You have successfully cancel a book reservation!</p>
 </div>
 <div id="confsuccess" title="Confirm User Account Success">
-    <p>You have successfully confirmed an user account!!</p>
+    <p>You have successfully confirmed a user account!</p>
 </div>
 <div id="returnsucc" title="Return Book Success">
     <p>You have successfully returned a book!</p>

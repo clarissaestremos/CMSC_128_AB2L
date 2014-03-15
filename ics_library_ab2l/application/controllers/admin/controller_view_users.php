@@ -23,15 +23,31 @@ class Controller_view_users extends Controller_log {
     }
 
     function search_user(){
-        $this->load->model('model_users');
-        $data['results']=$this->model_users->userSearch($this->input->post('s_user'));
+      $this->load->model('model_users');
+      $data['results']=$this->model_users->userSearch($this->input->post('s_user')); 
+ 
+         //configuration of the ajax pagination  library.
+        $config['base_url'] = base_url().'index.php/admin/controller_view_users/search_user';        //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
+        $config['total_rows'] = count($data['results']);
+        $config['per_page'] = '10';
+        $config['div'] = '#showSearchUser';
+      //  $config['additional_param']  = 'serialize_form1()';
+
+        $page=$this->uri->segment(4);       // splits the URI segment by /
+        $this->jquery_pagination->initialize($config);
+        //$this->pagination->initialize($config);
+        $data['links'] = $this->jquery_pagination->create_links();
+        $this->print_info($data['results'],$data['links']); 
+
         $data['parent'] = "Users";
         $data['current'] = "Search Users";
-
+        /*foreach($data['results'] as $users){
+          echo $users->account_number;
+        }*/
         $this->load->helper(array('form','html'));
         $this->load->view("admin/view_header",$data);
         $this->load->view("admin/view_aside");
-        $this->load->view("admin/view_users",$data);
+        $this->load->view("admin/view_search_user",$data);
         $this->load->view("admin/view_footer");
     }
 
@@ -108,12 +124,12 @@ class Controller_view_users extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-		$this->load->model('model_user');
-        $this->model_user->approve_user($account_number);
-        $session_user = $this->session->userdata('logged_in')['username'];
-        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
         $base = base_url();
-        if($this->email->send()){
+    //    if($this->email->send()){
+			$this->load->model('model_user');
+	        $this->model_user->approve_user($account_number);
+	        $session_user = $this->session->userdata('logged_in')['username'];
+	        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
             echo "
                     <div id='mysuccess' title='Add User Account Success'>
                         <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
@@ -142,9 +158,9 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-		}else{
+		/**}else{
             echo "
-                    <div id='mysuccess' title='Add User Account Success'>
+                    <div id='mysuccess' title='Add User Account Failed'>
                         <h6>The account of $account_number was not successfully validated! Error: Email failed to send. Please check your internet connection.</h6>
                     </div>
                     <script src='$base/js/jquery-1.10.2.min.js'></script>
@@ -171,7 +187,7 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-		}
+		}*/
 	}
         
     function deactivate(){
@@ -300,7 +316,7 @@ class Controller_view_users extends Controller_log {
 
 
    function print_info($results,$links) {
-
+        if(count($results)>0){
          echo '<table class="body">
                 <thead>
                     <tr>
@@ -353,6 +369,13 @@ class Controller_view_users extends Controller_log {
             <div class="footer pagination">';
                 echo $links;
             echo "</div>";
+          }else if(count($results) == 0){
+              echo"<div class='panel datasheet'>
+                <div class='header text-center background-red'>
+                    No results found.
+                </div></div>";
+
+    }
     }
 }
 /* End of file home_controller.php */

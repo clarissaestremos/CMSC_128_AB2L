@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include_once('controller_log.php');
+include_once('../admin/controller_log.php');
 class Controller_view_users extends Controller_log {
  
     function index() {
@@ -116,13 +116,13 @@ class Controller_view_users extends Controller_log {
          $this->email->subject($subject);
          $this->email->message($message);
          //Send the email
-        if($this->email->send()){
+        //if($this->email->send()){
             $this->load->model('model_user');
             $this->model_user->approve_user($_POST['account_number1']);
             $session_user = $this->session->userdata('logged_in')['username'];
             $this->add_log("Admin $session_user verified account of $account_number.", "Verify User");
             echo "<script>alert('Account of $account_number has been successfully validated! User must check email for confirmation.')</script>";
-        }   
+        //}   
     }
         
     function deactivate(){

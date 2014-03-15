@@ -48,6 +48,9 @@ if($this->session->userdata('logged_in_type')=='admin')
 				background-repeat: no-repeat;
 				width: 2em;
 			}
+      .drophover:hover{
+        background:#9d261d;
+      }
 			.clear-right{
 				clear: right;
 			}
@@ -171,7 +174,6 @@ if($this->session->userdata('logged_in_type')=='admin')
 					?>            
 				  </a>
 				</div>
-
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu" id="menu-collapse">
 				  <ul class="nav navbar-nav">
@@ -196,18 +198,17 @@ if($this->session->userdata('logged_in_type')=='admin')
 							My Account <span class="caret"></span>
 						</a>
 						<div class="dropdown-menu" id= "ddown">
-							<ul >
-								<li><a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><span class='glyphicon glyphicon-user'></span>  View Profile</a></li>
-								<li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><span class="glyphicon glyphicon-book"></span>  Reserved Books</a></li>
-								<li><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><span class="glyphicon glyphicon-tags"></span>  Borrowed Books</a></li>
-								<li><a href="<?php echo base_url(); ?>index.php/user/controller_logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+							<ul style='margin: 0px 0px;'>
+								<li class='drophover'><a href="<?php echo base_url(); ?>index.php/user/controller_editprofile"><span class='glyphicon glyphicon-user'></span>  View Profile</a></li>
+								<li class='drophover'><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_reserved_list"><span class="glyphicon glyphicon-book"></span>  Reserved Books</a></li>
+								<li class='drophover'><a href="<?php echo base_url(); ?>index.php/user/controller_book/user_borrowed_list"><span class="glyphicon glyphicon-tags"></span>  Borrowed Books</a></li>
+								<li class='drophover'><a href="<?php echo base_url(); ?>index.php/user/controller_logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
 							</ul>
 						</div>
 					</li>
 				  <?php
 					}
 				  ?>
-
 				  </ul>
 				</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->

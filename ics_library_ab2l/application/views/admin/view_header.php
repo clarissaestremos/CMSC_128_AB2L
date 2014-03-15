@@ -525,29 +525,6 @@ $("#dsucc").dialog({
     /**
     	*View User Modal
     */
-    $("#confsuccess").dialog({
-            autoOpen: false,
-            modal: true,
-            resizable: false,
-            width: 300,
-            minHeight: 200,
-            closeOnEscape: true,
-            closeText: 'show',
-            show: {
-              effect: "fadeIn",
-              duration: 200
-            },
-            draggable: false,
-            close: function(event, ui){
-              thisform.submit();
-            },
-            buttons : {
-              "Ok": function() {
-                  thisform.submit();
-              },
-            }
- 
-        });
 
         $("#confdialog").dialog({
         autoOpen: false,
@@ -571,7 +548,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#confsuccess').dialog('open');
+                thisform.submit();
             },
             "No": function() {
                 $(this).dialog('close');
