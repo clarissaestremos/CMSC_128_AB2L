@@ -55,6 +55,7 @@ class Controller_view_users extends Controller_log {
         if($this->session->userdata('logged_in_type')!="admin")
                 redirect('index.php/user/controller_login', 'refresh');
          if(isset($_POST['approve'])){
+            echo "APPROVE";
              if(isset($_POST['account_number1'])){
                  $this->email_confirm_account($_POST['account_number1']);
              }
@@ -124,70 +125,40 @@ class Controller_view_users extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-        $base = base_url();
+    $base = base_url();
     //    if($this->email->send()){
-			$this->load->model('model_user');
-	        $this->model_user->approve_user($account_number);
-	        $session_user = $this->session->userdata('logged_in')['username'];
-	        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
-            echo "
-                    <div id='mysuccess' title='Add User Account Success'>
-                        <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
-                    </div>
-                    <script src='$base/js/jquery-1.10.2.min.js'></script>
-                    <script src='$base/js/jquery-ui.js'></script>
-                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
-                    <script>
-                            $('#mysuccess').dialog({
-                                modal: true,
-                                closeOnEscape: true,
-                                closeText: 'show',
-                                show: {
-                                  effect: 'fadeIn',
-                                  duration: 200
-                                },
-                                draggable: false,
-                                close: function(event, ui){
-                                    window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
-                                },
-                                buttons : {
-                                  'Ok': function() {
-                                      window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
-                                  },
-                                }
-                     
-                            });
-                        </script>";
-		/**}else{
-            echo "
-                    <div id='mysuccess' title='Add User Account Failed'>
-                        <h6>The account of $account_number was not successfully validated! Error: Email failed to send. Please check your internet connection.</h6>
-                    </div>
-                    <script src='$base/js/jquery-1.10.2.min.js'></script>
-                    <script src='$base/js/jquery-ui.js'></script>
-                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
-                    <script>
-                            $('#mysuccess').dialog({
-                                modal: true,
-                                closeOnEscape: true,
-                                closeText: 'show',
-                                show: {
-                                  effect: 'fadeIn',
-                                  duration: 200
-                                },
-                                draggable: false,
-                                close: function(event, ui){
-                                    window.location.replace('$base/index.php/admin/controller_view_users');
-                                },
-                                buttons : {
-                                  'Ok': function() {
-                                      window.location.replace('$base/index.php/admin/controller_view_users');
-                                  },
-                                }
-                     
-                            });
-                        </script>";
-		}*/
+		$this->load->model('model_user');
+    $this->model_user->approve_user($account_number);
+    $session_user = $this->session->userdata('logged_in')['username'];
+    $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
+    echo "
+      <div id='mysuccess' title='Add User Account Success'>
+          <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
+      </div>
+      <script src='$base/js/jquery-1.10.2.min.js'></script>
+      <script src='$base/js/jquery-ui.js'></script>
+      <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+      <script>
+        $('#mysuccess').dialog({
+            modal: true,
+            closeOnEscape: true,
+            closeText: 'show',
+            show: {
+              effect: 'fadeIn',
+              duration: 200
+            },
+            draggable: false,
+            close: function(event, ui){
+                window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
+            },
+            buttons : {
+              'Ok': function() {
+                  window.location.replace('$base/index.php/admin/controller_view_users/viewUser/$account_number');
+              },
+            }
+ 
+        });
+      </script>";
 	}
         
     function deactivate(){

@@ -45,17 +45,17 @@ class Controller_admin_home extends CI_Controller {
         //create links for pagination
         $data['links'] = $this->jquery_pagination->create_links();
          echo "<table class='body'>
-                                <thead>
-                                    <tr>
-                                        <th style='width: 2%;'>#</th>
-                                        <th style='width: 17%;'>Borrower</th>
-                                        <th style='width: 40%;'>Material</th>
-                                        <th style='width: 12%;'>Date Borrowed</th>
-                                        <th style='width: 11%;'>Due Date</th>
-                                        <th style='width: 9%;'></th>
-                                        <th style='width: 10%;'></th>
-                                    </tr>
-                                </thead>";
+                    <thead>
+                        <tr>
+                            <th style='width: 2%;'>#</th>
+                            <th style='width: 17%;'>Borrower</th>
+                            <th style='width: 40%;'>Material</th>
+                            <th style='width: 12%;'>Date Borrowed</th>
+                            <th style='width: 11%;'>Due Date</th>
+                            <th style='width: 9%;'></th>
+                            <th style='width: 10%;'></th>
+                        </tr>
+                    </thead>";
         echo "<tbody>";
         $this->print_books($row, $data['links'],"overdue");
     }
@@ -73,16 +73,16 @@ class Controller_admin_home extends CI_Controller {
         //create links for pagination
         $data['links'] = $this->jquery_pagination->create_links();
          echo "<table class='body'>
-                <thead>
-                    <tr>
-                        <th style='width: 2%;'>#</th>
-                        <th style='width: 17%;'>Borrower</th>
-                        <th style='width: 40%;'>Material</th>
-                        <th style='width: 11%;'>Due Date</th>
-                        <th style='width: 9%;'></th>
-                        <th style='width: 10%;'></th>
-                    </tr>
-                </thead>";
+            <thead>
+                <tr>
+                    <th style='width: 2%;'>#</th>
+                    <th style='width: 17%;'>Borrower</th>
+                    <th style='width: 40%;'>Material</th>
+                    <th style='width: 11%;'>Due Date</th>
+                    <th style='width: 9%;'></th>
+                    <th style='width: 10%;'></th>
+                </tr>
+            </thead>";
         echo "<tbody>";
         $this->print_books($row, $data['links'],"outgoing");
     }
@@ -219,41 +219,41 @@ class Controller_admin_home extends CI_Controller {
     $this->print_users($row, $data['links']);
     }
     function print_users($users,$links){
-            $base=base_url();
-            $count = 1;
-            foreach ($users as $row) {
-                echo "<tr>";
-                echo "<td>$count</td>";
-                echo "<td>".$row->account_number."</td>";
-                $fullName = $row->first_name." ".$row->middle_initial.". ".$row->last_name;
-                echo "<td>".$fullName."</td>";
-                echo "<td>".$row->course."</td>";
-                echo "<td>".$row->email."</td>";
-                echo "<td>".$row->classification."</td>";
-                $stat = $row->status;
+        $base=base_url();
+        $count = 1;
+        foreach ($users as $row) {
+            echo "<tr>";
+            echo "<td>$count</td>";
+            echo "<td>".$row->account_number."</td>";
+            $fullName = $row->first_name." ".$row->middle_initial.". ".$row->last_name;
+            echo "<td>".$fullName."</td>";
+            echo "<td>".$row->course."</td>";
+            echo "<td>".$row->email."</td>";
+            echo "<td>".$row->classification."</td>";
+            $stat = $row->status;
 
-                /*
-                    If status not yet 'approve', meaning the account was not yet validated,
-                    a button with a value 'Validate' will be seen in the status column.
-                    If status is already 'approve', meaning the account was already validated,
-                    'Registered' will be displayed on the said column. 
-                */
+            /*
+                If status not yet 'approve', meaning the account was not yet validated,
+                a button with a value 'Validate' will be seen in the status column.
+                If status is already 'approve', meaning the account was already validated,
+                'Registered' will be displayed on the said column. 
+            */
 
-                if($stat === "approve"){
-                echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
-                }
-                else{
-                    echo "<form action='$base/index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
-                    echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
-                     echo "<input type='hidden' name='approve' value='approve'/>";
-                    echo "<td>"."<input type ='submit' class='background-red' name='approve' onclick='return confirmUser(accountconfirm$count);' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
-                    echo "</form>"; //'Validate' button. Functionality not included here.
-                }
-                
-                echo "</tr>";
-                $count++;
+            if($stat === "approve"){
+            echo "<td><a href='".base_url()."index.php/admin/controller_view_users/borrow/$row->account_number'>Click to borrow</a></td>";
             }
-     echo "</tbody></table><div id='footer pagination'>";
+            else{
+                echo "<form action='$base/index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
+                echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
+                 echo "<input type='hidden' name='approve' value='approve'/>";
+                echo "<td>"."<input type ='submit' class='background-red' name='approve' onclick='return confirmUser(accountconfirm$count);' value = 'Confirm'>"."</td>";   //'Validate' button. Functionality not included here.
+                echo "</form>"; //'Validate' button. Functionality not included here.
+            }
+            
+            echo "</tr>";
+            $count++;
+        }
+    echo "</tbody></table><div id='footer pagination'>";
     echo $links."</div>";                                   
     }
 }
