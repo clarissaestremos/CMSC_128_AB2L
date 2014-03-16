@@ -116,7 +116,12 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em>
+                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "Approved";}
+                                                                else{
+                                                                    echo "Pending";
+                                                                }
+
+                                                            ?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">
