@@ -191,7 +191,7 @@
                             </div>
                             <div class="col width-fill">
                                 <div class="cell">
-                                    <input type="password" class="background-white" name="pass" id = "pass" required/><span  class = "cell color-red validmsg" name = "valPass"></span>
+                                    <input type="password" class="background-white" name="pass" id = "pass" required/><span  id = "spanpass" class = "cell color-red validmsg" name = "valPass"></span>
                                 </div>
                             </div>
                         </div>

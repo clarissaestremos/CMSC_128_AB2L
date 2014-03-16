@@ -168,10 +168,14 @@
 		else if (str.match(/^[a-z]{5,20}$/))  msg+="Invalid Input: Strength: Weak";
 		else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
 		else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
-		else if (msg=="") msg="Invalid Input: Strength: Weak";
+		else if (msg=="") msg="Invalid Input: Special characters are not allowed";
 
 		document.getElementsByName("valPass")[0].innerHTML=msg;
 		if(msg === "Strength: Medium" || msg==="Strength: Strong"){
+			$('#spanpass').removeClass('color-red');
+			$('#spanpass').removeClass('validmsg');
+			$('#spanpass').addClass('userOk');
+			$('#spanpass').css("font-weight", "bold");
 			return true;
 		}
 		else return false;
