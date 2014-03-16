@@ -29,7 +29,7 @@
                                 
                             if(str=="")
                             msg+="Title is required!<br/>";
-                            if(!str.match(/^[A-Z0-9][A-Z|a-z|0-9|ñ|Ñ]{0-99}$/))
+                            if(!str.match(/^[A-Z0-9a-z]+\ ?[A-Z|a-z|0-9|ñ|Ñ\ ]*$/))
                             msg+="Must be between 1-100 alpha numeric character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
@@ -50,7 +50,7 @@
                                 
                             if(str=="")
                             msg+="Author is required!<br/>";
-                            if(!str.match(/^[a-zA-Z\ ]+[a-zA-Z\ ]*$/))
+                            if(!str.match(/^[a-zA-Z]+\.?\,?\ ?[a-zA-Z\ ]*\.?$/))
                             msg+="Must be between 1-100 alpha character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
@@ -71,7 +71,7 @@
                                 
                             if(str=="")
                             msg+="Subject is required!<br/>";
-                            if(!str.match(/^[A-Z\ ]{0,5}[0-9]{1,3}$/))
+                            if(!str.match(/^[A-Z\ ]{2,5}[0-9]{1,3}$/))
                             msg+="Must be a course number!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
@@ -379,7 +379,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" id="title" placeholder="Title of the Book" name="title1" data-required="true" required>&nbsp;<br/><span name="help_title" class="color-red"></span><br/>
+                                                                            <input type="text" id="title" placeholder="Title of the Book" class='background-white' name="title1" data-required="true" required>&nbsp;<br/><span name="help_title" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -392,7 +392,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" class="authors" id="author" name = "author[]" placeholder="Author's Name"  data-required="true" required>&nbsp;
+                                                                            <input type="text" class="authors background-white" id="author" name = "author[]" placeholder="Author's Name"  data-required="true" required>&nbsp;
                                                                              <input type="button" class="row1 cell" value="Add author" onclick="addRow_author(this, false)">
                                                                              <br/><span name="help_author" class="color-red"></span>
                                                                            
@@ -412,7 +412,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" class="subjects" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true" required>&nbsp;
+                                                                            <input type="text" class="subjects background-white" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true" required>&nbsp;
                                                                             <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
                                                                             <br/><span name="help_subject" class="color-red"></span>
                                                                             
@@ -429,7 +429,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" class="call_nos" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true" required>&nbsp;
+                                                                            <input type="text" class="call_nos background-white" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true" required>&nbsp;
                                                                              <input type="button" class="row3 cell" value="Add copy" onclick="addRow_callno(this, false)">
                                                                              <br/><span name="help_call_number" class="color-red"></span><br/>
                                                                         </div>
@@ -598,8 +598,13 @@
             }
             document.getElementById('bauthors').innerText =  "Author: "+ author;
             document.getElementById('bsubject').innerText = "Subject: "+ subject;
-            document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
+            document.getElementById('bcall').innerText = "Call Number: "+ call_no; 
+            if(tag.trim().length === 0){
+                tag = "None";
+            }      
             document.getElementById('btags').innerText = "Tag: "+ tag;
+                
+            
             console.log(form);
             $( "#addbookconf" ).dialog( "open" );
         }

@@ -23,7 +23,6 @@ if($this->session->userdata('logged_in_type')=='admin')
 
   	<!-- Source:	http://isabelcastillo.com/error-info-messages-css -->
   		<link rel="stylesheet" href="<?php echo base_url(); ?>style/user/custom-style.css" type="text/css"  />
-
   		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/edit.css" media="all"/>
   		<script src="<?php echo  base_url() ?>js/jquery-1.10.2.min.js"></script>
       <script src="<?php echo  base_url() ?>js/bootstrap.js"></script>

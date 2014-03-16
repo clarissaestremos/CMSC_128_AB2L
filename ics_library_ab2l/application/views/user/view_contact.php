@@ -14,7 +14,8 @@
 								</div>
 								<div class="cell">
 								<div class="cell width-fill">
-									<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Institute+of+Computer+Science+(1st+floor),+Royal+Palm+Street,+Los+Ba%C3%B1os,+Calabarzon,+Philippines&amp;aq=0&amp;oq=Institue+of+Computer+Science&amp;sll=14.167535,121.243282&amp;sspn=0.095703,0.169086&amp;ie=UTF8&amp;hq=Institute+of+Computer+Science+(1st+floor),&amp;hnear=Harold+Cuzner+Royal+Palm+Ave,+Los+Ba%C3%B1os,+Lalawigan+ng+Laguna,+Calabarzon,+Philippines&amp;t=m&amp;ll=14.164568,121.241896&amp;spn=0.006295,0.006295&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Institute+of+Computer+Science+(1st+floor),+Royal+Palm+Street,+Los+Ba%C3%B1os,+Calabarzon,+Philippines&amp;aq=0&amp;oq=Institue+of+Computer+Science&amp;sll=14.167535,121.243282&amp;sspn=0.095703,0.169086&amp;ie=UTF8&amp;hq=Institute+of+Computer+Science+(1st+floor),&amp;hnear=Harold+Cuzner+Royal+Palm+Ave,+Los+Ba%C3%B1os,+Lalawigan+ng+Laguna,+Calabarzon,+Philippines&amp;t=m&amp;ll=14.164568,121.241896&amp;spn=0.006295,0.006295" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+									<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d483.56441633916387!2d121.24189600000001!3d14.164568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x499e53d76db9e952!2sInstitute+of+Computer+Science+(1st+floor)!5e0!3m2!1sen!2sph!4v1394933740153" width="100%" height="450" frameborder="0" style="border:0"></iframe>
 								</div>
 								<div class="col">
 									<div class="col width-1of2 gradient">
@@ -59,7 +60,7 @@
 																	<label class="color-black" for="email">* Email:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="email" id="sender_email" name="sender_email" required="required"  oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
+																	<input type="email" id="sender_email" name="sender_email" required="required"  pattern="/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}(\.[A-Za-z]{2,3}){0,1}$/" oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
