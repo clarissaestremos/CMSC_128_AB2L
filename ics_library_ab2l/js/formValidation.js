@@ -178,7 +178,12 @@
 			$('#spanpass').css("font-weight", "bold");
 			return true;
 		}
-		else return false;
+
+		else {
+			$('#spanpass').addClass('color-red');
+			$('#spanpass').addClass('validmsg');
+			return false;
+		}
 	}		
 	function validateCpass(){
 		str=regForm.pass.value;
