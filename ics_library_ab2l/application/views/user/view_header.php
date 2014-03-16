@@ -29,11 +29,14 @@ if($this->session->userdata('logged_in_type')=='admin')
       <script src="<?php echo  base_url() ?>js/bootstrap.js"></script>
   		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
   		<script src="<?php echo  base_url() ?>js/main.js"></script>
-  		<meta name="viewport" content="width=device-width"/>
+  		<meta name="viewport" content="width=device-width scale=1"/>
   		<style type="text/css">
   			body,html{
-  				height: 100%;
-          overflow-x: hidden;
+  				width: 100%;
+          height: 100%;
+          margin: 0px;
+          padding: 0px;
+          overflow-x: hidden; 
   			}
 			#main-body{
 				background-image:url('<?php echo base_url();?>images/g.jpg'); 
@@ -60,6 +63,9 @@ if($this->session->userdata('logged_in_type')=='admin')
       #account-collapse{
         line-height:20px;
         border-bottom-style:none;
+      }
+      #signups:hover{
+        background: none;
       }
 		
       .itemhover { background-color:#d3d3d3 !important; color:black !important;}
@@ -97,14 +103,15 @@ if($this->session->userdata('logged_in_type')=='admin')
 								if(!$this->session->userdata('logged_in') ){
 							?>
 							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
-                <form action='<?php echo base_url(); ?>index.php/user/controller_verify_login' method="POST">
-                  <input type="text" placeholder="Username" name="username" required="required" class="background-white float-left" style='margin: 2px 2px 2px 2px;'/>
-                  <input type="password" placeholder="Password" name="password" required="required" class="background-white float-left" style='margin: 2px 2px 2px 2px;'/>
-                  <input type="submit" value="Login" class=" float-left" style="background: #656565; color:white; margin: 2px 3px 3px 3px;"/>
+                <form action='<?php echo base_url(); ?>index.php/user/controller_verify_login'  method="POST">
+                  <input type="submit" value="Login" class=" float-right" style="background: #656565; color:white; margin: 2px 3px 3px 3px;"/>
+                  <input type="password" placeholder="Password" name="password" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
+                  <input type="text" placeholder="Username" name="username" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
+                  
                   <br/>
-                  <a href="<?php echo base_url(); ?>index.php/user/controller_register" class="float-left" style="color:white;">Not yet a member? Register Here!</a></p>
                   
                 </form>
+                <a href="<?php echo base_url(); ?>index.php/user/controller_register" id='signups' class="float-right" style="color:white; padding:0px 0px;">Not yet a member? Register Here!</a></p>
               </div>
 							<?php
 								}

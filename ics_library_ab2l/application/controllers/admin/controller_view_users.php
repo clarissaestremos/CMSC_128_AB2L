@@ -355,7 +355,7 @@ class Controller_view_users extends Controller_log {
                             else{
                                 echo "<form action='$base"."index.php/admin/controller_view_users/approve_user' id='accountconfirm$count' method='POST'>";
                                 echo "<input type='hidden' name='account_number1' value='$row->account_number'/>";
-                                echo "<input type='hidden' name='approve' value='approve'/>";
+                                echo "<input type='hidden' name='approve' value='app'/>";
                                 echo "<td>"."<input type ='submit' class='background-red' onclick='return confirmUser(accountconfirm$count);' name='approve' value = 'Confirm'>"."</td>";
                                 echo "</form>";
                             }
