@@ -22,7 +22,7 @@
         	
         	
         }
-        else if (!str.match(/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/)){ 
+        else if (!str.match(/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/)){ 
         	 	   msg+="Must be between 2-50 alpha characters!<br/>";
         	 }
        
@@ -46,7 +46,15 @@
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Last name is required!";
-		else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+		else if(str.length>50  || str.length<2) msg+="Must be between 2-50 alpha characters!<br/>";
+		else if(str.match(/([A-Za-z]*\-[A-Za-z]*\-)+/)){ 
+        	msg+="Invalid Name!<br/>";
+        	
+        	
+        }
+        else if (!str.match(/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/)){ 
+        	 	   msg+="Must be between 2-50 alpha characters!<br/>";
+        	 }
 		else if(msg=="Invalid Input: ") msg="";
 		document.getElementsByName("valLname")[0].innerHTML=msg;
 		if(msg=="") return true;
