@@ -1,6 +1,7 @@
 <div id="main-body" class="site-body">
+
                 <div class="site-center">
-<div class="cell body">
+				<div class="cell body">
                
     </div>
     <div class="col">
@@ -9,9 +10,9 @@
                 <div class="col">
                    
                     <div class="cell panel">
-                        <div id="regform" class="body">
+                        <div id="regform" class="body" style="margin-top: 2%">
                             <div class="cell">
-                                <div class="color-red width-fill" style="font-weight: bold;"><p>
+                                <div class="color-red width-fill" style="font-weight: bold"><p>
                                     <?php 
                                         if(isset($msg)){
                                             echo $msg;
@@ -23,19 +24,19 @@
                                     <?php echo  form_open_multipart('index.php/user/controller_editprofile/uploadImage')?>
                                     <!--div id = "frame" style = "width: 220px;height:220px;border-radius:110px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFFFFF;"-->
 
-                                      <object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "height: 300px;width:300px; margin-left: 20px; ">
-                                        <img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "height: 300px;width:300px;  margin-left: 20px;"/>
+                                      <object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "height: 300px;width:300px; margin-left: 18px; ">
+                                        <img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "height: 300px;width:300px;  margin-left: 16px;"/>
                                       </object>
 
                                       <!--img  alt = "Oops, something went wrong. " style = "padding: 2.5em; length: 250px;width:250px;" src="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>">
                                     <!--a class="col width-fill" id = "edit_picture">Edit</a-->
-                                    </div><br/><br/><br/>
+                                </div><br/><br/><br/>
                                     
                                     <!--/div-->
 
-                                    <div id='name'>
+                                    <div id='name' style="margin-left: -1%">
                                         <ul>
-                                            <li style = "list-style: none;margin-top:-65px"><input  type = 'file' id= 'new_picture' accept="image/jpg, image/png, image/jpeg, image/gif" name = 'userfile' class='background-white' required ></li>
+                                            <li style = "list-style: none;margin-top:-65px; border=black;"><input  type = 'file' id= 'new_picture' accept="image/jpg, image/png, image/jpeg, image/gif" name = 'userfile' class='background-white' required ></li>
                                             <li style = "list-style: none;margin-top:-2.24em; margin-left:250px;"><input type="submit" name="Upload" value="Upload"></li>
                                         </ul>
                                     </div>
@@ -87,29 +88,21 @@
                                                             </form>
                                                         </div>
                                                     </div>
-                                                    
                                                     <div class="body">
                                                         <div class="cell">
                                                             <span class = "main">Classification:</span><em><?php echo  $user_details->classification?></em>
                                                         </div>
                                                     </div>
-
                                                     <div class="body">
                                                         <div class="cell">
                                                             <span class = "main">College:</span><em><?php echo  $user_details->college?></em>
                                                         </div>
                                                     </div>
-
-                                                    <?php
-                                                        if($user_details->classification == "student"){
-                                                            echo "<div class='body'>
-                                                                <div class='cell'>
-                                                                    <span class = 'main'>Course:</span><em>".$user_details->course."</em>
-                                                                </div>
-                                                            </div>";
-                                                        }
-                                                    ?>
-
+                                                    <div class="body">
+                                                        <div class="cell">
+                                                            <span class = "main">Course:</span><em><?php echo  $user_details->course?></em>
+                                                        </div>
+                                                    </div>
                                                      <div class="body">
                                                         <div class="cell">
                                                             <span class = "main" id="label_email">Email:</span><em id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
@@ -123,7 +116,7 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "Approved";} else echo "Pending"?></em>
+                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">

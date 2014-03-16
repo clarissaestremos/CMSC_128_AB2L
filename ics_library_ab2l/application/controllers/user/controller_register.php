@@ -107,7 +107,8 @@ class Controller_register extends CI_Controller {
 			             $base = base_url();
 			            echo "
 					<div id='mysuccess' title='User Register Success'>
-						<h5>You have successfully registered!</h5>
+						<h6>You have successfully registered!</h6>
+						<p>But you're account is not yet activated in order to reserve a material.</p>
 					</div>
 					<script src='$base/js/jquery-1.10.2.min.js'></script>
 					<script src='$base/js/jquery-ui.js'></script>
