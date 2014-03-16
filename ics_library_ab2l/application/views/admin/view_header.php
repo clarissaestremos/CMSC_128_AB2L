@@ -526,6 +526,37 @@ $("#dsucc").dialog({
     	*View User Modal
     */
 
+    $("#confsuccess").dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        width: 300,
+        minHeight: 200,
+        closeOnEscape: true,
+        maxHeight: 640,
+        maxWidth: 320,
+        closeText: 'show',
+        show: {
+            effect: "fadeIn",
+            duration: 500
+        },
+        hide: {
+            effect: "fadeOut",
+            duration: 500
+        },
+        draggable: false,
+        buttons : {
+            "Yes": function() {
+                $(this).dialog('close');
+                thisform.submit();
+            },
+            "No": function() {
+                $(this).dialog('close');
+            }
+        }
+
+    });
+
         $("#confdialog").dialog({
         autoOpen: false,
         modal: true,
