@@ -41,7 +41,6 @@ class Controller_reserve_book extends CI_Controller{
 	}
 
 	function verify_login($id){
-		echo "<script>alert('$id');</script>";
 		$id = urldecode($id);
 			$newdata = array(
 				'id' => $id
