@@ -82,11 +82,13 @@ class Controller_reserve_book extends CI_Controller{
 				}
 				$num_borrowed = $this->model_reserve_book->fetch_user_reservation($data['borrower'])->num_rows();
 				if($num_borrowed < 3){
+					echo "<script>console.log("$num_borrowed==0")</script>";
 					$row = $this->model_reserve_book->fetch_user2($data['borrower']);
 					foreach ($row->result() as $value) {
 						$user_status = $value->status;
 					}
 					if($user_status == 'approve'){
+						echo "<script>console.log("$user_status==approve")</script>";
 						$row = $this->model_reserve_book->fetch_book($data['id']);
 						if($row->num_rows() == 1){
 							foreach ($row->result() as $value) {
@@ -95,6 +97,7 @@ class Controller_reserve_book extends CI_Controller{
 						}
 						
 						if($no_of_available > 0){
+							echo "<script>console.log("$no_of_available==0")</script>";
 							if($this->model_reserve_book->add_reservation($data)){
 							echo "<div id='mysuccess' title='Success: Reserved'>
 									<h5>You have successfully reserved a book for user ".$data['borrower'].". Please confirm it.</h5>

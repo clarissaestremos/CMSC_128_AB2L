@@ -87,21 +87,29 @@
                                                             </form>
                                                         </div>
                                                     </div>
+                                                    
                                                     <div class="body">
                                                         <div class="cell">
                                                             <span class = "main">Classification:</span><em><?php echo  $user_details->classification?></em>
                                                         </div>
                                                     </div>
+
                                                     <div class="body">
                                                         <div class="cell">
                                                             <span class = "main">College:</span><em><?php echo  $user_details->college?></em>
                                                         </div>
                                                     </div>
-                                                    <div class="body">
-                                                        <div class="cell">
-                                                            <span class = "main">Course:</span><em><?php echo  $user_details->course?></em>
-                                                        </div>
-                                                    </div>
+
+                                                    <?php
+                                                        if($user_details->classification == "student"){
+                                                            echo "<div class='body'>
+                                                                <div class='cell'>
+                                                                    <span class = 'main'>Course:</span><em>".$user_details->course."</em>
+                                                                </div>
+                                                            </div>";
+                                                        }
+                                                    ?>
+
                                                      <div class="body">
                                                         <div class="cell">
                                                             <span class = "main" id="label_email">Email:</span><em id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
@@ -115,7 +123,7 @@
                                                     </div>
                                                     <div class="body">
                                                         <div class="cell">
-                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em>
+                                                            <span class = "main">Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "Approved";} else echo "Pending"?></em>
                                                         </div>
                                                     </div>
                                                     <div class="body">

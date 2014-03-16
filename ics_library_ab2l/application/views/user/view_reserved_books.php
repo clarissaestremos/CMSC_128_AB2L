@@ -107,5 +107,5 @@
   <h5>Do you really wish to cancel your book reservation?</h5>
 </div>
 <div id='cancelsuccess' title="Cancel Reservation Success">
-    <p id='succmsg'>You have successfully cancel your book reservation </p>
+    <p id='succmsg'>You have successfully cancelled your book reservation </p>
 </div>
