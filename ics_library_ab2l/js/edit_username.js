@@ -75,14 +75,20 @@
                 $('#input_username').val(str);
                 if (str==""){ msg+="Username is required!";
                      $("#helpusername").text(msg);
+                     $("#helpusername").css("color", "red");
+                     $("#helpusername").css("font-weight", "bold");
                 }
                 else if(str==name){
                     msg+="Enter a new username."
                     $("#helpusername").text(msg);
+                     $("#helpusername").css("color", "red");
+                     $("#helpusername").css("font-weight", "bold");
                 }
                 else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{4,20}$/)){
                     msg="Invalid characters.";
-                
+                   $("#helpusername").text(msg);
+                    $("#helpusername").css("color", "red");
+                    $("#helpusername").css("font-weight", "bold");
                 }
                 //if valid, check username availability
                 else if(msg="Invalid input"){
@@ -115,12 +121,15 @@
                         if(response == 'userOk'){
                             $('#helpusername').removeClass('userNo').addClass('userOk');
                             $('#helpusername').text("Username available!");
-                            
+                            $("#helpusername").css("color", "green");
+                            $("#helpusername").css("font-weight", "bold");
                           bool= true;
                         }
                         else{
                             $('#helpusername').removeClass('userOk').addClass('userNo');;
                             $("#helpusername").text("Username not available.");
+                            $("#helpusername").css("color", "red");
+                            $("#helpusername").css("font-weight", "bold");
                            bool= false;
                         }
                     }
