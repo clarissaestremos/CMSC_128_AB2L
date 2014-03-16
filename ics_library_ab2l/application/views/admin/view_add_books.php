@@ -29,7 +29,7 @@
                                 
                             if(str=="")
                             msg+="Title is required!<br/>";
-                            if(!str.match(/^.+.*$/))
+                            if(!str.match(/^[A-Z0-9][A-Z|a-z|0-9|ñ|Ñ]{0-99}$/))
                             msg+="Must be between 1-100 alpha numeric character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
@@ -379,7 +379,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" id="title" placeholder="Title of the Book" name="title1" data-required="true">&nbsp;<br/><span name="help_title" class="color-red"></span><br/>
+                                                                            <input type="text" id="title" placeholder="Title of the Book" name="title1" data-required="true" required>&nbsp;<br/><span name="help_title" class="color-red"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -392,7 +392,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" class="authors" id="author" name = "author[]" placeholder="Author's Name"  data-required="true">&nbsp;
+                                                                            <input type="text" class="authors" id="author" name = "author[]" placeholder="Author's Name"  data-required="true" required>&nbsp;
                                                                              <input type="button" class="row1 cell" value="Add author" onclick="addRow_author(this, false)">
                                                                              <br/><span name="help_author" class="color-red"></span>
                                                                            
@@ -412,7 +412,7 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" class="subjects" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true">&nbsp;
+                                                                            <input type="text" class="subjects" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true" required>&nbsp;
                                                                             <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
                                                                             <br/><span name="help_subject" class="color-red"></span>
                                                                             
@@ -429,7 +429,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="text" class="call_nos" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true">&nbsp;
+                                                                            <input type="text" class="call_nos" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true" required>&nbsp;
                                                                              <input type="button" class="row3 cell" value="Add copy" onclick="addRow_callno(this, false)">
                                                                              <br/><span name="help_call_number" class="color-red"></span><br/>
                                                                         </div>
