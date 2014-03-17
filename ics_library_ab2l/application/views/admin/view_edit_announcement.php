@@ -9,9 +9,9 @@
         str=myform.title.value;
         
         if(str=="")
-        msg+="Please provide a title to your announcement!<br/>";
+        msg+="Please provide a title for your announcement!<br/>";
         if(!str.match(/^[a-zA-Z0-9\ \'\,\.\-\!]+[a-zA-Z0-9\ \'\,\.\-\!]*$/))
-          msg+="Must be between 1-100 alpha numeric character!<br/>";
+          msg+="Title must be between 1-100 alpha numeric character!<br/>";
         if(msg=="Invalid input: ")
         msg="";
         else {

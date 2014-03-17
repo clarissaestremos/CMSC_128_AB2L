@@ -70,17 +70,17 @@ else{
 		";
 ?>
 <div id="deletealldialog" title="Delete All Announcement Confirmation">
-	<p>Are you sure that you want to delete all the announcement?</o>
+	<p>Are you sure that you want to delete all the announcements?</o>
 </div>
 <div id="deletedialog" title="Delete Announcement Confirmation">
 	<p>Are you sure that you want to delete this announcement?</o>
 </div>
 <div id="deleteconfirm" title="Delete All Announcement Confirmation">
-	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
+	<p>Are you really sure that you want to delete all announcements? Doing so will remove it from the database.</p>
 </div>
 <div id="dsucc" title="Delete Announcement Success">
-   <p>You have successfuly deleted an announcement</p>
+   <p>You have successfuly deleted an announcement!</p>
 </div>
 <div id="dasucc" title="Delete All Announcement Success">
-  <p>You have successfully deleted all the announcement!</p>
+  <p>You have successfully deleted all the announcements!</p>
 </div>
