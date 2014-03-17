@@ -52,7 +52,7 @@
 																	<label class="color-black" for="name">* Name:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="text" id="sender_name" name="sender_name" pattern="[A-ZÑ]{1}[a-zñ]*[\-]?[a-zñ]*[\.]?[\ ]?([A-ZÑ]{1}[a-z]*[\-]?[a-zñ]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: Must be capitalized alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="sender_name" name="sender_name" pattern="[A-ZÑ]{1}[a-zñ]*[\-]?[a-zñ]*[\.]?[\ ]?([A-ZÑ]{1}[a-z]*[\-]?[a-zñ]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: The first letter must be a capitalized. Alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
