@@ -26,13 +26,21 @@ class Controller_register extends CI_Controller {
 		{
 			return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
 		}
+		 public function last_name($str)
+		{
+			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
+		}
 
+		 public function first_name($str)
+		{
+			return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE;
+		}
 		 public function check_dupes($str2)
 		{
 
 			 $sql=$this->db->query("select username from user_account where username like '$str2' ");
 
-	 if($sql->num_rows()!=0)
+			 if($sql->num_rows()!=0)
 					{return FALSE;}
 				else {return TRUE;}         
 		}
@@ -59,9 +67,9 @@ class Controller_register extends CI_Controller {
 		{
 					$this->load->library('form_validation');
 					// field name, error message, validation rules
-					$this->form_validation->set_rules('fname', 'First Name', 'trim|required|ucwords|callback_alpha_space|xss_clean');
+					$this->form_validation->set_rules('fname', 'First Name', 'trim|required|ucwords|min_length[2]|max_length[50]|callback_first_name|xss_clean');
 					$this->form_validation->set_rules('minit', 'Middle Initial', 'trim|ucwords|required|xss_clean');
-					$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_alpha_space|xss_clean');
+					$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_last_name|xss_clean');
 
 					 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|alpha_dash|xss_clean|callback_check_account');
 					 $this->form_validation->set_message('check_dupes_acctNum', 'You have a duplicate Student/Employee number');

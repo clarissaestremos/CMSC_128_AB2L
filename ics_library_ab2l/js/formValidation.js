@@ -12,7 +12,7 @@
 	}
 			
 	function validateFname(){
-		str=regForm.fname.value;
+		str=regForm.fname.value.trim();
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="First name is required!";
@@ -32,7 +32,7 @@
 		if(msg=="") return true;
 	}	
 	function validateMinitial(){
-		str=regForm.minit.value;
+		str=regForm.minit.value.trim();
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Middle Initial is required!";
@@ -42,12 +42,12 @@
 		if(msg=="") return true;
 	}
 	function validateLname(){
-		str=regForm.lname.value;
+		str=regForm.lname.value.trim();
 		msg="Invalid Input: ";
 		
 		if (str=="") msg+="Last name is required!";
 		else if(str.length>50  || str.length<2) msg+="Must be between 2-50 alpha characters!<br/>";
-		else if(str.match(/([A-Za-z]*\-[A-Za-z]*\-)+/)){ 
+		else if(!str.match(/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/)){ 
         	msg+="Invalid Name!<br/>";
         	
         	
