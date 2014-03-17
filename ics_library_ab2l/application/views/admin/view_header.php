@@ -15,16 +15,6 @@
 		<script src="<?php echo base_url() ?>js/jquery-1.10.2.min.js"></script>
 		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
 		<script>
-			$(document).ready(function(){
-				$heightbody = $("#thisbody").css("height");
-				$heightaside = $("aside").css("height");
-				console.log($heightbody);
-				console.log($heightaside);
-				if($heightbody > $heightaside){
-					console.log("enter");
-					$("#side-navigation").css("height",$heightbody);
-				}
-			});
 			base_url= "<?php echo base_url() ?>";
 		</script>
 		<style type="text/css">
