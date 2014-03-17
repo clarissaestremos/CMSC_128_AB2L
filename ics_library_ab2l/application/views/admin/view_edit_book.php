@@ -53,7 +53,7 @@
                         function validate_call_no() {
                             msg="Invalid input: ";
                             // console.log(myform.number);
-                            str=myform.call_number1.value;
+                            str=myform.call_number.value;
                                 
                             if(str=="")
                             msg+="Call number is required!<br/>";
@@ -208,7 +208,7 @@
                             
                             var newDiv = document.createElement("div");
                             newDiv.id = "cnum"+copy;
-                            newDiv.innerHTML = '<input id = "call_number'+copy+'" class="call_nos" type = "text" name = "call_number[]" value="" /><input type="button" id="deletebutton'+copy+'" value="Delete Copy" onclick="deleteCopy('+copy+');"/><br/>';
+                            newDiv.innerHTML = '<input id = "call_number" class="call_nos" type = "text" name = "call_number[]" value="" /><input type="button" id="deletebutton" value="Delete Copy" onclick="deleteCopy('+copy+');"/><br/>';
 
 
                             // add elements to page
@@ -360,13 +360,13 @@
                                                                             
                                                                             $call_numbers = $this->model_get_list->get_edit_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/></div>';
+                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/></div>';
                                                                                 $ccount++;
                                                                                 echo $ccount;
                                                                             }
                                                                             $call_numbers = $this->model_get_list->get_notedit_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><br/></div>';
+                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><br/></div>';
                                                                                 $ccount++;
                                                                             }
                                                                             ?>
