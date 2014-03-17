@@ -24,26 +24,10 @@ class Controller_view_users extends Controller_log {
 
     function search_user(){
       $this->load->model('model_users');
-      $data['results']=$this->model_users->userSearch($this->input->post('s_user')); 
- 
-         //configuration of the ajax pagination  library.
-        $config['base_url'] = base_url().'index.php/admin/controller_view_users/search_user';        //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
-        $config['total_rows'] = count($data['results']);
-        $config['per_page'] = '10';
-        $config['div'] = '#showSearchUser';
-      //  $config['additional_param']  = 'serialize_form1()';
-
-        $page=$this->uri->segment(4);       // splits the URI segment by /
-        $this->jquery_pagination->initialize($config);
-        //$this->pagination->initialize($config);
-        $data['links'] = $this->jquery_pagination->create_links();
-        $this->print_info($data['results'],$data['links']); 
-
+        $data['results']=$this->model_users->userSearch($this->input->post('s_user'));
         $data['parent'] = "Users";
         $data['current'] = "Search Users";
-        /*foreach($data['results'] as $users){
-          echo $users->account_number;
-        }*/
+
         $this->load->helper(array('form','html'));
         $this->load->view("admin/view_header",$data);
         $this->load->view("admin/view_aside");
