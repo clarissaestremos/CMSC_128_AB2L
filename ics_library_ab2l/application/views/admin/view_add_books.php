@@ -560,12 +560,15 @@
     });
 
         $( "#addbookForm" ).submit(function (e) {
+            console.log("addbookform");
             e.preventDefault();
             form = $(this).get(0).id;
             if(validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_isbn_key()){
             document.getElementById('btitle').innerText = "Title: "+document.getElementById('title').value;
             document.getElementById('byear').innerText = "Year of Publication: "+ document.getElementById('yearpub').value;
-            document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
+            $isbnValue=document.getElementById('isbn').value;
+            if($isbnValue=="") $isbnValue="None";
+            document.getElementById('bisbn').innerText = "ISBN: "+ $isbnValue;
             document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type_book').value;
             var aut = document.getElementsByClassName("authors");
             var author = '';
