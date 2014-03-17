@@ -11,7 +11,7 @@
 				pass1=myform.icsmailpw1.value;
 					
 				if(pass!=pass1)
-					msg+="Passwords did not matched.";
+					msg+="Passwords did not match.";
 				if(msg=="Invalid input: ")
 					msg="";
 				else {
@@ -30,7 +30,7 @@
 				pass1=myform.admin_password1.value;
 					
 				if(pass!=pass1)
-					msg+="Passwords did not matched.";
+					msg+="Passwords did not match.";
 				if(msg=="Invalid input: ")
 					msg="";
 				else {

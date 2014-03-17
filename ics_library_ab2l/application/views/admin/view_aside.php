@@ -1,4 +1,4 @@
- <div id="mainbody" class="main-content">
+ <div id="thisbody" id="mainbody" class="main-content">
 	<aside id="side-navigation" class="border-top width-1of4">
 		<div class="col width-1of1">
 			<div class="cell width-1of1">
@@ -71,6 +71,7 @@
 		<footer>
 			<div class="cell">
 			<p>Copyright &#169 2013 Institute of Computer Science</p>
+			<p>Derivative from HTML5 Admin Template by <a href="http://medialoot.com/item/html5-admin-template/">MediaLoot</a></p>
 			</div>
 		</footer>
 	</aside>

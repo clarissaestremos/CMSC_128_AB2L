@@ -63,7 +63,7 @@
                             <div class="header background-red">
                                 List of borrowed books
                             </div>
-                             <script type="text/javascript">
+                            <script type="text/javascript">
                                 $(window).load(function(){
                                     $.ajax({
                                         url: base_url+"index.php/admin/controller_reservation/get_book_data",                    //no need to edit this
@@ -100,12 +100,18 @@
                         ?>
 	       </div>
 </div>
-<div id="returndialog" title="Return Material Dialog">
+<div id="returndialog" title="Return Book Dialog">
     <p>Are you sure that this material was properly returned?</o>
 </div>
-<div id="extenddialog" title="Extend Material Dialog">
+<div id="extenddialog" title="Extend Book Dialog">
     <p>Do you really want to extend the due date of this material?</o>
 </div>
-<div id='notifydialog' title='Notify Overdue Material Dialog'>
-    <p>Do you really want to notify all users regarding their overdue material?</p>
+<div id="returnsucc" title="Return Book Success">
+    <p>You have successfully returned a material!</p>
+</div>
+<div id="extendsucc" title="Extend Book Success">
+    <p>You have successfully extended the due date of a material!</p>
+</div>
+<div id='notifydialog' title='Notify Overdue Books Dialog'>
+    <p>Do you really want to notify all users regarding their overdue materials?</p>
 </div>
