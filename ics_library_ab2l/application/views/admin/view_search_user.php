@@ -82,3 +82,13 @@
  </div>
     </div>
 </div>
+<div id="confdialog" title="Confirm Account Dialog">
+    <h5>Are you sure that you want to activate this user account?</h5>
+</div>
+
+<div id="deactivatedialog" title="Deactivate Account Dialog">
+    <h5>Do you really wish to deactivate all user accounts?</h5>
+</div>
+<div id="confsuccess" title="Confirm User Account Success">
+    <p>You have successfully confirmed a user account!</p>
+</div>

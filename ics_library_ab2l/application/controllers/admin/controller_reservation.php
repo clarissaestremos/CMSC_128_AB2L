@@ -38,7 +38,37 @@ class Controller_reservation extends Controller_log{
         $this->model_reservation->update_book_reservation($res_number, "extend");
 		$session_user = $this->session->userdata('logged_in')['username'];
             $this->add_log("Admin $session_user extended a book reservation with Reservation Number: $res_number", "Extend Reservation");
-        redirect('index.php/admin/controller_reservation','refresh');
+            $base = base_url();
+        echo "<div id='mysuccess' title='Add Book Success'>
+        <h6>You have successfully extend the material's due date!</h6>
+        </div>
+        <script src='$base/js/jquery-1.10.2.min.js'></script>
+        <script src='$base/js/jquery-ui.js'></script>
+        <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+        <script>
+            $('#mysuccess').dialog({
+                modal: true,
+                closeOnEscape: true,
+                resizable: false,
+                  width: 300,
+                  minHeight: 200,
+                closeText: 'show',
+                show: {
+                  effect: 'fadeIn',
+                  duration: 200
+                },
+                draggable: false,
+                close: function(event, ui){
+                    window.location.replace('$base/index.php/admin/controller_reservation');
+                },
+                buttons : {
+                  'Ok': function() {
+                      window.location.replace('$base/index.php/admin/controller_reservation');
+                  },
+                }
+     
+            });
+        </script>";
     }//END OF extend()
     public function get_book_data(){
     	$row_number=$this->model_reservation->countRows("overdue");
@@ -66,7 +96,7 @@ class Controller_reservation extends Controller_log{
 
         $this->jquery_pagination->initialize($config);
         $data['links'] = $this->jquery_pagination->create_links();
-        $this->print_books($row, $data['links']);
+        $this->print_books($row, $data['links'],'overdue');
     }
     public function get_book_data2(){
     	$row_number=$this->model_reservation->countRows("borrowed");
@@ -94,11 +124,13 @@ class Controller_reservation extends Controller_log{
             </tr>
         </thead>
         <tbody>";
-        $this->print_books($row, $data['links']);
+        $this->print_books($row, $data['links'],'borrowed');
     }
-     function print_books($overdue,$link){
+     function print_books($overdue,$link,$stat){
      	$date = date("Y-m-d");
             $count = 1;
+            $ret = "ret".$stat;
+            $ext = "ext".$stat;
             foreach($overdue as $row){
                 echo "<tr>
                         <td>$count</td>
@@ -117,16 +149,16 @@ class Controller_reservation extends Controller_log{
                         <td>{$row->date_borrowed}</td>
                         <td>{$row->due_date}</td>";
 				if($row->due_date <= $date){
-				echo "<td><form action='controller_reservation/extend' id='overext$count' method='post'>
+				echo "<td><form action='controller_reservation/extend' id='$ret$count' method='post'>
 						<input type='hidden' name='res_number' value='{$row->res_number}' />
-						<input type='submit' class='background-red' name='extend' onclick='return extendBook(overext$count);' value='Extend' />
+						<input type='submit' class='background-red' name='extend' onclick='return extendBook($ret$count);' value='Extend' />
 						</form></td>";
 				}else{
 					echo "<td></td>";
 				}
-				echo	"<td><form action='controller_outgoing_books/return_book/' id='overret$count' method='post'>
+				echo	"<td><form action='controller_outgoing_books/return_book/' id='$ext$count' method='post'>
                         <input type='hidden' name='res_number' value='{$row->res_number}' />
-                        <input type='submit' class='background-red' name='return' onclick='return returnBook(overret$count);' value='Return' />
+                        <input type='submit' class='background-red' name='return' onclick='return returnBook($ext$count);' value='Return' />
                     </form></td>";
                 echo "</tr>";
                 $count++;
