@@ -16,10 +16,12 @@ class Controller_verify_login extends Controller_log {
            
 
         if($this->form_validation->run() == FALSE) {
+            $this->form_validation->set_error_delimiters('<div class="isa_error">', '</div>');
           $data['titlepage']= "Login Page";
             $this->load->view('user/view_header',$data);
             $this->load->view('user/view_login',$data); //load view for login
             $this->load->view('user/view_footer');
+
             } 
         else {
                 //Go to private area

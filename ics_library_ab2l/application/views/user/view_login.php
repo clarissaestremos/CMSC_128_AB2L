@@ -13,10 +13,7 @@
 			<?php
 				if(validation_errors()){
 			?>
-			<div class="errormsg" style='margin: 3px 10px 3px 10px;'>
-				<div class="msgwrape">
-					<p class="color-red"><?php echo validation_errors(); ?></p>
-				</div></div>
+			<?php echo validation_errors(); ?>
 			<?php
 				}
 			?>
