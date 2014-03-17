@@ -19,12 +19,53 @@ class Controller_add_user extends Controller_log {
 	        $this->load->view("admin/view_add_user");
 	        $this->load->view("admin/view_footer");
     }
-	
-	public function alpha_space($str){
-       $this->form_validation->set_message('alpha_space', 'Invalid input.');
-      return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
+ public function alpha_space($str)
+		{
+			return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
+		}
+		 public function acct_num($str)
+		{
+			if($this->input->post('classi')=="student")
+				return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE;
+			else{
+				return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;
+			}
+		}
+		 public function last_name($str)
+		{
+			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
+		}
 
-    }
+		 public function first_name($str)
+		{
+			return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE;
+		}
+		 public function check_dupes($str2)
+		{
+
+			 $sql=$this->db->query("select username from user_account where username like '$str2' ");
+
+			 if($sql->num_rows()!=0)
+					{return FALSE;}
+				else {return TRUE;}         
+		}
+
+
+		public function check_dupes_accntNum($str3)
+		{
+
+			 $sql=$this->db->query("select account_number from user_account where account_number like '$str3' ");
+
+			 if($sql->num_rows()!=0)
+					{return FALSE;}
+				else {return TRUE;}         
+		}
+
+		 public function check_account( $account_number){
+            $this->db->where('account_number',$account_number);
+            $query = $this->db->get('user_account')->num_rows();
+            
+    	}
 
     public function registration()
     {
@@ -33,20 +74,32 @@ class Controller_add_user extends Controller_log {
               redirect('index.php/user/controller_login', 'refresh');
             $this->load->library('form_validation');
             // field name, error message, validation rules
-           $this->form_validation->set_rules('fname', 'First Name', 'trim|required|callback_alpha_space|xss_clean');
-          $this->form_validation->set_rules('minit', 'Middle Initial', 'trim|required|xss_clean');
-          $this->form_validation->set_rules('lname', 'Last Name', 'trim|required|callback_alpha_space|xss_clean');
+       
 
-           $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|max_length[32]|alpha_dash|xss_clean');
-          $this->form_validation->set_rules('college', 'College', 'trim|min_length[2]|alpha|xss_clean');
-          $this->form_validation->set_rules('course', 'Course', 'trim|min_length[3]|xss_clean');
-          $this->form_validation->set_rules('classi', 'Classification', 'trim|alpha|xss_clean');
-          
-          $this->form_validation->set_rules('eadd', 'Your Email', 'trim|required|valid_email');
 
-          $this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[4]|xss_clean|callback_usernameRegex');
-          $this->form_validation->set_rules('pass', 'Password', 'trim|required|min_length[5]|max_length[32]|alpha_numeric');
-          $this->form_validation->set_rules('cpass', 'Password Confirmation', 'trim|required|matches[pass]');
+			$this->form_validation->set_rules('fname', 'First Name', 'trim|required|ucwords|min_length[2]|max_length[50]|callback_first_name|xss_clean');
+			$this->form_validation->set_rules('minit', 'Middle Initial', 'trim|ucwords|required|xss_clean');
+			$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_last_name|xss_clean');
+
+			$this->form_validation->set_message('check_first_name', 'Invalid input. Invalid name.');
+			$this->form_validation->set_message('check_last_name', 'Invalid input. Invalid name.');
+
+			 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|callback_acct_num|xss_clean|callback_check_account');
+			 $this->form_validation->set_message('check_dupes_acctNum', 'You have a duplicate Student/Employee number');
+			 $this->form_validation->set_message('acct_num', 'Invalid Student/Employee number');
+
+			$this->form_validation->set_rules('college', 'College', 'trim|min_length[2]|alpha|xss_clean');
+			$this->form_validation->set_rules('course', 'Course', 'trim|min_length[3]|xss_clean');
+			$this->form_validation->set_rules('classi', 'Classification', 'trim|alpha|xss_clean');
+			
+			$this->form_validation->set_rules('eadd', 'Your Email', 'trim|required|valid_email|xss_clean');
+
+			$this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[4]|alpha_dash|xss_clean|callback_check_dupes|callback_usernameRegex');
+			$this->form_validation->set_message('check_dupes', 'You have a duplicate username');
+			
+			$this->form_validation->set_rules('pass', 'Password', 'trim|required|min_length[5]|max_length[20]|alpha_numeric');
+			$this->form_validation->set_rules('cpass', 'Password Confirmation', 'trim|required|matches[pass]');
+
 
 
             if($this->form_validation->run() == FALSE)
