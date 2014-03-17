@@ -20,7 +20,7 @@
                                                         <div class="cell">
                                                         <?php 
                                                             if(isset($msg)){
-                                                                if($msg === "You have successfully added a new admin account."){
+                                                                if($msg === "You successfully added a new admin account."){
                                                                     echo "<div class='color-green'>$msg</div>";
                                                                 }
                                                                 else{

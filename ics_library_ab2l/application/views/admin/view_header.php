@@ -6,7 +6,7 @@
             				redirect('index.php/user/controller_login', 'refresh');
     ?>
 	<head>
-		<title>Admin Poratl</title>
+		<title>Admin Portal</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>style/admin/build-full.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>style/admin/admin-style.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css">
