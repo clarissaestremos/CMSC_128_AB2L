@@ -63,17 +63,35 @@
 		str=regForm.stdNum.value;
 		flag  = document.getElementById("classi").value;
 		
+		var current= new Date();
+		var validyear= current.getFullYear();
+
+		//change this if the school year shifts to august, 6 refers to june
+		if(current.getMonth()+1<6){
+			validyear--;
+		}
+
 		msg="Invalid Input: ";
 		if(flag==="student"){
 			if (str==""){
 			msg+="Student number is required!";
 				document.getElementsByName("valNumber")[0].innerHTML=msg;
 			}
-			else if (!str.match(/^[0-9]{4}\-[0-9]{5}$/)){
+			else if (!str.match(/^[12][0-9]{3}\-[0-9]{5}$/)){
 			  msg+="Must be xxxx-xxxxx";
 				document.getElementsByName("valNumber")[0].innerHTML=msg;
 			}
-			else if(msg=="Invalid Input: "){
+			else if(str.match(/^([12])[0-9]{3}\-[0-9]{5}$/)){
+				//check if the year is valid
+				var stdyear=parseInt(str.substring(0,4));
+
+				if(stdyear>validyear || stdyear< 1960){
+					 msg+="Invalid student number.";
+					document.getElementsByName("valNumber")[0].innerHTML=msg;
+				}
+
+			}
+			if(msg=="Invalid Input: "){
 				msg="";
 				document.getElementsByName("valNumber")[0].innerHTML=msg;
 				if(getResultStdNo(str)) msg="";

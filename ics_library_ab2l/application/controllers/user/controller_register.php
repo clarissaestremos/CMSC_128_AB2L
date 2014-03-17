@@ -26,6 +26,14 @@ class Controller_register extends CI_Controller {
 		{
 			return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
 		}
+		 public function acct_num($str)
+		{
+			if($this->input->post('classi')=="student")
+				return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE;
+			else{
+				return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;
+			}
+		}
 		 public function last_name($str)
 		{
 			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
@@ -71,8 +79,12 @@ class Controller_register extends CI_Controller {
 					$this->form_validation->set_rules('minit', 'Middle Initial', 'trim|ucwords|required|xss_clean');
 					$this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_last_name|xss_clean');
 
-					 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|alpha_dash|xss_clean|callback_check_account');
+					$this->form_validation->set_message('check_first_name', 'Invalid input. Invalid name.');
+					$this->form_validation->set_message('check_last_name', 'Invalid input. Invalid name.');
+
+					 $this->form_validation->set_rules('stdNum', 'Student Number', 'trim|required|min_length[10]|callback_acct_num|xss_clean|callback_check_account');
 					 $this->form_validation->set_message('check_dupes_acctNum', 'You have a duplicate Student/Employee number');
+					 $this->form_validation->set_message('acct_num', 'Invalid Student/Employee number');
 
 					$this->form_validation->set_rules('college', 'College', 'trim|min_length[2]|alpha|xss_clean');
 					$this->form_validation->set_rules('course', 'Course', 'trim|min_length[3]|xss_clean');
