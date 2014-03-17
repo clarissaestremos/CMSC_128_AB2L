@@ -106,11 +106,25 @@
         else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
         else if (msg=="") msg="Invalid Input: Strength: Weak";
 
-        document.getElementsByName("helppassword")[0].innerHTML=msg;
+      $('#helppassword').css("font-size", '10px');
+       $('#helppassword').css("font-family", 'Verdana');
         if(msg === "Strength: Strong" || msg === "Strength: Medium"){
+            $('#helppassword').removeClass('color-red');
+             $('#helppassword').removeClass('validate');
+            $('#helppassword').addClass('userOk');
+             $('#helppassword').css("margin", '0px');
+
+            document.getElementsByName("helppassword")[0].innerHTML=msg;
             return true;
         }
-        else return false;
+        else{ 
+
+            $('#helppassword').addClass('color-red');
+            $('#helppassword').removeClass('userOk');
+             $('#helppassword').css("font-size", '10px');
+            document.getElementsByName("helppassword")[0].innerHTML=msg;
+            return false;
+        }
     }     
     function validateCpass(){
         str=regForm.pass.value;

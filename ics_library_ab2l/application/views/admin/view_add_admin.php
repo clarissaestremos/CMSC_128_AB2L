@@ -120,7 +120,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                            <input type="password" class="background-white" name="pass" id = "pass" required placeholder="Password"/><br/>&nbsp;<span name="helppassword" class="validate color-red"></span><br/>
+                                                                            <input type="password" class="background-white" name="pass" id = "pass" required placeholder="Password"/><br/>&nbsp;<span name="helppassword" id="helppassword"></span><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
