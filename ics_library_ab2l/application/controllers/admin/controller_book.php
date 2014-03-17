@@ -44,7 +44,7 @@ class Controller_book extends Controller_log {
         // getting the number of rows for of a query for computing the total row
         $data['result_all']  = $this->model_get_list->select_all_book_info($sort_by,$order_by,NULL,0,0);
         //configuration of the ajax pagination  library.
-        $config['base_url'] = base_url().'index.php/user/controller_books/get_book_data1';
+        $config['base_url'] = base_url().'index.php/admin/controller_book/get_book_data1';
         $config['total_rows'] = count($data['result_all']);
         $config['per_page'] = '10';
         $config['div'] = '#change_here';
@@ -289,22 +289,65 @@ class Controller_book extends Controller_log {
 		$tags = array_unique ($this->input->post('tags'));
 		$isbn = $this->input->post('isbn');
 		$typeCheck = $this->input->post('type');
-		if ($typeCheck != "BOOK")
-			$isbn = "";
-		$book = array(
-			'title' => $this->input->post('title'),
-			'year_of_pub' => $this->input->post('year_of_pub'),
-			'no_of_available' => $this->input->post('no_of_available'),
-			'type' => strtoupper($this->input->post('type')),
-			'isbn' => $isbn,
-			'quantity' => sizeof($call_numbers),
-		);
 
-		//BUG: CHECK IF A COPY OF THE BOOK IS ON LOAN, THEN SUBTRACT NUMBER OF ON LOAN BOOKS IN QUANTITY THEN UPDATE NO. OF AVAILABLE
-		$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags);
-		$this->add_log("Admin $session_user updated book with ID Number: $id", "Update Book");
-		$this->edit_success();
+		if(sizeof($call_numbers) >= 1){
+			if ($typeCheck != "BOOK")
+				$isbn = "";
+			$book = array(
+				'title' => $this->input->post('title'),
+				'year_of_pub' => $this->input->post('year_of_pub'),
+				'no_of_available' => $no_of_available,
+				'type' => strtoupper($this->input->post('type')),
+				'isbn' => $isbn,
+				'quantity' => sizeof($call_numbers),
+			);
 
+			//BUG: CHECK IF A COPY OF THE BOOK IS ON LOAN, THEN SUBTRACT NUMBER OF ON LOAN BOOKS IN QUANTITY THEN UPDATE NO. OF AVAILABLE
+			$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags);
+			$this->add_log("Admin $session_user updated book with ID Number: $id", "Update Book");
+			$this->edit_success();	
+		}
+		else{
+
+			$newdata = array('id' => $id);
+			$this->session->set_userdata($newdata);
+			echo "<div id='mysuccess' title='Empty Call Number'>
+					<h6>A book must have at least one copy. Do you want to delete the record of the book in the library?</h6>
+				</div>
+				<script src='$base/js/jquery-1.10.2.min.js'></script>
+				<script src='$base/js/jquery-ui.js'></script>
+				<link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+				<script>
+						$('#mysuccess').dialog({
+					      	modal: true,
+					        resizable: false,
+					        width: 300,
+					        minHeight: 200,
+					      	closeOnEscape: true,
+					      	closeText: 'show',
+					      	show: {
+					       	 	effect: 'fadeIn',
+					        	duration: 500
+					      	},
+					      	hide: {
+					        	effect: 'fadeOut',
+					        	duration: 500
+					      	},
+					      	draggable: false,
+					      	buttons : {
+					        	'Yes': function() {
+					            	$(this).dialog('close');
+					              	window.location.replace('$base/index.php/admin/controller_book/delete');
+					        	},
+					        	'No': function() {
+					            	$(this).dialog('close');
+					        	}
+					      	}
+					      });
+			</script>";
+			$this->session->unset_userdata('id');
+		}
+		
 	}
 
 	function edit_success(){
@@ -350,7 +393,8 @@ class Controller_book extends Controller_log {
             redirect('index.php/user/controller_login', 'refresh');
 		$session_user = $this->session->userdata('logged_in')['username'];
 		$this->load->model('model_book');
-		$id = $_POST['id'];
+		$id = $this->session->userdata('id');
+		$this->session->unset_userdata('id');
 		$this->add_log("Admin $session_user deleted book with ID Number: $id", "Delete Book");
 		$this->model_book->delete_book($id);
 		$base = base_url();
