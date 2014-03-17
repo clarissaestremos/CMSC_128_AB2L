@@ -1,4 +1,3 @@
-
 <div id="main-body" class="site-body">
 	<style>
 		#para{ font-size: 20px;} 
@@ -81,7 +80,7 @@
 												<b>Interests:</b> Watching American TV series  
 												<br/><b>Short Description:</b> I want a little danger in life.  
 												<br/><b>Org:</b> University of the Philippines Gawad Kalinga - Los Banos  
-												<br/><b>Field/Preferred Language/technical skills:</b> Web development /C,Java,PHP  
+												<br/><b>Field/Preferred Language/technical skills:</b> Web development / C,Java,PHP  
 												</div>
 
 												<div style="float:left;">
@@ -89,7 +88,7 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black"> Christine Villaruel - Accounts Management</h2>
-												<b>Interests:</b>  playing musical instruments, programming, animation  
+												<b>Interests:</b>  Playing musical instruments, programming, animation  
 												<br/><b>Short Description:</b> Junior BS Computer Science student,a person who loves to learn   
 												<br/><b>Org:</b> Young Software Engineers' Society  
 												<br/><b>Field/Preferred Language/technical skills:</b> Web development, Mobile Development  
@@ -142,7 +141,7 @@
 												<b>Interests:</b>Movies, series, music, foods  
 												<br/><b>Short Description:</b> Skinny but awesome  
 												<br/><b>Org:</b> UPLB Computer Science Society  
-												<br/><b>Field/Preferred Language/technical skills:</b>   Mobile dev, Java, HTML, CSS, C, MySQL  
+												<br/><b>Field/Preferred Language/technical skills:</b>Mobile dev, Java, HTML, CSS, C, MySQL  
 												</div>
 												<hr><br/>
 
@@ -151,10 +150,10 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Nyreen Delos Santos</h2>
-												<b>Interests:</b>singing  
-												<br/><b>Short Description:</b> Someone who doesn't give up without a good fight. Mehe.  
+												<b>Interests:</b>Singing  
+												<br/><b>Short Description:</b> Someone who doesn't give up without a good fight.   
 												<br/><b>Org:</b> UP Banahaw   
-												<br/><b>Field/Preferred Language/technical skills:</b> Web dev,C, Java  
+												<br/><b>Field/Preferred Language/technical skills:</b> Web dev, C, Java  
 												</div>
 												<hr><br/>
 
@@ -166,7 +165,7 @@
 												<b>Interests:</b>Sweets, Gin-chan (Gintama) 
 												<br/><b>Short Description:</b>Likes to code, to eat sweets, to laugh  
 												<br/><b>Org:</b> N/A   
-												<br/><b>Field/Preferred Language/technical skills:</b> Back-end, System Dev., C  
+												<br/><b>Field/Preferred Language/technical skills:</b> Back-end, System Dev, C  
 												</div>
 												<hr><br/>
 
@@ -177,10 +176,10 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Anne Muriel Gonzales</h2>
-												<b>Interests:</b>reading young adult novels, anime, manga, travelling 
-												<br/><b>Short Description:</b>  Focusing on the bright side of life  
+												<b>Interests:</b>Reading young adult novels, anime, manga, travelling 
+												<br/><b>Short Description:</b>  Focusing on the bright side of life.  
 												<br/><b>Org:</b>N/A   
-												<br/><b>Field/Preferred Language/technical skills:</b> Web Dev, Java, php, c, MySQL  
+												<br/><b>Field/Preferred Language/technical skills:</b> Web Dev, Java, PHP, C, MySQL  
 												</div>
 												<hr><br/>
 
@@ -202,10 +201,10 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Yumiko Kim Yoshida</h2>
-												<b>Interests:</b>Foodtrip with friends, watching TV series, bonding with friends  
-												<br/><b>Short Description:</b>A work in progress  
+												<b>Interests:</b>Watching American TV series/movies, bonding with friends  
+												<br/><b>Short Description:</b>A work in progress.  
 												<br/><b>Org:</b>N/A   
-												<br/><b>Field/Preferred Language/technical skills:</b>web dev, php, c#, c  
+												<br/><b>Field/Preferred Language/technical skills:</b>Web dev, PHP, C#, C, HTML, CSS  
 												</div>
 												<hr><br/>
 
@@ -217,9 +216,9 @@
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Maraiah Gene Garcia</h2>
 												<b>Interests:</b>Listening to music, watching movies, playing computer games, cooking 
-												<br/><b>Short Description:</b> Average student, responsible enough, simple, nice and friendly  
+												<br/><b>Short Description:</b> Average student, responsible enough, simple, nice and friendly.  
 												<br/><b>Org:</b>N/A   
-												<br/><b>Field/Preferred Language/technical skills:</b>Web dev.,/ C, Java  
+												<br/><b>Field/Preferred Language/technical skills:</b>Web dev / C, Java  
 												</div>
 												<hr><br/>
 
@@ -231,7 +230,7 @@
 												<b>Interests:</b>Dota, Lawn Tennis, ANime, FPS 
 												<br/><b>Short Description:</b> Awesome  
 												<br/><b>Org:</b>Project Committee Head, UPLB Computer Science Society   
-												<br/><b>Field/Preferred Language/technical skills:</b> Php, mysql,javascript,css3,boostrap,java  
+												<br/><b>Field/Preferred Language/technical skills:</b> PHP, MySQL, Javascript, CSS3, Boostrap, Java  
 												</div>
 												<hr><br/>
 
@@ -265,7 +264,7 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Cris Joseph Ramos</h2>
-												<b>Interests:</b>watching anime, listening to music  
+												<b>Interests:</b>Watching anime, listening to music  
 												<br/><b>Short Description:</b> simple  
 												<br/><b>Org:</b>UPLB Computer Science Society  
 												<br/><b>Field/Preferred Language/technical skills:</b>Mobile, Web Dev / C, Java  
@@ -277,10 +276,10 @@
 												</div>
 												<div style="width: 637px; height: 170px;margin-left: 80px; float:left; margin-top:-1%;">
 												<h2 class="color-black">Aristotle Martinez</h2>
-												<b>Interests:</b>anime, movies, books, animals, sleep chocolates 
+												<b>Interests:</b>Anime, movies, books, animals, sleep chocolates 
 												<br/><b>Short Description:</b>hardworking but sometimes shows lazy syndrome  
 												<br/><b>Org:</b>  UP SOMA SOSHIKi-member  
-												<br/><b>Field/Preferred Language/technical skills:</b>Programming in C, C#, Java Web dev, game dev  
+												<br/><b>Field/Preferred Language/technical skills:</b>Programming in C, C#, Java Web dev, Game dev  
 												</div>
 												<hr><br/>
 
@@ -292,7 +291,7 @@
 												<b>Interests:</b> Reading, watching movies and anime 
 												<br/><b>Short Description:</b>Just me  
 												<br/><b>Org:</b> Social and Alumni Relations Committee Junior Head, UP Oroquieta  
-												<br/><b>Field/Preferred Language/technical skills:</b>c , java, html, css  
+												<br/><b>Field/Preferred Language/technical skills:</b>C , Java, HTML, CSS  
 												</div>
 												<hr><br/>
 
@@ -306,7 +305,7 @@
 												<b>Interests:</b>Layout Design, Languages, Photography, People 
 												<br/><b>Short Description:</b>I am saved by grace  
 												<br/><b>Org:</b>State Varsity Christian Fellowship-UPLB (Junior Executive Committee, Membership Committee Head)  
-												<br/><b>Field/Preferred Language/technical skills:</b>PHP, Javascript, CSS, Photo manipulation and layout skills  
+												<br/><b>Field/Preferred Language/technical skills:</b>PHP, Javascript, CSS, Photo manipulation and layout 
 												</div>
 												<hr><br/>
 
@@ -318,7 +317,7 @@
 												<b>Interests:</b>Potato
 												<br/><b>Short Description:</b>Derp  
 												<br/><b>Org:</b>Kappan Chronicler at UP Kappa Phi Sigma-Conservation and Development Society  
-												<br/><b>Field/Preferred Language/technical skills:</b>Web, Mobile, Software/Engurish/C, C++, C#, Java tapos yung mga sa web development.  
+												<br/><b>Field/Preferred Language/technical skills:</b>Web, Mobile, Software/Engurish/C, C++, C#, Java, Web development 
 												</div>
 												<hr><br/>
 
@@ -330,7 +329,7 @@
 												<b>Interests:</b>Books, movies, basketball 
 												<br/><b>Short Description:</b> A Möbius strip of what-ifs/li>
 												<br/><b>Org:</b> UPLB Computer Science Society, Filipino Freethinkers - UPLB, UP BBALL  
-												<br/><b>Field/Preferred Language/technical skills:</b>Web Development, Photo manipulation, vector graphics  
+												<br/><b>Field/Preferred Language/technical skills:</b>Web Development, Photo manipulation, Vector graphics  
 												</div>
 												<hr><br/>
 
