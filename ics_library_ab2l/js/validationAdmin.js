@@ -49,7 +49,7 @@
             msg+="Admin key is required!";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }
-        else if (!str.match(/^[A-Za-z0-9][A-Za-z0-9._]{6,8}$/)){
+        else if (!str.match(/^[A-Za-z0-9][A-Za-z0-9._]{7,8}$/)){
           msg+="Must be between 8-10 alphanumeric character!<br/>";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }
