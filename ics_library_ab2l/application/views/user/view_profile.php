@@ -24,9 +24,11 @@
                                     <?php echo  form_open_multipart('index.php/user/controller_editprofile/uploadImage')?>
                                     <!--div id = "frame" style = "width: 220px;height:220px;border-radius:110px;border:solid 2px;margin-top:40px;margin-left:50px;background:#FFFFFF;"-->
 
-                                      <object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "height: 300px;width:300px; margin-left: 18px; ">
-                                        <img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "height: 300px;width:300px;  margin-left: 16px;"/>
-                                      </object>
+                                     <div id="picture"> 
+						<object data="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>" type="image/jpg" style = "height: 300px;width:300px; margin-left: 18px; object-fit: cover; ">
+						<img src="<?php echo base_url().'imgs/'.'default'.'.png';?>" alt = "Oops, something went wrong. " style = "height: 300px;width:300px;  margin-left: 16px;"/>
+	                                      </object>
+				     </div>
 
                                       <!--img  alt = "Oops, something went wrong. " style = "padding: 2.5em; length: 250px;width:250px;" src="<?php echo base_url().'imgs/'.$user_details->account_number.'.jpg';?>">
                                     <!--a class="col width-fill" id = "edit_picture">Edit</a-->
