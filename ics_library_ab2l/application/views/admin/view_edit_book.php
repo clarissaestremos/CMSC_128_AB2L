@@ -389,7 +389,7 @@
                                                                             }
                                                                             $call_numbers = $this->model_get_list->get_notedit_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/></div>';
+                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><br/></div>';
                                                                                 $ccount++;
                                                                             }
                                                                             ?>
