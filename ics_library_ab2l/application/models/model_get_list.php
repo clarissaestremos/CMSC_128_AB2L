@@ -109,6 +109,18 @@ public function select_returned_books($account,$sort_by,$order_by,$data, $limit,
 		return $query->result();
 	}
 
+	public function get_notedit_call_numbers($id){
+		$query = $this->db->query("SELECT call_number FROM book_call_number
+									WHERE id LIKE $id
+									AND call_number IN
+										(SELECT call_number
+										FROM book_reservation
+										WHERE status NOT LIKE 'reserved'
+										OR status NOT LIKE 'overdue'
+										OR status NOT LIKE 'borrowed')");
+		return $query->result();
+	}
+
 	function get_book_by_id($id){
 		$query = $this->db->get_where('book', array('id' => $id));;
 		return $query->result();
