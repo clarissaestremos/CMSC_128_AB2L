@@ -61,6 +61,7 @@
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_stat" class="nav-a">View Statistics</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_log" class="nav-a">View Logs</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_settings" class="nav-a">View Settings</a></li>
+						<li><a href="<?php echo base_url() ?>index.php/admin/controller_adminmanual" class="nav-a">View Admin Manual</a></li>
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_logout" class="nav-a">Logout</a></li>
 					</ul>
 				</div>

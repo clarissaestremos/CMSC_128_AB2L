@@ -28,6 +28,7 @@
 									<li><b>Year of Publication: </b><?=$year_of_pub?>
 									<li><b>Type: </b><?=$type?></li>
 									<a id="confirmButton" href="<?php echo base_url().'index.php/user/controller_reserve_book/confirm_reservation/' ?>"><input type="button" value="Confirm Reservation"></a>
+									<a id="cancelButton" href="<?php echo base_url().'index.php/user/controller_books' ?>"><input type="button" value="Cancel"></a>
 								</div>
 							</form>
 						</div>

@@ -59,7 +59,10 @@
 #dialogbox > div > #dialogboxhead{ background: #B80000 ; font-size:19px; padding:10px; color:white; }
 #dialogbox > div > #dialogboxbody{ padding:20px; color:black; }
 #dialogbox > div > #dialogboxfoot{ background: #B80000 ; padding:10px; text-align:right;color:white; }
-
+li{
+	text-decoration:none;
+	list-style:none;
+}
 <script>
 function CustomAlert(){
 	this.render = function(){
@@ -123,8 +126,8 @@ var Alert = new CustomAlert();
 		<a name="overview"></a>
 		<span>Overview</span>
 		<ul>
-			<li>This is the UPLB Institute of Computer Science e-Library System. This allows UPLB <br>constituents
-			 to do library transactions online. Created by CMSC 128 AB-2L A.Y. 2013-2014.</li>
+			<li>This is the UPLB Institute of Computer Science e-Library System. This allows UPLB <br/>constituents
+			 to do library transactions online. <br/>Created by the <strong>CMSC 128 class AB-2L A.Y. 2013-2014.</strong></li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -135,7 +138,19 @@ var Alert = new CustomAlert();
 			<li><span>Basic Search</span>
 				<ul>
 					<li>Allows the user to search for a book by providing information on any of its fields.</li>
-					<li>Shows the detailed list of books matching the specified query</li>
+					<li>It will show the detailed list of books matching the specified query</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>As you can see on the image above, you can use <strong>Basic Search</strong> by the book's </br><strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li><br/>
+					<li>You can also use the <strong>Basic Search</strong> anywhere in within the site.<br/><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch1.jpg" /><br/><br/><br/>
+						<ul>
+							<li>Located in the upper right of the site</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 			<a name="advancedSearch"></a>
@@ -143,6 +158,12 @@ var Alert = new CustomAlert();
 				<ul>
 					<li>A more specific search capability which allows users to specify more than one field.</li>
 					<li>Shows the detailed list of books matching the specified query.</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/advSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>To use the Advanced Search, you can fill out portions of the form above containing </br>the book's <strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		<a href="#top" class="tiny">Back to Top</a>
@@ -151,9 +172,33 @@ var Alert = new CustomAlert();
 		<a name="viewBooks"></a>
 		<span>View Books</span>
 		<ul>
-			<li>Displays the list of all books present in the ICS Library.</li>
-			<li>Allows user to see the books' details and their current availability in the library.</li>
-			<li>Allows the user to reserve a book displayed on the list.</li>
+			<li><strong>View Books</strong> displays the list of all books present in the ICS Library.</li>
+			<li>As a user, the books' details and their current availability in the library is displayed.</li>
+			<li>Will, also, allow the user to reserve a book displayed on the list.</li>
+			<li><br/>
+				<img src="<?php echo base_url();?>/images/usermanual/viewBooks1.png" /><br/><br/><br/><br/>
+				<ul>
+					<li>You will be seeing a table like this. Which contains the book's <br/>International Standard Book Number <strong>(ISBN)</strong>,
+						<strong>TITLE</strong>, <strong>SUBJECT</strong>, and <strong>AVAILABILITY</strong>.</li>
+				</ul>
+			</li>
+			<li>These images determines what type the material is.<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/type_book.png" height="100px" width="100px"/><br/><br/><br/><br/><br/><br/>
+					<ul>
+						<li>This is for a <strong>BOOK</strong>.</li>
+					</ul>	<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/type_thesis.png" height="100px" width="100px" /><br/><br/><br/><br/><br/><br/>
+					<ul>
+						<li>This is for a <strong>THESIS</strong> or a <strong>SPECIAL PROBLEM (SP)</strong>.</li>
+					</ul>
+			</li><br/>
+			<li>You will be seeing this above the table of books.<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/viewBooks2.png" /><br/><br/><br/><br/>
+				<ul>
+					<li>With this you can sort the books by either it's <strong>TITLE, SUBJECT, AUTHOR, TYPE,</strong> or<strong> AVAILABILITY</strong><br/> in <strong>ascending</strong> or <strong>descending</strong> order with this.</li>
+				</ul>
+			</li>
+
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -161,7 +206,14 @@ var Alert = new CustomAlert();
 		<a name="bookStat"></a>
 		<span>Book Statistics</span>
 		<ul>
-			<li>Displays in a chart the top 10 most borrowed books.</li>
+			<li><strong>Book Statistics</strong> is found in with the navigation.<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/stat.png" /><br/><br/><br/><br/>
+				<ul>
+					<li>Clicking on <strong>Book Statistics</strong> displays a pie chart of the<br/> <strong><b>TOP 10 MOST BORROWED BOOKS</b></strong> in <strong>ICS</strong>.</li>
+				</ul>
+			</li>
+			
+			
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -169,7 +221,22 @@ var Alert = new CustomAlert();
 		<a name="faqs"></a>
 		<span>Frequently Asked Questions (FAQs)</span>
 		<ul>
-			<li>Shows answers or solutions to questions frequently asked by the users about the system.</li>
+			<li><strong>Frequently Asked Questions (FAQs)</strong> is found in with the navigation.<br/><br/>
+				<img src="<?php echo base_url();?>/images/usermanual/faqs1.png" /><br/><br/><br/><br/>
+				<ul>
+					<li><strong>FAQs</strong> shows the answers or solutions to questions frequently asked by the users about the system.</li>
+					<br/>
+					<li>
+						<img src="<?php echo base_url();?>/images/usermanual/faqs.png" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>Find your problem, click on it and get your answer or solution.</li>
+							<li>If you can't find it there, might want to ask our <strong>ICS Librarian.</strong></li>
+							
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -177,9 +244,18 @@ var Alert = new CustomAlert();
 		<a name="contact"></a>
 		<span>Contact Us</span>
 		<ul>
-			<li>Shows the location of ICS Library on the map.</li>
-			<li>Shows the contact information of the ICS Library.</li>
-			<li>Allows the user to provide feedback, raise questions or give suggestions about the system.</li>
+			<li>Shows the location of ICS Library on the map.
+				<ul>
+					<li>Note: you will need an internet connection for this.</li>
+				</ul>
+			</li><br/>
+			<li>Included are the contact information of the ICS Library.<br/><br/>
+				<img src="<?php echo base_url();?>/images/usermanual/contact2.png" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			</li><br/>
+			<li>You can get in touch with us through <strong>EMAIL.</strong> by simply <strong><br/>filling out the form.<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/contact1.png" /><br/><br/><br/><br/><br/><br/><br/><br/>
+				
+			</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -187,7 +263,20 @@ var Alert = new CustomAlert();
 		<a name="login"></a>
 		<span>Login</span>
 		<ul>
-			<li>Establishes the user's identity which gives him a higher privilege that allows him <br>to do certain operations.</li>
+			<li>Two ways to login:</li>
+			<ul>
+				<li> ONE, is to login through the <strong>LOG IN</strong> form<br/><br/>
+					<ul>
+						<li><img src="<?php echo base_url();?>/images/usermanual/login1.png" /></li>
+					</ul>
+				</li><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<li> TWO, is to login via the <strong>LOG IN</strong> form located above the site.<br /><br/>
+					<ul>
+						<li><img src="<?php echo base_url();?>/images/usermanual/login.png" /></li>
+					</ul>
+				</li>
+			</ul>
+			<br/><br/><br/><br/><br/>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -195,9 +284,41 @@ var Alert = new CustomAlert();
 		<a name="signUp"></a>
 		<span>Sign Up</span>
 		<ul>
-			<li>Allows an anonymous user to register an account in order to gain access to privileged <br>transactions such as reserving a book.</li>
-			<li>In signing up for an account, the user must fill up the registration form.</li>
 			<li>Account registration can also be done through the ICS librarian.</li>
+			<li>Located at the bottom of the LOG IN form on the upper right of the site.<br/><br/>
+				<li><img src="<?php echo base_url();?>/images/usermanual/login.png" /></li>
+			</li><br/><br/><br/><br/>
+			<li>Fill out the form. The one marked with an asterisk (<strong>*</strong>) is required.
+				<ul>
+					<li>Step1: Complete your name.<br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup1.jpg" /></li></ul>
+					</li><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<li>Step2: Select if you're a <strong>student</strong> or a <strong>faculty</strong>.<br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup2.jpg" /></li></ul>
+					</li><br/><br/><br/><br/><br/><br/><br/>
+					<li>Step3: 
+						<ul>
+							<li>If you're a <strong>student</strong> enter a valid student number. Your student number.<br/><br/>
+								<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup3.jpg" /></li></ul>
+							</li> 	<br/><br/><br/>
+							<li>If you're a <strong>faculty</strong> enter a valid employee number. Your employee number.<br/><br/>
+								<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup4.jpg" /></li></ul>
+							</li>
+						</ul>
+					</li><br/><br/><br/><br/>
+					<li>Step4: Select your College.<br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup5.jpg" /></li></ul>
+					</li><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<li>Step5: If you're a <strong>student</strong>, select your course.<br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup6.jpg" /></li></ul>
+					</li><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					<li>Step6: Enter a valid <strong>EMAIL Address</strong>. Your <strong>EMAIL Address</strong><br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup7.jpg" /></li></ul>
+					</li><br/><br/><br/><br/>
+					<li>Step7: Enter a valid <strong>USERNAME</strong> and a strong<strong> PASSWORD</strong><br/><br/>
+						<ul><li><img src="<?php echo base_url();?>/images/usermanual/signup8.jpg" /></li></ul>
+					</li><br/><br/><br/><br/><br/><br/><br/>
+			</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
@@ -205,8 +326,10 @@ var Alert = new CustomAlert();
 		<a name="announcements"></a>
 		<span>News and Updates</span>
 		<ul>
-			<li>Displays the latest news and announcements posted by the administrator.</li>
-		</ul>
+			<li>Displays the latest news and announcements posted by the administrator.<br/><br/>
+				<ul><li><img src="<?php echo base_url();?>/images/usermanual/news.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li></ul>
+			</li>
+		</ul><br/><br/><br/><br/>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 		

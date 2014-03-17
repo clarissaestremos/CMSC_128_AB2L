@@ -91,7 +91,8 @@ if($this->session->userdata('logged_in_type')=='admin')
 			<div class="site-header background-red">
 				<div class="site-center">
 					<div class="cell width-1of2 float-left">
-						<img src="<?php echo base_url();?>/images/try.png"/>
+						<a href="<?php echo base_url(); ?>"> <img src="<?php echo base_url();?>/images/try.png"/></a>
+
 					</div>
 					<div class="width-fit float-right">
 						<div style="padding: 3px 3px 5px 3px;" class="color-black" >
