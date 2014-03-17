@@ -11,9 +11,13 @@ $(document).ready(function(){
 	console.log(heightaside);
     if(heightbody > heightaside){
 		$("#side-navigation").css("height",heightbody);
+		console.log($("aside").css("height"));
 	}
 	else if(heightbody < heightaside){
 		$("#side-navigation").css("height",700);
+	}
+	else{
+		
 	}
 	});
 

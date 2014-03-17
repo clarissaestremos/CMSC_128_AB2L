@@ -22,7 +22,7 @@
                                     <?php
                                         $count = 1;
 										$date = "";
-										foreach ($log as $iLog):
+										foreach ($log as $iLog){
 											echo "<tr><td>$count</td>";
 											if($date == $iLog->date){
 												echo "<td></td>";
@@ -33,7 +33,7 @@
 											echo "<td>".$iLog->time."</td></tr>";
 											$date = $iLog->date;
 											$count++;
-										endforeach
+										}
                                     ?>
                                 </tbody>
                             </table>
