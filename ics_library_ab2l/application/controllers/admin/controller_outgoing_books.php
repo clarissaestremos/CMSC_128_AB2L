@@ -160,9 +160,14 @@ class Controller_outgoing_books extends Controller_log{
     public function cancel(){
 		if($this->session->userdata('logged_in_type')!="admin")
                 redirect('index.php/user/controller_login', 'refresh');
+       
         $res_number=$_POST['res_number'];
-        $this->load->model('model_reservation');
-        $this->model_reservation->delete_book_reservation($res_number);
+        $call_number = $_POST['call_number'];
+
+        $this->load->model('model_get_list');
+        $this->model_get_list->cancel_reservation($res_number);
+        $this->model_get_list->update_rank($call_number);
+        $this->model_get_list->update_available($call_number);
         redirect('index.php/admin/controller_outgoing_books','refresh');
     }//END OF cancel()
 
@@ -190,49 +195,50 @@ class Controller_outgoing_books extends Controller_log{
 
      function print_info($query,$links) {
 
-                    echo '<table class="body">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 2%;">#</th>
-                                        <th style="width: 20%;">Borrower</th>
-                                        <th style="width: 40%;">Material</th>
-                                        <th style="width: 10%;">Due Date</th>
-                                        <th style="width: 10%;"></th>
-                                        <th style="width: 10%;"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-                                    $count = 1;
-                                    foreach($query as $row) {
-										if($row->rank == 1){
-	                                        echo "<tr>
-	                                            <td>$count</td>
-	                                            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
-	                                            <td><b>{$row->title}</b><br/>";
+        echo '<table class="body">
+            <thead>
+                <tr>
+                    <th style="width: 2%;">#</th>
+                    <th style="width: 20%;">Borrower</th>
+                    <th style="width: 40%;">Material</th>
+                    <th style="width: 10%;">Due Date</th>
+                    <th style="width: 10%;"></th>
+                    <th style="width: 10%;"></th>
+                </tr>
+            </thead>
+            
+            <tbody>';
+                $count = 1;
+                foreach($query as $row) {
+                	if($row->rank == 1){
+                        echo "<tr>
+	                    <td>$count</td>
+	                    <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name}</b><br/>{$row->account_number}</td>
+	                    <td><b>{$row->title}</b><br/>";
 
-	                                                    $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-	                                                    $authors="";
-	                                                    foreach($data['multi_valued'] as $authors_list){
-	                                                        $authors = $authors."{$authors_list->author},";
-	                                                    }
-	                                                    echo "$authors ($row->year_of_pub)<br/>
-	                                                    Call Number: {$row->call_number}</td>";
+	                    $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+	                    $authors="";
+	                    foreach($data['multi_valued'] as $authors_list){
+	                       $authors = $authors."{$authors_list->author},";
+	                    }
+	                    echo "$authors ($row->year_of_pub)<br/>
+	                    Call Number: {$row->call_number}</td>";
+                        echo "</td>
+	                    <td>{$row->due_date}</td>";
+	                    echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
+	                        <input type='hidden' name='res_number' value='{$row->res_number}' />
+	                        <input type='submit' class='background-red' name='reserve' onclick='return confirmBookReserve(confirm$count);' value='Confirm' />
+	                    </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
+	                    echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
+                            <input type='hidden' name='res_number' value='{$row->res_number}' />
+	                        <input type='hidden' name='call_number' value='{$row->call_number}' />
+	                        <input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(cancel$count);' value='Cancel' />
+	                    </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
+	                     echo "</tr>";
 
-	                                                echo "</td>
-	                                            <td>{$row->due_date}</td>";
-	                                        echo "<td><form action='controller_outgoing_books/reserve/' id='confirm$count' method='post'>
-	                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
-	                                            <input type='submit' class='background-red' name='reserve' onclick='return confirmBookReserve(confirm$count);' value='Confirm' />
-	                                        </form></td>";              //button to be clicked if the reservation will be approved; functionality of this not included
-	                                        echo "<td><form action='controller_outgoing_books/cancel/' id='cancel$count' method='post'>
-	                                            <input type='hidden' name='res_number' value='{$row->res_number}' />
-	                                            <input type='submit' class='background-red' name='cancel' onclick='return confirmDeleteReserve(cancel$count);' value='Cancel' />
-	                                        </form></td>";              //button to be clicked if the reservation will be cancelled; functionality of this not included
-	                                        echo "</tr>";
-
-	                                        $count++;
-										}
-                                    }
+	            $count++;
+						}
+                }
                                 
                             echo'    </tbody>
                             </table>
