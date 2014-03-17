@@ -50,7 +50,7 @@
 
 	<style type="text/css">
 		#chartdiv{
-			height: 500px; 
+			height: 450px; 
 			width:inherit; 
 			font-size:11px; 
 			<!--background: url('<?php echo base_url();?>imgs/black-board.jpg');-->
@@ -58,7 +58,7 @@
 		}
 		
 	</style>
-	<div class="cell body">
+	<div class="cell body" style="margin-top:40px;">
 		<div class="cell">
 				  <p class="tiny">Statistics</p>
 		</div>
