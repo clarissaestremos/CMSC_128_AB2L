@@ -46,7 +46,8 @@
 		<div class="body main-content">
 			<header id="main-header" class="site-header background-">
 				<div id="first-header" class="col width-1of4 shadow-right">
-					<img id="logo" src="<?php echo base_url() ?>images/icslogo.png"/>
+					<a href="<?php echo base_url() ?>index.php/admin/controller_admin_home"> <img id="logo" src="<?php echo base_url() ?>images/icslogo.png"/> </a>
+
 					<div class="cell">
 						
 						<h1 class="title">ICS e-Lib</h1>
@@ -68,7 +69,7 @@
             					 echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
             					?>
 					(<a href="<?php echo base_url() ?>index.php/admin/controller_logout">Logout</a>)
-					<a href="<?php echo base_url() ?>index.php/admin/controller_adminmanual" class="tiny float-right" style="margin-top:1.5em;" target="_blank">Admin Manual</a></p>
+					
 					</div>
 				</div>
 				<div class="col width-fill border-bottom secondary-header shadow-bottom">
