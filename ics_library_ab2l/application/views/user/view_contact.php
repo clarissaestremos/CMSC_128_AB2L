@@ -52,7 +52,7 @@
 																	<label class="color-black" for="name">* Name:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="text" id="sender_name" name="sender_name" pattern="[A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?([A-Z]{1}[a-z]*[\-]?[a-z]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: Must be alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="sender_name" name="sender_name" pattern="[A-ZÑ]{1}[a-zñ]*[\-]?[a-zñ]*[\.]?[\ ]?([A-ZÑ]{1}[a-z]*[\-]?[a-zñ]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: Must be capitalized alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
@@ -60,7 +60,7 @@
 																	<label class="color-black" for="email">* Email:</label>
 																</div>
 																<div class="col width-fill">
-																	<input type="email" id="sender_email" name="sender_email" required="required"  pattern="/^[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}(\.[A-Za-z]{2,3}){0,1}$/" oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="sender_email" name="sender_email" required="required"  pattern="[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}" oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															<div class="cell">
@@ -78,7 +78,7 @@
 																</div>
 																<div class="col width-fill">
 																	
-																	<input type="text" id="subject" name="subject" pattern=".{1,50}"  oninvalid="setCustomValidity('Invalid Input: Must be up to 50 characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
+																	<input type="text" id="subject" name="subject" pattern=".{1,50}"  oninvalid="setCustomValidity('Invalid Input: Must be up to 50 characters only.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 																</div>
 															</div>
 															
