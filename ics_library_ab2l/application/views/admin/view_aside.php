@@ -71,6 +71,7 @@
 		<footer>
 			<div class="cell">
 			<p>Copyright &#169 2013 Institute of Computer Science</p>
+			<p>Derivative from HTML5 Admin Template by <a href="http://medialoot.com/item/html5-admin-template/">MediaLoot</a></p>
 			</div>
 		</footer>
 	</aside>
