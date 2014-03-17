@@ -56,6 +56,9 @@
 #dialogbox > div > #dialogboxbody{ padding:20px; color:black; }
 #dialogbox > div > #dialogboxfoot{ background: #B80000 ; padding:10px; text-align:right;color:white; }
 
+li{
+	list-style:none;
+}
 <script>
 function CustomAlert(){
 	this.render = function(){
@@ -124,20 +127,31 @@ var Alert = new CustomAlert();
 		<a name="overview"></a>
 		<span>Overview</span>
 		<ul>
-			<li>This is the UPLB Institute of Computer Science e-Library System. This allows <br>UPLB constituents
-			 to do library transactions online. Created by CMSC 128 <br>AB-2L A.Y. 2013-2014.</li>
+			<li>This is the UPLB Institute of Computer Science e-Library System. This allows UPLB <br/>constituents
+			 to do library transactions online. <br/>Created by the <strong>CMSC 128 class AB-2L A.Y. 2013-2014.</strong></li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="search"></a>
 		<span>Search</span>
-		<ul>
-			<a name="basicSearch"></a>
+		<a name="basicSearch"></a>
 			<li><span>Basic Search</span>
 				<ul>
 					<li>Allows the user to search for a book by providing information on any of its fields.</li>
-					<li>Shows the detailed list of books matching the specified query</li>
+					<li>It will show the detailed list of books matching the specified query</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>As you can see on the image above, you can use <strong>Basic Search</strong> by the book's </br><strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li><br/>
+					<li>You can also use the <strong>Basic Search</strong> anywhere in within the site.<br/><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch1.jpg" /><br/><br/><br/>
+						<ul>
+							<li>Located in the upper right of the site</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 			<a name="advancedSearch"></a>
@@ -145,72 +159,137 @@ var Alert = new CustomAlert();
 				<ul>
 					<li>A more specific search capability which allows users to specify more than one field.</li>
 					<li>Shows the detailed list of books matching the specified query.</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/advSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>To use the Advanced Search, you can fill out portions of the form above containing </br>the book's <strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li>
 				</ul>
 			</li>
-		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="viewBooks"></a>
-		<span>View Books</span>
+		<span>Overview</span>
 		<ul>
-			<li>Displays a list of all books present in the database.</li>
-			<li>Allows user to see the books' details and their current availability in the library.</li>
-			<li>Allows the user to reserve his preferred book as he sees it in the list.</li>
+			<li>This is the UPLB Institute of Computer Science e-Library System. This allows UPLB <br/>constituents
+			 to do library transactions online. <br/>Created by the <strong>CMSC 128 class AB-2L A.Y. 2013-2014.</strong></li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
-		<a name="bookStat"></a>
-		<span>Book Statistics</span>
-		<ul>
-			<li>Displays a chart that shows the top 10 most borrowed books.</li>
-		</ul>
+		<a name="search"></a>
+		<span>Search</span>
+		<a name="basicSearch"></a>
+			<li><span>Basic Search</span>
+				<ul>
+					<li>Allows the user to search for a book by providing information on any of its fields.</li>
+					<li>It will show the detailed list of books matching the specified query</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>As you can see on the image above, you can use <strong>Basic Search</strong> by the book's </br><strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li><br/>
+					<li>You can also use the <strong>Basic Search</strong> anywhere in within the site.<br/><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/basicSearch1.jpg" /><br/><br/><br/>
+						<ul>
+							<li>Located in the upper right of the site</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<a name="advancedSearch"></a>
+			<li><span>Advanced Search</span>
+				<ul>
+					<li>A more specific search capability which allows users to specify more than one field.</li>
+					<li>Shows the detailed list of books matching the specified query.</li>
+					<li><br/>
+						<img src="<?php echo base_url();?>/images/usermanual/advSearch.jpg" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>To use the Advanced Search, you can fill out portions of the form above containing </br>the book's <strong>TITLE, AUTHOR, SUBJECT, PUBLICATION,</strong> or <strong>TAG/s.</strong></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
-
-		<a name="bookReserve"></a>
-		<span>Book Reservation</span>
-		<ul>
-			<li>Allows user to reserve a book. The reserve button can be found in the list of books. </li>
-			<li>Reservation function is subjected to the availability of the book.</li>
-		</ul>
-		<a href="#top" class="tiny">Back to Top</a>
-		<br/><hr width="450px;"><br/>
-
+		
 		<a name="faqs"></a>
 		<span>Frequently Asked Questions (FAQs)</span>
 		<ul>
-			<li>Shows answers or solutions to questions frequently asked by the users about the system.</li>
+			<li><strong>Frequently Asked Questions (FAQs)</strong> is found in with the navigation.<br/><br/>
+				<img src="<?php echo base_url();?>/images/usermanual/faqs1.png" /><br/><br/><br/><br/>
+				<ul>
+					<li><strong>FAQs</strong> shows the answers or solutions to questions frequently asked by the users about the system.</li>
+					<br/>
+					<li>
+						<img src="<?php echo base_url();?>/images/usermanual/faqs.png" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>Find your problem, click on it and get your answer or solution.</li>
+							<li>If you can't find it there, might want to ask our <strong>ICS Librarian.</strong></li>
+							
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
-
+		
 		<a name="contact"></a>
 		<span>Contact Us</span>
 		<ul>
-			<li>Shows the location of ICS Library on the map.</li>
-			<li>Shows the contact information of the ICS Library.</li>
-			<li>Allows the user to provide feedback, raise questions or give suggestions about the system.</li>
+			<li>Shows the location of ICS Library on the map.
+				<ul>
+					<li>Note: you will need an internet connection for this.</li>
+				</ul>
+			</li><br/>
+			<li>Included are the contact information of the ICS Library.<br/><br/>
+				<img src="<?php echo base_url();?>/images/usermanual/contact2.png" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			</li><br/>
+			<li>You can get in touch with us through <strong>EMAIL.</strong> by simply <strong><br/>filling out the form.<br/>
+				<img src="<?php echo base_url();?>/images/usermanual/contact1.png" /><br/><br/><br/><br/><br/><br/><br/><br/>
+				
+			</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 		
 		<a name="borrowedBooks"></a>
-		<span>Record of Borrowed Books</span>
+		<span>Record of Borrowed Books</span><br />
 		<ul>
 			<a name="borBooks"></a>
+			<li>
+				<img src="<?php echo base_url();?>/images/usermanual/borrowed.png" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			</li>
 			<li><span>List of Borrowed Books</span>
 				<ul>
-					<li>Shows the list of books which are currently in the user's possession.</li>
-					<li>Shows the details of the transaction(s) and the details of the book.</li>
+					<li>
+						<img src="<?php echo base_url();?>/images/usermanual/borrowed1.png" /><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>Shown is the list of books which are currently in your, the user's, possession.</li>
+							<li>Shows the details of the transaction(s) and the details of the book.</li>
+							<li>Also, shows the <strong>DUE DATE</strong> of the book.</li>
+							<ul>
+								<li>Note: Remember the <strong>DUE DATE</strong> of the book borrowed.</li>
+							</ul>
+						</ul>
+					</li>
 				</ul>
-			</li>
+			</li><br />
 			<a name="retBooks"></a>
-			<li><span>List of Returned Books</span>
+			<li><span>List of Returned Books</span><br/><br/>
 				<ul>
-					<li>Shows the list of books previously borrowed by the user.</li>
-					<li>Shows the details of the transaction(s) and the details of the book.</li>
+					<li>
+						<img src="<?php echo base_url();?>/images/usermanual/reserved1.png" /><br/><br/><br/><br/><br/><br/>
+						<ul>
+							<li>Shown is the list of books previously borrowed by you, the user.</li>
+							<li>The table shows the details of the transaction(s) and the details of the book.</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -221,8 +300,20 @@ var Alert = new CustomAlert();
 		<a name="logout"></a>
 		<span>Logout</span>
 		<ul>
-			<li>The user can logout from his account by clicking the 'Logout' link on the upper left corner of the login screen, beside 
-				the user's name.</li>
+			<li>Two ways to <strong>LOGOUT</strong>.</li>
+			<ul>
+				<li> One. By clicking the '<strong>Logout</strong>' link on the upper left corner of the login screen, beside 
+				the user's name.<br /><br/>
+					<ul>
+						<li><img src="<?php echo base_url();?>/images/usermanual/logout1.png" /></li><br/><br/><br/>
+					</ul>
+				</li>
+				<li> Two. By going through the account menu and selecting the <strong>logout</strong>.<br /><br/>
+					<ul>
+						<li><img src="<?php echo base_url();?>/images/usermanual/logout.png" /></li><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					</ul>
+				</li>
+			</ul>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
