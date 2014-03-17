@@ -243,18 +243,15 @@
                             var maxFieldWidth = "500";
                             var elementClassName = element.className; // this is the class name of the button that was clicked
                             var fieldNumber = elementClassName.substr(3, elementClassName.length);
-
                             var newFieldNumber = ++fieldNumber;
                             var rowContainer = element.parentNode; // get the surrounding div so we can add new elements
 
-                            // create text field
-                            var textfield = document.createElement("input");
-                            textfield.type = "text";
-                            textfield.setAttribute("name", "subject[]");
-                            textfield.setAttribute("placeholder","Book Subject");
-                            textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white subjects");
-                            
+                            // create select
+                            var selectOption = document.createElement("select");
+                            selectOption.setAttribute("name", "subject[]");
+                            selectOption.setAttribute("required","required");
+                            selectOption.setAttribute("class","background-white subjects");
+                            selectOption.creat
 
                             // create buttons
                             var button1 = document.createElement("input");
@@ -263,14 +260,42 @@
                             button1.setAttribute("onclick", "addRow_subj(this, false)");
                             button1.className = "row" + newFieldNumber;
 
-
                             // add elements to page
                             rowContainer.removeChild(element);
-                            rowContainer.appendChild(textfield);
+                            rowContainer.appendChild(selectOption);
                             rowContainer.appendChild(document.createTextNode(" ")); // add space
                             rowContainer.appendChild(button1);
                             rowContainer.appendChild(document.createElement("BR")); // add line break
                             rowContainer.appendChild(document.createElement("BR")); // add line break
+
+                            // <select id = "subject" name="subject[]" class="background-white" onchange = "checker()">
+                            //     <option value="CMSC2">CMSC 2</option>
+                            //     <option value="CMSC11">CMSC 11</option>
+                            //     <option value="CMSC21">CMSC 21</option>
+                            //     <option value="CMSC22">CMSC 22</option>
+                            //     <option value="CMSC56">CMSC 56</option>
+                            //     <option value="CMSC57">CMSC 57</option>
+                            //     <option value="CMSC100">CMSC 100</option>
+                            //     <option value="CMSC123">CMSC 123</option>
+                            //     <option value="CMSC124">CMSC 124</option>
+                            //     <option value="CMSC125">CMSC 125</option>
+                            //     <option value="CMSC127">CMSC 127</option>
+                            //     <option value="CMSC128">CMSC 128</option>
+                            //     <option value="CMSC130">CMSC 130</option>
+                            //     <option value="CMSC131">CMSC 131</option>
+                            //     <option value="CMSC132">CMSC 132</option>
+                            //     <option value="CMSC137">CMSC 137</option>
+                            //     <option value="CMSC141">CMSC 141</option>
+                            //     <option value="CMSC142">CMSC 142</option>
+                            //     <option value="CMSC150">CMSC 150</option>
+                            //     <option value="CMSC170">CMSC 170</option>
+                            //     <option value="CMSC190">CMSC 190</option>
+                            //     <option value="CMSC199">CMSC 199</option>
+                            //     <option value="CMSC200">CMSC 200</option>
+
+                            //     <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
+                            //     <br/><span name="help_subject" class="color-red"></span>
+                            // </select>
                         }
 
                         function addRow_callno(element, indentFlag){
@@ -401,20 +426,42 @@
                     
                                                                 </div>
 
-                                                                
-
-                                                                 <div class="col">
+                                                                <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="subject">Subject<span class="color-red"> *</span></label>
+                                                                            <label for="subject">Subject<span class="color-red"> *</span></label>   
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="text" class="subjects background-white" id="subject" name = "subject[]" placeholder="Book Subject" data-required="true" required>&nbsp;
-                                                                            <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
-                                                                            <br/><span name="help_subject" class="color-red"></span>
-                                                                            
+                                                                            <select id = "subject" name="subject[]" class="background-white subjects" onchange = "checker()">
+                                                                                <option value="CMSC2">CMSC 2</option>
+                                                                                <option value="CMSC11">CMSC 11</option>
+                                                                                <option value="CMSC21">CMSC 21</option>
+                                                                                <option value="CMSC22">CMSC 22</option>
+                                                                                <option value="CMSC56">CMSC 56</option>
+                                                                                <option value="CMSC57">CMSC 57</option>
+                                                                                <option value="CMSC100">CMSC 100</option>
+                                                                                <option value="CMSC123">CMSC 123</option>
+                                                                                <option value="CMSC124">CMSC 124</option>
+                                                                                <option value="CMSC125">CMSC 125</option>
+                                                                                <option value="CMSC127">CMSC 127</option>
+                                                                                <option value="CMSC128">CMSC 128</option>
+                                                                                <option value="CMSC130">CMSC 130</option>
+                                                                                <option value="CMSC131">CMSC 131</option>
+                                                                                <option value="CMSC132">CMSC 132</option>
+                                                                                <option value="CMSC137">CMSC 137</option>
+                                                                                <option value="CMSC141">CMSC 141</option>
+                                                                                <option value="CMSC142">CMSC 142</option>
+                                                                                <option value="CMSC150">CMSC 150</option>
+                                                                                <option value="CMSC170">CMSC 170</option>
+                                                                                <option value="CMSC190">CMSC 190</option>
+                                                                                <option value="CMSC199">CMSC 199</option>
+                                                                                <option value="CMSC200">CMSC 200</option>
+
+                                                                                <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
+                                                                                <br/><span name="help_subject" class="color-red"></span>
+                                                                            </select>
                                                                             <br/>
                                                                         </div>
                                                                     </div>

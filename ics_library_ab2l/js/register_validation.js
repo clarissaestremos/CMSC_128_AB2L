@@ -40,129 +40,114 @@ else{
 
 			 $( document ).ready(function(){   
 			 
-				 window.getResult = 	function (name){
-							 // var baseurl = <?php echo base_url()?>;
-							 var bool= false;
-								$('#span_un').append("<span id = 'helpusername'></span>");
-								$("#helpusername").text("Checking availability...");
-								$.ajax({
-										url : base_url + 'index.php/user/controller_editprofile/check_username/' + name,
-										cache : false,
-										async:false,
-										success : function(response){
+				window.getResult = 	function (name){
+				// var baseurl = <?php echo base_url()?>;
+					var bool= false;
+					$('#span_un').append("<span id = 'helpusername'></span>");
+					$("#helpusername").text("Checking availability...");
+					$.ajax({
+							url : base_url + 'index.php/user/controller_editprofile/check_username/' + name,
+							cache : false,
+							async:false,
+							success : function(response){
+								$('#helpusername').delay(1000).removeClass('preloader');
+								if(response == 'userOk'){
+										$('#helpusername').removeClass('userNo').addClass('userOk');
+										$('#helpusername').text("Username available!");
+										
+									bool= true;
+								}
+								else{
+										$('#helpusername').removeClass('userOk').addClass('color-red');;
+										$("#helpusername").text("Username not available.");
+									 bool= false;
+								}
+							}
+					})
+					return bool;
+				}
 
-												$('#helpusername').delay(1000).removeClass('preloader');
-												if(response == 'userOk'){
-														$('#helpusername').removeClass('userNo').addClass('userOk');
-														$('#helpusername').text("Username available!");
-														
-													bool= true;
-												}
-												else{
-														$('#helpusername').removeClass('userOk').addClass('color-red');;
-														$("#helpusername").text("Username not available.");
-													 bool= false;
-												}
-										}
-								})
-
-							
-								return bool;
-
+				 window.getResultAdminKey = 	function (key){
+					// var baseurl = <?php echo base_url()?>;
+					var bool= false;
+					$('#span_ak').append("<span id = 'helpadminkey'></span>");
+					$("#helpadminkey").text("Checking availability...");
+					$.ajax({
+						url : base_url + 'index.php/admin/controller_add_admin/check_admin_key/' + key,
+						cache : false,
+						async:false,
+						success : function(response){
+							$('#helpadminkey').delay(1000).removeClass('preloader');
+							if(response == 'userOk'){
+									$('#helpadminkey').removeClass('userNo').addClass('userOk');
+									$('#helpadminkey').text("Admin Key available!");
+									
+								bool= true;
+							}
+							else{
+									$('#helpadminkey').removeClass('userOk').addClass('color-red');;
+									$("#helpadminkey").text("Admin Key not available.");
+								 bool= false;
+							}
 						}
+					})
+					return bool;
+				}
 
-						 window.getResultAdminKey = 	function (key){
-							 // var baseurl = <?php echo base_url()?>;
-							 var bool= false;
-								$('#span_ak').append("<span id = 'helpadminkey'></span>");
-								$("#helpadminkey").text("Checking availability...");
-								$.ajax({
-										url : base_url + 'index.php/admin/controller_add_admin/check_admin_key/' + key,
-										cache : false,
-										async:false,
-										success : function(response){
+				window.getResultStdNo =  function (key){
+					 // var baseurl = <?php echo base_url()?>;
+					 var bool= false;
+						$('#span_snum').append("<span id = 'helpstdno'></span>");
+						$("#helpstdno").text("Checking availability...");
+						$.ajax({
+							url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
+							cache : false,
+							async:false,
+							success : function(response){
+								$('#helpstdno').delay(1000).removeClass('preloader');
+								if(response == 'userOk'){
+										$('#helpstdno').removeClass('userNo').addClass('userOk');
+										$('#helpstdno').text("Student Number available!");
+										
+									bool= true;
+								}
+								else{
+										$('#helpstdno').removeClass('userOk').addClass('color-red');;
+										$("#helpstdno").text("Student Number not available.");
+									 bool= false;
+								}
+							}
+						})
+						return bool;
 
-												$('#helpadminkey').delay(1000).removeClass('preloader');
-												if(response == 'userOk'){
-														$('#helpadminkey').removeClass('userNo').addClass('userOk');
-														$('#helpadminkey').text("Admin Key available!");
-														
-													bool= true;
-												}
-												else{
-														$('#helpadminkey').removeClass('userOk').addClass('color-red');;
-														$("#helpadminkey").text("Admin Key not available.");
-													 bool= false;
-												}
-										}
-								})
+				}
 
-							
-								return bool;
-
+				 window.getResultENo =  function (key){
+					// var baseurl = <?php echo base_url()?>;
+					var bool= false;
+					$('#span_snum').append("<span id = 'helpeno'></span>");
+					$("#helpeno").text("Checking availability...");
+					$.ajax({
+						url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
+						cache : false,
+						async:false,
+						success : function(response){
+							$('#helpeno').delay(1000).removeClass('preloader');
+							if(response == 'userOk'){
+									$('#helpeno').removeClass('userNo').addClass('userOk');
+									$('#helpeno').text("Employee Number available!");
+									
+								bool= true;
+							}
+							else{
+									$('#helpeno').removeClass('userOk').addClass('color-red');;
+									$("#helpeno").text("Employee Number not available.");
+								 bool= false;
+							}
 						}
-
-						window.getResultStdNo =  function (key){
-							 // var baseurl = <?php echo base_url()?>;
-							 var bool= false;
-								$('#span_snum').append("<span id = 'helpstdno'></span>");
-								$("#helpstdno").text("Checking availability...");
-								$.ajax({
-										url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
-										cache : false,
-										async:false,
-										success : function(response){
-
-												$('#helpstdno').delay(1000).removeClass('preloader');
-												if(response == 'userOk'){
-														$('#helpstdno').removeClass('userNo').addClass('userOk');
-														$('#helpstdno').text("Student Number available!");
-														
-													bool= true;
-												}
-												else{
-														$('#helpstdno').removeClass('userOk').addClass('color-red');;
-														$("#helpstdno").text("Student Number not available.");
-													 bool= false;
-												}
-										}
-								})
-
-							
-								return bool;
-
-						}
-
-						 window.getResultENo =  function (key){
-							 // var baseurl = <?php echo base_url()?>;
-							 var bool= false;
-								$('#span_snum').append("<span id = 'helpeno'></span>");
-								$("#helpeno").text("Checking availability...");
-								$.ajax({
-										url : base_url + 'index.php/admin/controller_add_user/check_std_no/' + key,
-										cache : false,
-										async:false,
-										success : function(response){
-
-												$('#helpeno').delay(1000).removeClass('preloader');
-												if(response == 'userOk'){
-														$('#helpeno').removeClass('userNo').addClass('userOk');
-														$('#helpeno').text("Employee Number available!");
-														
-													bool= true;
-												}
-												else{
-														$('#helpeno').removeClass('userOk').addClass('color-red');;
-														$("#helpeno").text("Employee Number not available.");
-													 bool= false;
-												}
-										}
-								})
-
-							
-								return bool;
-
-						}
+					})
+					return bool;
+				}
 
 			 })
 
