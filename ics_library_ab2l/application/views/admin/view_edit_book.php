@@ -1,5 +1,8 @@
+<?php
+    $ccount = 0;
+?>
 <script type="text/javascript">
-                        window.onload=function() {
+                  window.onload=function() {
                             checker();
                             myform.call_number.onblur=validate_call_no;
                             myform.title1.onblur=validate_title;
@@ -11,6 +14,11 @@
                             myform.onsubmit=process_add;
                         }
                                 
+                        function deleteCopy(copy){
+                            var elm = document.getElementById("cnum"+copy);
+                            elm.parentNode.removeChild(elm);
+                        }
+
                         function checker(){
 
                         var selected = document.getElementById('type').value;
@@ -213,7 +221,7 @@
 
                         }
                         
-                        function addRow_call_number(element, indentFlag){
+                        function addRow_call_number(element, indentFlag, copy){
                             var maxFieldWidth = "500";
                             var elementClassName = element.className; // this is the class name of the button that was clicked
                             var fieldNumber = elementClassName.substr(3, elementClassName.length);
@@ -221,29 +229,25 @@
                             var newFieldNumber = ++fieldNumber;
                             var rowContainer = element.parentNode; // get the surrounding div so we can add new elements
 
-                            // create text field
-                            var textfield = document.createElement("input");
-                            textfield.type = "text";
-                            textfield.setAttribute("name", "call_number[]");
-                            textfield.setAttribute("placeholder","Book Call Number");
-                            textfield.setAttribute("required","required");
-                            textfield.setAttribute("class","background-white call_nos");
                             
-
-                            // create buttons
-                            var button1 = document.createElement("input");
-                            button1.type = "button";
-                            button1.setAttribute("value", "Add Copy");
-                            button1.setAttribute("onclick", "addRow_call_number(this, false)");
-                            button1.className = "row" + newFieldNumber;
+                            var newDiv = document.createElement("div");
+                            newDiv.id = "cnum"+copy;
+                            newDiv.innerHTML = '<input id = "call_number'+copy+'" class="call_nos" type = "text" name = "call_number[]" value="" /><input type="button" id="deletebutton'+copy+'" value="Delete Copy" onclick="deleteCopy('+copy+');"/><br/>';
 
 
                             // add elements to page
                             rowContainer.removeChild(element);
-                            rowContainer.appendChild(textfield);
-                            rowContainer.appendChild(document.createTextNode(" ")); // add space
+                            rowContainer.appendChild(newDiv);
+                            
+                            copy++;
+                            var button1 = document.createElement("input");
+                            button1.type = "button";
+                            button1.setAttribute("value", "Add Copy");
+                            button1.setAttribute("onclick", "addRow_call_number(this, false, "+copy+")");
+                            button1.className = "row" + newFieldNumber;
+
                             rowContainer.appendChild(button1);
-                            rowContainer.appendChild(document.createElement("BR")); // add line break
+                            
                         }
 
                         function addRow_subj(element, indentFlag){
@@ -352,7 +356,7 @@
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
                                                                             <?php 
-                                                                                $authors = $this->model_book->get_book_authors($book[0]->id);
+                                                                                $authors = $this->model_get_list->get_book_authors($book[0]->id);
                                                                                 $count = 0;
                                                                                 foreach ($authors as $author) {
                                                                                     echo '<input id  = "author" class="authors" type = "text" name = "author[]" value="'.$author->author.'"><br />';
@@ -375,13 +379,21 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
+                                                                           <span name="help_call_number" class="color-red"></span>
                                                                            <?php 
-                                                                            $call_numbers = $this->model_book->get_book_call_numbers($book[0]->id);
+                                                                            
+                                                                            $call_numbers = $this->model_get_list->get_edit_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
-                                                                                echo '<input id = "call_number" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><br/>';
+                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/></div>';
+                                                                                $ccount++;
                                                                             }
-                                                                            ?><span name="help_call_number" class="color-red"></span>
-                                                                            <input type="button" class="row1 cell" value="Add copy" onclick="addRow_call_number(this, false)">
+                                                                            $call_numbers = $this->model_get_list->get_notedit_call_numbers($book[0]->id);
+                                                                            foreach ($call_numbers as $call_number) {
+                                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><br/></div>';
+                                                                                $ccount++;
+                                                                            }
+                                                                            ?>
+                                                                            <?php echo "<input type='button' class='row1 cell' value='Add copy' onclick='addRow_call_number(this, false, ".$ccount.")'>";?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,7 +407,7 @@
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
                                                                             <?php 
-                                                                            $subjects = $this->model_book->get_book_subjects($book[0]->id);
+                                                                            $subjects = $this->model_get_list->get_book_subjects($book[0]->id);
                                                                             foreach ($subjects as $subject) {
                                                                                 echo '<input id = "subject" type = "text" class="subjects" name = "subject[]" value="'.$subject->subject.'" /><br/>';
                                                                             }
@@ -472,7 +484,7 @@
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
                                                                             <?php 
-                                                                            $tags = $this->model_book->get_book_tags($book[0]->id);
+                                                                            $tags = $this->model_get_list->get_book_tags($book[0]->id);
                                                                             foreach ($tags as $tag) {
                                                                                 echo '<input id = "tags" type = "text" name = "tags[]" value="'.$tag->tag_name.'" /><br/>';
                                                                             }
@@ -483,13 +495,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
-
-                                                                
-                                                                            <input id = "quantity" type = "hidden" name = "quantity" min=1 max=50 value="<?php echo $book[0]->quantity ;?>" />
-
-                                                           
-                                                                            <input type = "hidden" name = "no_of_available" value="<?php echo $book[0]->no_of_available ;?>"/>
 
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
@@ -622,7 +627,7 @@
                 if(i < aut.length)
                     call_no += ",";
             }
-            var t = document.getElementsByClassName("tag");
+            var t = document.getElementsByClassName("tags");
             var tag = '';
             for(var i=0; i<t.length; i++) {
                 tag =  tag + t[i].value + " ";

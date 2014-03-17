@@ -383,7 +383,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
             	$(this).dialog('close');
-            	$('#extendsucc').dialog('open');
+            	thisform.submit();
             },
             "No": function() {
                 $(this).dialog('close');
@@ -461,7 +461,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#returnsucc').dialog('open');
+                thisform.submit();
             },
             "No": function() {
                 $(this).dialog('close');
