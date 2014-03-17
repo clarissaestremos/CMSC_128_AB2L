@@ -1,4 +1,20 @@
-       $( document ).ready(function(){   
+function validatePasswordeEmail(){
+     str=$("#pword_for_email").val();
+       
+        msg="";
+
+        if (str=="") msg+="Password is required!";
+        else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
+        else msg= "";
+        $('#pword_email_help').text(msg);
+        msg= msg.trim();
+        if(msg== ""){
+            return true;
+        }
+        return false;
+}
+
+$( document ).ready(function(){   
        
          
          //for checking if the new username already exist
@@ -7,7 +23,7 @@
 
    window.validate_email = function() { 
 
-        if($("#pword_for_email").val().trim()!= ""){
+        if(window.validatePasswordeEmail()){
             return bool =validate_new_email();
         }
         else return false;

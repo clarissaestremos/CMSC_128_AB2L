@@ -1,3 +1,22 @@
+      //validate password field
+        function validatePassword(){
+        str=$("#pword_for_username").val();
+       
+        msg="";
+
+        if (str=="") msg+="Password is required!";
+        else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
+        else msg= "";
+        $('#pword_username_help').text(msg);
+        msg= msg.trim();
+        if(msg== ""){
+            return true;
+        }
+        return false;
+      
+    }   
+
+
        $( document ).ready(function(){   
        
           if(error_username == '' &&  error_email == ''){
@@ -25,7 +44,7 @@
                 $("#edit_email").hide();
 
           }
-                     if(error_password!= ""){
+                if(error_password!= ""){
                   $('#form_password').show();
                   toggle= true;
           }
@@ -59,12 +78,13 @@
 
 
    window.validate_username = function() { 
-
-        if($("#pword_for_username").val().trim()!= ""){
+       
+        if(window.validatePassword()){
             return bool =validate_new_un();
         }
         else return false;
    }
+
 
     function validate_new_un(){
 
@@ -75,19 +95,19 @@
                 $('#input_username').val(str);
                 if (str==""){ msg+="Username is required!";
                      $("#helpusername").text(msg);
-                     $("#helpusername").css("color", "red");
+                     $("#helpusername").css("color", "#9d261d");
                      $("#helpusername").css("font-weight", "bold");
                 }
                 else if(str==name){
                     msg+="Enter a new username."
                     $("#helpusername").text(msg);
-                     $("#helpusername").css("color", "red");
+                     $("#helpusername").css("color", "#9d261d");
                      $("#helpusername").css("font-weight", "bold");
                 }
                 else if (!str.match(/^[A-Za-z][A-Za-z0-9._]{4,20}$/)){
                     msg="Invalid characters.";
                    $("#helpusername").text(msg);
-                    $("#helpusername").css("color", "red");
+                    $("#helpusername").css("color", "#9d261d");
                     $("#helpusername").css("font-weight", "bold");
                 }
                 //if valid, check username availability
@@ -128,7 +148,7 @@
                         else{
                             $('#helpusername').removeClass('userOk').addClass('userNo');;
                             $("#helpusername").text("Username not available.");
-                            $("#helpusername").css("color", "red");
+                            $("#helpusername").css("color", "#9d261d");
                             $("#helpusername").css("font-weight", "bold");
                            bool= false;
                         }

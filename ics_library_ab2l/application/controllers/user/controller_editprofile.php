@@ -344,7 +344,12 @@ Editing pictures / uploading them
         if($this->form_validation->run() == FALSE) {
            
             $this->form_validation->set_error_delimiters('<div class="isa_error">', '</div>');
-            $var = validation_errors();
+      //      $var = validation_errors();
+            if(form_error('current_password')!="")
+              $var=  form_error('current_password');
+            else if(form_error('new_password')!=""){
+                $var=  form_error('new_password');
+            }
             $this->session->set_flashdata('error_password1', $var);
              $this->session->set_flashdata('error_password','error');
               redirect('index.php/user/controller_editprofile', 'refresh');

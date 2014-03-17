@@ -83,8 +83,8 @@
                                     
                                      
                                                             <form id= 'form_username' method= 'post'  action = 'controller_editprofile/edit_username'>
-                                                            <span id="label_username1">Username: </span><input style = "margin-left: 28px;"  type = 'text' id= 'input_username'name = 'new_username' ><span id = "helpusername"></span><br>
-                                                            <span>Enter password:</span><input type= "password" id ='pword_for_username' class="background-white" name ='pword_for_username'  ><br>
+                                                            <span id="label_username1">Username: </span><input style = "margin-left: 28px;"  type = 'text' id= 'input_username'name = 'new_username' ><span id = "helpusername" class= "validmsg"></span><br>
+                                                            <span>Enter password:</span><input type= "password" id ='pword_for_username' class="background-white" name ='pword_for_username' onblur="validatePassword()"  ><span class = "color-red validmsg" id= "pword_username_help"></span><br>
                                                             <input style = "margin-left: 60px; margin-top: 10px;"type='button' id = "cancel_username" value= 'Cancel' >
                                                             <input style = "margin-top: 10px;" type='submit' name = "sub" onclick= "return validate_username()" value= 'Save'><br><br>
                                                             </form>
@@ -113,8 +113,8 @@
                                                         <div class="cell">
                                                             <span class = "main" id="label_email">Email:</span><em id= "email"><?php echo  $user_details->email?></em> <a id = "edit_email">Edit</a><br>
                                                             <form id= 'form_email' method= 'post' action = 'controller_editprofile/edit_email'>
-                                                            <span id="label_email1">Email Address:</span>  <input type = 'text' id= 'input_email'name = 'new_email' value="<?php echo  $user_details->email?>" required><span id = "helpemail"></span></br>
-                                                            <span>Enter password:</span><input type= 'password' id ='pword_for_email' class="background-white" name ='pword_for_email' required><br>
+                                                            <span id="label_email1">Email Address:</span>  <input type = 'text' id= 'input_email'name = 'new_email'value="<?php echo  $user_details->email?>" required><span class="color-red validmsg" id = "helpemail"></span></br>
+                                                            <span>Enter password:</span><input type= 'password' id ='pword_for_email' class="background-white" onblur="validatePasswordeEmail()"name ='pword_for_email' required><span class="color-red validmsg" id= "pword_email_help"></span><br>
                                                              <input style = "margin-left: 60px; margin-top: 10px;" type='button' id = "cancel_email" value= 'Cancel'>
                                                             <input style = "margin-left: 10px; margin-top: 10px;" type='submit'  onclick= "return  validate_email()" value= 'Save'><br/><br/><br>
                                                             </form>
@@ -136,9 +136,9 @@
                                  
                                                              <form id= 'form_password' method= 'post' action = 'controller_editprofile/edit_password'>
                                                            
-                                                            <span>Enter current password:</span><input type= 'password' id ='current_password' class="background-white" name ='current_password' required><span id = "helppassword" class = "color-red"></span><br>
-                                                            <span>Enter new password:</span><input style = "margin-left: 16px;" type= 'password' id ='new_password' class="background-white" name ='new_password' required><span id = "helpnewpassword" class = "color-red"></span><br>
-                                                            <span>Confirm password:</span><input style = "margin-left: 28px;" type= 'password' id ='confirm_password' class="background-white" name ='confirm_password' required><span id = "helpcpassword" class = "color-red"></span><br>
+                                                            <span>Enter current password:</span><input type= 'password' id ='current_password' class="background-white" name ='current_password' required><span id = "helppassword" class="color-red validmsg"></span><br>
+                                                            <span>Enter new password:</span><input style = "margin-left: 16px;" type= 'password' id ='new_password' class="background-white" name ='new_password' required><span id = "helpnewpassword"  class="color-red validmsg"></span><br>
+                                                            <span>Confirm password:</span><input style = "margin-left: 28px;" type= 'password' id ='confirm_password' class="background-white" name ='confirm_password' required><span id = "helpcpassword"  class="color-red validmsg"></span><br>
                                                              <input style = "margin-left: 60px; margin-top: 10px;" type='button' id = "cancel_password" value= 'Cancel'>
                                                             <input style = "margin-left: 10px; margin-top: 10px;" type='submit'  onclick= "return  validate_passwords()" value= 'Save'><br/><br/>
                                                         </div>

@@ -2,12 +2,15 @@
 
 .preloader{
 	color: gray;
+	margin-left: 3em;
 }
 
 .userOk{
 	color: green;
+	margin-left: 3em;
 }
 
 .userNo{
 	color:red;
+	margin-left: 3em;
 }

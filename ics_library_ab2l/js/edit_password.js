@@ -25,10 +25,14 @@
                 msg="";
 
                 if (str=="") msg+="Password is required!";
+                else if(str.length<5) msg+= "Password must be atleast 5 characters."
                
-                else if(msg="") msg="";
                 $("#helppassword").text(msg);
-                if(msg!= "Password is required!") return true;
+                if(msg==""){
+              
+                  return true;
+
+                }
                 else return false;
         }  
 
@@ -37,13 +41,27 @@
                 msg="";
 
                 if (str=="") msg+="Password is required!";
-                else if (str.match(/^[a-z]{5,20}$/))  msg+="Strength: Weak";
+                else if(str.length<5) msg+= "Password must be atleast 5 alpha-numeric characters."
+                else if (str.match(/^[a-z]{5,20}$/))  msg+="Invalid Input: Strength: Weak";
                 else if (str.match(/^[a-zA-Z]{5,20}$/))  msg+=" Strength: Medium";
-                else if (str.match(/^[a-zA-z0-9]{5,20}$/))  msg+="Strong";
-                else if(msg="") msg="";
-                $("#helpnewpassword").text(msg);
-                if(msg!= "Password is required!") return true;
-                else return false;
+                else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
+                else if (msg=="") msg="Invalid Input: Special characters are not allowed";
+
+              $("#helpnewpassword").text(msg);
+                if(msg === "Strength: Medium" || msg==="Strength: Strong"){
+                  $('#helpnewpassword').removeClass('color-red');
+                  $('#helpnewpassword').removeClass('validmsg');
+                  $('#helpnewpassword').addClass('userOk');
+                  $('#helpnewpassword').css("font-weight", "bold");
+                 
+                  return true;
+                }
+
+                else {
+                  $('#helpnewpassword').addClass('color-red');
+                  $('#helpnewpassword').addClass('validmsg');
+                  return false;
+                }
         }       
     function validate_confirm_password(){
             str=$("#new_password").val();
@@ -54,9 +72,13 @@
             else if (str2!=str){
                 msg+="Password Mismatch"
             }
-            else if(msg="") msg="";
+            else if(msg="Invalid Input: ") msg="";
             $("#helpcpassword").text(msg);
-            return true;
+            if(msg==""){
+             
+              return true;
+            }
+            else return false;
         }     
 
        
