@@ -109,17 +109,16 @@
                         
                         function validate_isbn_key(){
                             var selected = document.getElementById('type_book').value;
-                            msg="Invalid input: ";
+                            msg="";
                             str=myform.isbn.value;
-                            if(str=="")
-                                msg+="ISBN is required!<br/>";
+                            if(str==""){}
                             else if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
-                                msg+="Must start and end in number and 13 digits.<br/>";
+                                msg+="Invalid input: Must start and end in number and 13 digits.<br/>";
 
-                            else if(!getResultIsbn(str)){
+                            else if(str != "" && !getResultIsbn(str)){
                                  msg+="ISBN alreay exist."
                             }
-                            else if(msg=="Invalid input: " && getResultIsbn(str))
+                            else if(str != ""  && getResultIsbn(str))
                             msg="";
                             
                             else {
@@ -471,7 +470,7 @@
                                                                 <div class="col" id ='isbn_div'>
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="isbn">ISBN<span class="color-red"> *</span></label>
+                                                                            <label for="isbn">ISBN</label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -485,7 +484,7 @@
                                                                  <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="callno">Tags<span class="color-red"> *</span></label>
+                                                                            <label for="callno">Tags</label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
