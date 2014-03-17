@@ -19,7 +19,7 @@ class Controller_add_user extends Controller_log {
 	        $this->load->view("admin/view_add_user");
 	        $this->load->view("admin/view_footer");
     }
- public function alpha_space($str)
+ 		public function alpha_space($str)
 		{
 			return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
 		}
