@@ -206,18 +206,27 @@
 		else if (str.match(/^[a-zA-Z0-9]{5,20}$/))  msg+="Strength: Strong";
 		else if (msg=="") msg="Invalid Input: Special characters are not allowed";
 
-		document.getElementsByName("valPass")[0].innerHTML=msg;
+
+		
 		if(msg === "Strength: Medium" || msg==="Strength: Strong"){
 			$('#spanpass').removeClass('color-red');
 			$('#spanpass').removeClass('validmsg');
 			$('#spanpass').addClass('userOk');
 			$('#spanpass').css("font-weight", "bold");
+
+			$('#valPass').removeClass('color-red');
+			//$('#valPass').removeClass('validmsg');
+			$('#valPass').addClass('userOk');
+			$("#valPass").css("margin", "0em");
+			//$('#valPass').css("font-weight", "bold");
+			document.getElementsByName("valPass")[0].innerHTML=msg;
 			return true;
 		}
 
 		else {
-			$('#spanpass').addClass('color-red');
-			$('#spanpass').addClass('validmsg');
+			$('#valPass').addClass('color-red');
+			//$('#spanpass').addClass('validmsg');
+			document.getElementsByName("valPass")[0].innerHTML=msg;
 			return false;
 		}
 	}		

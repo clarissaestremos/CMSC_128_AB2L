@@ -103,7 +103,7 @@ var Alert = new CustomAlert();
 			<li><a href="#add_user">Add User</a></li>
 			<li><a href="#deactivate">Deactivate all borrower accounts</a></li>
 			<li><a href="#search_user">Search Users</a></li>
-			<li><a href="#notify">Notify the Borrower</a></li>
+			
 			<li><a href="#approve">Approve User Accounts</a></li>
 			<li><a href="#add_admin">Add Administrator</a></li>
 		</ul>
@@ -130,62 +130,75 @@ var Alert = new CustomAlert();
 		<br/><hr width="450px;"><br/>
 		<a name="view_users"></a>
 		<span>View Users</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/view_user.png" alt="image not found" height="500" width="800"/>
+		</div><br/>
 		<ul>
-			<li>The system gives the administrator the ability to view the registered users of the library. </li>
-			<li>This can display the information of all the accounts of users of the system.</li>
+			<li>This displays the information of all the registered user accounts of the system.</li>
+			<li>Includes the user accounts which have not been approved yet.</li>
+			<li>It also allows the administrator to confirm unconfirmed user accounts and manually borrow books for confirmed user accounts.</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="add_user"></a>
 		<span>Add User</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/add_user.png" alt="image not found" height="100" width="500"/>
+		</div><br/>
 		<ul>
-			<li>The administrator can add new users who want to access the online library and borrow materials from the library given that the student opts to register manually (filling the form in a paper). </li>
-			<li>Allows the administrator to fill the information neede to create a new user.</li>
+			<li>This allows users to manually register their accounts through the administrator.</li>
+			<li>Allows the administrator to fill the information needed to create a new user account.</li>
+			<li>Accounts created through the administrator is automatically approved.</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="deactivate"></a>
 		<span>Deactivate all Borrowers' Account</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/deactivate_accounts.png" alt="image not found" height="500" width="800"/>
+		</div><br/>
 		<ul>
 			<li>The administration needs to deactivate all active accounts before the semester starts for him to monitor the users who are registered in that semester.
-			<li> Deactivated users will not be able to borrow books but still can use other features such as search.</li>
+			<li> Deactivated users will not be able to borrow books but can still use other features such as search.</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="search_user"></a>
 		<span>Search Users</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/search_users.png" alt="image not found" height="500" width="400"/>
+		</div><br/>
 		<ul>
 			<li>The administrator is capable of searching for a specific user to retrieve any needed information about the user using their student number.</li>
-			<li>The given list will then update showing all the information of the specified user.</li>
+			<li>The given list will then display all the information of the specified user.</li>
 
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 
-		<a name="notify"></a>
-		<span>Notify the borrower</span>
-		<ul>
-			<li>The administrator or the librarian-in-charge will send a notification to the user's email whenever he/she passed all the requirements and whenever he/she has overdue books. </li>
-			<li>The privilege of the administrator to notify the borrower in their emails is necessary in the development and usage of the system because it is for the benefit of the users to get reminded of the things they tend to forget, for them to borrow any books in the library.</li>
-			<li>A notification will be sent to user's email if he/she approves his/her account. </li>
-			<li>There is a button to signal the system that it needs to use the e-mailer application to send notification to the email of the borrowers.</li>
-			<li>On the other hand, the administrator will know if the borrower has overdue books, thus a button for notification will appear to notify the borrower.</li>  
-			<li>The user should have old transaction of the current time before administrator checks if he/she has overdue books.</li>
-
-		</ul>
+		
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="approve"></a>
-		<span>Approve User Account</span>
+		<span>Confirm/Approve User Account</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/confirm_accounts.png" alt="image not found" height="700" width="800"/>
+		</div><br/>
 		<ul>
-			<li>TThe privilege of the administrator to approve user accounts is necessary in the development and usage of the system because approved account is their prerequisite to borrow any books in the library. 
+			<li>An important privilege of the administrator is to approve registered user accounts. The approval of user accounts is necessary for securing the
+			authority of the user to use the Library System and to be able to monitor the users' activities. </li>
 			<li>The requirements for approval of account are: UPLB Validated ID or Employee ID, Form 5 for the current semester (for students only)</li>
-			<li>There will be a queue of pending user accounts. There will be a button for the approval of each account. Upon clicking the button, a pop-up message will appear for the assurance of accepting the account as valid one. After the confirmation, this will automatically send a notification to email of the user. </li>
+			<li>There will be a queue of pending user accounts. There will be a button for the approval of each account. Upon clicking the button, a pop-up message will appear for the assurance of accepting the account as valid one.</li>
 
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
@@ -193,27 +206,37 @@ var Alert = new CustomAlert();
 
 		<a name="add_admin"></a>
 		<span>Add Administrator</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/add_admin.png" alt="image not found" height="700" width="500"/>
+		</div><br/>
 		<ul>
 			<li>The administrator has a privilege of adding a new administrator who passed qualifications.</li>
-			<li>Allows the administrator to fill up the fields for new administrator.</li>
+			<li>Allows the administrator to fill up the fields for a new administrator.</li>
+			<li>The administrator key will be provided by the administrator.</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 		
 		<a name="announcement"></a>
 		<span>Add/Update Announcements</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/add_announcement.png" alt="image not found" height="500" width="800"/>
+		</div><br/>
 		<ul>
-			<li>The privilege of the administrator to add and update announcements is only an added feature but it is very useful to the visitors and users for them to know what are the updates on the library especially its books.</li>
-			<li>There is a maximum of 5 announcements that will be made available. </li>
+			<li>The privilege of the administrator to add and update announcements to provide helpful information for the users.</li>
+			<li>There is a maximum of 5 announcements that will be displayed in the home page.</li>
 			<li>The posted announcements will appear in the home page, visible for visitors and authenticated users. </li>
 			<li>The administrator is allowed to not put any announcements. </li>
-			<li>Once he/she reaches the maximum limit of announcements, the system will overwrite the oldest announcement.The first posted announcement will be automatically deleted. The recent announcements will appear chronologically.</li>
+			<li>Once he/she reaches the maximum limit of announcements, the system will overwrite the oldest announcement. The most recent announcements will appear chronologically.</li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="stat"></a>
 		<span>View Statistics</span>
+
 		<ul>
 			<li>Displays in a chart the top 10 most borrowed books.</li>
 		</ul>
@@ -222,10 +245,15 @@ var Alert = new CustomAlert();
 
 		<a name="log"></a>
 		<span>View Logs</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/view_log.png" alt="image not found" height="500" width="800"/>
+		</div><br/>
 		<ul>
-			<li>The privilege of the administrator to view logs is very useful for the administrator for him/her to see what does the previous administrator who logged-in did in the system.</li>
-			<li>This separate page visible only for the administrator contains username of the administrators, his/her tasks done for a specific duration of time he/she is logged-in, and when did he/she did the tasks.</li>
-			<li> This page is for viewing only. There is no capability to delete or edit tasks done.</li>
+			<li>This privilege allows administrators to track changes and actions committed by each other.</li>
+			<li>This separate page is visible only to the administrator. This contains username of the administrators, his/her committed for a specific duration of time he/she is logged-in, and when did he/she did the tasks.</li>
+			<li>This page is for viewing only. There is no capability to delete or edit tasks done.</li>
+			<li>The display can be filtered by logs for the current date and by all the logs in the previous dates..</li>
 			
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
@@ -233,29 +261,44 @@ var Alert = new CustomAlert();
 
 		<a name="add_book"></a>
 		<span>Add Books</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/add_books.png" alt="image not found" height="800" width="600"/>
+		</div><br/>
 		<ul>
-			<li>The privilege of the administrator to add new books increase the interests of the users to borrow since the list of books is expanding. </li>
-			<li> The administrator needs to fill up necessary information about the book. It will not let the administrator submit it unless all the values entered are correct and all required fields have filled in. </li>
-			
+			<li>This is for adding new materials to the library. This is necessary for future expansion of the ICS Library.</li>
+			<li> The administrator needs to fill up the necessary information about the book. It will not let the administrator submit it unless all the values entered are correct and all required fields have been filled in. </li>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="update"></a>
 		<span>Update Book Information </span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/edit_book.png" alt="image not found" height="500" width="800"/>
+		</div><br/>
 		<ul> 
 			<li>The privilege of the administrator to update information about the book is necessary in the development and usage of the system for the maintenance of evolution of the books available.</li>
 			<li>Every book has a corresponding button for edit function. </li>
 			<li>Upon clicking the update button, all previous details will be shown up and it is up to the administrator what details to edit. Validation of field will also be observed. A pop-up message will appear to show assurance of saving all changes he/she made. After this, all data entered will be automatically saved in the database.</li>
-			
+
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/edit_book2.png" alt="image not found" height="500" width="400"/>
+		</div><br/>
 		</ul>
 		<a href="#top" class="tiny">Back to Top</a>
 		<br/><hr width="450px;"><br/>
 
 		<a name="delete"></a>
 		<span>Delete Book</span>
+		<br/><br/>
+		<div>
+			<img src="<?php echo base_url(); ?>images/admin_manual_images/delete_book.png" alt="image not found" height="600" width="800"/>
+		</div><br/>
 		<ul> 
-			<li>The privilege of the administrator to delete book is necessary when the book is already obsolete or if a book in the library already has no copy available.</li>
+			<li>The privilege of the administrator to delete book records is necessary when the book is already obsolete or if a book in the library is no longer available.</li>
 			<li>Every book has a corresponding button for delete function. </li>
 			<li>Upon clicking the delete button, a pop-up message will appear to show assurance of saving all changes he/she made. </li>
 			
@@ -268,6 +311,10 @@ var Alert = new CustomAlert();
 		<ul>
 			<a name="borBooks"></a>
 			<li><span>List of Borrowed Books</span>
+			<br/><br/>
+			<div>
+				<img src="<?php echo base_url(); ?>images/admin_manual_images/view_books.png" alt="image not found" height="500" width="800"/>
+			</div><br/>
 				<ul>
 					<li>Shows the list of books currently in the possession of the user.</li>
 					<li>Shows the details of the transaction and the details of the book.</li>
@@ -275,6 +322,10 @@ var Alert = new CustomAlert();
 			</li>
 			<a name="overdueBooks"></a>
 			<li><span>List of Overdue Books</span>
+			<br/><br/>
+			<div>
+				<img src="<?php echo base_url(); ?>images/admin_manual_images/overdue_books.png" alt="image not found" height="500" width="800"/>
+			</div><br/>
 				<ul>
 					<li>Shows the list of books not yet returned by the user and is already reached the due date.</li>
 					<li>Shows the details of the transaction and the details of the book.</li>
@@ -283,6 +334,10 @@ var Alert = new CustomAlert();
 
 			<a name="outgoingBooks"></a>
 			<li><span>List of Outgoing Books</span>
+			<br/><br/>
+			<div>
+				<img src="<?php echo base_url(); ?>images/admin_manual_images/outgoing_books.png" alt="image not found" height="500" width="800"/>
+			</div><br/>
 				<ul>
 					<li>Shows the list of books reserved by the user.</li>
 					<li>Shows the details of the transaction and the details of the book.</li>

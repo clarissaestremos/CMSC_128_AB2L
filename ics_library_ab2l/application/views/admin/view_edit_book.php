@@ -39,7 +39,7 @@
                             if(str=="")
                             msg+="Call number is required!<br/>";
                             if(!str.match(/^[a-zA-Z0-9\ \.\-]+[a-zA-Z0-9\ \.\-]*$/))
-                            msg+="Must be between 1-20 alpha numeric character!<br/>";
+                            msg+="Call number must be between 1-20 alpha numeric character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
                             else {
@@ -59,7 +59,7 @@
                             if(str=="")
                                 msg+="ISBN is required!<br/>";
                             if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
-                                msg+="Must start and end in number and 13 digits.<br/>";
+                                msg+="ISBN must start and end in number and 13 digits.<br/>";
 
                             if(msg=="Invalid input: ")
                             msg="";
@@ -82,7 +82,7 @@
                             if(str=="")
                             msg+="Title is required!<br/>";
                             if(!str.match(/^[a-zA-Z0-9\ ]+[a-zA-Z0-9\ ]*$/))
-                            msg+="Must be between 1-100 alpha numeric character!<br/>";
+                            msg+="Title must be between 1-100 alpha numeric character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
                             else {
@@ -103,7 +103,7 @@
                             if(str=="")
                             msg+="Author is required!<br/>";
                             if(!str.match(/^[a-zA-Z][a-zA-Z\ \,\.]*$/))
-                            msg+="Must be between 1-100 alpha character!<br/>";
+                            msg+="Author must be between 1-100 alpha character!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
                             else {
@@ -124,7 +124,7 @@
                             if(str=="")
                             msg+="Subject is required!<br/>";
                             if(!str.match(/^[A-Z\ ]{0,5}[0-9]{1,3}$/))
-                            msg+="Must be a course number!<br/>";
+                            msg+="Subject must be a course number!<br/>";
                             if(msg=="Invalid input: ")
                             msg="";
                             else {

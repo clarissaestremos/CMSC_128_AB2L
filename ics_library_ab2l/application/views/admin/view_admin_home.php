@@ -98,7 +98,7 @@
 				           	}
 				           	else{
 				           		echo "<hr>";
-                                echo "<h4 class='color-grey'>There are no currently pending user account!</h4>";
+                                echo "<h4 class='color-grey'>There are no currently pending user accounts!</h4>";
                                 echo "<hr>";
 				           	}
 
@@ -177,7 +177,7 @@ else{
 </div>
 </div>
 <div id="deletealldialog" title="Add Announcement Confirmation Dialog">
-	<p>Are you sure that you want to delete all the announcement?</p>
+	<p>Are you sure that you want to delete all the announcements?</p>
 </div>
 
 <div id="deletedialog" title="Add Announcement Confirmation Dialog">
@@ -185,11 +185,11 @@ else{
 </div>
 
 <div id="deleteconfirm" title="Add Announcement Confirmation Dialog">
-	<p>Are you really sure that you want to delete all announcements? Doing so will removed it from the database.</p>
+	<p>Are you really sure that you want to delete all announcements? Doing so will remove it from the database.</p>
 </div>
 
 <div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
-	<p>Are you sure that you want confirm the borrowing of this book?</p>
+	<p>Are you sure that you want to confirm the borrowing of this book?</p>
 </div>
 
 <div id="canceldialog" title="Cancel Reservation Confirmation">
@@ -221,15 +221,23 @@ else{
 </div>
 
 <div id="confirmsuccess" title="Confirm Borrowing Book Success">
-	<p>You have successfully confirm an outgoing book!</p>
+	<p>You have successfully confirmed an outgoing book!</p>
 </div>
 
 <div id="cancelsuccess" title="Cancel Reservation Success">
-	<p>You have successfully cancel a book reservation!</p>
+	<p>You have successfully cancelled a book reservation!</p>
 </div>
 
 <div id="confsuccess" title="Confirm User Account Success">
     <p>You have successfully confirmed a user account!</p>
+</div>
+
+<div id="returnsucc" title="Return Book Success">
+    <p>You have successfully returned a book!</p>
+</div>
+
+<div id="extendsucc" title="Extend Book Success">
+    <p>You have successfully extended the due date of a book!</p>
 </div>
 
 <div id='notifydialog' title='Notify Overdue Books Dialog'>
