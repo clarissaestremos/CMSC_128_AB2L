@@ -1,33 +1,24 @@
-<script type="text/javascript">
-    var base_url = "<?php echo base_url() ?>";
-    $(window).load(function(){
-        $.ajax({
-            url: base_url+"index.php/admin/controller_view_users/search_user";
-            type: 'POST',
-            data: 's_user': <?php echo $this->input->post('s_user');?>
-            async: true,
-                success: function(result){
-                $('#showSearchUser').html(result);
-                $('#showSearchUser').fadeIn(1000);
-            }
-        });
-    });
-</script>
 <div id="thisbody" class="body width-fill background-white">
     <div class="cell">
         <div class="page-header cell">
-           <h1>Admin <small>Search Users</small></h1>
+           <h1>Admin <small><?php echo $current?></small></h1>
         </div>
-       
-        <?php 
+        <?php if(isset($message)){ ?>
+        <div>
+            <?php echo $message ?>
+        </div>
+        <?php
+            }
+        ?>
+        
+<div id="showSearchUser"></div>
+   <?php 
         if($results != NULL){
-        echo '
-         <div class="panel datasheet cell">
+         echo   '<div class="panel datasheet cell">
             <div class="header background-red">
                 Results
             </div>
-
-        <table class="body">
+   <table class="body">
                 <thead>
                     <tr>
                         <th style="width: 2%;">#</th>
@@ -76,14 +67,28 @@
 
                echo'</tbody>
             </table>';
-        }
-        else{
-            echo "<div class='cell'>
-                <hr>
-                <h5>User(s) not found!</h5>
-                <hr>
-            </div>";
-        }
+                }
+                else{
+
+                    echo "
+                    <div class='cell'>
+                        <hr>
+                        <h3>No Users Found</h3>
+                        <hr>
+                    </div>";
+                }
+
             ?>
+ </div>
     </div>
+</div>
+<div id="confdialog" title="Confirm Account Dialog">
+    <h5>Are you sure that you want to activate this user account?</h5>
+</div>
+
+<div id="deactivatedialog" title="Deactivate Account Dialog">
+    <h5>Do you really wish to deactivate all user accounts?</h5>
+</div>
+<div id="confsuccess" title="Confirm User Account Success">
+    <p>You have successfully confirmed a user account!</p>
 </div>
