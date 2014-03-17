@@ -15,6 +15,16 @@
 		<script src="<?php echo base_url() ?>js/jquery-1.10.2.min.js"></script>
 		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
 		<script>
+			$(document).ready(function(){
+				$heightbody = $("#thisbody").css("height");
+				$heightaside = $("aside").css("height");
+				console.log($heightbody);
+				console.log($heightaside);
+				if($heightbody > $heightaside){
+					console.log("enter");
+					$("#side-navigation").css("height",$heightbody);
+				}
+			});
 			base_url= "<?php echo base_url() ?>";
 		</script>
 		<style type="text/css">
@@ -373,7 +383,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
             	$(this).dialog('close');
-            	thisform.submit();
+            	$('#extendsucc').dialog('open');
             },
             "No": function() {
                 $(this).dialog('close');
@@ -382,7 +392,7 @@ $("#dsucc").dialog({
 
     });
 
-/*
+
     $("#extendsucc").dialog({
             autoOpen: false,
             modal: true,
@@ -429,7 +439,7 @@ $("#dsucc").dialog({
               },
             }
  
-        });*/
+        });
 
         $("#returndialog").dialog({
         autoOpen: false,
@@ -451,7 +461,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                thisform.submit();
+                $('#returnsucc').dialog('open');
             },
             "No": function() {
                 $(this).dialog('close');
@@ -944,8 +954,8 @@ $("#dsucc").dialog({
             form = $(this).get(0).id;
             document.getElementById('akey').innerText = "Admin Key: "+ document.getElementById('adminkey').value;
             document.getElementById('aname').innerText = "Name: "+ document.getElementById('fname').value + " "+ document.getElementById('minit').value + " " + document.getElementById('lname').value;
-            document.getElementById('aemail').innerText = "Email: "+ document.getElementById('eadd').value;
-            document.getElementById('ausername').innerText = "Username: "+ document.getElementById('uname').value;
+            document.getElementById('aemail').innerText = "Admin Key: "+ document.getElementById('eadd').value;
+            document.getElementById('ausername').innerText = "Admin Key: "+ document.getElementById('uname').value;
             $( "#addadmin" ).dialog( "open" );
         });
     //END OF ADD ADMIN MODALS
@@ -1026,8 +1036,8 @@ $("#dsucc").dialog({
         console.log(thisform);
         return false;
     }
-function
-     extendBook(myformid){
+
+    function extendBook(myformid){
         thisform = myformid;
        $( "#extenddialog" ).dialog( "open" );
         console.log(thisform);

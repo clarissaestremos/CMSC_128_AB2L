@@ -10,9 +10,9 @@
 				str=myform.title.value;
 				
 				if(str=="")
-				msg+="Please provide a title to your announcement!<br/>";
+				msg+="Please provide a title for your announcement!<br/>";
 				if(!str.match(/^[a-zA-Z0-9\ \'\,\.\-\!]+[a-zA-Z0-9\ \'\,\.\-\!]*$/))
-                msg+="Must be between 1-100 alpha numeric character!<br/>";
+                msg+="Title must be between 1-100 alpha numeric character!<br/>";
 				if(msg=="Invalid input: ")
 				msg="";
 				else {
@@ -66,7 +66,7 @@
                                 <div class="col width-fill">
                                 	<div class="cell panel" style="border: 1px solid #9BA0AF;">
                                 		<div class="header gradient">
-                                				<h4 style="text-weight: normal; font-family: Arial;">Post another announcements</h4>
+                                				<h4 style="text-weight: normal; font-family: Arial;">Post another announcement</h4>
                                 		</div>
                                 		<div class="cell">		
 										<div id="add" class="cell">
