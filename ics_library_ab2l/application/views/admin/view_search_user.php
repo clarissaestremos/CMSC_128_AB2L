@@ -3,22 +3,25 @@
         <div class="page-header cell">
            <h1>Admin <small><?php echo $current?></small></h1>
         </div>
+       
         <?php if(isset($message)){ ?>
         <div>
             <?php echo $message ?>
         </div>
+       
         <?php
             }
         ?>
         
-<div id="showSearchUser"></div>
-   <?php 
-        if($results != NULL){
-         echo   '<div class="panel datasheet cell">
-            <div class="header background-red">
-                Results
-            </div>
-   <table class="body">
+    <div id="showSearchUser"></div>
+       <?php 
+            if($results != NULL){
+                 echo   '<div class="panel datasheet cell">
+                    <div class="header background-red">
+                    Results
+                    </div>
+            
+               <table class="body">
                 <thead>
                     <tr>
                         <th style="width: 2%;">#</th>
@@ -79,16 +82,18 @@
                 }
 
             ?>
- </div>
+        </div>
     </div>
 </div>
-<div id="confdialog" title="Confirm Account Dialog">
-    <h5>Are you sure that you want to activate this user account?</h5>
-</div>
 
-<div id="deactivatedialog" title="Deactivate Account Dialog">
-    <h5>Do you really wish to deactivate all user accounts?</h5>
-</div>
-<div id="confsuccess" title="Confirm User Account Success">
-    <p>You have successfully confirmed a user account!</p>
-</div>
+    <div id="confdialog" title="Confirm Account Dialog">
+        <h5>Are you sure that you want to activate this user account?</h5>
+    </div>
+
+    <div id="deactivatedialog" title="Deactivate Account Dialog">
+        <h5>Do you really wish to deactivate all user accounts?</h5>
+    </div>
+
+    <div id="confsuccess" title="Confirm User Account Success">
+        <p>You have successfully confirmed a user account!</p>
+    </div>
