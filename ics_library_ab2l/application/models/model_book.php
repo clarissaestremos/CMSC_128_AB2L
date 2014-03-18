@@ -1,55 +1,65 @@
 <?php
 class Model_book extends CI_Model {
-	public function select_all_book_info(){
+	
+	public function select_all_book_info()
+	{
 		$query = $this->db->get('book');
 		return $query->result();
 	}
+	
 	/*All BOOKS Table*/
-	public function get_book_call_numbers($id){
+	public function get_book_call_numbers($id)
+	{
 		$query = $this->db->get_where('book_call_number', array('id' => $id));
 		return $query->result();
 	}
 	
-	public function get_book_authors($id){
+	public function get_book_authors($id)
+	{
 		$query = $this->db->get_where('book_author', array('id' => $id));
 		return $query->result();
 	}
 	
-	public function get_book_subjects($id){
+	public function get_book_subjects($id)
+	{
 		$query = $this->db->get_where('book_subject', array('id' => $id));
 		return $query->result();
 	}
 
-	public function get_book_tags($id){
+	public function get_book_tags($id)
+	{
 		$query = $this->db->get_where('tag', array('id' => $id));
 		return $query->result();
 	}
 	
 	/*ADD Book*/
-	public function insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject, $tags){
-	$this->db->query("INSERT INTO book values(default, '$title', '$year_of_pub', '$type', $no_of_available, $quantity, $book_stat, '$isbn')");
-
-
-	foreach ($author as $value) {
-			$this->db->query("INSERT INTO book_author values((SELECT max(id) FROM book), '$value')");
+	public function insert_book_info($call_number, $title, $year_of_pub, $isbn, $type, $no_of_available, $quantity, $book_stat, $author, $subject, $tags)
+	{
+		$this->db->query("INSERT INTO book values(default, '$title', '$year_of_pub', '$type', $no_of_available, $quantity, $book_stat, '$isbn')");
+	
+		foreach ($author as $value) {
+				$this->db->query("INSERT INTO book_author values((SELECT max(id) FROM book), '$value')");
 		}
-	foreach ($subject as $value2) {
-		$this->db->query("INSERT INTO book_subject values((SELECT max(id) FROM book), '$value2')");
-	}
-	foreach ($call_number as $value3) {
-		$this->db->query("INSERT INTO book_call_number values((SELECT max(id) FROM book), '$value3')");
-	}
-
-	foreach ($tags as $value4) {
-			$this->db->query("INSERT INTO tag values((SELECT max(id) FROM book), '$value4')");
+		
+		foreach ($subject as $value2) {
+			$this->db->query("INSERT INTO book_subject values((SELECT max(id) FROM book), '$value2')");
+		}
+		
+		foreach ($call_number as $value3) {
+			$this->db->query("INSERT INTO book_call_number values((SELECT max(id) FROM book), '$value3')");
 		}
 	
-		return $this->db->query("SELECT max(id) FROM book")->result();
+		foreach ($tags as $value4) {
+				$this->db->query("INSERT INTO tag values((SELECT max(id) FROM book), '$value4')");
+		}
+		
+			return $this->db->query("SELECT max(id) FROM book")->result();
 	}
 	
 
 	/*EDIT BOOK*/
-	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags){
+	public function edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags)
+	{
 
 		$query = $this->db->where('id', $id);
 		$this->db->update('book', $book);
@@ -85,6 +95,7 @@ class Model_book extends CI_Model {
 				}
 			}
 		}
+		
 		//update Book Subjects table
 		if(isset($book_subjects)){
 			foreach ($book_subjects as $book_subject) {
@@ -119,7 +130,9 @@ class Model_book extends CI_Model {
 		$this->db->update('book', $book);
 	
 	}
-	public function clear_auth_subj($id, $table){
+	
+	public function clear_auth_subj($id, $table)
+	{
 
 		$this->db->where('id', $id);
 		$this->db->delete($table);
@@ -127,7 +140,8 @@ class Model_book extends CI_Model {
 	}
 	
 	/*DELETE Book*/
-	public function delete_book($id){
+	public function delete_book($id)
+	{
 		$this->db->where('id', $id);
 		$this->db->delete('book');
 		$this->db->where('id', $id);
@@ -139,7 +153,8 @@ class Model_book extends CI_Model {
 
 	}
 
-	public function get_book_info(){
+	public function get_book_info()
+	{
 		$books = $this->db->get('book');
 
 		foreach ($books->result() as $book) {
@@ -151,15 +166,15 @@ class Model_book extends CI_Model {
 
 	}
 
-	public function view_all($id){
+	public function view_all($id)
+	{
 
 		$query = $this->db->get_where('book', array('id' => $id));
-
-
 		return $query;
 	}
 
-	public function get_authors($id){
+	public function get_authors($id)
+	{
 		$this->db->where('id', $id);
 		$authors = $this->db->get('book_author');
 		$authors = $authors->result();
@@ -174,7 +189,8 @@ class Model_book extends CI_Model {
 		return $author_array;
 	}
 
-	public function get_subjects($id){
+	public function get_subjects($id)
+	{
 		$this->db->where('id', $id);
 		$subjects = $this->db->get('book_subject');
 		$subjects = $subjects->result();
@@ -189,7 +205,8 @@ class Model_book extends CI_Model {
 		return $subject_array;
 	}
 
-	function get_by_id($id){
+	function get_by_id($id)
+	{
 		$this->db->where('id', $id);
 		$book = $this->db->get('book');
 		
