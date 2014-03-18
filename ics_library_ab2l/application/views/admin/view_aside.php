@@ -1,3 +1,10 @@
+ /*Sidebar of the admin page
+ Menu:
+ 	Home
+ 	Books - add books, view books, view outgoing books, view borrowed books, search
+ 	Users - add new user, add new admin, view users
+ 	Admin - add announcements, view announcements, view statistics, view logs, view settings, view admin manual, logout
+ */
  <div id="mainbody" class="main-content">
 	<aside id="side-navigation" class="border-top width-1of4">
 		<div class="col width-1of1">
