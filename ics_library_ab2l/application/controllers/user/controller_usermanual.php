@@ -12,5 +12,5 @@ class Controller_usermanual extends CI_Controller {
         }  
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_usermanual.php */
+/* Location: ./application/controllers/user/controller_usermanual.php */
