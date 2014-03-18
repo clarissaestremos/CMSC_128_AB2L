@@ -16,7 +16,7 @@
 	            	$this->load->view("admin/view_footer");
     		}
 
-    		/*The function send_email is to send the email to the borrower with overdue materials*/
+    		/*The function send_email sends an email to the borrower with overdue materials*/
     		public function send_email(){
         		if($this->session->userdata('logged_in_type')!="admin")
             		redirect('index.php/user/controller_login', 'refresh');
@@ -91,7 +91,8 @@
 				redirect('index.php/admin/controller_reservation','refresh');
         		}//END OF notify_all
     		}
-    
+    		
+    		/* This function extends the deadline of a material. */
     		public function extend(){
 			if($this->session->userdata('logged_in_type')!="admin")
                 	redirect('index.php/user/controller_login', 'refresh');
@@ -101,7 +102,7 @@
 			$session_user = $this->session->userdata('logged_in')['username'];
             		$this->add_log("Admin $session_user extended a book reservation with Reservation Number: $res_number", "Extend Reservation");
             		echo "<div id='mysuccess' title='Add Book Success'>
-        			<h6>You have successfully confirmed the extend the material's due date!</h6>
+        			<h6>You have successfully confirmed to extend the material's due date!</h6>
         		</div>
         		<script src='$base/js/jquery-1.10.2.min.js'></script>
         		<script src='$base/js/jquery-ui.js'></script>
@@ -131,7 +132,8 @@
             			});
         		</script>";
     		}//END OF extend()
-    
+    		
+    		/* This function is used when a material is returned to the library. */
     		public function return_book(){
 			if($this->session->userdata('logged_in_type')!="admin")
                 	redirect('index.php/user/controller_login', 'refresh');
@@ -169,7 +171,8 @@
             			});
         		</script>";
     		}//END OF return_book()
-    
+    		
+    		/* This function reserves a book for a user. */
     		public function reserve(){
         		$base = base_url();
         		$flag = true;
@@ -177,11 +180,14 @@
                 	redirect('index.php/user/controller_login', 'refresh');
         		$res_number=$_POST['res_number'];
         		$this->load->model('model_reservation');
+        		//if the borrower currently has less than three materials borrowed, he will be allowed to borrow another one
         		if($this->model_reservation->count_user_reservation($res_number) < 3){
 				$this->model_reservation->update_book_reservation($res_number, "reserved");
 				$session_user = $this->session->userdata('logged_in')['username'];
             			$this->add_log("Admin $session_user confirmed a book reservation with Reservation Number: $res_number", "Confirm Reservation");
-			}else{
+			}
+			//if he already has three borrowed materials, the request will not be granted and he will be asked to return other materials that he has in order to borrow another one
+			else{
             			$flag = false;
             			echo "
                     			<div id='mysuccess' title='Add User Account Success'>
@@ -217,7 +223,8 @@
         		if($flag)
 		  	redirect('index.php/admin/controller_reservation','refresh');
     		}//END OF reserve()
-    
+    		
+    		/* This function cancels a reservation. */
     		public function cancel(){
 			if($this->session->userdata('logged_in_type')!="admin")
                 	redirect('index.php/user/controller_login', 'refresh');
@@ -231,7 +238,8 @@
         		$this->model_get_list->update_available($call_number);
         		redirect('index.php/admin/controller_outgoing_books','refresh');
     		}//END OF cancel()
-
+		
+		/* This function gets the information of the reserved books. */
     		function get_info() {
         		$this->load->model('model_reservation');
         		$status = "reserved";
@@ -253,7 +261,8 @@
         		$data['links'] = $this->jquery_pagination->create_links();
         		$this->print_info($data['result'],$data['links']); 
     		}
-
+		
+		/* This function shows/prints the information of the reserved books. */
      		function print_info($query,$links) {
 
         		echo '<table class="body">
