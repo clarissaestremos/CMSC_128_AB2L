@@ -26,6 +26,7 @@
         <div class="page-header cell">
            <h1>Admin <small>View Users</small></h1>
         </div>
+        
         <?php if(isset($message)){ ?>
         <div>
             <?php echo $message ?>
@@ -33,19 +34,21 @@
         <?php
             }
         ?>
-		<div class="panel datasheet cell">
+	
+	<div class="panel datasheet cell">
             <div class="header background-red">
                 List of Users
             </div>
 
             <div id = "change_here"> </div>
-			<form action='<?php echo base_url();?>index.php/admin/controller_view_users/deactivate' id='deactivateaccount' method='POST' class="float-right">
-                <input type='hidden' name='deactivate' id='deactivate' value='deact'/>
-				<input type ='submit' class='background-white' value = 'Deactivate All User Accounts'>
-			</form>
+		<form action='<?php echo base_url();?>index.php/admin/controller_view_users/deactivate' id='deactivateaccount' method='POST' class="float-right">
+        	        <input type='hidden' name='deactivate' id='deactivate' value='deact'/>
+			<input type ='submit' class='background-white' value = 'Deactivate All User Accounts'>
+		</form>
+	    </div>
         </div>
-    </div>
 </div>
+
 
 <div id="confdialog" title="Confirm Account Dialog">
     <h5>Are you sure that you want to activate this user account?</h5>
