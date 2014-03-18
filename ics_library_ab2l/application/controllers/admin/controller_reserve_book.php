@@ -49,7 +49,8 @@
 		        $this->load->view("admin/view_reserve_book", $data);
 		        $this->load->view("admin/view_footer");
 		}
-
+		
+		/* This function checks if the user who want to reserve a book is logged in. */
 		function verify_login($id){
         		if($this->model_check_session->check_admin_session() != TRUE)
             			redirect('index.php/user/controller_home', 'refresh');
@@ -67,7 +68,8 @@
 				}
 			}
 		}
-
+		
+		/* This function confirms the reservation of a book. */
 		function confirm_reservation(){
 			$base = base_url();
         		if($this->model_check_session->check_admin_session() != TRUE)
@@ -97,7 +99,9 @@
 									$no_of_available = $value->no_of_available;
 								}
 							}
-						
+							
+							//if the user's account is approved, and his number of borrowed books is less than three,
+							//and there is an available copy of the book, then he is allowed to reserve it
 							if($no_of_available > 0){
 								// echo "<script>console.log("$no_of_available==0")</script>";
 								if($this->model_reserve_book->add_reservation($data)){
@@ -131,6 +135,8 @@
 								}
 							
 							}
+							
+							//but if there are no available copy of the book, then the user will be waitlisted for that material
 							else{
 								if($this->model_reserve_book->waitlist_reservation($data)){
 									echo "<div id='mysuccess' title='Success: Waitlisted'>
@@ -163,6 +169,7 @@
 								}
 							}	
 					}
+					//if the user's account is not yet activated, he is not allowed to reserve a book
 					else{
 						echo "<div id='mysuccess' title='Error: Account Activation'>
 									<h5>Your account is not yet activated. Please confirm it to the administrator.</h5>
@@ -195,6 +202,7 @@
 					}
 					
 				}
+				//if the user currently has three borrowed/reserved books, then he will not be allowed to reserve another
 				else{
 					echo "<div id='mysuccess' title='Error: Reservation Limitation'>
 						<h5>A user is allowed to borrow and reserve at most 3 books</h5>
