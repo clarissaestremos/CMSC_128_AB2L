@@ -21,7 +21,6 @@ class Controller_search_book extends CI_Controller {
     	if(isSet($_POST['hinput'])) $data['text']=addslashes($this->input->post('hinput'));
     	
     	$data['titlepage'] = "Books - Search";
-
         $this->load->helper(array('form','html'));
         $this->load->view("user/view_header",$data);
         $this->load->view("user/view_search_book");
@@ -84,7 +83,7 @@ class Controller_search_book extends CI_Controller {
 		$this->jquery_pagination->initialize($config);
 		//create links for pagination
 		$data['links'] = $this->jquery_pagination->create_links();
-        $this->print_books($row, $data['links']);
+	        $this->print_books($row, $data['links']);
 
 	}
 
@@ -178,4 +177,5 @@ class Controller_search_book extends CI_Controller {
 		
 	}
 }
-/* End of file home_controller.php */
+/* End of file controller_search_book.php */
+/* Location: ./application/controllers/user/controller_search_book.php */
