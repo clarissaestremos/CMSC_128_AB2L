@@ -156,7 +156,7 @@ class Controller_book extends CI_Controller {
 		$rank = $_POST['rank'];
 		$this->load->model("model_get_list");	//loads model_get_list that holds the needed functions
 		$this->model_get_list->cancel_reservation($res_number);	//calls function for cancelling, passing the reservation number
-		$this->model_get_list->update_rank($call_number);	//updates the rank in the list, passing the call number of the book
+		$this->model_get_list->update_rank($call_number, $rank);	//updates the rank in the list, passing the call number of the book
 		$this->model_get_list->update_available($call_number);	//updates the list of available books, passing the book call number
 		
 		$this->load->helper(array('form','html'));

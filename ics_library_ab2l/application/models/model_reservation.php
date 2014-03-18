@@ -167,18 +167,25 @@ class Model_reservation extends CI_Model {
 			$book = $this->model_get_list->get_book_by_resnum($res_number);
 
 			$this->load->model('model_reserve_book');
-			$borrower = $this->model_reserve_book->get_borrower($book[0]->id);
+			$borrower = $this->model_reserve_book->get_borrower($book[0]->id, 1);
 			$count=0;
 			foreach ($borrower as $user) {
-				if($count == 0)	{
+				if($user->rank == 2)	{
 					$row = $this->model_reserve_book->fetch_available_book($book[0]->id);
 					$newdata = array('call_number' => $row->result()[0]->call_number, 'rank' => 1);
-					$this->db->update('book_reservation', $newdata, array('account_number' => $user->account_number));
+					$this->db->update('book_reservation', $newdata, array('account_number' => $user->account_number, 'res_number' => $user->res_number));
+					$status = $this->db->get('book')->result();
+					$status = $status[0]->no_of_available;
+					$status--;
+					$data = array(
+						'no_of_available' => "$status"
+						);
+					$this->db->where('id', $book[0]->id);
+					$this->db->update('book', $data);
 				}
 				else{
 					$this->model_reserve_book->update_book_res($book[0]->id, $user->account_number);
 				}
-				$count++;
 			}
 		}
 	}

@@ -160,11 +160,11 @@ class Controller_outgoing_books extends Controller_log{
                 },
                 draggable: false,
                 close: function(event, ui){
-                    window.location.replace('$base/index.php/admin/controller_reservation');
+                    window.location.replace('".$base."index.php/admin/controller_reservation');
                 },
                 buttons : {
                   'Ok': function() {
-                      window.location.replace('$base/index.php/admin/controller_reservation');
+                      window.location.replace('".$base."index.php/admin/controller_reservation');
                   },
                 }
      
@@ -228,7 +228,7 @@ class Controller_outgoing_books extends Controller_log{
 
         $this->load->model('model_get_list');
         $this->model_get_list->cancel_reservation($res_number);
-        $this->model_get_list->update_rank($call_number);
+        $this->model_get_list->update_rank($call_number, 1);
         $this->model_get_list->update_available($call_number);
         redirect('index.php/admin/controller_outgoing_books','refresh');
     }//END OF cancel()
