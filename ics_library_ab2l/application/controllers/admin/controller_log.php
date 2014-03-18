@@ -10,7 +10,8 @@
 		function index(){
 			$this->show_all_log(false);
 		}
-
+		
+		/* This function shows the admin logs. */
 		function show_all_log(){
 			if($this->model_check_session->check_admin_session() == TRUE){	
 				$this->load->model('model_log');
@@ -26,6 +27,7 @@
 			}
 		}
 		
+		/* This function only shows the log for the current day. */
 		function today(){
 			if($this->model_check_session->check_admin_session() == TRUE){	
 				$today = date("Y-m-d");
@@ -41,14 +43,15 @@
 				$this->load->view("admin/view_footer");
 			}
 		}
-
+		
+		/* This function adds a log whenever an admin triggers a certain action. */
 		function add_log($message, $type){
 			if($this->session->userdata('logged_in_type')!="admin")
             		redirect('index.php/user/controller_login', 'refresh');
 			$this->load->model('model_log');
 			$this->model_log->add_log($message, $type);
 		}
-	
+		
 		public function remove_unclaimed(){
 			$date = date("Y-m-d");
 			$this->load->model('model_reservation');
