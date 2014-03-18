@@ -7,6 +7,7 @@ class Controller_view_users extends Controller_log {
     }
 
     function viewUser($msg){
+    /*Views all the users in the page*/
         $this->load->model('model_users');
         $data['results']=$this->model_users->getAllUsers();
         $data['parent'] = "Users";
@@ -14,7 +15,8 @@ class Controller_view_users extends Controller_log {
         if($msg != null){
             $data['msg'] = "You have successfully approved the account of $msg.";
             $data['msg1'] = true;
-		}
+	}
+	
         $this->load->helper(array('form','html'));
         $this->load->view("admin/view_header",$data);
         $this->load->view("admin/view_aside");
@@ -23,7 +25,8 @@ class Controller_view_users extends Controller_log {
     }
 
     function search_user(){
-      $this->load->model('model_users');
+    /*Searches for the users*/
+        $this->load->model('model_users');
         $data['results']=$this->model_users->userSearch($this->input->post('s_user'));
         $data['parent'] = "Users";
         $data['current'] = "Search Users";
@@ -36,24 +39,26 @@ class Controller_view_users extends Controller_log {
     }
 
     function approve_user(){
+    	/*Approves users using account number*/
         if($this->session->userdata('logged_in_type')!="admin")
-                redirect('index.php/user/controller_login', 'refresh');
-         if(isset($_POST['approve'])){
-             if(isset($_POST['account_number1'])){
+           redirect('index.php/user/controller_login', 'refresh');
+           if(isset($_POST['approve'])){
+               if(isset($_POST['account_number1'])){
                  $this->email_confirm_account($_POST['account_number1']);
              }
-             unset($_POST['approve']);
+            unset($_POST['approve']);
          }
      }
  
      function remove_user(){
+     	/*Removes user using account number*/
         if($this->session->userdata('logged_in_type')!="admin")
-                redirect('index.php/user/controller_login', 'refresh');
+         redirect('index.php/user/controller_login', 'refresh');
          if(isset($_POST['remove2'])){
              if(isset($_POST['account_number2'])){
                  $this->model_user->remove_user($_POST['account_number2']);
              }
-             unset($_POST['remove2']);
+         unset($_POST['remove2']);
          }
          else if(isset($_POST['remove3'])){
              if(isset($_POST['account_number3'])){
@@ -63,12 +68,13 @@ class Controller_view_users extends Controller_log {
          }
      }
  
-	function email_confirm_account($account_number){
-		if($this->session->userdata('logged_in_type')!="admin")
-			redirect('index.php/user/controller_login', 'refresh');
-		include("./application/controllers/admin/controller_retrieve_email.php");
+     function email_confirm_account($account_number){
+     	/*Confirms usera ccount by e-mail*/
+	if($this->session->userdata('logged_in_type')!="admin")
+	    redirect('index.php/user/controller_login', 'refresh');
+	    include("./application/controllers/admin/controller_retrieve_email.php");
         
-        $config = Array(
+            $config = Array(
                 'protocol' => 'smtp',
                 'smtp_host' => 'ssl://smtp.googlemail.com',
                 'smtp_port' => 465,
@@ -99,7 +105,7 @@ class Controller_view_users extends Controller_log {
 		$message .= "Thank you!<br/>";
 		$message .= "ICS Library Administrator<hr />";
 		$message .= "The ICS e-Lib will never ask or provide confidential account details such as your password. In case you've received messages from us asking for your password, please report them immediately to our administrators. Thank you!<br />Mag-aral ng mabuti! ";
-		//  echo $message;
+		//displays prompt
 		$this->load->library('email', $config);
 		$this->email->initialize($config);
 		$this->email->set_newline("\r\n");
@@ -108,13 +114,13 @@ class Controller_view_users extends Controller_log {
 		$this->email->subject($subject);
 		$this->email->message($message);
 		//Send the email
-        $base = base_url();
-    //    if($this->email->send()){
+        	$base = base_url();
+    		//if($this->email->send()){
 			$this->load->model('model_user');
 	        $this->model_user->approve_user($account_number);
 	        $session_user = $this->session->userdata('logged_in')['username'];
 	        $this->add_log("Admin $session_user verified account of $account_number.", "Verify User Account");
-            echo "
+        	 echo "
                     <div id='mysuccess' title='Add User Account Success'>
                         <h6>Account of $account_number has been successfully validated! User may check the email provided for confirmation.</h6>
                     </div>
@@ -175,17 +181,18 @@ class Controller_view_users extends Controller_log {
 	}
         
     function deactivate(){
+    /*Deactivates users only if no materials are borrowed or overdue.*/
         if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');
         if(isset($_POST['deactivate'])){
-             $this->load->model('model_reservation');
-             $overdue = count($this->model_reservation->show_all_user_book_reservation("overdue"));
-             $borrowed = count($this->model_reservation->show_all_user_book_reservation("borrowed"));
-             $count = $overdue + $borrowed;
-             if($count === 0){  //no more books at hand of users, all books are returned in th library
-                 $this->load->model('model_user');
-                 $this->model_user->deactivate_users();
-                 echo "
+            $this->load->model('model_reservation');
+            $overdue = count($this->model_reservation->show_all_user_book_reservation("overdue"));
+            $borrowed = count($this->model_reservation->show_all_user_book_reservation("borrowed"));
+            $count = $overdue + $borrowed;
+             if($count === 0){  //no more books at hand of users, all books are returned in the library
+                $this->load->model('model_user');
+                $this->model_user->deactivate_users();
+                echo "
                     <div id='mysuccess' title='Add User Account Success'>
                         <h6>You have successfully deactivated the accounts of all users.</h6>
                     </div>
@@ -213,9 +220,10 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-                 $session_user = $this->session->userdata('logged_in')['username'];
-                 $this->add_log("Admin $session_user deactivated all user accounts.", "Deactivate Users");
-             }else{
+             $session_user = $this->session->userdata('logged_in')['username'];
+             $this->add_log("Admin $session_user deactivated all user accounts.", "Deactivate Users");
+             }
+             else{
                 echo "
                     <div id='mysuccess' title='Add User Account Success'>
                         <h6>You cannot deactivate all user accounts yet. Some users still have books on loan. Make sure all users have returned their borrowed materials before deactivating all user accounts.</h6>
@@ -245,7 +253,7 @@ class Controller_view_users extends Controller_log {
                             });
                         </script>";
              }
-             unset($_POST['deactivate']);
+         unset($_POST['deactivate']);
          }
     }
     
@@ -276,20 +284,23 @@ class Controller_view_users extends Controller_log {
         }
     }
 
-    /*All functions from here to end of file is For pagination */
+    
+    /*FUNCTIONS FOR PAGINATION*/
+    
+    
     function get_info() {
         $this->load->model('model_users');
         
         $data['result_all']  = $this->model_users->getAllUsers2(NULL,0,0);
  
-         //configuration of the ajax pagination  library.
-        $config['base_url'] = base_url().'index.php/admin/controller_view_users/get_info';        //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
+         //Configuration of the ajax pagination  library.
+        $config['base_url'] = base_url().'index.php/admin/controller_view_users/get_info'; //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
         $config['total_rows'] = count($data['result_all']);
         $config['per_page'] = '15';
         $config['div'] = '#change_here';
-      //  $config['additional_param']  = 'serialize_form1()';
+      	//$config['additional_param']  = 'serialize_form1()';
 
-        $page=$this->uri->segment(4);       // splits the URI segment by /
+        $page=$this->uri->segment(4);// splits the URI segment by
         
         $data['result'] = $this->model_users->getAllUsers2($data['result_all'],$config['per_page'],$page);
         $this->jquery_pagination->initialize($config);
@@ -299,9 +310,9 @@ class Controller_view_users extends Controller_log {
     }
 
 
-   function print_info($results,$links) {
+    function print_info($results,$links) {
         if(count($results)>0){
-         echo '<table class="body">
+        echo '<table class="body">
                 <thead>
                     <tr>
                         <th style="width: 2%;">#</th>
@@ -353,13 +364,14 @@ class Controller_view_users extends Controller_log {
             <div class="footer pagination">';
                 echo $links;
             echo "</div>";
-          }else if(count($results) == 0){
+          }
+          else if(count($results) == 0){
               echo"<div class='panel datasheet'>
                 <div class='header text-center background-red'>
                     No results found.
                 </div></div>";
 
-    }
+    	}
     }
 }
 /* End of file home_controller.php */
