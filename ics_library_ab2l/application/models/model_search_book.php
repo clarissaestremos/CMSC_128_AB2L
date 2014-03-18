@@ -1,13 +1,15 @@
 <?php
 	class Model_search_book extends CI_Model{
 		//constructor loads the database
-		function __construct(){
+		function __construct()
+		{
 			parent::__construct();
 			$this->load->database();
 		}
 		 // Finds all books that match the passed string
 		 //querry must be refined so that it can support tags such as tags that are found in tags table
-		function find_suggestion($str, $category){
+		function find_suggestion($str, $category)
+		{
 			if($category == "author"){
 				$this->db->select("DISTINCT $category
 					FROM book_author 
@@ -40,14 +42,16 @@
 		}
 
 
-		function addAnd($query,$and_check){
+		function addAnd($query,$and_check)
+		{
 			if($and_check==true) $query=$query." and ";
 			return $query;
 		}
 
 		//Finds all the books that match the data array
 		//refine qeury so that it can fetch data of the book if it is reserved or not.
-		function fetch_book_data($data,$limit,$start){
+		function fetch_book_data($data,$limit,$start)
+		{
 			$orCheck = false;
 			$andCheck=false;
 
@@ -58,9 +62,7 @@
 			}
 			//querry for the data fetching
 			//As long as the $data['str'] is not an empty string, it will dominate over the advance search forms,
-			$query='DISTINCT *
-				FROM book
-				WHERE ';
+			$query='DISTINCT * FROM book WHERE ';
 			$str = $data['str'];
 			if($data['str'] !== ""){
 				if($data['category'] == "author"){
@@ -140,7 +142,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_book_author($id){
+		function fetch_book_author($id)
+		{
 			$query="author
 			FROM book_author
 			WHERE id LIKE '".$id."'";
@@ -150,7 +153,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_book_subject($id){
+		function fetch_book_subject($id)
+		{
 			$query="subject
 			FROM book_subject
 			WHERE id LIKE '".$id."'";
