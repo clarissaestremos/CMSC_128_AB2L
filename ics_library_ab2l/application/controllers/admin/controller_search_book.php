@@ -19,7 +19,7 @@ class Controller_search_book extends CI_Controller {
         $this->load->view("admin/view_aside");
         $this->load->view("admin/view_search_book");
         $this->load->view("admin/view_footer");
-    }
+    	}
 
 	/*Autosuggest function*/
 	//Fetches data from server and loads it using AJAX.
