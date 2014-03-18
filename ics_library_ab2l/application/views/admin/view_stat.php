@@ -7,39 +7,39 @@
             var legend;
 
             var chartData = [];
-			<?php
-			  // query MySQL and put results into array $results
-			  foreach ($results as $row) {
-				  echo "chartData.push({title:'{$row->title}', value:{$row->book_stat}});";
-			  }
-			?>
+		<?php
+		 // query MySQL and put results into array $results
+			foreach ($results as $row) {
+			  echo "chartData.push({title:'{$row->title}', value:{$row->book_stat}});";
+			}
+		?>
 			
-			var chartProp = {
-				"type": "pie",
-				"theme": "dark",
-				"titles": [{
-					"text": "Book Statistics - Top 10 Most Borrowed Books",
-					"size": 20
-				}],
+		var chartProp = {
+			"type": "pie",
+			"theme": "dark",
+			"titles": [{
+				"text": "Book Statistics - Top 10 Most Borrowed Books",
+				"size": 20
+			}],
 				
-				"valueField": "value",
-				"titleField": "title",
-				"fontSize": 13,
-				"fontFamily": "Verdana",
+			"valueField": "value",
+			"titleField": "title",
+			"fontSize": 13,
+			"fontFamily": "Verdana",
 				
-				"startDuration": 2,
-				"labelRadius": 10,
+			"startDuration": 2,
+			"labelRadius": 10,
 				
-				"depth3D": 10,
-				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-				"angle": 15,
-				"exportConfig":{	
-				  "menuItems": [{
-				  "icon": '/export.png',
-				  "format": 'png'	  
-				  }]  
-				}
-			};
+			"depth3D": 10,
+			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+			"angle": 15,
+			"exportConfig":{	
+				"menuItems": [{
+					"icon": '/export.png',
+					"format": 'png'	  
+				}]  
+			}
+		};
 			chartProp.dataProvider = chartData;
 		
 			var chart = AmCharts.makeChart("chartdiv", chartProp);
@@ -64,10 +64,10 @@
         <div class="page-header cell">
            <h1>Admin <small>Material Statistics</small></h1>
         </div>
+        
         <div class = "hero-unit">
+		<div id="chartdiv"></div>
 		
-			<div id="chartdiv"></div>
-		
-	</div>
- </div>
-    </div>
+		</div>
+	 </div>
+   </div>
