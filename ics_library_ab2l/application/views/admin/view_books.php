@@ -1,3 +1,6 @@
+/*Admin's View Books - list of all books which can be sorted according to subject, author, title, type or availability in ascending or descending order
+                     - admin may delete the book
+*/
 <script type="text/javascript">
         var base_url = "<?php echo base_url() ?>";
         window.onload = get_data1;
