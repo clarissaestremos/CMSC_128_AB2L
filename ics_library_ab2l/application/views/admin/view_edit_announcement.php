@@ -1,10 +1,12 @@
 <script type="text/javascript">
+	//validation of the changes made in announcement
 	window.onload=function() {
 		 myform.title.onblur=validate_title;
 		 myform.content.onblur=validate_content;
 		 myform.onsubmit=process_add;
 	}
 	
+	//Title is required and characters must be alpha numeric
 	function validate_title() {
 		msg="Invalid input: ";
         	str=myform.title.value;
@@ -30,6 +32,7 @@
           return true;
       }
 
+	//Content is required and may contain any character
 	function validate_content() {
 		msg="Invalid input: ";
 		str=myform.content.value;
@@ -119,6 +122,8 @@
      </div>
 </div>
 
+
+<!--Modal for confirming the changes to be made in the announcement -->
 <div id="announcementdialog" title="Edit Announcement Confirmation Dialog">
 	<p>Are you sure that you want to edit this announcement?</o>
 </div>
