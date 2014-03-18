@@ -11,14 +11,14 @@ class Controller_register extends CI_Controller {
 		function index() {
 			$this->load->helper(array('form','html'));
 							 
-    		if($this->session->userdata('logged_in'))
+    		if($this->session->userdata('logged_in')) //if logged in and check_session() returns true, redirect to home page
 				 if($this->model_check_session->check_session() == TRUE) redirect('index.php/user/controller_home');
-			// else{
-				$data['titlepage']= "Register";
-				$this->load->view("user/view_header", $data);
-				$this->load->view("user/view_register"); 
-				$this->load->view("user/view_footer");
-			// }
+			
+				$data['titlepage']= "Register"; 
+				$this->load->view("user/view_header", $data); //display header
+				$this->load->view("user/view_register"); //display register page
+				$this->load->view("user/view_footer");  //display footer
+		
 		}
 
 
@@ -28,28 +28,28 @@ class Controller_register extends CI_Controller {
 		}
 		 public function acct_num($str)
 		{
-			if($this->input->post('classi')=="student")
-				return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE;
-			else{
-				return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;
+			if($this->input->post('classi')=="student")// if student,
+				return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE; // returns false if the string does not match the format 12XXX-XXXXX, else returns true
+			else{// if employee,
+				return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;  // return false if the string does not match the format XXXXXXXXXX, else return true
 			}
 		}
 		 public function last_name($str)
 		{
-			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
+			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE; //returns false if the format does not match any possibility of a surname, else return true
 		}
 
 		 public function first_name($str)
 		{
-			return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE;
+			return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE; // returns true if the string matches any possibility of a given a first given name including those containing periods or hyphens or those with multiple first names or with special alphabets
 		}
 		 public function check_dupes($str2)
 		{
 
-			 $sql=$this->db->query("select username from user_account where username like '$str2' ");
+			 $sql=$this->db->query("select username from user_account where username like '$str2' "); // checks if the input username already exists
 
 			 if($sql->num_rows()!=0)
-					{return FALSE;}
+					{return FALSE;} //if the username exists, return false, else return true
 				else {return TRUE;}         
 		}
 
@@ -58,14 +58,14 @@ class Controller_register extends CI_Controller {
 		{
 
 			 $sql=$this->db->query("select account_number from user_account where account_number like '$str3' ");
-
-			 if($sql->num_rows()!=0)
+        // checks if the input string already exists
+			 if($sql->num_rows()!=0)  //if the username exists, return false, else return true
 					{return FALSE;}
 				else {return TRUE;}         
 		}
 
 		 public function check_account( $account_number){
-            $this->db->where('account_number',$account_number);
+            $this->db->where('account_number',$account_number); // checks if the account number exists
             $query = $this->db->get('user_account')->num_rows();
             
     	}
@@ -98,7 +98,7 @@ class Controller_register extends CI_Controller {
 					$this->form_validation->set_rules('pass', 'Password', 'trim|required|min_length[5]|max_length[20]|alpha_numeric');
 					$this->form_validation->set_rules('cpass', 'Password Confirmation', 'trim|required|matches[pass]');
 
-					if($this->form_validation->run() == FALSE)
+					if($this->form_validation->run() == FALSE)  //if there are validation errors, prompt error
 					{
 					 $data['msg'] = validation_errors();
 					 $data['fname'] = $this->input->post('fname');
@@ -109,7 +109,7 @@ class Controller_register extends CI_Controller {
 					 $this->error($data);
 					
 					}
-					else
+					else  // else, create session where the input data will be data of the user
 					{
 						$this->model_register->add_user();
 
@@ -125,8 +125,9 @@ class Controller_register extends CI_Controller {
 			              $this->session->set_userdata('logged_in_type', "user");
 
 			             $base = base_url();
+			             // displays a prompt that the user successfully registered
 			            echo "
-					<div id='mysuccess' title='User Register Success'>
+					<div id='mysuccess' title='User Register Success'>  
 						<h6>You have successfully registered!</h6>
 						<p>But you're account is not yet activated in order to reserve a material.</p>
 					</div>
@@ -154,7 +155,7 @@ class Controller_register extends CI_Controller {
 					 
 					        });
 						</script>";
-			            if($this->session->userdata('logged_in_type')=="user"){
+			            if($this->session->userdata('logged_in_type')=="user"){ 
 			              if($this->session->userdata('id')){
 			                //redirect('index.php/user/controller_reserve_book');
 			                }
@@ -170,7 +171,7 @@ class Controller_register extends CI_Controller {
 					}
 		}
 
-		function success($data) {
+		function success($data) { //displays the success page
 				$data['titlepage']= "Register";
 				$this->load->helper(array('form','html'));
 				$this->load->view("user/view_header",$data);
@@ -178,7 +179,7 @@ class Controller_register extends CI_Controller {
 				$this->load->view("user/view_footer");
 		}
 
-		function error($data) {
+		function error($data) { //displays error page
 				$data['titlepage']= "Register";
 				$this->load->helper(array('form','html'));
 				$this->load->view("user/view_header",$data);
@@ -188,10 +189,10 @@ class Controller_register extends CI_Controller {
 		}
 
 		 public function username_Regex($username){
-				if (preg_match('/^[A-Za-z][A-Za-z0-9._]{4,20}$/', $username) ) {
+				if (preg_match('/^[A-Za-z][A-Za-z0-9._]{4,20}$/', $username) ) { // return true if the input begins with an upper or lowercase letter followed by upper or lowercase letters or numbers
 						return TRUE;
 					} else {
-						return FALSE;
+						return FALSE; // else return false and prompt error
 						$this->form_validation->set_message('username_Regex', 'Invalid input.');
 					}
 		}
