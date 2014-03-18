@@ -1006,26 +1006,28 @@ $("#dsucc").dialog({
         });
     //END OF ADD USER MODALS
     });
+    //Check the confirmation of user account
     function confirmUser(myformid){
         thisform = myformid;
         $('#confdialog').dialog('open');
         console.log(thisform);
         return false;
     }
-
+    //Check for the confirmation of reservation of books
     function confirmBookReserve(myformid){
         thisform = myformid;
         $( "#confirmdialog" ).dialog( "open" );
         console.log(thisform);
         return false;
     }
-
+    //Check for cancellation of reserved books.
     function confirmDeleteReserve(myformid){
         thisform = myformid;
        $( "#canceldialog" ).dialog( "open" );
         console.log(thisform);
         return false;
     }
+    //Check for submission in extending of books
 function
      extendBook(myformid){
         thisform = myformid;
@@ -1033,7 +1035,7 @@ function
         console.log(thisform);
         return false;
     }
-
+    //Check for the submission in returning of books
     function returnBook(myformid){
         thisform = myformid;
        $( "#returndialog" ).dialog( "open" );
