@@ -22,6 +22,10 @@
         	
         	
         }
+        else if(str.match(/\.\-/)  || str.match(/\-\./)){
+        		msg+="Invalid Name!<br/>";
+        }	
+        
         else if (!str.match(/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/)){ 
         	 	   msg+="Must be between 2-50 alpha characters!<br/>";
         	 }
