@@ -73,7 +73,7 @@
                                 		</div>
                                 		<div class="cell"><?php echo $msg;?>
 										<div id="add" class="cell">
-											<form id="myform" name="myform" action="<?php echo base_url(); ?>index.php/admin/controller_settings/saveChanges" method="post">
+											<form id="emailform" action="<?php echo base_url(); ?>index.php/admin/controller_settings/saveChanges" method="post">
 												<div class="cell panel" style="background: #f6f6f6; margin-top: 1.5em; border: 1px solid #9BA0AF;">
 													<div class="cell">
 													<label>ICS e-Lib Email Address: <?php echo  $email;?></label><br/>
@@ -90,7 +90,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id='cancelset1' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
-													<input type='hidden' name='submit' value='emailsettings'/>
+													<input type='hidden' value='emailsettings'/>
 													<input type="submit" name="save" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
 									</form>
 									</div>	
@@ -104,7 +104,7 @@
                                 		</div>
                                 		<div class="cell"><?php echo $msg1;?>
 										<div id="add" class="cell">
-											<form id="form" name="form" action="<?php echo base_url(); ?>index.php/admin/controller_settings/changeAdminPassword" method="post">
+											<form id="passform" action="<?php echo base_url(); ?>index.php/admin/controller_settings/changeAdminPassword" method="post">
 												<div class="cell panel" style="background: #f6f6f6; margin-top: 1.5em; border: 1px solid #9BA0AF;">
 													<div class="cell">
 													<label>Administrator Password: ********************</label><br/>
@@ -119,7 +119,7 @@
 									 </div>
 									 <div class="footer width-fill" style="border-top: 1px solid #9BA0AF;">
 													<a id='cancelset2' href="<?php echo base_url(); ?>index.php/admin/controller_admin_home"><input type="button"  name="cancel" id="cancel" class="float-right" value="Cancel" style="margin: 0px 5px 0px 5px;"/></a>
-													<input type='hidden' name='submit' value='passwordsettings'/>
+													<input type='hidden' value='passwordsettings'/>
 													<input type="submit" name="save" class='float-right' id="save" value="Save Changes" style="margin: 0px 5px 10px 18em;" />
 													
 									</form>
@@ -140,13 +140,13 @@
 <div id="elibmailsucc" title="Email E-Lib Settings Success">
 		<p>You have successfully changed E-Lib's email settings.</p>
 </div>
-<div id="passadmin" title="Email E-Lib Settings Confirmation">
+<div id="passadmin" title="Admin Password Settings Confirmation">
 		<p>Do you really wish to change your admin account password?</p>
 </div>
-<div id="passadminconf" title="Email E-Lib Settings Confirmation">
+<div id="passadminconf" title="Admin Password Settings Confirmation">
 		<p>Are you sure you want to change your admin account password? Doing so will permanently change the settings.</p>
 </div>
-<div id="passadminsucc" title="Email E-Lib Settings Success">
+<div id="passadminsucc" title="Admin Password Settings Success">
 		<p>You have successfully changed your admin account password.</p>
 </div>
 <div id='cancelmsg' Title="Cancel Settings Confirmation">
