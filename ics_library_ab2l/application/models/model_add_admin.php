@@ -6,7 +6,6 @@ class Model_add_admin extends CI_Model {
 	public function __construct()
 	{
    		$this->load->database();
-   
 	}
 
 	public function add_admin()
