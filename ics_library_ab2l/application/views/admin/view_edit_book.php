@@ -1,3 +1,5 @@
+/*Validates if all changes made are following the format of each input*/
+
 <script type="text/javascript">
 
 
@@ -702,6 +704,8 @@
         </div>
     </div>
 </div>
+
+<!--Modal for confirming the application of the changes made -->
 <div id='editbookconf' title='Edit Book Confirmation'>
     <h6>Are you sure that the following book details are true?</h6>
     <p id="btitle"></p>
