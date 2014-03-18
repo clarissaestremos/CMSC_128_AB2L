@@ -57,7 +57,7 @@
 </style>
 <div class="cell body" style="margin-top:40px;">
 	<div class="cell">
-			  <p class="tiny">Statistics</p>
+		<p class="tiny">Statistics</p>
 	</div>
 </div>
 <div class = "hero-unit">
