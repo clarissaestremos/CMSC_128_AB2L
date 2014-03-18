@@ -215,7 +215,7 @@
 					            	close: function(event, ui){
 						                window.location.replace('$base/index.php/user/controller_home');
 							},
-							buttons : {index.php/user/controller_home
+							buttons : {
 								'Ok': function() {
 								 	window.location.replace('$base/index.php/admin/controller_admin_home');
 								 },
