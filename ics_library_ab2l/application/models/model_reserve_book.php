@@ -25,7 +25,8 @@
 			return $current_date;
 		}*/
 
-		function getExpiration($date_reserved){
+		function getExpiration($date_reserved)
+		{
 			$span = 3;
 			if($date_reserved['wday'] == 3 || $date_reserved['wday'] == 4 || $date_reserved['wday'] == 5){
 				$span += 2;
@@ -48,7 +49,8 @@
 			return $expired_date;
 		}
 
-		function check_user_and_book($call_number, $borrower){
+		function check_user_and_book($call_number, $borrower)
+		{
 			$query="*
 			FROM book_reservation
 			WHERE account_number LIKE '$borrower'
@@ -59,89 +61,93 @@
 			return $this->db->get();
 		}
 
-		function add_reservation($data){
+		function add_reservation($data)
+		{
 			$flag = true;
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
 				$call_number = $book_details->call_number;
 				$row2 = $this->model_reserve_book->check_user_and_book($call_number, $data['borrower']);
+				
 				if($row2->num_rows > 0){
 					$flag = false;
-					echo "<div id='mysuccess' title='Error: Duplication of Copy'>
-									<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
+					echo	"<div id='mysuccess' title='Error: Duplication of Copy'>
+								<h5>Error. You currently have the copy or already reserved/waitlisted for that book.</h5>
 							</div>
-								<script src='".base_url()."/js/jquery-1.10.2.min.js'></script>
-								<script src='".base_url()."/js/jquery-ui.js'></script>
-								<link rel='stylesheet' href='".base_url()."/style/jquery-ui.css'/>
-								<script>
-										$('#mysuccess').dialog({
-								            modal: true,
-								            closeOnEscape: true,
-								            closeText: 'show',
-								            show: {
-								              effect: 'fadeIn',
-								              duration: 200
-								            },
-								            draggable: false,
-								            close: function(event, ui){
-								                window.location.replace('".base_url()."/index.php/user/controller_home');
-								            },
-								            buttons : {
-								              'Ok': function() {
-								                  window.location.replace('".base_url()."/index.php/user/controller_home');
-								              },
-								            }
-								 
-								        });
+							<script src='".base_url()."/js/jquery-1.10.2.min.js'></script>
+							<script src='".base_url()."/js/jquery-ui.js'></script>
+							<link rel='stylesheet' href='".base_url()."/style/jquery-ui.css'/>
+							<script>
+								$('#mysuccess').dialog({
+									modal: true,
+							        closeOnEscape: true,
+							        closeText: 'show',
+							        show: {
+								    	effect: 'fadeIn',
+								        duration: 200
+							        },
+							        draggable: false,
+							        close: function(event, ui){
+							        window.location.replace('".base_url()."/index.php/user/controller_home');
+							        },
+							        buttons : {
+							        	'Ok': function() {
+							        window.location.replace('".base_url()."/index.php/user/controller_home');
+										  },
+									}
+								});
 							</script>";
 						break;
 					break;
 				}
 			}
+			
 			if($flag){
-						$date_reserved = getdate();
-						$date_expired = $this->model_reserve_book->getExpiration($date_reserved);
-						$due_date = $date_expired['year']."-".$date_expired['mon']."-".$date_expired['mday'];
-						$due_date = date("Y-m-d", strtotime($due_date));
-						
-						$row = $this->model_reserve_book->fetch_book($data['id']);
-						foreach ($row->result() as $value) {
-							$no_of_available = $value->no_of_available;
-							$book_stat = $value->book_stat;
-						}
-						$row = $this->model_reserve_book->fetch_available_book($data['id']);
-						foreach ($row->result() as $book_details) {
-							$data['call_number'] = $book_details->call_number;
-							break;
-						}
+				$date_reserved = getdate();
+				$date_expired = $this->model_reserve_book->getExpiration($date_reserved);
+				$due_date = $date_expired['year']."-".$date_expired['mon']."-".$date_expired['mday'];
+				$due_date = date("Y-m-d", strtotime($due_date));
+					
+				$row = $this->model_reserve_book->fetch_book($data['id']);
+				foreach ($row->result() as $value) {
+					$no_of_available = $value->no_of_available;
+					$book_stat = $value->book_stat;
+				}
+				$row = $this->model_reserve_book->fetch_available_book($data['id']);
+				foreach ($row->result() as $book_details) {
+					$data['call_number'] = $book_details->call_number;
+					break;
+				}
 			
-						$status = "reserved";
-						$rank = 1;
-						$call_number = $data['call_number'];
-						$newdata = array(
-							'rank' => $rank,
-							'status' => $status,
-							'due_date' => $due_date,
-							'date_borrowed' => NULL,
-							'date_returned' => NULL,
-							'call_number' => $call_number,
-							'account_number' => $data['borrower']
-							);
-						$this->db->insert('book_reservation', $newdata);
+				$status = "reserved";
+				$rank = 1;
+				$call_number = $data['call_number'];
+				$newdata = array(
+					'rank' => $rank,
+					'status' => $status,
+					'due_date' => $due_date,
+					'date_borrowed' => NULL,
+					'date_returned' => NULL,
+					'call_number' => $call_number,
+					'account_number' => $data['borrower']
+					);
+				$this->db->insert('book_reservation', $newdata);
 			
-						$book_stat++;
-						$no_of_available--;
-						$newdata2 = array(
-							'no_of_available' => $no_of_available,
-							'book_stat' => $book_stat
-							);
-						$this->db->where('id', $data['id']);
-						$this->db->update('book', $newdata2);
+				$book_stat++;
+				$no_of_available--;
+				$newdata2 = array(
+					'no_of_available' => $no_of_available,
+					'book_stat' => $book_stat
+					);
+				$this->db->where('id', $data['id']);
+				$this->db->update('book', $newdata2);
 			}
+			
 			return $flag;
 		}
 
-		function waitlist_reservation($data){
+		function waitlist_reservation($data)
+		{
 			$flag = true;
 			$row = $this->model_reserve_book->fetch_call_number($data['id']);
 			foreach ($row->result() as $book_details) {
@@ -182,37 +188,39 @@
 					$rank = $row2->num_rows();
 					break;
 			}
+			
 			if($flag){
-						$status = "reserved";
-						$rank++;
-						$newdata = array(
-							'rank' => $rank,
-							'status' => $status,
-							'due_date' => NULL,
-							'date_borrowed' => NULL,
-							'date_returned' => NULL,
-							'call_number' => $call_number,
-							'account_number' => $data['borrower']
-							);
+				$status = "reserved";
+				$rank++;
+				$newdata = array(
+				'rank' => $rank,
+				'status' => $status,
+				'due_date' => NULL,
+				'date_borrowed' => NULL,
+				'date_returned' => NULL,
+				'call_number' => $call_number,
+				'account_number' => $data['borrower']
+				);
 			
-						$this->db->insert('book_reservation', $newdata);
-			
-						$row = $this->model_reserve_book->fetch_book($data['id']);
-						if($row->num_rows() > 0){
-							foreach ($row->result() as $book_details) {
-								$book_stat = $book_details->book_stat;
-							}
-						}
-						$book_stat++;
-						$newdata2 = array(
+				$this->db->insert('book_reservation', $newdata);
+				$row = $this->model_reserve_book->fetch_book($data['id']);
+				if($row->num_rows() > 0){
+					foreach ($row->result() as $book_details) {
+						$book_stat = $book_details->book_stat;
+					}
+				}
+				$book_stat++;
+				$newdata2 = array(
 							'book_stat' => $book_stat
 							);
-						$this->db->where('id', $data['id']);
-						$this->db->update('book', $newdata2);}
-			return $flag;
-		}
+							
+				$this->db->where('id', $data['id']);
+				$this->db->update('book', $newdata2);}
+				return $flag;
+			}
 
-		function fetch_book($id){
+		function fetch_book($id)
+		{
 			$query="*
 			FROM book
 			WHERE id LIKE $id";
@@ -222,23 +230,25 @@
 			return $this->db->get();
 		}
 
-		function fetch_available_book($id){
+		function fetch_available_book($id)
+		{
 			$query="call_number
-			FROM book_call_number
-			WHERE id LIKE $id
-			AND call_number NOT IN
-			(SELECT call_number
-			FROM book_reservation
-			WHERE status LIKE 'borrowed'
-			or status LIKE 'overdue'
-			or status LIKE 'reserved')";
+				FROM book_call_number
+				WHERE id LIKE $id
+				AND call_number NOT IN
+				(SELECT call_number
+				FROM book_reservation
+				WHERE status LIKE 'borrowed'
+				or status LIKE 'overdue'
+				or status LIKE 'reserved')";
 			//execute query
 			$this->db->select($query,FALSE);
 			
 			return $this->db->get();
 		}
 		
-		function fetch_call_number($id){
+		function fetch_call_number($id)
+		{
 			$query="call_number
 			FROM book_call_number
 			WHERE id LIKE $id";
@@ -248,7 +258,8 @@
 			return $this->db->get();
 		}
 		
-		function fetch_breservation($call_number){
+		function fetch_breservation($call_number)
+		{
 			$query="*
 			FROM book_reservation
 			WHERE call_number LIKE '".$call_number."'
@@ -261,7 +272,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_user($username){
+		function fetch_user($username)
+		{
 			$query="*
 			FROM user_account
 			WHERE username LIKE '$username'";
@@ -271,7 +283,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_user2($account_number){
+		function fetch_user2($account_number)
+		{
 			$query="*
 			FROM user_account
 			WHERE account_number LIKE '$account_number'";
@@ -281,7 +294,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_breservation2($id){
+		function fetch_breservation2($id)
+		{
 			$query="*
 			FROM book_reservation
 			WHERE status LIKE 'reserved'
@@ -295,7 +309,8 @@
 			return $this->db->get();
 		}
 
-		function search_user($str){
+		function search_user($str)
+		{
 			$query="account_number, username, CONCAT(first_name, ' ', middle_initial, '. ', last_name) as name, classification, college, course, status
 			FROM user_account ua, book_reservation br
 			WHERE username LIKE '".$str."'
@@ -306,7 +321,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_user_reservation($account_number){
+		function fetch_user_reservation($account_number)
+		{
 			$query="*
 			FROM book_reservation
 			WHERE account_number LIKE '".$account_number."'
@@ -320,7 +336,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_book_author($id){
+		function fetch_book_author($id)
+		{
 			$query="author
 			FROM book_author
 			WHERE id LIKE '".$id."'";
