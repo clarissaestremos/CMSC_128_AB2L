@@ -11,12 +11,10 @@
         		$this->load->library(array('form_validation','session'));
     		}
 
- 
     		function index() {
         		$this->logout();
     		}
  
-   
     		function logout() {
          		//remove all session data
 		 	$username = $this->session->userdata('logged_in')['username'];
