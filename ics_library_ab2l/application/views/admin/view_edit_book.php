@@ -29,10 +29,31 @@
                             $('#isbn_div').hide();
                         } 
 
+                        function validate_author() {
+                            msg="Invalid input: ";
+                            console.log(myform.author);
+                            str=myform.author.value;
+                                
+                            if(str=="")
+                            msg+="Author is required!<br/>";
+                            if(!str.match(/^[a-zA-Z][a-zA-Z\ \,\.]*$/))
+                            msg+="Author must be between 1-100 alpha character!<br/>";
+                            if(msg=="Invalid input: ")
+                            msg="";
+                            else {
+                                document.getElementsByName("help_author")[0].style.fontSize="10px";
+                                document.getElementsByName("help_author")[0].style.fontFamily="verdana";
+                                document.getElementsByName("help_author")[0].style.color="red";
+                            }
+                            document.getElementsByName("help_author")[0].innerHTML=msg;
+                            if(msg=="")
+                                return true;
+                        }
+
                         function validate_call_no() {
                             msg="Invalid input: ";
-                            console.log(myform);
-                            str=myform.callno.value;
+                            // console.log(myform.number);
+                            str=myform.call_number1.value;
                                 
                             if(str=="")
                             msg+="Call number is required!<br/>";
@@ -93,28 +114,6 @@
                                 return true;
                         }
 
-
-                        function validate_author() {
-                            msg="Invalid input: ";
-                            str=myform.author.value;
-                                
-                            if(str=="")
-                            msg+="Author is required!<br/>";
-                            if(!str.match(/^[a-zA-Z][a-zA-Z\ \,\.]*$/))
-                            msg+="Author must be between 1-100 alpha character!<br/>";
-                            if(msg=="Invalid input: ")
-                            msg="";
-                            else {
-                                document.getElementsByName("help_author")[0].style.fontSize="10px";
-                                document.getElementsByName("help_author")[0].style.fontFamily="verdana";
-                                document.getElementsByName("help_author")[0].style.color="red";
-                            }
-                            document.getElementsByName("help_author")[0].innerHTML=msg;
-                            if(msg=="")
-                                return true;
-                        }
-
-            
                         function validate_subject() {
                             // console.log(document.getElementsByName('subject[]'));
                             subjects=document.getElementsByName("subject[]")[0].selectedOptions.length;
@@ -351,7 +350,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="callno">Call Number<span class="color-red"> *</span></label>
+                                                                            <label for="call_number">Call Number<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -363,6 +362,7 @@
                                                                             foreach ($call_numbers as $call_number) {
                                                                                 echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/></div>';
                                                                                 $ccount++;
+                                                                                echo $ccount;
                                                                             }
                                                                             $call_numbers = $this->model_get_list->get_notedit_call_numbers($book[0]->id);
                                                                             foreach ($call_numbers as $call_number) {
