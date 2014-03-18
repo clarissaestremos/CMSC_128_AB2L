@@ -13,13 +13,16 @@
 				$query = $this->db->order_by("log_number", "desc");
 				$query = $this->db->get('admin_log'); //table name
 				return $query->result();
-			}else{
+			}
+			
+			else{
 				$query = $this->db->order_by("log_number", "desc");
 				$query = $this->db->get_where('admin_log', array('date' => 'NOW()'));
 				 
 				return $query->result();
 			}
 		}
+		
 		public function add_log($message, $type)
 		{
 			$time = date("G:i:s");
