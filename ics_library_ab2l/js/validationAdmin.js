@@ -36,7 +36,7 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="Last name is required!";
-        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha character!<br/>";
+        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{1,49}$/))  msg+="Must be between 2-50 alpha character!<br/>";
         else if(msg=="Invalid Input: ") msg="";
         document.getElementsByName("helplname")[0].innerHTML=msg;
         if(msg=="") return true;
