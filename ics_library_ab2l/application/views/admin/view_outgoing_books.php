@@ -22,29 +22,28 @@
 </script>
 
 <div id="thisbody" class="body width-fill background-white">
-					<div class="cell">
-						<div class="page-header cell">
-                                        <h1>Admin <small>Outgoing Books</small></h1>
-                                    </div>
-                        <?php
-                            if($query != NULL){
-                        ?>
-						<div class="panel datasheet cell">
-	                        <div class="header background-red">
-	                            List of outgoing books
-	                        </div>
-	                        <div id = "change_here"> </div>
-	                    </div>
-	                    <?php
-	                    	}
-	                    	else{
-	                    		echo "<hr>";
-                                echo "<h2 class='color-grey'>There are no currently outgoing books!</h2>";
-                                echo "<hr>";
-	                    	}
-	                    ?>
-	                </div>				
-	            </div>
+	<div class="cell">
+		<div class="page-header cell">
+                     <h1>Admin <small>Outgoing Books</small></h1>
+                </div>
+                <?php
+                   if($query != NULL){
+                ?>
+		<div class="panel datasheet cell">
+	             <div class="header background-red">
+	                 List of outgoing books
+	             </div>
+	             <div id = "change_here"> </div>
+	             </div>
+	         <?php
+	            }else{
+	              echo "<hr>";
+                      echo "<h2 class='color-grey'>There are no currently outgoing books!</h2>";
+                      echo "<hr>";
+	            }
+	          ?>
+	</div>				
+</div>
 <div id="confirmdialog" title="Confirm Borrowing Book Confirmation">
 	<p>Are you sure that you want to borrow this book?</o>
 </div>
