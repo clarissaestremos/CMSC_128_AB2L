@@ -81,5 +81,5 @@ class Controller_verify_admin_key extends Controller_log {
           }
       }
 }
-/* End of file controller_verify_login.php */
-/* Location: ./application/controllers/user/controller_verify_login.php */
+/* End of file controller_verify_admin_key.php */
+/* Location: ./application/controllers/user/controller_verify_admin_key.php */
