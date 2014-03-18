@@ -1,4 +1,3 @@
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Controller_admin_home extends CI_Controller {
     function __construct() {
@@ -12,7 +11,10 @@ class Controller_admin_home extends CI_Controller {
         $this->load->library("Jquery_pagination");
     }
 
- 
+ 	/**
+ 	 * Fetches necessary information to be displayed in the admin_home page 
+ 	 * and calls the view_admin_home to display these information
+ 	 */
     function index() {
         $this->load->helper(array('form','html'));
         if($this->model_check_session->check_admin_session() == TRUE){
@@ -31,6 +33,9 @@ class Controller_admin_home extends CI_Controller {
             $this->load->view("admin/view_footer");
         }
     }
+    /**
+     * Facilitataes in printing the ovedue material table header
+     * */
     function get_book_data(){
        $row_number=$this->model_reservation->countRows("overdue");
         //echo "<h1>$row_number<h1>";
@@ -59,6 +64,9 @@ class Controller_admin_home extends CI_Controller {
         echo "<tbody>";
         $this->print_books($row, $data['links'],"overdue");
     }
+    /**
+     * Facilitataes in printing the reserved material table header
+     * */
     function get_book_data2(){
        $row_number=$this->model_reservation->countRows("reserved");
         //echo "<h1>$row_number</h1>";
@@ -86,12 +94,15 @@ class Controller_admin_home extends CI_Controller {
         echo "<tbody>";
         $this->print_books($row, $data['links'],"outgoing");
     }
+    /**
+     * Facilitataes in printing the individual information of the books as a row in the table
+     * */
     function print_books($overdue,$link,$out){
         $base=base_url();
         $date = date("Y-m-d");
         $count = 1;
         foreach($overdue as $row){
-			if($out=="outgoing"){
+			if($out=="outgoing"){	//for outgoing books
 				if($row->rank == 1){
 					echo "<tr>
 						<td>$count</td>
@@ -122,7 +133,7 @@ class Controller_admin_home extends CI_Controller {
 					</form></td>";             //button to be clicked if the reservation will be cancelled; functionality of this not included
 					$count++;
 				}
-			}else if($out=="overdue"){
+			}else if($out=="overdue"){	//for overdue books
 				echo "<tr>
 						<td>$count</td>
 						<td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
@@ -157,68 +168,76 @@ class Controller_admin_home extends CI_Controller {
     echo "</tbody></table><div id='footer pagination'>";
     echo $link."</div>";
 }
- function print_books2($overdue,$link){
-        $base=base_url();
-        $date = date("Y-m-d");
-        $count = 1;
-        foreach($overdue as $row){
-            echo "<tr>
-            <td>$count</td>
-            <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
-            <td><b>{$row->title}</b><br/>";
-
-            $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
-            $authors="";
-                    foreach($data['multi_valued'] as $authors_list){
-                        $authors = $authors."{$authors_list->author},";
-                    }
-                    echo "$authors ($row->year_of_pub)<br/>
-                    Call Number: {$row->call_number}</td>";
-
-                echo "</td>
-                <td>{$row->date_borrowed}</td>
-                <td>{$row->due_date}</td>";
-        echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
-                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                <input type='submit' class='background-red' name='extend' value='Extend' />
-                </form></td>";
-        echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
-                <input type='hidden' name='res_number' value='{$row->res_number}' />
-                <input type='submit' class='background-red' name='return' value='Return' />
-            </form></td>";
-        echo "</tr>";
-        $count++;
-    }
-    echo "</tbody></table><div id='footer pagination'>";
-    echo $link."</div>";
-}
-  public function get_users(){
-        $row_number=$this->model_users->countPendingUsers();
-        $config['base_url'] = base_url().'index.php/admin/controller_reservation/get_users';     //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
-        $config['total_rows'] = $row_number;
-        $config['per_page'] = 5;
-        $config['div'] = '#displayUsers';
-        $page=$this->uri->segment(4);       // splits the URI segment by /
-        //fetches data from database.
-        $row = $this->model_users->getPendingUsers();
-        $this->jquery_pagination->initialize($config);
-        //create links for pagination
-        $data['links'] = $this->jquery_pagination->create_links();
-        echo "<table class='body'>
-                <thead>
-                    <tr>
-                        <th style='width: 2%;'>#</th>
-                        <th style='width: 8%;'>ID Number</th>
-                        <th style='width: 20%;'>Name</th>
-                        <th style='width: 5%;'>Course</th>
-                        <th style='width: 20%;'>Email</th>
-                        <th style='width: 8%;'>Classification</th>
-                        <th style='width: 10%;'>Status</th>
-                    </tr>
-                </thead>
-            <tbody>";
-    $this->print_users($row, $data['links']);
-    }
+	/**
+     * Facilitataes in printing the individual information of the books as a row in the borrowed books table
+     * */
+	function print_books2($overdue,$link){
+	    $base=base_url();
+	    $date = date("Y-m-d");
+	    $count = 1;
+	    foreach($overdue as $row){
+	        echo "<tr>
+	        <td>$count</td>
+	        <td><b>{$row->first_name} {$row->middle_initial}. {$row->last_name} </b><br/>{$row->account_number}</td>
+	        <td><b>{$row->title}</b><br/>";
+	
+	        $data['multi_valued'] = $this->model_reservation->get_book_authors($row->id);
+	        $authors="";
+	                foreach($data['multi_valued'] as $authors_list){
+	                    $authors = $authors."{$authors_list->author},";
+	                }
+            echo "$authors ($row->year_of_pub)<br/>
+            Call Number: {$row->call_number}</td>";
+            echo "</td>
+            <td>{$row->date_borrowed}</td>
+            <td>{$row->due_date}</td>";
+		    echo "<td><form action='$base/index.php/admin/controller_reservation/extend' id='overext$count' method='post'>
+		            <input type='hidden' name='res_number' value='{$row->res_number}' />
+		            <input type='submit' class='background-red' name='extend' value='Extend' />
+		            </form></td>";
+		    echo "<td><form action='$base/index.php/admin/controller_outgoing_books/return_book/' id='overret$count' method='post'>
+		            <input type='hidden' name='res_number' value='{$row->res_number}' />
+		            <input type='submit' class='background-red' name='return' value='Return' />
+		        </form></td>";
+		    echo "</tr>";
+		    $count++;
+		}
+		echo "</tbody></table><div id='footer pagination'>";
+		echo $link."</div>";
+	}
+	/**
+	 * Facilitates the printing of the pending user table header
+	*/
+	public function get_users(){
+	    $row_number=$this->model_users->countPendingUsers();
+	    $config['base_url'] = base_url().'index.php/admin/controller_reservation/get_users';     //EDIT THIS BASE_URL IF YOU ARE USING A DIFFERENT URL. 
+	    $config['total_rows'] = $row_number;
+	    $config['per_page'] = 5;
+	    $config['div'] = '#displayUsers';
+	    $page=$this->uri->segment(4);       // splits the URI segment by /
+	    //fetches data from database.
+	    $row = $this->model_users->getPendingUsers();
+	    $this->jquery_pagination->initialize($config);
+	    //create links for pagination
+	    $data['links'] = $this->jquery_pagination->create_links();
+	    echo "<table class='body'>
+	            <thead>
+	                <tr>
+	                    <th style='width: 2%;'>#</th>
+	                    <th style='width: 8%;'>ID Number</th>
+	                    <th style='width: 20%;'>Name</th>
+	                    <th style='width: 5%;'>Course</th>
+	                    <th style='width: 20%;'>Email</th>
+	                    <th style='width: 8%;'>Classification</th>
+	                    <th style='width: 10%;'>Status</th>
+	                </tr>
+	            </thead>
+	        <tbody>";
+		$this->print_users($row, $data['links']);
+	}
+	/**
+     * Facilitataes in printing the individual information of the user as a row in the table
+     * */
     function print_users($users,$links){
         $base=base_url();
         $count = 1;

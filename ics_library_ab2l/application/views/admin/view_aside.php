@@ -9,23 +9,27 @@
 			</div>
 			<hr>
 		</div>
+
 		<div class="col width-fill">
 			<div class="cell">
 				<div class="collap-links">
-				<h4 class="nav-title width-fit">HOME</h4>
-				<a class="nav-status float-right">HIDE</a>
+					<h4 class="nav-title width-fit">HOME</h4>
+					<a class="nav-status float-right">HIDE</a>
 				</div>
+
 				<div>
 					<ul class="nav-links">
 						<li ><a href="<?php echo base_url() ?>index.php/admin/controller_admin_home" class="nav-a">Home</a></li>
 					</ul>
 				</div>
 			</div>
+
 			<div class="cell">
 				<div class="collap-links">
-				<h4 class="nav-title width-fit">BOOKS</h4>
-				<a class="nav-status float-right">HIDE</a>
+					<h4 class="nav-title width-fit">BOOKS</h4>
+					<a class="nav-status float-right">HIDE</a>
 				</div>
+
 				<div>
 					<ul class="nav-links">
 						<li ><a href="<?php echo base_url() ?>index.php/admin/controller_add_books" class="nav-a">Add Books</a></li>
@@ -36,11 +40,13 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="cell">
 				<div class="collap-links">
 					<h4 class="nav-title width-fit">USERS</h4>
 					<a class="nav-status float-right">HIDE</a>
 				</div>
+
 				<div>
 					<ul class="nav-links">
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_add_user" class="nav-a">Add New User</a></li>
@@ -49,11 +55,13 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="cell">
 				<div class="collap-links">
 					<h4 class="nav-title width-fit">ADMIN</h4>
 					<a class="nav-status float-right">HIDE</a>
 				</div>
+
 				<div>
 					<ul class="nav-links">
 						<li><a href="<?php echo base_url() ?>index.php/admin/controller_announcement/viewForm" class="nav-a">Add Announcements</a></li>
@@ -66,12 +74,14 @@
 					</ul>
 				</div>
 			</div>
+
 		</div>
 		<hr>
+
 		<footer>
 			<div class="cell">
-			<p>Copyright &#169 2013 Institute of Computer Science</p>
-			<p>Derivative from HTML5 Admin Template by <a href="http://medialoot.com/item/html5-admin-template/">MediaLoot</a></p>
+				<p>Copyright &#169 2013 Institute of Computer Science</p>
+				<p>Derivative from HTML5 Admin Template by <a href="http://medialoot.com/item/html5-admin-template/">MediaLoot</a></p>
 			</div>
 		</footer>
 	</aside>

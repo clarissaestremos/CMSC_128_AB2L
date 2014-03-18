@@ -192,7 +192,7 @@
     function trySubmit(myformid){
         thisform = myformid;
         $('#mydeletebook').dialog('open');
-        console.log(thisform);
+        // console.log(thisform);
         return false;
     }
 

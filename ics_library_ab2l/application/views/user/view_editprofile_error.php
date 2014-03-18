@@ -16,8 +16,7 @@
                                         if(isset($msg)){
                                             echo $msg;
                                          }
-
-                                 ?>
+                                    ?>
 
                                   <h4><?php echo $name?></h4>
                                 </div>
@@ -33,8 +32,6 @@
                                      <input type='button' id = "cancel_username" value= 'Cancel'>
                                     <input type='submit' onClick="return validate_new_un" value= 'Save'><br>
                                     </form>
-                                    
-
                                 
                                     <br/>
                                     <span>Classification:</span><em><?php echo  $user_details->classification?></em><br/>
@@ -50,8 +47,6 @@
                                     </form>
                                     
                                     <span>Status:</span><em><?php if(($user_details->status == "approve") || ($user_details->status =="approved")) {echo "approved";}?></em><br/>
-
-                            
 
                                     </div>
                                 </div>
@@ -70,13 +65,11 @@
     // alert(name);
         $( document ).ready(function(){   
          $('#form_username').hide();
-          $('#form_email').hide();
+         $('#form_email').hide();
          //if the edit username is clicked, the form for updating the username will be visible
          $("#edit_username").click(function(){
-
             
-             $('#form_username').slideDown();
-
+            $('#form_username').slideDown();
             $("#input_username").val(name);
             $("#label_username").text("Edit Username");
             $("#username").hide();
@@ -122,11 +115,8 @@
                  else return true;
                 }
                 //document.getElementsByName("valUser")[0].innerHTML=msg;
-               
-            //ajax for checking if the username already exist
+                //ajax for checking if the username already exist
             return false;
-            
-           
     }        
 
     //to check if the new username is still available
@@ -153,16 +143,12 @@
                         }
                     }
                 })
-
-                
             }
 
          $("#edit_email").click(function(){
 
             
-             $('#form_email').slideDown();
-
-           
+            $('#form_email').slideDown();
             $("#label_email").text("Edit email");
             $("#email").hide();
             $("#edit_email").hide();
@@ -171,7 +157,7 @@
          //cancel edit email
          $("#cancel_email").click(function(){
 
-             $('#form_email').slideUp();
+            $('#form_email').slideUp();
             $("#label_email").text("Email Address:");
             $("#email").show();
             $("#edit_email").show();
@@ -180,8 +166,6 @@
           
 
       });
-
-
 
 
      </script>

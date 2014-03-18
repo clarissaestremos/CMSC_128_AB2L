@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Controller_search extends CI_Controller {
- 
+
+/* This function catches the data to be searched and then loads the search view along with the header and footer. */
     function index() {
     	$data['parent'] = "Books";
     	$data['current'] = "Search";
@@ -13,5 +14,6 @@ class Controller_search extends CI_Controller {
         
     }
 }
+
 /* End of file home_controller.php */
 /* Location: ./application/controllers/user/controller_home.php */

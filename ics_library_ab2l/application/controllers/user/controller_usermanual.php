@@ -3,8 +3,7 @@ class Controller_usermanual extends CI_Controller {
  
     function index() {
         $this->load->helper(array('form','html'));
-      
-        
+
         if($this->session->userdata('logged_in')){
             $this->load->view("user/view_usermanual_borrower");
         }
@@ -13,5 +12,5 @@ class Controller_usermanual extends CI_Controller {
         }  
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_usermanual.php */
+/* Location: ./application/controllers/user/controller_usermanual.php */

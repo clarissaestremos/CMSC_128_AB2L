@@ -2,29 +2,36 @@
 	
 class Model_reservation extends CI_Model {
 	/*Return all from book reservation*/
-	public function show_all_book_reservation(){
+	public function show_all_book_reservation()
+	{
 		$query = $this->db->get('book_reservation');
 		return $query->result();
 	}
-	public function countRows($status){
+	
+	public function countRows($status)
+	{
 		if($status=="reserved"){
 			$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
 			AND br.call_number = cn.call_number
 			AND cn.id = b.id
 			AND br.status='$status'
 			AND br.rank=1";
-		}else{
+		}
+		else{
 			$query="* from book b, book_reservation br, user_account ua, book_call_number cn WHERE br.account_number=ua.account_number
 			AND br.call_number = cn.call_number
 			AND cn.id = b.id
 			AND br.status='$status'";
 		}
+		
 		$this->db->select($query,false);
 		$rows=$this->db->get();
 		return $rows->num_rows();
 	}
+	
 	/*Return necessary data from user and their conrresponding book reservations */
-	public function show_all_user_book_reservation($status,$limit,$start){
+	public function show_all_user_book_reservation($status,$limit,$start)
+	{
 		if($limit>0){	//checks the limit if it is set to greater than 0.
 			$this->db->limit($limit, $start);
 		}
@@ -36,7 +43,9 @@ class Model_reservation extends CI_Model {
 			AND cn.id = b.id
 			AND br.status='$status'
 			AND br.rank=1",false);
-		}else{
+		}
+		
+		else{
 			$this->db->select("*
 			FROM book b, book_reservation br, user_account ua, book_call_number cn
 			WHERE br.account_number=ua.account_number
@@ -47,11 +56,10 @@ class Model_reservation extends CI_Model {
 		$query=$this->db->get(); 
 		return $query->result();
 	}
-	/*
 	
-	*/
 	/*return user account and reservation details*/
-	public function get_overdue_user_info($email){
+	public function get_overdue_user_info($email)
+	{
 		$query= $this->db->query("SELECT ua.first_name, ua.middle_initial, ua.last_name, br.call_number, br.date_borrowed, br.due_date, bo.title, bo.id
 			FROM book_reservation br, user_account ua, book bo, book_call_number bcn
 			WHERE (
@@ -68,11 +76,14 @@ class Model_reservation extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_book_authors($id){
+	public function get_book_authors($id)
+	{
 		$query = $this->db->get_where('book_author', array('id' => $id));
 		return $query->result();
 	}
-	public function update_user_date_notif($account_number){
+	
+	public function update_user_date_notif($account_number)
+	{
 		$date = date("Y-m-d");
 		$data = array(
 		'date_notif'=>$date
@@ -81,7 +92,8 @@ class Model_reservation extends CI_Model {
 		$this->db->update('user_account', $data); 
 	}
 
-	public function get_all_overdue_info(){
+	public function get_all_overdue_info()
+	{
 		$query = $this->db->query("SELECT ua.first_name, ua.middle_initial, ua.last_name, ua.email, bo.title, br.call_number, br.date_borrowed, br.due_date, br.status
 		FROM book_reservation br, user_account ua, book bo
 		WHERE (br.account_number=ua.account_number
@@ -91,7 +103,8 @@ class Model_reservation extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_overdue_accounts(){
+	public function get_overdue_accounts()
+	{
 		$query = $this->db->query("SELECT ua.email, ua.account_number
 		FROM book_reservation br, user_account ua
 		WHERE (br.account_number=ua.account_number
@@ -101,7 +114,8 @@ class Model_reservation extends CI_Model {
 		return $query->result();
 	}
 	
-	public function change_book_status($call_number, $action){
+	public function change_book_status($call_number, $action)
+	{
 		$this->db->select('id');
 		$this->db->where('call_number', $call_number);
 		$id = $this->db->get('book_call_number')->result();
@@ -115,7 +129,9 @@ class Model_reservation extends CI_Model {
 			$data = array(
 			'no_of_available' => "$status"
 			);
-		}elseif($action == "reserved"){
+		}
+		
+		elseif($action == "reserved"){
 		//	$status -= 1;
 			$data = array(
 			'no_of_available' => "$status"
@@ -125,7 +141,8 @@ class Model_reservation extends CI_Model {
 		$this->db->update('book', $data);
 	}
 	
-	public function update_book_reservation($res_number, $action){
+	public function update_book_reservation($res_number, $action)
+	{
 		$now = date("Y-m-d");
 		$date = new DateTime($now);
 		$date->add(new DateInterval('P14D'));
@@ -136,18 +153,21 @@ class Model_reservation extends CI_Model {
 				'status' => "borrowed",
 				'due_date' => "$date"
 			);
-		}else if($action == "reserved"){
+		}
+		else if($action == "reserved"){
 			$data = array(
 				'status' => "borrowed",
 				'due_date' => "$date",
 				'date_borrowed' => "$now"
 			);
-		}else if($action == "returned"){
+		}
+		else if($action == "returned"){
 			$data = array(
 				'status' => "$action",
 				'date_returned' => "$now"
 			);
-		}else if($action == "auto"){
+		}
+		else if($action == "auto"){
 			$data = array(
 				'status' => "overdue"
 			);
@@ -163,19 +183,22 @@ class Model_reservation extends CI_Model {
 		}
 	}
 	
-	public function remove_pending(){
+	public function remove_pending()
+	{
 		//automatic removal of 1 month pending requests
 		$query = $this->db->query("DELETE 
 			FROM book_reservation
 			WHERE (status = 'reserved') AND (datediff(curdate(), due_date) >= 3)");
 	}
 	
-	public function delete_book_reservation($res_number){
+	public function delete_book_reservation($res_number)
+	{
 		$this->db->where('res_number', $res_number);
 		$this->db->delete('book_reservation');
 	}
 	
-	public function count_user_reservation($res_number){
+	public function count_user_reservation($res_number)
+	{
 			$this->db->select('account_number');
 			$this->db->where('res_number', $res_number);
 			$account_number = $this->db->get('book_reservation')->result();
@@ -190,7 +213,8 @@ class Model_reservation extends CI_Model {
 	}
 	
 
-	public function show_reservation($status, $data, $limit, $start){
+	public function show_reservation($status, $data, $limit, $start)
+	{
 		if($status == "reserved"){
 			$query= $this->db->query("SELECT *
 			FROM book b, book_reservation br, user_account ua, book_call_number cn
@@ -209,7 +233,7 @@ class Model_reservation extends CI_Model {
 			AND br.status='$status'");
 		}
 		if($limit>0){
-		if ($start == NULL)
+			if ($start == NULL)
 				$start = 0;
 			if($status == "reserved"){
 				$query= $this->db->query("SELECT *
@@ -231,6 +255,7 @@ class Model_reservation extends CI_Model {
 				LIMIT $start,$limit");
 			}
 		}
+		
 		return $query->result();
 	}
 }

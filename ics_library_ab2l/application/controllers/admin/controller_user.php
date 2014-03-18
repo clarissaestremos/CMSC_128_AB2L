@@ -2,65 +2,69 @@
 include_once("controller_log.php");
 class Controller_user extends Controller_log{
 		
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('model_user');
+	public function __construct(){
+	   parent::__construct();
+	   $this->load->model('model_user');
 	}
 	
 	public function index(){
-		$this->model_user->remove_pending();
-		$this->show_all();
-		$this->approve_user();
-		$this->remove_user();
+	   $this->model_user->remove_pending();
+	   $this->show_all();
+	   $this->approve_user();
+	   $this->remove_user();
 	}
-
+	
 	function show_all(){
-		$data['acct'] = $this->model_user->get_acct(null);
-    	$data['parent'] = "Users";
-    	$data['current'] = "View Users";
+	/*Displays user page if successfully logged in;, if not, displays login page*/
+	    $data['acct'] = $this->model_user->get_acct(null);
+	    $data['parent'] = "Users";
+	    $data['current'] = "View Users";
 
-        if($this->session->userdata('logged_in')){
-            $this->load->helper(array('form','html'));
-            $this->load->view("admin/view_header",$data);
-            $this->load->view("admin/view_aside");
-            $this->load->view("admin/view_users",$data);
-            $this->load->view("admin/view_footer");
-        }else{
-            redirect('index.php/admin/controller_admin_login', 'refresh');
-        }
+	    if($this->session->userdata('logged_in')){
+	       $this->load->helper(array('form','html'));
+	       $this->load->view("admin/view_header",$data);
+	       $this->load->view("admin/view_aside");
+	       $this->load->view("admin/view_users",$data);
+	       $this->load->view("admin/view_footer");
+	     }
+	    else{
+	       redirect('index.php/admin/controller_admin_login', 'refresh');
+	        }
 
 	}
 
 	function approve_user(){
-		if(isset($_POST['approve'])){
-			if(isset($_POST['account_number1'])){
-				$this->load->model('model_user');
-				$this->model_user->approve_user($_POST['account_number1']);
-				$this->email_confirm_account($_POST['account_number1']);
-				echo $_POST['account_number1'];
-			}
-			unset($_POST['approve']);
+	/*Approves the account number of user*/
+	   if(isset($_POST['approve'])){
+		if(isset($_POST['account_number1'])){
+		    $this->load->model('model_user');
+		    $this->model_user->approve_user($_POST['account_number1']);
+		    $this->email_confirm_account($_POST['account_number1']);
+		    echo $_POST['account_number1'];
 		}
-
+		unset($_POST['approve']);
+	   }
 	}
 
 	function remove_user(){
-		if(isset($_POST['remove2'])){
-			if(isset($_POST['account_number2'])){
-				$this->model_user->remove_user($_POST['account_number2']);
-			}
-			unset($_POST['remove2']);
+	/*Removes pending user*/
+	    if(isset($_POST['remove2'])){
+		if(isset($_POST['account_number2'])){
+		    $this->model_user->remove_user($_POST['account_number2']);
 		}
-		else if(isset($_POST['remove3'])){
-			if(isset($_POST['account_number3'])){
-				$this->model_user->remove_user($_POST['account_number3']);	
-			}
-			unset($_POST['remove3']);
+		unset($_POST['remove2']);
+		}
+	    
+	    else if(isset($_POST['remove3'])){
+		if(isset($_POST['account_number3'])){
+		    $this->model_user->remove_user($_POST['account_number3']);	
+		}
+		unset($_POST['remove3']);
 		}
 	}
 
-	function email_confirm_account($account_number){	
+	function email_confirm_account($account_number){
+	/*Confirms account through e-mail*/
 		$config = array(
 		'protocol'  => 'smtp',
 		'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -72,7 +76,7 @@ class Controller_user extends Controller_log{
 		'wordwrap'	=> true,
 		'newline'	=> "\r\n",
 		'crlf'		=> "\n"
-		);//config for the email
+		);//Email configuration
 		$subject='Account Approval';
 		$from_email='samplemail128@gmail.com';
 		$from_name='Sample ICS Library';
@@ -99,14 +103,15 @@ class Controller_user extends Controller_log{
 		$this->email->to($to); 
 		$this->email->subject($subject);
 		$this->email->message($message);
-		//Send the email
-	//	if($this->email->send()){
-			$this->load->view("admin/view_success_validate_user");
-			//edit parameters of add_log to the specific function that your function is doing
-			//first parameter: message
-			//second parameter: type
-			$this->add_log("Admin 1 verified account of $account_number", "Verify User");
-	//	}
+		
+		/*Sending email.*/
+		//if($this->email->send()){
+		$this->load->view("admin/view_success_validate_user");
+		//edit parameters of add_log to the specific function that your function is doing
+		//first parameter: message
+		//second parameter: type
+		$this->add_log("Admin 1 verified account of $account_number", "Verify User");
+		//}
 	}
 }
 ?>

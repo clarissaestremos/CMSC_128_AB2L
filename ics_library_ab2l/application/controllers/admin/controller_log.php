@@ -1,5 +1,4 @@
 <?php
-
 	class Controller_log extends CI_Controller{
 		
 		public function __construct()
@@ -13,22 +12,22 @@
 		}
 
 		function show_all_log(){
-			 if($this->model_check_session->check_admin_session() == TRUE){	
+			if($this->model_check_session->check_admin_session() == TRUE){	
 				$this->load->model('model_log');
 				$data['log'] = $this->model_log->get_log(false);
 				$data['parent'] = "Admin";
-	    		$data['current'] = "View Logs";
+	    			$data['current'] = "View Logs";
 	    		
-	    		$this->load->helper(array('form','html'));
-		        $this->load->view("admin/view_header",$data);
-		        $this->load->view("admin/view_aside");
-		        $this->load->view("admin/view_log",$data);
-		        $this->load->view("admin/view_footer");
+	    			$this->load->helper(array('form','html'));
+		        	$this->load->view("admin/view_header",$data);
+		        	$this->load->view("admin/view_aside");
+		        	$this->load->view("admin/view_log",$data);
+		        	$this->load->view("admin/view_footer");
 			}
 		}
 		
 		function today(){
-			 if($this->model_check_session->check_admin_session() == TRUE){	
+			if($this->model_check_session->check_admin_session() == TRUE){	
 				$today = date("Y-m-d");
 				$this->load->model('model_log');
 				$data['log'] = $this->model_log->get_log($today);
@@ -45,7 +44,7 @@
 
 		function add_log($message, $type){
 			if($this->session->userdata('logged_in_type')!="admin")
-            	redirect('index.php/user/controller_login', 'refresh');
+            		redirect('index.php/user/controller_login', 'refresh');
 			$this->load->model('model_log');
 			$this->model_log->add_log($message, $type);
 		}

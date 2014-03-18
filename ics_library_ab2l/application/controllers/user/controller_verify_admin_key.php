@@ -22,8 +22,8 @@ class Controller_verify_admin_key extends Controller_log {
             $this->load->view('user/view_header',$data);
             $this->load->view('user/view_admin_key',$data); //load view for login
             $this->load->view('user/view_footer');
-            } 
-        else {
+        } 
+        else{
                 //Go to private area
            if($this->session->userdata('logged_in_type')=="admin"){
             $this->session->unset_userdata('count');
@@ -34,7 +34,6 @@ class Controller_verify_admin_key extends Controller_log {
             $this->remove_unclaimed();
             $this->update_reservation_status();
             redirect('index.php/admin/controller_admin_home', 'refresh');
-           
            }
            else{
                 $sess_enterKey = $this->session->userdata('count'); 
@@ -82,5 +81,5 @@ class Controller_verify_admin_key extends Controller_log {
           }
       }
 }
-/* End of file controller_verify_login.php */
-/* Location: ./application/controllers/user/controller_verify_login.php */
+/* End of file controller_verify_admin_key.php */
+/* Location: ./application/controllers/user/controller_verify_admin_key.php */

@@ -1,43 +1,48 @@
 <?php
 	class Model_search extends CI_Model{
 		//constructor loads the database
-		function __construct(){
+		function __construct()
+		{
 			parent::__construct();
 			$this->load->database();
 		}
 		 // Finds all books that match the passed string
 		 //querry must be refined so that it can support tags such as tags that are found in tags table
-		function find_suggestion($str){
+		function find_suggestion($str)
+		{
 			$this->db->select('title
 				FROM book 
 				WHERE title LIKE \'%'.$str.'%\'
 				or call_number LIKE \'%'.$str.'%\'
 				or year_of_pub LIKE \'%'.$str.'%\'
 				or call_number in
-					(SELECT call_number
-					FROM book_author
-					WHERE author LIKE \'%'.$str.'%\')
+				(SELECT call_number
+				FROM book_author
+				WHERE author LIKE \'%'.$str.'%\')
 				or call_number in
-					(SELECT call_number
-					FROM book_subject
-					WHERE subject LIKE \'%'.$str.'%\')
+				(SELECT call_number
+				FROM book_subject
+				WHERE subject LIKE \'%'.$str.'%\')
 				LIMIT 5
 				', FALSE);
 			return $this->db->get();
 		}
 
-		function addOr($query,$or_check){
+		function addOr($query,$or_check)
+		{
 			if($or_check==true) $query=$query." or ";
 			return $query;
 		}
 
-		function addAnd($query,$and_check){
+		function addAnd($query,$and_check)
+		{
 			if($and_check==true) $query=$query." and ";
 			return $query;
 		}
 		//Finds all the books that match the data array
 		//refine qeury so that it can fetch data of the book if it is reserved or not.
-		function fetch_book_data($data,$limit,$start){
+		function fetch_book_data($data,$limit,$start)
+		{
 			$orCheck = false;
 			$andCheck=false;
 			//The first call of the function will skip the limit since we will be using it to compute for the total rows
@@ -105,7 +110,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_book_author($call_number){
+		function fetch_book_author($call_number)
+		{
 			$query="author
 			FROM book_author
 			WHERE call_number LIKE '".$call_number."'";
@@ -115,7 +121,8 @@
 			return $this->db->get();
 		}
 		
-		function fetch_book($call_number){
+		function fetch_book($call_number)
+		{
 			$query="title, call_number, year_of_pub, type, no_of_available
 			FROM book
 			WHERE call_number LIKE '".$call_number."'";
@@ -125,7 +132,8 @@
 			return $this->db->get();
 		}
 
-		function getCurrentDate(){
+		function getCurrentDate()
+		{
 			// set default timezone
 			date_default_timezone_set('Asia/Manila'); // CDT
 
@@ -144,7 +152,8 @@
 			return $current_date;
 		}
 
-		function getExpiration($date_reserved){
+		function getExpiration($date_reserved)
+		{
 			$span = 3;
 			if($date_reserved['wday'] == 3 || $date_reserved['wday'] == 4 || $date_reserved['wday'] == 5){
 				$span += 2;
@@ -167,7 +176,8 @@
 			return $expired_date;
 		}
 
-		function add_reservation($data){
+		function add_reservation($data)
+		{
 			
 			$row = $this->model_search->fetch_user($data['borrower']);
 			$account_number = "";
@@ -218,7 +228,8 @@
 			$this->db->insert('book_reservation', $newdata);
 		}
 
-		function fetch_user($username){
+		function fetch_user($username)
+		{
 			$query="account_number
 			FROM user_account
 			WHERE username LIKE '".$username."'";
@@ -228,7 +239,8 @@
 			return $this->db->get();
 		}
 
-		function fetch_breservation_rank($call_number){
+		function fetch_breservation_rank($call_number)
+		{
 			$query="status
 			FROM book_reservation
 			WHERE call_number LIKE '".$call_number."'
@@ -239,7 +251,8 @@
 			return $this->db->get();
 		}
 
-		function search_user($str){
+		function search_user($str)
+		{
 			$query="account_number, username, CONCAT(first_name, ' ', middle_initial, '. ', last_name) as name, classification, college, course, status
 			FROM user_account
 			WHERE username LIKE '".$str."'
