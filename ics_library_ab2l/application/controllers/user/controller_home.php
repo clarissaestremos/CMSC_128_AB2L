@@ -9,6 +9,6 @@
    $this->load->view("user/view_home"); //displays the home page
    $this->load->view("user/view_footer"); //displays the footer
   }
- }
+ }  
 /* End of file home_controller.php */
 /* Location: ./application/controllers/user/controller_home.php */
