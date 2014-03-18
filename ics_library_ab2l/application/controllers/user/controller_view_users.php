@@ -167,12 +167,11 @@ class Controller_view_users extends Controller_log {
                 );
                 $this->session->set_userdata($arr);
                 redirect('index.php/admin/controller_search_book', 'refresh');
-            
             }
             else
                 redirect('index.php/admin/controller_view_users', 'refresh');
         }
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_view_users.php */
+/* Location: ./application/controllers/user/controller_view_users.php */
