@@ -4,10 +4,12 @@
 <script type = "text/javascript">
 	var base_url = "<?php echo base_url() ?>";
 </script>
+
 <?php
 if($this->session->userdata('logged_in_type')=='admin')
-                    redirect('index.php/admin/controller_admin_home', 'refresh');
-          ?>
+	redirect('index.php/admin/controller_admin_home', 'refresh');
+	?>
+	
 <html>
 	<head>
 		<title><?php echo $titlepage?></title>
@@ -15,8 +17,8 @@ if($this->session->userdata('logged_in_type')=='admin')
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/build-full.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/main-template.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css"><!--source: http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css-->
-    <link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/bootstrap.css"/>
-    <link rel="stylesheet" href="<?php echo  base_url() ?>style/user/font-awesome.min.css">
+    	<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/bootstrap.css"/>
+		<link rel="stylesheet" href="<?php echo  base_url() ?>style/user/font-awesome.min.css">
   		<link rel="stylesheet" href="<?php echo base_url(); ?>style/user/slider.css" type="text/css" media="screen" />
   		<link rel="stylesheet" href="<?php echo base_url(); ?>default/default.css" type="text/css" media="screen" />
   		<link rel="icon" href="<?php echo base_url(); ?>images/ics_icon.png"/>
@@ -25,17 +27,17 @@ if($this->session->userdata('logged_in_type')=='admin')
   		<link rel="stylesheet" href="<?php echo base_url(); ?>style/user/custom-style.css" type="text/css"  />
   		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/edit.css" media="all"/>
   		<script src="<?php echo  base_url() ?>js/jquery-1.10.2.min.js"></script>
-      <script src="<?php echo  base_url() ?>js/bootstrap.js"></script>
+      	<script src="<?php echo  base_url() ?>js/bootstrap.js"></script>
   		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
   		<script src="<?php echo  base_url() ?>js/main.js"></script>
   		<meta name="viewport" content="width=device-width scale=1"/>
   		<style type="text/css">
   			body,html{
   				width: 100%;
-          height: 100%;
-          margin: 0px;
-          padding: 0px;
-          overflow-x: hidden; 
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				overflow-x: hidden; 
   			}
 			#main-body{
 				background-image:url('<?php echo base_url();?>images/g.jpg'); 
@@ -50,41 +52,41 @@ if($this->session->userdata('logged_in_type')=='admin')
 				background-repeat: no-repeat;
 				width: 2em;
 			}
-      .drophover:hover{
-        background:#9d261d;
-      }
+			.drophover:hover{
+			background:#9d261d;
+			}
 			.clear-right{
 				clear: right;
 			}
-      #DAPPlugin{
-        display:none;
-      }
-      #account-collapse{
-        line-height:20px;
-        border-bottom-style:none;
-      }
-      #signups:hover{
-        background: none;
-      }
+			#DAPPlugin{
+			display:none;
+			}
+			#account-collapse{
+			line-height:20px;
+			border-bottom-style:none;
+			}
+			#signups:hover{
+			background: none;
+			}
 		
-      .itemhover { background-color:#d3d3d3 !important; color:black !important;}
+			.itemhover { background-color:#d3d3d3 !important; color:black !important;}
 			#selectItems ul { width:500px; font-size:14px; line-height:28px; list-style:none;}
 			#selectItems ul li { }
 			#selectItems ul li a { display:block; color:black; text-decoration:none; padding:0; }
-      #category {width: 100px;}
-      #sinput{width: 200px;}
-      #autosuggest_list{ padding: 50px 0px 0px 0px;}
-	  .howver:hover{background-color:#d3d3d3 !important; color:black !important;}
+			#category {width: 100px;}
+			#sinput{width: 200px;}
+			#autosuggest_list{ padding: 50px 0px 0px 0px;}
+			.howver:hover{background-color:#d3d3d3 !important; color:black !important;}
 		</style>
+		
   		<?php
   		 if($this->session->userdata('logged_in_type')=='admin')
-            				redirect('index.php/admin/controller_home', 'refresh');
+			redirect('index.php/admin/controller_home', 'refresh');
           ?>
+          
           <script type="text/javascript">
-
-
-          var base_url= "<?php echo  base_url() ?>"</script>
-  		<meta charset="utf-8"/>
+			var base_url= "<?php echo  base_url() ?>"</script>
+			<meta charset="utf-8"/>
 	</head>
 	<body>
 		<div class="width-fill" style="height:100vh;">			
@@ -92,7 +94,6 @@ if($this->session->userdata('logged_in_type')=='admin')
 				<div class="site-center">
 					<div class="cell width-1of2 float-left">
 						<a href="<?php echo base_url(); ?>"> <img src="<?php echo base_url();?>/images/try.png"/></a>
-
 					</div>
 					<div class="width-fit float-right">
 						<div style="padding: 3px 3px 5px 3px;" class="color-black" >
@@ -103,31 +104,28 @@ if($this->session->userdata('logged_in_type')=='admin')
 								if(!$this->session->userdata('logged_in') ){
 							?>
 							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
-                <form action='<?php echo base_url(); ?>index.php/user/controller_verify_login'  method="POST">
-                  <input type="submit" value="Login" class=" float-right" style="background: #656565; color:white; margin: 2px 3px 3px 3px;"/>
-                  <input type="password" placeholder="Password" name="password" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
-                  <input type="text" placeholder="Username" name="username" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
-                  
-                  <br/>
-                  
-                </form>
-                <a href="<?php echo base_url(); ?>index.php/user/controller_register" id='signups' class="float-right" style="color:white; padding:0px 0px;">Not yet a member? Register Here!</a></p>
-              </div>
+				                <form action='<?php echo base_url(); ?>index.php/user/controller_verify_login'  method="POST">
+				                  <input type="submit" value="Login" class=" float-right" style="background: #656565; color:white; margin: 2px 3px 3px 3px;"/>
+				                  <input type="password" placeholder="Password" name="password" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
+				                  <input type="text" placeholder="Username" name="username" required="required" class="background-white width-1of3 float-right" style='margin: 2px 2px 2px 2px;'/>
+				                  <br/>
+				                </form>
+				                <a href="<?php echo base_url(); ?>index.php/user/controller_register" id='signups' class="float-right" style="color:white; padding:0px 0px;">Not yet a member? Register Here!</a></p>
+				              </div>
 							<?php
 								}
-							
-								else if($this->session->userdata('logged_in') ){
+								else if($this->session->userdata('logged_in')){
 							?>
 							<div class="collapse navbar-collapse menu login float-right" id="account-collapse">
-                  <img src= "<?php echo base_url();?>images/icn_user.png" style="height: 23px;"/>
-                  <p class='float-left' style="color:white; background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
-                    $session_data = $this->session->userdata('logged_in');
-                     echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
-                     $name = $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
-              ?>
-                  <a class="btn btn-danger" href='<?php echo base_url(); ?>index.php/user/controller_logout'>Logout</a>
-                  </p>
-                </div>
+								<img src= "<?php echo base_url();?>images/icn_user.png" style="height: 23px;"/>
+								<p class='float-left' style="color:white; background-size: contain; background-position: 0% 0%; background-repeat: no-repeat;"><?php
+								$session_data = $this->session->userdata('logged_in');
+								echo $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
+								$name = $session_data['fname']." ".$session_data['mname'].". ".$session_data['lname'];
+											?>
+								<a class="btn btn-danger" href='<?php echo base_url(); ?>index.php/user/controller_logout'>Logout</a>
+								</p>
+							</div>
 							<?php
 								}
 							}
@@ -136,7 +134,6 @@ if($this->session->userdata('logged_in_type')=='admin')
             <?php 
               if($titlepage !== "Books - Search")
               {
-
             ?>
             <div class="collapse navbar-collapse menu login float-right color-black" id="account-collapse" style ="padding: 3px 3px 5px 3px;">
                 <form name="headerSearch" method="post" action='<?php echo base_url(); ?>index.php/user/controller_search_book' method="POST">
@@ -154,7 +151,6 @@ if($this->session->userdata('logged_in_type')=='admin')
             </div>
             <?php }?>
 					</div>
-					
 				</div>
 			</div>
 			<nav id="headnav" class="navbar-default" role="navigation" style="background:#e04545; box-shadow: 2px 2px 10px -2px #000000;z-index: 5;">
@@ -194,9 +190,8 @@ if($this->session->userdata('logged_in_type')=='admin')
 				  <?php
 					if(!$this->session->userdata('logged_in')){
 				  ?>
-					<?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
+				  <?php if($titlepage === "Login") { echo ' <li id="active">'; }else{ echo '<li class="hov">'; }?><a class="color-white" href="<?php echo base_url(); ?>index.php/user/controller_login">Login</a></li>
 				  <?php
-					  
 					}
 					else{
 				  ?>
@@ -233,7 +228,8 @@ if($this->session->userdata('logged_in_type')=='admin')
             s.css("position","fixed");
             s.css("top","0");
             s.css("z-index","100");
-        } else {
+        }
+        else {
             s.css("position","relative");
         }
     });
@@ -283,7 +279,6 @@ if($this->session->userdata('logged_in_type')=='admin')
             	document.getElementById(form).submit();
         	},
       	}
-
     });
     /*
 		*Dialog for reservation of books
@@ -324,7 +319,6 @@ if($this->session->userdata('logged_in_type')=='admin')
     	form = $(this).get(0).id;
       $( "#canceldialog" ).dialog( "open" );
     });
-
      /*
 		Trigger for the confirmation of the reservation of books
      */
@@ -336,7 +330,4 @@ if($this->session->userdata('logged_in_type')=='admin')
 });
 	var form;
 	var link;
-</script>
-
-<script>
 </script>
