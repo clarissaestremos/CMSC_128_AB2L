@@ -152,14 +152,15 @@
                             console.log("validate_author: "+validate_author());
                             console.log("validate_subject: "+validate_subject());
                             console.log("validate_year_pub: "+validate_year_pub());
-                            if (validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub()) {
-                                <?php
-                                    if(isset($_POST['submit'])){
+
+                            // if (validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub()) {
+                            //     <?php
+                            //         if(isset($_POST['submit'])){
                                         
-                                    }
-                                ?>
-                            }
-                            else 
+                            //         }
+                            //     ?>
+                            // }
+                            // else 
                                 return false;
                         }
 
@@ -355,7 +356,7 @@
                                                                     </div>
                                                                     <div class="col width-fill">
                                                                         <div class="cell">
-                                                                           <span name="help_call_number" class="color-red"></span>
+                                                                           <span name="help_call_number" id="helpcallno" class="color-red"></span>
                                                                            <?php 
                                                                             
                                                                             $call_numbers = $this->model_get_list->get_edit_call_numbers($book[0]->id);
@@ -383,30 +384,199 @@
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
                                                                             <span class="tiny cell">Note: Press Ctrl(Windows)/Command(Mac) while selecting.</span></br>
-                                                                                    <select name="subject[]" onChange="validate_subject()" style="height: 70pt" multiple="multiple">
-                                                                                        <option value="CMSC 2">CMSC 2</option>
-                                                                                        <option value="CMSC 11">CMSC 11</option>
-                                                                                        <option value="CMSC 21">CMSC 21</option>
-                                                                                        <option value="CMSC 22">CMSC 22</option>
-                                                                                        <option value="CMSC 56">CMSC 56</option>
-                                                                                        <option value="CMSC 57">CMSC 57</option>
-                                                                                        <option value="CMSC 100">CMSC 100</option>
-                                                                                        <option value="CMSC 123">CMSC 123</option>
-                                                                                        <option value="CMSC 124">CMSC 124</option>
-                                                                                        <option value="CMSC 125">CMSC 125</option>
-                                                                                        <option value="CMSC 127">CMSC 127</option>
-                                                                                        <option value="CMSC 128">CMSC 128</option>
-                                                                                        <option value="CMSC 130">CMSC 130</option>
-                                                                                        <option value="CMSC 131">CMSC 131</option>
-                                                                                        <option value="CMSC 132">CMSC 132</option>
-                                                                                        <option value="CMSC 137">CMSC 137</option>
-                                                                                        <option value="CMSC 141">CMSC 141</option>
-                                                                                        <option value="CMSC 142">CMSC 142</option>
-                                                                                        <option value="CMSC 150">CMSC 150</option>
-                                                                                        <option value="CMSC 170">CMSC 170</option>
-                                                                                        <option value="CMSC 190">CMSC 190</option>
-                                                                                        <option value="CMSC 199">CMSC 199</option>
-                                                                                        <option value="CMSC 200">CMSC 200</option>
+                                                                                    <?php 
+                                                                                        echo "<script>console.log('string');</script>";
+                                                                                        $b = $this->model_get_list->get_book_subjects($book[0]->id);
+                                                                                        // foreach ($b as $book) {
+                                                                                        //     echo "<script>console.log(".$book->book_subject.");</script>";
+
+                                                                                        // }
+                                                                                        // echo "NANDITO!".$b;
+                                                                                        echo "<select name='subject[]' onChange='validate_subject()' style='height: 70pt' multiple='multiple'>
+                                                                                        <option value='CMSC 2'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 2' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 2</option>";
+
+                                                                                        echo "<option value='CMSC 11'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 11' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 11</option>";
+
+                                                                                        echo "<option value='CMSC 21'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 21' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 21</option>";
+
+                                                                                        echo "<option value='CMSC 22'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 22' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 22</option>";
+
+                                                                                        echo "<option value='CMSC 56'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 56' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 56</option>";
+
+                                                                                        echo "<option value='CMSC 57'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 57' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 57</option>";
+
+                                                                                        echo "<option value='CMSC 100'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 100' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 100</option>";
+
+                                                                                        echo "<option value='CMSC 123'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 123' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 123</option>";
+
+                                                                                        echo "<option value='CMSC 124'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 124' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 124</option>";
+
+                                                                                        echo "<option value='CMSC 125'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 125' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 125</option>";
+
+                                                                                        echo "<option value='CMSC 127'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 127' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 127</option>";
+
+                                                                                        echo "<option value='CMSC 128'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 128' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 128</option>";
+
+                                                                                        echo "<option value='CMSC 130'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 130' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 130</option>";
+
+                                                                                        echo "<option value='CMSC 131'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 131' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 131</option>";
+
+                                                                                        echo "<option value='CMSC 132'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 132' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 132</option>";
+
+                                                                                        echo "<option value='CMSC 137'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 137' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 137</option>";
+
+                                                                                        echo "<option value='CMSC 141'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 141' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 141</option>";
+
+                                                                                        echo "<option value='CMSC 142'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 142' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 142</option>";
+
+                                                                                        echo "<option value='CMSC 150'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 150' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 150</option>";
+
+                                                                                        echo "<option value='CMSC 170'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 170' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 170</option>";
+
+                                                                                        echo "<option value='CMSC 190'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 190' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 190</option>";
+
+                                                                                        echo "<option value='CMSC 199'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 199' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 199</option>";
+
+                                                                                        echo "<option value='CMSC 200'";
+                                                                                        foreach ($b as $bk) {
+                                                                                            if('CMSC 200' == $bk->subject){
+                                                                                                echo "selected='true'";
+                                                                                            }
+                                                                                        }
+                                                                                        echo ">CMSC 200</option>";
+                                                                                    ?>
                                                                                     </select>
                                                                             <span name="help_subject" class="color-red"></span><br/><br/>
                                                                         </div>
