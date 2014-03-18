@@ -8,65 +8,78 @@ class Controller_add_user extends Controller_log {
       $this->load->model('model_register');
       $this->load->model('model_check_session');
     }
- 
+ 	/*
+ 	*	Calls the view, with forms, for adding new user on the admin side
+ 	*/
     function index() {
     	$data['parent'] = "Users";
     	$data['current'] = "Add Users";
 
-    		$this->load->helper(array('form','html'));
-	        $this->load->view("admin/view_header",$data);
-	        $this->load->view("admin/view_aside");
-	        $this->load->view("admin/view_add_user");
-	        $this->load->view("admin/view_footer");
+    	$this->load->helper(array('form','html'));
+        $this->load->view("admin/view_header",$data);
+        $this->load->view("admin/view_aside");
+        $this->load->view("admin/view_add_user");
+        $this->load->view("admin/view_footer");
     }
- 		public function alpha_space($str)
-		{
-			return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
+ 	/*
+ 	*	The following 4 functions checks if the input matches the required pattern as described by the function name
+ 	*/	
+ 	public function alpha_space($str)
+	{
+		return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
+	}
+	 public function acct_num($str)
+	{
+		if($this->input->post('classi')=="student")
+			return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE;
+		else{
+			return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;
 		}
-		 public function acct_num($str)
-		{
-			if($this->input->post('classi')=="student")
-				return(! preg_match("/^[12][0-9]{3}\-[0-9]{5}$/i", $str))? FALSE: TRUE;
-			else{
-				return(! preg_match("/^[0-9]{10}$/i", $str))? FALSE: TRUE;
-			}
-		}
-		 public function last_name($str)
-		{
-			return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
-		}
+	}
+	 public function last_name($str)
+	{
+		return(! preg_match("/^([A-Za-zñÑ]){1}([A-Za-zñÑ]){1,}(\s([A-Za-zñÑ]){1,})*(\-([A-Za-zñÑ]){1,}){0,1}$/i", $str))? FALSE: TRUE;
+	}
 
-		 public function first_name($str)
-		{
-			return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE;
-		}
-		 public function check_dupes($str2)
-		{
+	 public function first_name($str)
+	{
+		return(! preg_match("/^[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*\.?((\.\s[A-Za-zñÑ]{2}[A-Za-zñÑ\s]*\.?)|(\s[A-Za-zñÑ][A-Za-zñÑ]{1,2}\.)|(-[A-Za-zñÑ]{1}[A-Za-zñÑ\s]*))*$/i", $str))? FALSE: TRUE;
+	}
+	
+	/*
+	*	Checks if a username is available or not
+	*/
+	 public function check_dupes($str2)
+	{
 
-			 $sql=$this->db->query("select username from user_account where username like '$str2' ");
+		 $sql=$this->db->query("select username from user_account where username like '$str2' ");
 
-			 if($sql->num_rows()!=0)
-					{return FALSE;}
-				else {return TRUE;}         
-		}
-
-
-		public function check_dupes_accntNum($str3)
-		{
-
-			 $sql=$this->db->query("select account_number from user_account where account_number like '$str3' ");
-
-			 if($sql->num_rows()!=0)
-					{return FALSE;}
-				else {return TRUE;}         
-		}
-
-		 public function check_account( $account_number){
-            $this->db->where('account_number',$account_number);
-            $query = $this->db->get('user_account')->num_rows();
-            
-    	}
-
+		 if($sql->num_rows()!=0)
+				{return FALSE;}
+			else {return TRUE;}         
+	}
+	/*
+	*	Checks if an account number is available or not
+	*/
+	public function check_dupes_accntNum($str3)
+	{
+		$sql=$this->db->query("select account_number from user_account where account_number like '$str3' ");
+		
+		if($sql->num_rows()!=0)
+			{return FALSE;}
+		else {return TRUE;}         
+	}
+	/*
+	*	Checks if an account number is alerady registered
+	*/
+	public function check_account( $account_number){
+		$this->db->where('account_number',$account_number);
+		$query = $this->db->get('user_account')->num_rows();
+	}
+	/**
+	 * Checks the validation of input and if no validation error is found, continues to add the user to the database
+	 * Also calls for the email function which is to be send to notify about the account registration
+	 * */
     public function registration()
     {
           if($this->model_check_session->check_admin_session() == TRUE){
@@ -117,6 +130,10 @@ class Controller_add_user extends Controller_log {
           }
     }
 	
+	/**
+	 * Email function which contains the cnfiguration of the email as well as the message content 
+	 * to be sent upon successful account registration
+	*/
 	function email_confirm_account($account_number){
 		$base = base_url();
 		if($this->session->userdata('logged_in_type')!="admin")
@@ -237,7 +254,9 @@ class Controller_add_user extends Controller_log {
 		}*/
 		$this->success($data);
 	}
-
+	/**
+	 * checks if the input username matches the pattern
+	*/
      public function username_Regex($username){
         if (preg_match('/^[A-Za-z][A-Za-z0-9._]{4,20}$/', $username) ) {
             return TRUE;
@@ -246,7 +265,9 @@ class Controller_add_user extends Controller_log {
             $this->form_validation->set_message('username_Regex', 'Invalid input.');
           }
     }
-
+	/**
+	 * Redirects to view_add_user with either the validation error or success message
+	*/
     function success($data) {
 
         $data['parent'] = "Users";
@@ -266,6 +287,6 @@ class Controller_add_user extends Controller_log {
             else echo 'userNo';
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_add_user.php */
+/* Location: ./application/controllers/admin/controller_add_user.php */
 
