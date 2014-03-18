@@ -100,7 +100,7 @@
 								}
 							}
 							
-							//if the user's account is approved, and his number of borrowed books is less than three,
+							//if the user's account is approved, and his number of borrowed/reserved books is less than three,
 							//and there is an available copy of the book, then he is allowed to reserve it
 							if($no_of_available > 0){
 								// echo "<script>console.log("$no_of_available==0")</script>";
