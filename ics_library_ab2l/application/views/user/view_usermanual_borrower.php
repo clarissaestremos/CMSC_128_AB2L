@@ -90,7 +90,7 @@
 				}
 			}
 			var Alert = new CustomAlert();
-			</script>
+		</script>
 	</head>
 	<body onload="Alert.render()">
 		<div id="dialogoverlay"></div>
