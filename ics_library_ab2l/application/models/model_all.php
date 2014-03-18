@@ -21,8 +21,7 @@ class Model_All extends CI_Model {
 
         $query= $this->db->query($sqlQuery);
 
-        if($query->num_rows() > 0)
-        {         //should not be empty
+        if($query->num_rows() > 0){         //should not be empty
             return $query->result();
         }
 
