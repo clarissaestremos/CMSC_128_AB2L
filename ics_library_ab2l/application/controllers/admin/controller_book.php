@@ -355,7 +355,7 @@ class Controller_book extends Controller_log {
             redirect('index.php/user/controller_login', 'refresh');
 		$session_user = $this->session->userdata('logged_in')['username'];
 		$base = base_url();
-		echo "<div id='mysuccess' title='Delete Book Success'>
+		echo "<div id='mysuccess' title='Edit Book Success'>
 					<h6>You have successfully edited the material!!</h6>
 				</div>
 				<script src='$base/js/jquery-1.10.2.min.js'></script>
