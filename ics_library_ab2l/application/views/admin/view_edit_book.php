@@ -24,6 +24,7 @@
         var selected = document.getElementById('type').value;
         if(selected === 'BOOK')
             $('#isbn_div').show();
+            
         else
             $('#isbn_div').hide();
     } 
@@ -31,25 +32,27 @@
     function validate_call_no() {
         msg="Invalid input: ";
 
-  
-
-
-
+ 
         //=-========
         for(i=0;i<$('input[name*="call_number[]"]'.length);i++){
             msg="Invalid input: ";
-             str=document.getElementsByName("call_number[]")[i].value;
-             if(str=="")
-            msg+="Call number is required!<br/>";
-            if(!str.match(/^[a-zA-Z0-9\ \.\-]+[a-zA-Z0-9\ \.\-]*$/))
-            msg+="Must be between 1-20 alpha numeric character!<br/>";
-            if(msg=="Invalid input: ")
-            msg="";
-            else {
-                document.getElementsByName("help_call_number")[i].style.fontSize="10px";
-                document.getElementsByName("help_call_number")[i].style.fontFamily="verdana";
-                document.getElementsByName("help_call_number")[i].style.color="red";
-            }
+            str=document.getElementsByName("call_number[]")[i].value;
+            
+                if(str=="")
+                    msg+="Call number is required!<br/>";
+                    
+                if(!str.match(/^[a-zA-Z0-9\ \.\-]+[a-zA-Z0-9\ \.\-]*$/))
+                    msg+="Must be between 1-20 alpha numeric character!<br/>";
+                    
+                if(msg=="Invalid input: ")
+                     msg="";
+                     
+                else {
+                    document.getElementsByName("help_call_number")[i].style.fontSize="10px";
+                    document.getElementsByName("help_call_number")[i].style.fontFamily="verdana";
+                    document.getElementsByName("help_call_number")[i].style.color="red";
+                }
+                
             document.getElementsByName("help_call_number")[i].innerHTML=msg;
             
         }
@@ -60,18 +63,21 @@
         msg="Invalid input: ";
         str=myform.isbn.value;
         var selected = document.getElementById('type').value;
-        if(str=="")
-            msg+="ISBN is required!<br/>";
-        if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
-            msg+="Must start and end in number and 13 digits.<br/>";
+            if(str=="")
+                msg+="ISBN is required!<br/>";
+                
+            if(!str.match(/^[0-9][0-9\-]+[0-9]$/))
+                msg+="Must start and end in number and 13 digits.<br/>";
 
-        if(msg=="Invalid input: ")
-        msg="";
-        else {
-            document.getElementsByName("help_isbn_key")[0].style.fontSize="10px";
-            document.getElementsByName("help_isbn_key")[0].style.fontFamily="verdana";
-            document.getElementsByName("help_isbn_key")[0].style.color="red";
-        }
+            if(msg=="Invalid input: ")
+                msg="";
+                
+            else {
+                document.getElementsByName("help_isbn_key")[0].style.fontSize="10px";
+                document.getElementsByName("help_isbn_key")[0].style.fontFamily="verdana";
+                document.getElementsByName("help_isbn_key")[0].style.color="red";
+            }
+            
         document.getElementsByName("help_isbn_key")[0].innerHTML=msg;
 
         if(msg=="" || selected != "BOOK")
@@ -84,17 +90,22 @@
         str=myform.title1.value;
             
         if(str=="")
-        msg+="Title is required!<br/>";
+            msg+="Title is required!<br/>";
+            
         if(!str.match(/^[a-zA-Z0-9\ ]+[a-zA-Z0-9\ ]*$/))
-        msg+="Must be between 1-100 alpha numeric character!<br/>";
+            msg+="Must be between 1-100 alpha numeric character!<br/>";
+            
         if(msg=="Invalid input: ")
-        msg="";
+            msg="";
+            
         else {
             document.getElementsByName("help_title")[0].style.fontSize="10px";
             document.getElementsByName("help_title")[0].style.fontFamily="verdana";
             document.getElementsByName("help_title")[0].style.color="red";
         }
+        
         document.getElementsByName("help_title")[0].innerHTML=msg;
+        
         if(msg=="")
             return true;
     }
@@ -105,17 +116,22 @@
         str=myform.author.value;
             
         if(str=="")
-        msg+="Author is required!<br/>";
+            msg+="Author is required!<br/>";
+            
         if(!str.match(/^[a-zA-Z][a-zA-Z\ \,\.]*$/))
-        msg+="Must be between 1-100 alpha character!<br/>";
+            msg+="Must be between 1-100 alpha character!<br/>";
+            
         if(msg=="Invalid input: ")
-        msg="";
+            msg="";
+            
         else {
             document.getElementsByName("help_author")[0].style.fontSize="10px";
             document.getElementsByName("help_author")[0].style.fontFamily="verdana";
             document.getElementsByName("help_author")[0].style.color="red";
         }
+        
         document.getElementsByName("help_author")[0].innerHTML=msg;
+        
         if(msg=="")
             return true;
     }
@@ -126,6 +142,7 @@
         subjects=document.getElementsByName("subject[]")[0].selectedOptions.length;
         // console.log(subjects);
         document.getElementsByName("help_subject")[0].innerHTML="";
+        
         if(subjects>0)
             return true;
         document.getElementsByName("help_subject")[0].innerHTML="</br>Subject is required! Select at least one."
@@ -138,15 +155,19 @@
         str=myform.year_of_pub.value;
             
         if(str=="")
-        msg+="Year of Publication is required!<br/>";
+            msg+="Year of Publication is required!<br/>";
+            
         if(msg=="Invalid input: ")
-        msg="";
+             msg="";
+             
         else {
             document.getElementsByName("help_year_of_pub")[0].style.fontSize="10px";
             document.getElementsByName("help_year_of_pub")[0].style.fontFamily="verdana";
             document.getElementsByName("help_year_of_pub")[0].style.color="red";
         }
+        
         document.getElementsByName("help_year_of_pub")[0].innerHTML=msg;
+        
         if(msg=="")
             return true;
     }
@@ -159,6 +180,7 @@
                 }
             ?>
         }
+        
         else 
             return false;
     }
@@ -704,14 +726,17 @@
             minHeight: 200,
             closeOnEscape: true,
             closeText: true,
+            
             show: {
                 effect: "fadeIn",
                 duration: 500
             },
+            
             hide: {
                 effect: "fadeOut",
                 duration: 500
             },
+            
             draggable: false,
             buttons : {
                 "Yes": function() {
@@ -719,6 +744,7 @@
                     console.log(document.getElementById('editbookForm'));
                     document.getElementById('editbookForm').submit();
                 },
+                
                 "No": function() {
                     $(this).dialog('close');
                 }
@@ -733,20 +759,24 @@
             minHeight: 200,
             closeOnEscape: true,
             closeText: true,
+            
             show: {
                 effect: "fadeIn",
                 duration: 500
             },
+            
                 hide: {
                 effect: "fadeOut",
                 duration: 500
             },
+            
             draggable: false,
             buttons : {
                 "Yes": function() {
                     $(this).dialog('close');
                     window.location.replace(link);
                 },
+                
                 "No": function() {
                     $(this).dialog('close');
                 }
@@ -762,6 +792,7 @@
         $( "#editbookForm" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
+            
             if(validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub()){
                 document.getElementById('btitle').innerText = "Title: "+document.getElementById('title1').value;
                 document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
@@ -769,20 +800,25 @@
                 document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type').value;
                 var aut = document.getElementsByClassName("authors");
                 var author = '';
+                
                 for(var i=0; i<aut.length; i++) {
                     author = author+aut[i].value + " ";
                     if(i <aut.length)
                         author += ",";
                 }
+                
                 var sub = document.getElementsByName("subject[]");
                 var subject = '';
+                
                 for(var i=0; i<sub[0].selectedOptions.length; i++) {
                     subject =  subject+sub[0].selectedOptions[i].innerText + " ";
                     if(i <aut.length-1)
                         subject += ",";
                 }
+                
                 var call = document.getElementsByClassName("call_nos");
                 var call_no = '';
+                
                 for(var i=0; i<call.length; i++) {
                     call_no =  call_no+call[i].value + " ";
                     if(i < aut.length)
@@ -790,11 +826,13 @@
                 }
                 var t = document.getElementsByClassName("tags");
                 var tag = '';
+                
                 for(var i=0; i<t.length; i++) {
                     tag =  tag + t[i].value + " ";
                     if(i <t.length)
                         tag += ",";
                 }
+                
                 document.getElementById('bauthors').innerText =  "Author: "+ author;
                 document.getElementById('bsubject').innerText = "Subject: "+ subject;
                 document.getElementById('bcall').innerText = "Call Number: "+ call_no;            
