@@ -713,7 +713,8 @@ $("#dsucc").dialog({
       	buttons : {
         	"Yes": function() {
         		$(this).dialog('close');
-             	$('#elibmailsucc').dialog('open');
+             	document.getElementById(form).submit();
+
            	},
         	"No": function() {
             	$(this).dialog('close');
@@ -746,10 +747,9 @@ $("#dsucc").dialog({
  
      	});
  
-		$( "#myform" ).submit(function (e) {
+		$( "#emailform" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
-        if(process_add())
       		$( "#elibmail" ).dialog( "open" );
     	});
 
@@ -802,7 +802,8 @@ $("#dsucc").dialog({
       	buttons : {
         	"Yes": function() {
         		$(this).dialog('close');
-             	$('#passadminsucc').dialog('open');
+            console.log(document.getElementById(form).submit());
+
            	},
         	"No": function() {
             	$(this).dialog('close');
@@ -825,7 +826,7 @@ $("#dsucc").dialog({
  	        },
  	        draggable: false,
  	        close: function(event, ui){
- 	          document.getElementById(form).submit();
+            
  	        },
  	        buttons : {
  	          "Ok": function() {
@@ -863,10 +864,9 @@ $("#dsucc").dialog({
 
       });
  
-		$( "#form" ).submit(function (e) {
+		$( "#passform" ).submit(function (e) {
     		e.preventDefault();
     	 	form = $(this).get(0).id;
-        if(process_add())
       		$( "#passadmin" ).dialog( "open" );
     	});
     	$( "#cancelset1" ).click(function (e) {
