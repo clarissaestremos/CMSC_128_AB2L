@@ -24,7 +24,6 @@
             $this->load->view("user/view_footer");
         }
 
-
         public function alpha_space($str)
         {
             return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
