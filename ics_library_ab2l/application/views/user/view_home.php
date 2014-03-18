@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/noscript.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>style/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/style/noscript.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/style/style.css">
 <div id="main-body" class="site-body" style="">
 				<div class="cell site-center" style="border-radius: 10px 10px 10px 10px;">
 				<div class="cell body">
@@ -8,7 +8,7 @@
 				<div class="width-full">
 									<div id="wrapper" class="width-3of5 float-left">
 								        <div id="ei-slider" class="ei-slider">
-				                    <ul class="ei-slider-large" style='padding:0px 0px;margin: 0px 0px;'>
+				                    <ul class="ei-slider-large" style='margin: 0px 0px; padding: 0px 0px; list-style:none;'>
 										<li>
 				                            <img src="<?php echo base_url();?>images/home/1.jpg" alt="image1"/>
 				                        </li>
@@ -168,9 +168,9 @@
 		    </div>
 </div>
 </div>
+<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tabslet.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tabslet.min.js"></script>
 <script type="text/javascript">
 $(window).ready(function() {
 	$('#ei-slider').eislideshow({
@@ -178,7 +178,7 @@ $(window).ready(function() {
 						autoplay			: true,
 						slideshow_interval	: 3000,
 						titlesFactor		: 0
-	                });
+	});
 });
 $(document).ready(function() {
 	$('.tabs_rotate').tabslet({
