@@ -21,12 +21,18 @@ class Controller_add_admin extends Controller_log{
         $this->load->view("admin/view_add_admin");
         $this->load->view("admin/view_footer");
     }
-    
+    /*
+    * Sets the regex for input that requires alpha with space/s
+    */
     public function alpha_space($str){
         $this->form_validation->set_message('alpha_space', 'Invalid input.');
         return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
     }
     
+    
+    /*
+    *   Checks the validation of the user input and if no validation error is detected, continues to add the admin account
+    */
     function registration(){
         if($this->model_check_session->check_admin_session() == TRUE){
             if($this->session->userdata('logged_in_type')!="admin")
@@ -57,7 +63,10 @@ class Controller_add_admin extends Controller_log{
             }
         }
     }
-
+    
+    /*
+    *   Checks if an admin_key already exists
+    */
     public function check_admin_key( $admin_key){
             $this->db->where('admin_key',sha1($admin_key));
             $query = $this->db->get('admin_account')->num_rows();
@@ -72,7 +81,10 @@ class Controller_add_admin extends Controller_log{
             //redirect('index.php/admin/controller_view_users','refresh');
         }
     }
-
+    
+    /*
+    *   returns to view_add_admin with either the validation error message or that admin account was successfull added
+    */
     function success($data) {
 
         $data['parent'] = "Admin";
