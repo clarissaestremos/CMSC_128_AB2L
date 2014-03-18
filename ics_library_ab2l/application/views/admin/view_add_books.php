@@ -65,18 +65,19 @@
 
             
                         function validate_subject() {
-                            console.log(document.getElementsByName('subject[]'));
+                            // console.log(document.getElementsByName('subject[]'));
                             subjects=document.getElementsByName("subject[]")[0].selectedOptions.length;
                             // console.log(subjects);
                             document.getElementsByName("help_subject")[0].innerHTML="";
                             if(subjects>0)
                                 return true;
-                            document.getElementsByName("help_subject")[0].innerHTML="Subject is required! Select at least one."
+                            document.getElementsByName("help_subject")[0].innerHTML="</br>Subject is required! Select at least one."
                             return false;
                         }
 
                         function validate_call_no() {
                             msg="Invalid input: ";
+                            console.log(myform);
                             str=myform.callno.value;
                                 
                             if(str=="")
@@ -445,7 +446,7 @@
                                                                 <div class="col" id ='isbn_div'>
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="isbn">ISBN</label>
+                                                                            <label for="isbn">ISBN<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -526,7 +527,7 @@
       buttons : {
         "Yes": function() {
             $(this).dialog('close');
-            console.log(document.getElementById(form).submit());
+            // console.log(document.getElementById(form).submit());
         },
         "No": function() {
             $(this).dialog('close');
@@ -535,13 +536,6 @@
     });
 
         $( "#addbookForm" ).submit(function (e) {
-            // console.log("addbookform");
-            // console.log("title: ", validate_title());
-            // console.log("author: ", validate_author());
-            // console.log("subject: ", validate_subject());
-            // console.log("call_no: ", validate_call_no());
-            // console.log("year_pub: ", validate_year_pub());
-            // console.log("isbn_key: ", validate_title());
             e.preventDefault();
             form = $(this).get(0).id;
             if(validate_title() && validate_author() && validate_subject() && validate_call_no() && validate_year_pub() && validate_isbn_key()){
@@ -588,7 +582,7 @@
             document.getElementById('btags').innerText = "Tag: "+ tag;
                 
             
-            console.log(form);
+            // console.log(form);
             $( "#addbookconf" ).dialog( "open" );
         }
         });

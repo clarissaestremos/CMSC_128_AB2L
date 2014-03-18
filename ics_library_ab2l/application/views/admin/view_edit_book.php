@@ -10,7 +10,6 @@
                             myform.subject.onblur=validate_subject;
                             myform.isbn.onblur=validate_isbn_key;
                             myform.year_of_pub.onblur=validate_year_pub;
-                            myform.quantity.onblur=validate_quantity;
                             myform.onsubmit=process_add;
                         }
                                 
@@ -28,13 +27,12 @@
                         
                         else
                             $('#isbn_div').hide();
-                        
-
                         } 
 
                         function validate_call_no() {
                             msg="Invalid input: ";
-                            str=myform.call_number.value;
+                            console.log(myform);
+                            str=myform.callno.value;
                                 
                             if(str=="")
                             msg+="Call number is required!<br/>";
@@ -118,23 +116,14 @@
 
             
                         function validate_subject() {
-                            msg="Invalid input: ";
-                            str=myform.subject.value;
-                                
-                            if(str=="")
-                            msg+="Subject is required!<br/>";
-                            if(!str.match(/^[A-Z\ ]{0,5}[0-9]{1,3}$/))
-                            msg+="Subject must be a course number!<br/>";
-                            if(msg=="Invalid input: ")
-                            msg="";
-                            else {
-                                document.getElementsByName("help_subject")[0].style.fontSize="10px";
-                                document.getElementsByName("help_subject")[0].style.fontFamily="verdana";
-                                document.getElementsByName("help_subject")[0].style.color="red";
-                            }
-                            document.getElementsByName("help_subject")[0].innerHTML=msg;
-                            if(msg=="")
+                            // console.log(document.getElementsByName('subject[]'));
+                            subjects=document.getElementsByName("subject[]")[0].selectedOptions.length;
+                            // console.log(subjects);
+                            document.getElementsByName("help_subject")[0].innerHTML="";
+                            if(subjects>0)
                                 return true;
+                            document.getElementsByName("help_subject")[0].innerHTML="</br>Subject is required! Select at least one."
+                            return false;
                         }
 
 
@@ -155,28 +144,16 @@
                             if(msg=="")
                                 return true;
                         }
-
-                        /*function validate_quantity() {
-                            msg="Invalid input: ";
-                            str=myform.quantity.value;
-                                
-                            if(str=="")
-                            msg+="Quantity is required!<br/>";
-                            if(msg=="Invalid input: ")
-                            msg="";
-                            else {
-                                document.getElementsByName("help_quantity")[0].style.fontSize="10px";
-                                document.getElementsByName("help_quantity")[0].style.fontFamily="verdana";
-                                document.getElementsByName("help_quantity")[0].style.color="red";
-                            }
-                            document.getElementsByName("help_quantity")[0].innerHTML=msg;
-                            if(msg=="")
-                                return true;
-                        }*/
-                        
                         
                         function process_add() {
-                            if (validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub() && validate_quantity()) {
+                            console.log("ETOETOETOETOETOETOETOETOETOETOETOETOETOETO");
+                            console.log("validate_call_no: "+validate_call_no());
+                            console.log("validate_isbn_key: "+validate_isbn_key());
+                            console.log("validate_title: "+validate_title());
+                            console.log("validate_author: "+validate_author());
+                            console.log("validate_subject: "+validate_subject());
+                            console.log("validate_year_pub: "+validate_year_pub());
+                            if (validate_call_no() && validate_isbn_key() && validate_title() && validate_author() && validate_subject() && validate_year_pub()) {
                                 <?php
                                     if(isset($_POST['submit'])){
                                         
@@ -374,7 +351,7 @@
                                                                 <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="call_number">Call Number<span class="color-red"> *</span></label>
+                                                                            <label for="callno">Call Number<span class="color-red"> *</span></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fill">
@@ -397,24 +374,41 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                                  <div class="col">
                                                                     <div class="col width-1of4">
                                                                         <div class="cell">
-                                                                            <label for="subject">Subject<span class="color-red"> *</span></label>
+                                                                            <label for="subject">Subject<span class="color-red"> *</span></label>   
                                                                         </div>
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <?php 
-                                                                            $subjects = $this->model_get_list->get_book_subjects($book[0]->id);
-                                                                            foreach ($subjects as $subject) {
-                                                                                echo '<input id = "subject" type = "text" class="subjects" name = "subject[]" value="'.$subject->subject.'" /><br/>';
-                                                                            }
-                                                                            ?>
-                                                                            <span name="help_subject" class="color-red"></span>
-                                                                            <input type="button" class="row2 cell" value="Add subject" onclick="addRow_subj(this, false)"/>
-                                                                            <br/>
+                                                                            <span class="tiny cell">Note: Press Ctrl(Windows)/Command(Mac) while selecting.</span></br>
+                                                                                    <select name="subject[]" onChange="validate_subject()" style="height: 70pt" multiple="multiple">
+                                                                                        <option value="CMSC 2">CMSC 2</option>
+                                                                                        <option value="CMSC 11">CMSC 11</option>
+                                                                                        <option value="CMSC 21">CMSC 21</option>
+                                                                                        <option value="CMSC 22">CMSC 22</option>
+                                                                                        <option value="CMSC 56">CMSC 56</option>
+                                                                                        <option value="CMSC 57">CMSC 57</option>
+                                                                                        <option value="CMSC 100">CMSC 100</option>
+                                                                                        <option value="CMSC 123">CMSC 123</option>
+                                                                                        <option value="CMSC 124">CMSC 124</option>
+                                                                                        <option value="CMSC 125">CMSC 125</option>
+                                                                                        <option value="CMSC 127">CMSC 127</option>
+                                                                                        <option value="CMSC 128">CMSC 128</option>
+                                                                                        <option value="CMSC 130">CMSC 130</option>
+                                                                                        <option value="CMSC 131">CMSC 131</option>
+                                                                                        <option value="CMSC 132">CMSC 132</option>
+                                                                                        <option value="CMSC 137">CMSC 137</option>
+                                                                                        <option value="CMSC 141">CMSC 141</option>
+                                                                                        <option value="CMSC 142">CMSC 142</option>
+                                                                                        <option value="CMSC 150">CMSC 150</option>
+                                                                                        <option value="CMSC 170">CMSC 170</option>
+                                                                                        <option value="CMSC 190">CMSC 190</option>
+                                                                                        <option value="CMSC 199">CMSC 199</option>
+                                                                                        <option value="CMSC 200">CMSC 200</option>
+                                                                                    </select>
+                                                                            <span name="help_subject" class="color-red"></span><br/><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -528,7 +522,6 @@
     <p id="btype"></p>
     <p id="bisbn"></p>
     <p id="btags"></p>
-    <p id="bquant"></p>
 </div>
 <div id="editcancelbook" title="Cancel Edit Confirmation">
         <p>Do you really wish to cancel editing this book? Doing so will retain the old details of the book.</p>
@@ -555,7 +548,7 @@
       buttons : {
         "Yes": function() {
             $(this).dialog('close');
-            console.log(document.getElementById('editbookForm'));
+            // console.log(document.getElementById('editbookForm'));
             document.getElementById('editbookForm').submit();
         },
         "No": function() {
@@ -605,7 +598,6 @@
             document.getElementById('byear').innerText = "Year Of Publication: "+ document.getElementById('year_of_pub').value;
             document.getElementById('bisbn').innerText = "ISBN: "+ document.getElementById('isbn').value;
             document.getElementById('btype').innerText = "Book Type: "+ document.getElementById('type').value;
-            document.getElementById('bquant').innerText = "Quantity: "+ document.getElementById('quantity').value;
             var aut = document.getElementsByClassName("authors");
             var author = '';
             for(var i=0; i<aut.length; i++) {
@@ -613,11 +605,11 @@
                 if(i <aut.length)
                     author += ",";
             }
-            var sub = document.getElementsByClassName("subjects");
+           var sub = document.getElementsByName("subject[]");
             var subject = '';
-            for(var i=0; i<sub.length; i++) {
-                subject =  subject+sub[i].value + " ";
-                if(i <aut.length)
+            for(var i=0; i<sub[0].selectedOptions.length; i++) {
+                subject =  subject+sub[0].selectedOptions[i].innerText + " ";
+                if(i <aut.length-1)
                     subject += ",";
             }
             var call = document.getElementsByClassName("call_nos");
