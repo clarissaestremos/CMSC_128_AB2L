@@ -14,5 +14,5 @@ class Controller_stat extends CI_Controller {
     }
         
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_stat.php */
+/* Location: ./application/controllers/user/controller_stat.php */
