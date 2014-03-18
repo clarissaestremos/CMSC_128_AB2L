@@ -28,7 +28,8 @@
         {
             return(! preg_match("/^([-a-z\ \-])+$/i", $str))? FALSE: TRUE;
         }
-
+        
+        /* This function checks if the inputted username has a duplicate. */
         public function check_dupes($str2)
         {
             $sql=$this->db->query("select username from user_account where username like '$str2' ");
@@ -42,7 +43,8 @@
                 return TRUE;
             }         
         }
-
+        
+        /* This function checks if the inputted account number has a duplicate. */
         public function check_dupes_acctNum($str3)
         {
 
@@ -58,11 +60,11 @@
             }         
         }
 
-
+        /* This function contains validation rules for the input fields of the registration form. */
         public function registration()
         {
             $this->load->library('form_validation');
-            // field name, error message, validation rules
+            // Syntax: field name, error message, validation rules
             $this->form_validation->set_rules('fname', 'First Name', 'trim|required|ucwords|callback_alpha_space|xss_clean');
             $this->form_validation->set_rules('minit', 'Middle Initial', 'trim|required|xss_clean');
             $this->form_validation->set_rules('lname', 'Last Name', 'trim|required|ucwords|callback_alpha_space|xss_clean');
@@ -99,7 +101,8 @@
                 $this->success($data);
             }
         }
-
+        
+        /* This function is called when all the input fields for the registration form has valid values. */
         function success($data)
         {
             $data['titlepage']= "Register";
@@ -115,7 +118,7 @@
             }  
             $this->load->view("user/view_footer");
         }
-
+        
         function error($data) {
             $data['titlepage']= "Register";
             $this->load->helper(array('form','html'));
@@ -131,7 +134,8 @@
 
             $this->load->view("user/view_footer");
         }
-
+        
+        /* This function provides a regular expression for the username. */
         public function username_Regex($username){
             if (preg_match('/^[A-Za-z][A-Za-z0-9._]{4,20}$/', $username) ) {
                 return TRUE;
