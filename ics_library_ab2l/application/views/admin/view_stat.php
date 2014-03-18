@@ -58,13 +58,15 @@
 		}
 		
 	</style>
-	<div class="cell body">
-		<div class="cell">
-				  <p class="tiny">Statistics</p>
-		</div>
-	</div>
-	<div class = "hero-unit">
+	
+<div id="thisbody" class="body width-fill background-white">
+	<div class="cell">
+        <div class="page-header cell">
+           <h1>Admin <small>Material Statistics</small></h1>
+        </div>
+        <div class = "hero-unit">
 		
 			<div id="chartdiv"></div>
-		
-	</div>
+    </div>
+</div>
+</div>

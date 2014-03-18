@@ -53,7 +53,7 @@ class Controller_verify_admin_key extends Controller_log {
  
      function check_database() {
          //Field validation succeeded.  Validate against database
-         $admin_key = $this->input->post('admin_key');
+         $admin_key = sha1($this->input->post('admin_key'));
          $user_name = $this->session->userdata('logged_username');
          //query the database
          $result = $this->login->admin_key($admin_key,$user_name);

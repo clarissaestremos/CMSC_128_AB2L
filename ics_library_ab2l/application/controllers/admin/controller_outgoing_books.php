@@ -98,7 +98,36 @@ class Controller_outgoing_books extends Controller_log{
         $this->model_reservation->update_book_reservation($res_number, "extend");
 		$session_user = $this->session->userdata('logged_in')['username'];
             $this->add_log("Admin $session_user extended a book reservation with Reservation Number: $res_number", "Extend Reservation");
-        redirect('index.php/admin/controller_reservation','refresh');
+            echo "<div id='mysuccess' title='Add Book Success'>
+        <h6>You have successfully confirmed the extend the material's due date!</h6>
+        </div>
+        <script src='$base/js/jquery-1.10.2.min.js'></script>
+        <script src='$base/js/jquery-ui.js'></script>
+        <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+        <script>
+            $('#mysuccess').dialog({
+                modal: true,
+                closeOnEscape: true,
+                resizable: false,
+                  width: 300,
+                  minHeight: 200,
+                closeText: 'show',
+                show: {
+                  effect: 'fadeIn',
+                  duration: 200
+                },
+                draggable: false,
+                close: function(event, ui){
+                    window.location.replace('$base/index.php/admin/controller_reservation');
+                },
+                buttons : {
+                  'Ok': function() {
+                      window.location.replace('$base/index.php/admin/controller_reservation');
+                  },
+                }
+     
+            });
+        </script>";
     }//END OF extend()
     
     public function return_book(){
@@ -107,7 +136,36 @@ class Controller_outgoing_books extends Controller_log{
         $res_number=$_POST['res_number'];
         $this->load->model('model_reservation');
         $this->model_reservation->update_book_reservation($res_number, "returned");
-        redirect('index.php/admin/controller_reservation','refresh');
+        echo "<div id='mysuccess' title='Add Book Success'>
+        <h6>You have successfully confirmed the return of the material!</h6>
+        </div>
+        <script src='$base/js/jquery-1.10.2.min.js'></script>
+        <script src='$base/js/jquery-ui.js'></script>
+        <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
+        <script>
+            $('#mysuccess').dialog({
+                modal: true,
+                closeOnEscape: true,
+                resizable: false,
+                  width: 300,
+                  minHeight: 200,
+                closeText: 'show',
+                show: {
+                  effect: 'fadeIn',
+                  duration: 200
+                },
+                draggable: false,
+                close: function(event, ui){
+                    window.location.replace('$base/index.php/admin/controller_reservation');
+                },
+                buttons : {
+                  'Ok': function() {
+                      window.location.replace('$base/index.php/admin/controller_reservation');
+                  },
+                }
+     
+            });
+        </script>";
     }//END OF return_book()
     
     public function reserve(){

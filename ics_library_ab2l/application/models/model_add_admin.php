@@ -18,7 +18,7 @@ public function add_admin()
     $lname=ucfirst($lname);
     
     $data=array(
-    'admin_key'=>$this->input->post('adminkey'),
+    'admin_key'=>sha1($this->input->post('adminkey')),
     'first_name'=>$fname,
     'middle_name'=>$this->input->post('minit'),
     'last_name'=>$lname,

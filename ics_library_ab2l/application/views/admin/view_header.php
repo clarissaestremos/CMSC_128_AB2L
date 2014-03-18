@@ -15,16 +15,6 @@
 		<script src="<?php echo base_url() ?>js/jquery-1.10.2.min.js"></script>
 		<script src="<?php echo  base_url() ?>js/jquery-ui.js"></script>
 		<script>
-			$(document).ready(function(){
-				$heightbody = $("#thisbody").css("height");
-				$heightaside = $("aside").css("height");
-				console.log($heightbody);
-				console.log($heightaside);
-				if($heightbody > $heightaside){
-					console.log("enter");
-					$("#side-navigation").css("height",$heightbody);
-				}
-			});
 			base_url= "<?php echo base_url() ?>";
 		</script>
 		<style type="text/css">
@@ -383,7 +373,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
             	$(this).dialog('close');
-            	$('#extendsucc').dialog('open');
+            	thisform.submit();
             },
             "No": function() {
                 $(this).dialog('close');
@@ -392,7 +382,7 @@ $("#dsucc").dialog({
 
     });
 
-
+/*
     $("#extendsucc").dialog({
             autoOpen: false,
             modal: true,
@@ -439,7 +429,7 @@ $("#dsucc").dialog({
               },
             }
  
-        });
+        });*/
 
         $("#returndialog").dialog({
         autoOpen: false,
@@ -461,7 +451,7 @@ $("#dsucc").dialog({
         buttons : {
             "Yes": function() {
                 $(this).dialog('close');
-                $('#returnsucc').dialog('open');
+                thisform.submit();
             },
             "No": function() {
                 $(this).dialog('close');
@@ -1036,8 +1026,8 @@ $("#dsucc").dialog({
         console.log(thisform);
         return false;
     }
-
-    function extendBook(myformid){
+function
+     extendBook(myformid){
         thisform = myformid;
        $( "#extenddialog" ).dialog( "open" );
         console.log(thisform);

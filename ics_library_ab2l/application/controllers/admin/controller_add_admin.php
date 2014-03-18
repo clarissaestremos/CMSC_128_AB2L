@@ -59,7 +59,7 @@ class Controller_add_admin extends Controller_log{
     }
 
     public function check_admin_key( $admin_key){
-            $this->db->where('admin_key',$admin_key);
+            $this->db->where('admin_key',sha1($admin_key));
             $query = $this->db->get('admin_account')->num_rows();
             if($query == 0 ) echo 'userOk';
             else echo 'userNo';

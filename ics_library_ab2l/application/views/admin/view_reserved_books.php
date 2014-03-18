@@ -63,6 +63,27 @@
                             <div class="header background-red">
                                 List of borrowed books
                             </div>
+                             <script type="text/javascript">
+                                $(window).load(function(){
+                                    $.ajax({
+                                        url: base_url+"index.php/admin/controller_reservation/get_book_data",                    //no need to edit this
+                                        type: 'POST',
+                                        async: true,
+                                        success: function(result){                  //displays result.
+                                            $('#displayArea').html(result);
+                                        }
+                                    });
+                                    $.ajax({
+                                        url: base_url+"index.php/admin/controller_reservation/get_book_data2",                    //no need to edit this
+                                        type: 'POST',
+                                        async: true,
+                                        success: function(result){                  //displays result.
+                                            $('#displayArea2').html(result);
+                                        }
+                                    });
+                                    
+                                });
+                                </script>
                             <div id="displayArea2"></div>
                                 <!--<form action='' method='post' class="float-right">
                                    <input type='submit' name='notify_all' value='Notify All' enabled/>
@@ -79,18 +100,12 @@
                         ?>
 	       </div>
 </div>
-<div id="returndialog" title="Return Book Dialog">
+<div id="returndialog" title="Return Material Dialog">
     <p>Are you sure that this material was properly returned?</o>
 </div>
-<div id="extenddialog" title="Extend Book Dialog">
+<div id="extenddialog" title="Extend Material Dialog">
     <p>Do you really want to extend the due date of this material?</o>
 </div>
-<div id="returnsucc" title="Return Book Success">
-    <p>You have successfully returned a material!</p>
-</div>
-<div id="extendsucc" title="Extend Book Success">
-    <p>You have successfully extend the due date of a material!</p>
-</div>
-<div id='notifydialog' title='Notify Overdue Books Dialog'>
+<div id='notifydialog' title='Notify Overdue Material Dialog'>
     <p>Do you really want to notify all users regarding their overdue material?</p>
 </div>

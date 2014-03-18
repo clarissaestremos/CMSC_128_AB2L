@@ -1,4 +1,4 @@
- <div id="thisbody" id="mainbody" class="main-content">
+ <div id="mainbody" class="main-content">
 	<aside id="side-navigation" class="border-top width-1of4">
 		<div class="col width-1of1">
 			<div class="cell width-1of1">

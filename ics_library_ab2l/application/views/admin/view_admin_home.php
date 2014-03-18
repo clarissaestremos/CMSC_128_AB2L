@@ -232,14 +232,6 @@ else{
     <p>You have successfully confirmed a user account!</p>
 </div>
 
-<div id="returnsucc" title="Return Book Success">
-    <p>You have successfully returned a book!</p>
-</div>
-
-<div id="extendsucc" title="Extend Book Success">
-    <p>You have successfully extend the due date of a book!</p>
-</div>
-
 <div id='notifydialog' title='Notify Overdue Books Dialog'>
     <p>Do you really want to notify all users regarding their overdue books?</p>
 </div>
