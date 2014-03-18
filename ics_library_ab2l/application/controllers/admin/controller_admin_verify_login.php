@@ -1,5 +1,4 @@
 
-
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 class Controller_admin_verify_login extends CI_Controller {
@@ -10,7 +9,9 @@ class Controller_admin_verify_login extends CI_Controller {
         $this->load->helper(array('form', 'url','html'));
         $this->load->library(array('form_validation','session'));
     }
- 
+  	/**
+     * Checks the validation of input login information 
+     * */
     function index() {
         
         $this->form_validation->set_rules('username', 'username', 'trim|required|xss_clean');
@@ -26,7 +27,9 @@ class Controller_admin_verify_login extends CI_Controller {
             redirect('index.php/admin/controller_book', 'refresh');
            }       
      }
- 
+ 	/**
+ 	 * Sets the session information based on the input that has passed field validation 
+ 	*/
      function check_database($password) {
          //Field validation succeeded.  Validate against database
          $username = $this->input->post('username');
