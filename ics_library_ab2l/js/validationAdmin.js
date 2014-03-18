@@ -16,7 +16,7 @@
         msg="Invalid Input: ";
         
         if (str=="") msg+="First name is required!";
-        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{2,50}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
+        else if (!str.match(/^[A-Za-z|ñ|Ñ][A-Za-z|\.|\-|ñ|Ñ|\s]{1,49}$/))  msg+="Must be between 2-50 alpha characters!<br/>";
         else if(msg=="Invalid Input: ") msg="";
         document.getElementsByName("helpfname")[0].innerHTML=msg;
         if(msg=="") return true;
@@ -49,7 +49,7 @@
             msg+="Admin key is required!";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }
-        else if (!str.match(/^[A-Za-z0-9][A-Za-z0-9._]{6,8}$/)){
+        else if (!str.match(/^[A-Za-z0-9][A-Za-z0-9._]{7,9}$/)){
           msg+="Must be between 8-10 alphanumeric character!<br/>";
             document.getElementsByName("helpadminkey")[0].innerHTML=msg;
         }

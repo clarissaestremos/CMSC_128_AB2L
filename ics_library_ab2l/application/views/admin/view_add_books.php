@@ -65,13 +65,11 @@
 
             
                         function validate_subject() {
-                            count=0;
-                            subjects=document.getElementsByName("subject[]");
-                            document.getElementsByName("help_subject")[0].innerHTML=""
-                            for(i=0; i<subjects.length; i++){
-                                if(subjects[i].checked==1) count++;
-                            }
-                            if(count>0)
+                            console.log(document.getElementsByName('subject[]'));
+                            subjects=document.getElementsByName("subject[]")[0].selectedOptions.length;
+                            // console.log(subjects);
+                            document.getElementsByName("help_subject")[0].innerHTML="";
+                            if(subjects>0)
                                 return true;
                             document.getElementsByName("help_subject")[0].innerHTML="Subject is required! Select at least one."
                             return false;
@@ -366,30 +364,33 @@
                                                                     </div>
                                                                     <div class="col width-fit">
                                                                         <div class="cell">
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 2" onClick="validate_subject">CMSC 2</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 11" onClick="validate_subject()">CMSC 11</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 21" onClick="validate_subject()">CMSC 21</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 22" onClick="validate_subject()">CMSC 22</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 56" onClick="validate_subject()">CMSC 56</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 57" onClick="validate_subject()">CMSC 57</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 100" onClick="validate_subject()">CMSC 100</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 123" onClick="validate_subject()">CMSC 123</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 124" onClick="validate_subject()">CMSC 124</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 125" onClick="validate_subject()">CMSC 125</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 127" onClick="validate_subject()">CMSC 127</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 128" onClick="validate_subject()">CMSC 128</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 130" onClick="validate_subject()">CMSC 130</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 131" onClick="validate_subject()">CMSC 131</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 132" onClick="validate_subject()">CMSC 132</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 137" onClick="validate_subject()">CMSC 137</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 141" onClick="validate_subject()">CMSC 141</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 142" onClick="validate_subject()">CMSC 142</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 150" onClick="validate_subject()">CMSC 150</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 170" onClick="validate_subject()">CMSC 170</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 190" onClick="validate_subject()">CMSC 190</input>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 199" onClick="validate_subject()">CMSC 199</input></br>
-                                                                            <input type="checkbox" name="subject[]" value="CMSC 200" onClick="validate_subject()">CMSC 200</input></br>
-                                                                            <span name="help_subject" class="color-red"></span><br/>
+                                                                            <span class="tiny cell">Note: Press Ctrl(Windows)/Command(Mac) while selecting.</span></br>
+                                                                            <select name="subject[]" onChange="validate_subject()" style="height: 70pt" multiple="multiple">
+                                                                                <option value="CMSC 2">CMSC 2</option>
+                                                                                <option value="CMSC 11">CMSC 11</option>
+                                                                                <option value="CMSC 21">CMSC 21</option>
+                                                                                <option value="CMSC 22">CMSC 22</option>
+                                                                                <option value="CMSC 56">CMSC 56</option>
+                                                                                <option value="CMSC 57">CMSC 57</option>
+                                                                                <option value="CMSC 100">CMSC 100</option>
+                                                                                <option value="CMSC 123">CMSC 123</option>
+                                                                                <option value="CMSC 124">CMSC 124</option>
+                                                                                <option value="CMSC 125">CMSC 125</option>
+                                                                                <option value="CMSC 127">CMSC 127</option>
+                                                                                <option value="CMSC 128">CMSC 128</option>
+                                                                                <option value="CMSC 130">CMSC 130</option>
+                                                                                <option value="CMSC 131">CMSC 131</option>
+                                                                                <option value="CMSC 132">CMSC 132</option>
+                                                                                <option value="CMSC 137">CMSC 137</option>
+                                                                                <option value="CMSC 141">CMSC 141</option>
+                                                                                <option value="CMSC 142">CMSC 142</option>
+                                                                                <option value="CMSC 150">CMSC 150</option>
+                                                                                <option value="CMSC 170">CMSC 170</option>
+                                                                                <option value="CMSC 190">CMSC 190</option>
+                                                                                <option value="CMSC 199">CMSC 199</option>
+                                                                                <option value="CMSC 200">CMSC 200</option>
+                                                                            </select>
+                                                                            <span name="help_subject" class="color-red"></span><br/><br/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -557,15 +558,13 @@
                 if(i <aut.length-1)
                     author += ",";
             }
+
             var sub = document.getElementsByName("subject[]");
             var subject = '';
-            for(var i=0; i<sub.length; i++) {
-                if(sub[i].checked == 1){
-                    console.log(sub[i].value);
-                    subject =  subject+sub[i].value + " ";
-                    if(i <aut.length-1)
-                        subject += ",";
-                }
+            for(var i=0; i<sub[0].selectedOptions.length; i++) {
+                subject =  subject+sub[0].selectedOptions[i].innerText + " ";
+                if(i <aut.length-1)
+                    subject += ",";
             }
             var call = document.getElementsByClassName("call_nos");
             var call_no = '';
