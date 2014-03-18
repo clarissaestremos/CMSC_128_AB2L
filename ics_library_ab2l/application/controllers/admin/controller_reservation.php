@@ -31,7 +31,8 @@
 	        	$this->load->view("admin/view_footer");
 		
 		}//END OF get_All()
-	
+		
+		/* Function to extend the due date of a material. */
 		public function extend(){
 			if($this->session->userdata('logged_in_type')!="admin")
             		redirect('index.php/user/controller_login', 'refresh');
@@ -72,6 +73,7 @@
         		</script>";
     		}//END OF extend()
     		
+    		/* Function to get the information of overdue books. */
     		public function get_book_data(){
     			$row_number=$this->model_reservation->countRows("overdue");
         		//echo "<h1>$row_number<h1>";
@@ -101,6 +103,7 @@
         		$this->print_books($row, $data['links'],'overdue');
     		}
     		
+    		/* Function to get the information of borrowed books. */
     		public function get_book_data2(){
     			$row_number=$this->model_reservation->countRows("borrowed");
         		//echo "<h1>$row_number<h1>";
@@ -130,6 +133,7 @@
         		$this->print_books($row, $data['links'],'borrowed');
     		}
     		
+    		/* Function to print the information of the book (borrowed and overdue). This function is called in get_book_data and in get_book_data2. */
      		function print_books($overdue,$link,$stat){
      			$date = date("Y-m-d");
             		$count = 1;
