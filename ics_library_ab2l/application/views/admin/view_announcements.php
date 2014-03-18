@@ -12,7 +12,7 @@ and info to get row data.
 
 $counter = 0;
 $txt_file = file_get_contents('./application/announcements.txt');
-$rows = explode("*", $txt_file);
+$rows = explode("*", $txt_file);       //delimeter used for detecting each entry of announcement is '*'
 array_shift($rows);
 if($rows != NULL)
 {
@@ -20,7 +20,7 @@ if($rows != NULL)
 	foreach($rows as $row => $data)
 	{
 		$counter = $counter + 1;
-		$data1 = explode("^",$data);
+		$data1 = explode("^",$data);          //delimeter used for detecting the announcement's title
 		$info[$row]['date'] = $data1[0]; 
 		//$info[$row]['tc'] = $data1[1];
 
@@ -32,7 +32,7 @@ if($rows != NULL)
 
 		foreach($data1 as $row1 => $data2)
 		{
-			$row_data = explode('#', $data2);
+			$row_data = explode('#', $data2);       //delimeter used for detecting the announcement's body
 			$info[$row1]['title'] = $row_data[0];
 			$info[$row1]['content'] = $row_data[1];
 
