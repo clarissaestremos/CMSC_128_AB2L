@@ -6,24 +6,6 @@
 			$this->load->database();
 		}
 
-		/**function getCurrentDate(){
-			// set default timezone
-			date_default_timezone_set('Asia/Manila'); // CDT
-
-			$info = getdate();
-			$date = $info['mday'];
-			$month = $info['mon'];
-			$year = $info['year'];
-			$wday = $info['wday'];
-
-			$current_date = array(
-				'mday' => "$date",
-				'mon' => "$month",
-				'year' => "$year",
-				'wday' => "$wday"
-				);
-			return $current_date;
-		}*/
 
 		function getExpiration($date_reserved){
 			$span = 3;
@@ -359,3 +341,4 @@
 
 
 /*End of model_reserve_book.php*/
+/* Location: ./application/model/model_reserve_book.php */

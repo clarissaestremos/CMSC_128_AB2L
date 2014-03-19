@@ -27,4 +27,7 @@ query used: select statement to get the necessary info about the reserved book
 		}
 	}
 
+
+/* End of file model_reserved.php */
+/* Location: ./application/model/model_reserved.php */
 ?>

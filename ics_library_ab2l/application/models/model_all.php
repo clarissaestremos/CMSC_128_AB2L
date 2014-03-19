@@ -30,4 +30,6 @@ class Model_All extends CI_Model {
 
 }
 
+/* End of file model_all.php */
+/* Location: ./application/model/model_all.php */
 ?>

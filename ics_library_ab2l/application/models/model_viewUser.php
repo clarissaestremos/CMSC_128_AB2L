@@ -26,4 +26,8 @@
 			
 		}
 	}
+
+
+/* End of file model_viewUser.php */
+/* Location: ./application/model/model_viewUser.php */
 ?>

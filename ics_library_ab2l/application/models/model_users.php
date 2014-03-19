@@ -63,4 +63,7 @@ Query used was SELECT from the table 'user_account'.
 	}
 }
 
+
+/* End of file model_users.php */
+/* Location: ./application/model/model_users.php */
 ?>

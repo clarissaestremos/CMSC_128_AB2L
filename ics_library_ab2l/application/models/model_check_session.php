@@ -41,4 +41,7 @@ class Model_check_session extends CI_Model {
 
 	}
 }
+
+/* End of file model_check_session.php */
+/* Location: ./application/model/model_session.php */
 ?>

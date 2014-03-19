@@ -222,4 +222,8 @@ class Model_book extends CI_Model {
 		return $book_result;
 	}
 }
+
+
+/* End of file model_book.php */
+/* Location: ./application/model/model_book.php */
 ?>

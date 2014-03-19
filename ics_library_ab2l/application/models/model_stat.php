@@ -10,4 +10,8 @@
 		}
 		
 	}
+
+
+/* End of file model_stat.php */
+/* Location: ./application/model/model_stat.php */
 ?> 

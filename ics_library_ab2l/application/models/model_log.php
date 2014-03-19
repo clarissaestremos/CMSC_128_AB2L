@@ -30,4 +30,8 @@
 			$query = $this->db->query($sql) or die(mysql_error());
 		}
 	}
+
+
+/* End of file model_log.php */
+/* Location: ./application/model/model_log.php */
 ?>

@@ -22,4 +22,8 @@
 		    	return $query->row_array();
 	  	}
 	}
+
+
+/* End of file model_upload.php */
+/* Location: ./application/model/model_upload.php */
 ?>

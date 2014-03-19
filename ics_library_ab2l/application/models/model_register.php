@@ -1,10 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
-Model for Registration
-Author: Aristotle Martinez
-Function: Inserts the values from view_registration
-	*/
 	 
 	class Model_register extends CI_Model {
 	 
@@ -60,4 +55,7 @@ Function: Inserts the values from view_registration
 		}
 		 
 	}
+
+/* End of file model_register.php */
+/* Location: ./application/model/model_register.php */
 ?>

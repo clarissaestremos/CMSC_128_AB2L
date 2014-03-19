@@ -8,6 +8,7 @@ class Model_add_admin extends CI_Model {
    		$this->load->database();
 	}
 
+/*Function for adding new admin and its information*/
 	public function add_admin()
 	{
 	    $parent_key = $this->input->post('parent_key');
@@ -34,6 +35,7 @@ class Model_add_admin extends CI_Model {
     
 	}
 
+/*Function that gets the admin key of the admin who adds another admin*/
 	function get_adminkey($username)
 	{
     	$query = $this->db->get_where('admin_account', array('username' => $username));
@@ -53,4 +55,8 @@ class Model_add_admin extends CI_Model {
     	return $query->row_array();
   	}
 }
+
+
+/* End of file model_add_admin.php */
+/* Location: ./application/model/model_add_admin.php */
 ?>

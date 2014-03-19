@@ -255,4 +255,7 @@ class Model_reservation extends CI_Model {
 	}
 }
 
+
+/* End of file model_reservation.php */
+/* Location: ./application/model/model_reservation.php */
 ?>
