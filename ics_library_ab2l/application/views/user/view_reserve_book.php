@@ -41,6 +41,7 @@
 </div>
 </div>
 </div>
+<!--Confirmation modal for reservation of book-->
 <div id="dialog" title="Book Confirmation Dialog">
   <h5>Do you really wish to reserve this material?</h5>
   <p>Title: <?php echo $title?></p>
@@ -51,3 +52,6 @@
   ?></p>
   <p>Year of Publication: <?php echo $year_of_pub?></p>
 </div>
+
+<!-- End of file view_reserve_book.php -->
+<!-- Location: ./application/view/user/view_reserve_book.php -->
