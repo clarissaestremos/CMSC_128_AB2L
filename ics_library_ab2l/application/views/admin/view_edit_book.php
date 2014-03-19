@@ -894,3 +894,6 @@
     var link;
     var form;
 </script>
+
+<!-- End of file view_edit_book.php */
+    /* Location: ./application/views/admin/view_edit_book.php */ -->
