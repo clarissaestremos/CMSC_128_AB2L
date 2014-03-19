@@ -109,3 +109,5 @@
 <div id='cancelsuccess' title="Cancel Reservation Success">
     <p id='succmsg'>You have successfully cancelled your book reservation </p>
 </div>
+<!-- End of file view_reserved_book.php -->
+<!-- Location: ./application/view/user/view_reserved_book.php -->
