@@ -201,7 +201,23 @@ public function select_returned_books($account,$sort_by,$order_by,$data, $limit,
 	}
 
 	public function update_rank($call_number){
-		$this->db->query("UPDATE book_reservation SET  rank = rank-1 WHERE call_number = '".$call_number."' AND rank > 1 AND status = 'reserved' ");
+		$query = $this->db->query("SELECT id FROM book_call_number WHERE call_number LIKE '$call_number'");
+		$book = $query->result();
+			
+		$this->load->model('model_reserve_book');
+		$borrower = $this->model_reserve_book->get_borrower($book[0]->id);
+		$count=0;
+		foreach ($borrower as $user) {
+			if($count == 0)	{
+				$row = $this->model_reserve_book->fetch_available_book($book[0]->id);
+				$newdata = array('call_number' => $row->result()[0]->call_number, 'rank' => 1);
+				$this->db->update('book_reservation', $newdata, array('account_number' => $user->account_number));
+			}
+			else{
+				$this->model_reserve_book->update_book_res($book[0]->id, $user->account_number);
+			}
+			$count++;
+		}
 	}
 
 	public function update_available($call_number){

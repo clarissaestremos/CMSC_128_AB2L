@@ -109,7 +109,6 @@
 						
 						$row = $this->model_reserve_book->fetch_available_book($data['id']);
 						$data['call_number'] = $row->result()[0]->call_number;
-			
 						$status = "reserved";
 						$rank = 1;
 						$call_number = $data['call_number'];
@@ -331,7 +330,9 @@
 			return $this->db->get();
 		}
 
-		function get_borrower($call_number){
+		function get_borrower($id){
+			$query = $this->db->query("SELECT call_number FROM book_call_number WHERE id LIKE '$id'");
+			$call_number = $query->result()[0]->call_number;
 			$query = $this->db->query("SELECT account_number FROM book_reservation
 										WHERE call_number LIKE '$call_number'
 										AND status LIKE 'reserved'
@@ -340,7 +341,10 @@
 			return $query->result();
 		}
 
-		function update_book_res($call_number, $account_number){
+		function update_book_res($id, $account_number){
+			$query = $this->db->query("SELECT call_number FROM book_call_number WHERE id LIKE '$id'");
+			$row = $query->result();
+			$call_number = $row[0]->call_number;
 			$query = $this->db->query("SELECT rank FROM book_reservation
 										WHERE account_number LIKE '$account_number'
 										AND call_number LIKE '$call_number'
