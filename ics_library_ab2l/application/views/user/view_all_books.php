@@ -7,9 +7,11 @@
          
         $.ajax({ //change the url if you are about to change the location
             url: base_url+"index.php/user/controller_books/get_book_data1",   
+            
+            type: 'POST',
             async: false,
             data: serialize_form1(),
-            success: function(result){      //change here is the name of the div to display the results
+            success: function(result){
                 $('#change_here').html(result);
                 $('#change_here').fadeIn(1000);
                 $('#change_here').removeClass('loading');
@@ -38,9 +40,9 @@ This file will basically prints all the books in the library with pagination -->
                 <!-- Two select will be present on the page one is for choosing what to sort
                     the other one is to whether in descending or ascending 
                     If the value in the select changes the get_data1() function will be called-->
-                <center><form method="post" id="sort_list" name="sort_list" action="<?php echo site_url("application/controllers/user/controller_books/sort_by()"); ?>">
+                <center><form method="post" id="sort_list" name="sort_list">
                 <b> Sort List By: </b> 
-                <select id = "sort_by" name ="sort_by" onchange = "get_data1();">
+                <select id = "sort_by" name ="sort_by" onchange = "get_data1();" onload = "get_data1();">
                   <option value="subject">Subject</option>
                   <option value="author">Author</option>
                   <option selected = "selected" value="title">Title</option>
