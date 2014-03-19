@@ -27,3 +27,5 @@
 	 
 	</body>
 </html>
+<!-- End of file view_user_upload_success.php -->
+<!-- Location: ./application/view/user/vew_user_upload_success.php -->
