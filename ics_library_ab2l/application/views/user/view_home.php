@@ -32,11 +32,6 @@
                         <li>
                             <img src="<?php echo base_url();?>images/home/6.jpg" alt="image6"/>
                         </li>
-
-                        <li>
-                            <img src="<?php echo base_url();?>images/home/7.jpg" alt="image7"/>
-                        </li> 
-
                         <li>
                             <img src="<?php echo base_url();?>images/home/8.jpg" alt="image8"/>
                         </li> 
@@ -61,7 +56,6 @@
 	                        <li><a href="#">Image4</a><img src="<?php echo base_url();?>images/thumbs/4.jpg" alt="thumb4" /></li>
 	                        <li><a href="#">Image5</a><img src="<?php echo base_url();?>images/thumbs/5.jpg" alt="thumb5" /></li>
 	                        <li><a href="#">Image6</a><img src="<?php echo base_url();?>images/thumbs/6.jpg" alt="thumb6" /></li>
-	                        <li><a href="#">Image7</a><img src="<?php echo base_url();?>images/thumbs/7.jpg" alt="thumb7" /></li>
 	                        <li><a href="#">Image8</a><img src="<?php echo base_url();?>images/thumbs/8.jpg" alt="thumb8" /></li>
 	                        <li><a href="#">Image9</a><img src="<?php echo base_url();?>images/thumbs/9.jpg" alt="thumb9" /></li>
 	                        <li><a href="#">Image10</a><img src="<?php echo base_url();?>images/thumbs/10.jpg" alt="thumb10" /></li>
@@ -86,7 +80,7 @@
 										$rows = explode("*", $txt_file);
 										array_shift($rows);
 
-                               		
+                               							//Creation of all the tabs
 										if($rows != NULL){
 											foreach($rows as $row => $data){
 												$counter = $counter + 1;
@@ -115,10 +109,11 @@
 								<?php
 								$counter = 0;
 								$count = 1;
+								//Opening of files for announcements
 								$txt_file = file_get_contents('./application/announcements.txt');
 								$rows = explode("*", $txt_file);
 								array_shift($rows);
-                       		
+                       						//Printing of all the updates and announcements
 								if($rows != NULL){
 									foreach($rows as $row => $data)
 									{
@@ -168,6 +163,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.eislideshow.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.easing.1.3.js"></script>
 <script type="text/javascript">
+//Creation of rotating tabs and slideshow
 $(window).ready(function() {
 	$('#ei-slider').eislideshow({
 						animation			: 'center',
@@ -185,3 +181,5 @@ $(document).ready(function() {
 	});
 	});
 </script>
+<!-- End of file view_home.php -->
+<!-- Location: ./application/view/user/view_home.php -->

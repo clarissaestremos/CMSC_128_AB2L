@@ -16,3 +16,7 @@
 </div>
 
 </div>
+
+   <!-- End of file view_admin_login.php */
+    /* Location: ./application/views/admin/view_admin_login.php */ -->
+    

@@ -186,6 +186,7 @@
                 } 
             
                 else{
+                    //If there is no result
                     echo "<hr>";
                     echo "<h2 class='color-grey'>$message3</h2>";
                     echo "<hr>";
@@ -195,3 +196,5 @@
         </div>
     </div>
 </div>
+<!-- End of file view_borrowed_book.php -->
+<!-- Location: ./application/view/user/view_borrowed_book.php -->

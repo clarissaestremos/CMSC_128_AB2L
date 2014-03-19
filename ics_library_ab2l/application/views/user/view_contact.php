@@ -116,3 +116,5 @@ the user side -->
 		</div>
 	</div>
 </div>
+<!-- End of file view_contact.php -->
+<!-- Location: ./application/view/user/view_contact.php -->

@@ -7,3 +7,5 @@
 			</div>
 	</aside>
 </div>
+<!-- End of file view_logged_in.php -->
+<!-- Location: ./application/view/user/view_logged_in.php -->

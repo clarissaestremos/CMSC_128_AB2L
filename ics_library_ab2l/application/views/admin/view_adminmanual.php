@@ -353,3 +353,6 @@
 		</div>
 	</body>
 </html>
+
+<!-- End of file view_adminmanual.php */
+    /* Location: ./application/views/admin/view_adminmanualphp */ -->

@@ -28,3 +28,5 @@
 
 </script>
 </html>
+<!-- End of file view_footer.php */
+    /* Location: ./application/views/admin/view_footer.php */ -->

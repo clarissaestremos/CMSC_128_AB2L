@@ -56,3 +56,6 @@
 <div id="cancelsuccess" title="Cancel Reservation Success">
 	<p>You have successfully cancelled a book reservation.</p>
 </div>
+
+<!-- End of file view_outgoing_books.php */
+    /* Location: ./application/views/admin/view_outgoing_books.php */ -->

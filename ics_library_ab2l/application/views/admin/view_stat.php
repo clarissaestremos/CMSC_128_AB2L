@@ -71,3 +71,6 @@
 		</div>
 	 </div>
    </div>
+
+<!-- End of file view_stat.php */
+    /* Location: ./application/views/admin/view_stat.php */ -->

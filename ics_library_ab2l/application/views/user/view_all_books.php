@@ -68,3 +68,5 @@ This file will basically prints all the books in the library with pagination -->
         </div>
     </div>
 </div>
+<!-- End of file view_all_books.php -->
+<!-- Location: ./application/view/user/view_all_books.php -->

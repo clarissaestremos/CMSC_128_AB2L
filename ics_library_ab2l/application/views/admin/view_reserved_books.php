@@ -117,3 +117,5 @@
 		<div id='notifydialog' title='Notify Overdue Material Dialog'>
 			<p>Do you really want to notify all users regarding their overdue material?</p>
 		</div>
+<!-- End of file view_reserved_books.php */
+    /* Location: ./application/views/admin/view_reserved_books.php */ -->

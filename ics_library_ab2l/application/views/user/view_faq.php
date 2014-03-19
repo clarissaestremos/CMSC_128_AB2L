@@ -90,3 +90,5 @@
 				</div>
 	</div>
 </div>
+<!-- End of file view_faq.php -->
+<!-- Location: ./application/view/user/view_faq.php -->

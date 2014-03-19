@@ -214,5 +214,5 @@
 
 </script>
 
-   /* End of file view_add_announcement.php */
-    /* Location: ./application/views/admin/view_add_announcement.php */
+<!--   /* End of file view_add_announcement.php */
+    /* Location: ./application/views/admin/view_add_announcement.php */-->

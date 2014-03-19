@@ -8,3 +8,5 @@ echo  form_open_multipart('index.php/user/controller_upload/uploadImage')?>
 </ul>
 
 <?php echo form_close();?>
+<!-- End of file view_upload -->
+<!-- Location: ./application/view/user/vew_upload.php -->

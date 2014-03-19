@@ -652,5 +652,5 @@
 
 </script>
 
-   /* End of file view_add_books.php */
-    /* Location: ./application/views/admin/view_add_books.php */
+  <!-- /* End of file view_add_books.php */
+    /* Location: ./application/views/admin/view_add_books.php */-->

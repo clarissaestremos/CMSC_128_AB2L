@@ -231,3 +231,5 @@ This will display the the profiel and show necessary input fields for edit of va
 	</div>
 </div>
 <script src="<?php echo base_url() ?>js/validation.js"></script>
+<!-- End of file view_edit.php -->
+<!-- Location: ./application/view/user/view_edit.php -->

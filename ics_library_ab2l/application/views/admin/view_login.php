@@ -48,3 +48,6 @@
 
 
 </html>
+
+<!-- End of file view_login.php */
+    /* Location: ./application/views/admin/view_login.php */ -->

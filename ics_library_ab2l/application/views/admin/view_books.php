@@ -169,3 +169,6 @@ function serialize_form1()
 
     var thisform;
 </script>
+
+<!-- End of file view_books.php */
+    /* Location: ./application/views/admin/view_books.php */ -->

@@ -103,9 +103,12 @@
                             </div>
                         </div>
                     </div>
+<!--Confirmation Modal-->
 <div id="canceldialog" title="Reserved Book Cancellation Dialog">
   <h5>Do you really wish to cancel your book reservation?</h5>
 </div>
 <div id='cancelsuccess' title="Cancel Reservation Success">
     <p id='succmsg'>You have successfully cancelled your book reservation </p>
 </div>
+<!-- End of file view_reserved_book.php -->
+<!-- Location: ./application/view/user/view_reserved_book.php -->

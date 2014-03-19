@@ -174,3 +174,5 @@ and it will be validated -->
 
 
      </script>
+<!-- End of file view_editprofile_error.php -->
+<!-- Location: ./application/view/user/view_editprofile_error.php -->

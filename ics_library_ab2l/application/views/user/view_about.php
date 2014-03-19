@@ -351,6 +351,7 @@ Also, a section for the class members is alloted -->
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tabslet.min.js"></script>
 <script type="text/javascript">
+//Creation of the auto rotating slider and tabs
 $(window).ready(function() {
 	$('#slider').nivoSlider();
 });
@@ -367,3 +368,5 @@ $(document).ready(function() {
 		#para{ font-size: 20px;} 
 		#listing{ font-size: 15px;} 
 	</style>
+<!-- End of file view_about.php -->
+<!-- Location: ./application/view/user/view_about.php -->

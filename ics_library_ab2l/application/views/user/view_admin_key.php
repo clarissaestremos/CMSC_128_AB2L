@@ -51,3 +51,5 @@ admin will input the admin key before entering the admin portal -->
 		</div>
 	</div>
 </div>
+<!-- End of file view_admin_key.php -->
+<!-- Location: ./application/view/user/view_admin_key.php -->

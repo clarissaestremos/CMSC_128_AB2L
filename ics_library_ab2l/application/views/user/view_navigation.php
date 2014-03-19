@@ -15,3 +15,5 @@
 <!-- This is the navigation side of the sites, different links are included, edit this 
 when you are going to change the navigation of the sites and t will include other pages
 that includes the navigation -->
+<!-- End of file view_navigation.php -->
+<!-- Location: ./application/view/user/view_navigation.php -->

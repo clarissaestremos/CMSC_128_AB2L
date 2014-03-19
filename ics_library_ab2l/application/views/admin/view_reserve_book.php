@@ -39,3 +39,6 @@
   ?></p>
   <p>Year of Publication: <?php echo $year_of_pub?></p>
 </div>
+
+<!-- End of file view_reserve_book.php */
+    /* Location: ./application/views/admin/view_reserve_book.php */ -->

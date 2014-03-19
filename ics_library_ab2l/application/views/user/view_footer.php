@@ -27,3 +27,5 @@
 	</body>
 	<!--<script src="<?php echo base_url(); ?>/js/app.js"></script>-->
 </html>
+<!-- End of file view_footer.php -->
+<!-- Location: ./application/view/user/view_footer.php -->

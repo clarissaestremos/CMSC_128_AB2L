@@ -95,3 +95,6 @@ else
 <div id="dasucc" title="Delete All Announcement Success">
   <p>You have successfully deleted all the announcements!</p>
 </div>
+
+<!-- End of file view_announcements.php */
+    /* Location: ./application/views/admin/view_announcements.php */ -->

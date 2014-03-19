@@ -287,5 +287,5 @@
     });
     </script>
     
-    /* End of file view_add_user.php */
-    /* Location: ./application/views/admin/view_add_user.php */
+ <!--   /* End of file view_add_user.php */
+    /* Location: ./application/views/admin/view_add_user.php */-->

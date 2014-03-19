@@ -89,9 +89,12 @@
 							</div>
 						</form>
 					</div>
+					<!--Div where ajax result will be placed-->
 					<div id="list_area"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- End of file view_search.php -->
+<!-- Location: ./application/view/user/view_search.php -->

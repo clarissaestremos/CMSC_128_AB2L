@@ -97,3 +97,5 @@
     <div id="confsuccess" title="Confirm User Account Success">
         <p>You have successfully confirmed a user account!</p>
     </div>
+<!-- End of file view_search_user.php */
+    /* Location: ./application/views/admin/view_search_user.php */ -->

@@ -92,3 +92,6 @@
 			</div>
 		</footer>
 	</aside>
+	
+	<!-- End of file view_aside.php */
+    /* Location: ./application/views/admin/view_aside.php */ -->

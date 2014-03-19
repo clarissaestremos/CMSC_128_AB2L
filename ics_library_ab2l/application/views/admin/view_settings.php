@@ -166,3 +166,6 @@
 <div id='cancelmsg' Title="Cancel Settings Confirmation">
 	<p>Do you really want to cancel changing the administrator's settings?</p>
 </div>
+
+<!-- End of file view_settings.php */
+    /* Location: ./application/views/admin/view_settings.php */ -->

@@ -216,3 +216,6 @@
 
     var thisform;
 </script>
+
+<!-- End of file view_search_book */
+    /* Location: ./application/views/admin/view_search_book.php */ -->
