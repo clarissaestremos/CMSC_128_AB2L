@@ -67,7 +67,7 @@ class Controller_settings extends Controller_log {
 				}
 				//save content to string
 				//overwrite the text file with the new settings
-				$savestring = '<?php\n\t\t$email = "'.$new_email.'";\n\t\t$password = "'.$new_password.'";\n?>';
+				$savestring = '<?php $email = "'.$new_email.'"; $password = "'.$new_password.'"; ?>';
 				$fp = fopen('./application/controllers/admin/controller_retrieve_email.php', "w");
 				fwrite($fp, $savestring);
 				fclose($fp);
@@ -133,5 +133,5 @@ class Controller_settings extends Controller_log {
     }
 }
 /* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* Location: ./application/controllers/admin/controller_settings.php */
 
