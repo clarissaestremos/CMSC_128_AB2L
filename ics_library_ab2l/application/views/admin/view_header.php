@@ -1047,3 +1047,6 @@ function
     var thisform;
 	 var button;
 </script>
+
+<!-- End of file view_header.php */
+    /* Location: ./application/views/admin/view_header.php */ -->
