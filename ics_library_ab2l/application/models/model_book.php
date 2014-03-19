@@ -66,11 +66,16 @@ class Model_book extends CI_Model {
 
 		$this->clear_auth_subj($id, 'book_author');
 		$this->clear_auth_subj($id, 'book_subject');
-		$this->clear_auth_subj($id, 'book_call_number');
 		$this->clear_auth_subj($id, 'tag');
 		
+		$this->load->model('model_get_list');
+		$row = $this->model_get_list->get_edit_call_numbers($id);
+		foreach ($row as $value) {
+			$this->db->delete('book_call_number', array('call_number' => $value->call_number));
+		}
 
 		if(isset($call_numbers)){
+			if($call_numbers !== "")
 			foreach ($call_numbers as $call_number) {
 				$call_number = trim($call_number);
 				if(!empty($call_number)){
@@ -123,9 +128,6 @@ class Model_book extends CI_Model {
 			}
 		}
 		
-		$book = array(
-			'quantity' => sizeof($call_numbers)
-		);
 		$this->db->where('id', $id);
 		$this->db->update('book', $book);
 	

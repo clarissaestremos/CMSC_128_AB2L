@@ -1,4 +1,4 @@
-/*Validates if all changes made are following the format of each input*/
+<!--Validates if all changes made are following the format of each input-->
 
 <script type="text/javascript">
 
@@ -34,8 +34,6 @@
     function validate_call_no() {
         msg="Invalid input: ";
 
- 
-        //=-========
         for(i=0;i<$('input[name*="call_number[]"]'.length);i++){
             msg="Invalid input: ";
             str=document.getElementsByName("call_number[]")[i].value;
@@ -224,7 +222,6 @@
         var maxFieldWidth = "500";
         var elementClassName = element.id; // this is the class name of the button that was clicked
         var fieldNumber = elementClassName.substr(3, elementClassName.length);
-        alert(copy);
         var newFieldNumber = ++fieldNumber;
        
         var rowContainer = element.parentNode; // get the surrounding div so we can add new elements
@@ -385,12 +382,12 @@
                                                             $ccount = 0;
                                                             $call_numbers = $this->model_get_list->get_edit_call_numbers($book[0]->id);
                                                             foreach ($call_numbers as $call_number) {
-                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><br/><span id="'.$ccount.'" name="help_call_number" class="color-red"></span></div>';
+                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" /><input type="button" id="deletebutton'.$ccount.'" value="Delete Copy" onclick="deleteCopy('.$ccount.');"/><span id="'.$ccount.'" name="help_call_number" class="color-red"></span><br/></div>';
                                                                 $ccount++;
                                                             }
                                                             $call_numbers = $this->model_get_list->get_notedit_call_numbers($book[0]->id);
                                                             foreach ($call_numbers as $call_number) {
-                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><br/><span id="'.$ccount.'" name="help_call_number" class="color-red"></span></div>';
+                                                                echo '<div id="cnum'.$ccount.'"><input id = "call_number'.$ccount.'" class="call_nos" type = "text" name = "call_number[]" value="'.$call_number->call_number.'" disabled/><span id="'.$ccount.'" name="help_call_number" class="color-red"></span><br/></div>';
                                                                 $ccount++;
                                                             }
                                                             
@@ -673,7 +670,7 @@
                                                         <?php 
                                                             $tags = $this->model_get_list->get_book_tags($book[0]->id);
                                                             foreach ($tags as $tag) {
-                                                                echo '<input id = "tags" type = "text" name = "tags[]" value="'.$tag->tag_name.'" /><br/>';
+                                                                echo '<input id = "tags" type = "text" class = "tags" name = "tags[]" value="'.$tag->tag_name.'" /><br/>';
                                                             }
                                                         ?>
                                                         <span name="help_tags" class="color-red"></span>
@@ -816,7 +813,7 @@
                 
                 for(var i=0; i<sub[0].selectedOptions.length; i++) {
                     subject =  subject+sub[0].selectedOptions[i].innerText + " ";
-                    if(i <aut.length-1)
+                    if(i <sub.length)
                         subject += ",";
                 }
                 
@@ -825,7 +822,7 @@
                 
                 for(var i=0; i<call.length; i++) {
                     call_no =  call_no+call[i].value + " ";
-                    if(i < aut.length)
+                    if(i < call.length)
                         call_no += ",";
                 }
                 var t = document.getElementsByClassName("tags");

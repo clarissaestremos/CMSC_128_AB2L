@@ -277,13 +277,22 @@ class Controller_book extends Controller_log {
             redirect('index.php/user/controller_login', 'refresh');
 		$this->load->model('model_book');
 		$id = $this->input->post('id');
-		$call_numbers = array_unique ($this->input->post('call_number'));
+		if($this->input->post('call_number'))
+			$call_numbers = array_unique ($this->input->post('call_number'));
+		else $call_numbers = "";
 		$book_authors = array_unique ($this->input->post('author'));
 		$book_subjects = array_unique ($this->input->post('subject'));
 		$tags = array_unique ($this->input->post('tags'));
 		$isbn = $this->input->post('isbn');
 		$typeCheck = $this->input->post('type');
-
+		$this->load->model('model_get_list');
+		
+		if($call_numbers !== "")
+			$no_of_available = sizeof($call_numbers);
+		else $no_of_available = 0;
+		
+		$row = $this->model_get_list->get_notedit_call_numbers($id);
+		$quantity = $no_of_available+count($row);
 		if(sizeof($call_numbers) >= 1){
 			if ($typeCheck != "BOOK")
 				$isbn = "";
@@ -293,7 +302,7 @@ class Controller_book extends Controller_log {
 				'no_of_available' => $no_of_available,
 				'type' => strtoupper($this->input->post('type')),
 				'isbn' => $isbn,
-				'quantity' => sizeof($call_numbers),
+				'quantity' => $quantity
 			);
 
 			$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags);
@@ -304,6 +313,7 @@ class Controller_book extends Controller_log {
 
 			$newdata = array('id' => $id);
 			$this->session->set_userdata($newdata);
+			$base = base_url();
 			echo "<div id='mysuccess' title='Empty Call Number'>
 					<h6>A book must have at least one copy. Do you want to delete the record of the book in the library?</h6>
 				</div>
