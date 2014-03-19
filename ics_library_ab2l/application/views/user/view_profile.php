@@ -181,3 +181,5 @@
 <script src="<?php echo  base_url() ?>js/edit_email.js"></script>
 <script src="<?php echo  base_url() ?>js/edit_password.js"></script>
 <script src="<?php echo  base_url() ?>js/edit_picture.js"></script>
+<!-- End of file view_profile.php -->
+<!-- Location: ./application/view/user/view_profile.php -->
