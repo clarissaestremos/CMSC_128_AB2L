@@ -103,6 +103,7 @@
                             </div>
                         </div>
                     </div>
+<!--Confirmation Modal-->
 <div id="canceldialog" title="Reserved Book Cancellation Dialog">
   <h5>Do you really wish to cancel your book reservation?</h5>
 </div>
