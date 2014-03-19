@@ -327,3 +327,5 @@
 		</div>
 	</body>
 </html>
+<!-- End of file view_user_manual_borrower.php -->
+<!-- Location: ./application/view/user/vew_user_manual_borrower.php -->
