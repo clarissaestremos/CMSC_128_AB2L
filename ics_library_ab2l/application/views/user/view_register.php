@@ -232,6 +232,7 @@
                         </div>
                     </div>
                 </div>
+<!--Registration confirmation modal-->
 <div id='registerconf' title='Registration Confirmation Dialog'>
     <h5>Are you sure that the following information is true?</h5>
     <p id='regname'></p>
@@ -246,7 +247,7 @@
             <script src="<?php echo base_url() ?>js/register_validation.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-
+	//Creation of the modal
         $("#registerconf").dialog({
         autoOpen: false,
         modal: true,
@@ -272,7 +273,8 @@
         }
 
         });
-
+	//Confirmation modal for user registration.
+	//Prints all the filled up forms together with the inputs
         $( "#userRegister" ).submit(function (e) {
             e.preventDefault();
             form = $(this).get(0).id;
@@ -294,3 +296,5 @@
         });
     });
 </script>
+<!-- End of file view_register.php -->
+<!-- Location: ./application/view/user/view_register.php -->
