@@ -331,3 +331,5 @@ if($this->session->userdata('logged_in_type')=='admin')
 	var form;
 	var link;
 </script>
+<!-- End of file view_header.php -->
+<!-- Location: ./application/view/user/view_header.php -->
