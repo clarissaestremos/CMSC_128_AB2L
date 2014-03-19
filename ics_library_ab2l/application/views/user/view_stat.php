@@ -65,3 +65,5 @@
 <div class = "hero-unit">
 		<div id="chartdiv"></div>
 </div>
+<!-- End of file view_stat.php -->
+<!-- Location: ./application/view/user/view_stat.php -->
