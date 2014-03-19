@@ -144,7 +144,10 @@ function setActivity(name, form){
 
 //get the data of the books after clicking the search button
 function get_data(str, str2, clicked){
+	
 	var flag = true;
+
+	//alert(token[1]);
 	checkIfClicked=clicked;
 	searchform = str2;
 	if(checkIfClicked){
@@ -190,8 +193,11 @@ function get_data(str, str2, clicked){
 //This will be used in sending data inputs in Ajax
 function serialize_form()
 {
+	var string=$('#sinput').val();
+	var token=string.trim("//s");
+	//alert(token);
 	if(searchform == 'search_form'){
-		$('#sinput').val(sinput);
+		$('#sinput').val(token);
 		$('#category').val(category);
 	}else{
 		$('#title').val(title);
