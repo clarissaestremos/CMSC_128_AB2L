@@ -235,5 +235,5 @@
 <div id='notifydialog' title='Notify Overdue Books Dialog'>
     <p>Do you really want to notify all users regarding their overdue books?</p>
 </div>
-   /* End of file view_admin_home.php */
-    /* Location: ./application/views/admin/view_admin_home.php */
+  <!-- /* End of file view_admin_home.php */
+    /* Location: ./application/views/admin/view_admin_home.php */-->
