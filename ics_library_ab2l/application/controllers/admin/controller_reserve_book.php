@@ -86,13 +86,13 @@
 					}
 					$num_borrowed = $this->model_reserve_book->fetch_user_reservation($data['borrower'])->num_rows();
 					if($num_borrowed < 3){
-						// echo "<script>console.log("$num_borrowed==0")</script>";
+					
 						$row = $this->model_reserve_book->fetch_user2($data['borrower']);
 						foreach ($row->result() as $value) {
 							$user_status = $value->status;
 						}
 						if($user_status == 'approve'){
-							// echo "<script>console.log("$user_status==approve")</script>";
+							
 							$row = $this->model_reserve_book->fetch_book($data['id']);
 							if($row->num_rows() == 1){
 								foreach ($row->result() as $value) {
@@ -103,7 +103,7 @@
 							//if the user's account is approved, and his number of borrowed/reserved books is less than three,
 							//and there is an available copy of the book, then he is allowed to reserve it
 							if($no_of_available > 0){
-								// echo "<script>console.log("$no_of_available==0")</script>";
+							
 								$data['updatechecker'] = false;
 								if($this->model_reserve_book->add_reservation($data)){
 									echo "<div id='mysuccess' title='Success: Reserved'>

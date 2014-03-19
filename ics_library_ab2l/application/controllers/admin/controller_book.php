@@ -296,7 +296,6 @@ class Controller_book extends Controller_log {
 				'quantity' => sizeof($call_numbers),
 			);
 
-			//BUG: CHECK IF A COPY OF THE BOOK IS ON LOAN, THEN SUBTRACT NUMBER OF ON LOAN BOOKS IN QUANTITY THEN UPDATE NO. OF AVAILABLE
 			$this->model_book->edit_book($id, $book, $call_numbers, $book_authors, $book_subjects, $tags);
 			$this->add_log("Admin $session_user updated book with ID Number: $id", "Update Book");
 			$this->edit_success();	

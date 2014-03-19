@@ -1,8 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
-from Aristotle Martinez Register Module
-*/
+
 include_once("controller_log.php");
 class Controller_add_admin extends Controller_log{
     public function __construct(){
