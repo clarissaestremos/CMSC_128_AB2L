@@ -5,6 +5,7 @@
 	
 <script type = "text/javascript">
 	var base_url = "<?php echo base_url() ?>";
+	//Creation of accordion UI
 	$(function() {
 	$( "#accordion" ).accordion({
    		heightStyle: "content"
@@ -130,3 +131,5 @@
 		</div>
 	</div>
 </div>
+<!-- End of file view_search_book.php -->
+<!-- Location: ./application/view/user/view_search_book.php -->
