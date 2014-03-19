@@ -13,7 +13,7 @@
 		  echo "chartData.push({title:'{$row->title}', value:{$row->book_stat}});";
 	  }
 	?>
-	
+	//Set the attributes of the chart
 	var chartProp = {
 		"type": "pie",
 		"theme": "dark",
@@ -46,6 +46,7 @@
 
 </script>
 
+<!-- Set the style of the charts -->
 <style type="text/css">
 	#chartdiv{
 		height: 450px; 
@@ -60,6 +61,7 @@
 		<p class="tiny">Statistics</p>
 	</div>
 </div>
+<!-- This is where the chart of the stat will be displayed -->
 <div class = "hero-unit">
 		<div id="chartdiv"></div>
 </div>

@@ -12,3 +12,6 @@
 				<li><a href="<?php echo base_url(); ?>index.php/user/controller_stat">Book Statistics</a></li>
 				<li><a href="<?php echo base_url(); ?>index.php/user/controller_faq">FAQS</a></li>
 				<li><a href="<?php echo base_url(); ?>index.php/user/controller_contact">Contact Us</a></li>	
+<!-- This is the navigation side of the sites, different links are included, edit this 
+when you are going to change the navigation of the sites and t will include other pages
+that includes the navigation -->

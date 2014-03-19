@@ -1,3 +1,4 @@
+<!-- This is will show when the user added a picture successfully -->
 <html>
 	<head>
 		<title> Image Upload </title>

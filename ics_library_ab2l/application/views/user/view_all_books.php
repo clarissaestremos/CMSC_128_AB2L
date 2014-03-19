@@ -1,17 +1,15 @@
+<!-- Script for ajax in pagination of viewing all the list of books -->
 <script type="text/javascript">
     var base_url = "<?php echo base_url() ?>";
-    window.onload = get_data1;
+    window.onload = get_data1;          //on default load of page get_data1() will be called 
 
     function get_data1(){ 
          
-        $.ajax({
-            //url: "http://localhost/zurbano_module/index.php/controller_search_book/get_book_data",        //EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
-            url: base_url+"index.php/user/controller_books/get_book_data1",     //EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
-            
-            type: 'POST',
+        $.ajax({ //change the url if you are about to change the location
+            url: base_url+"index.php/user/controller_books/get_book_data1",   
             async: false,
             data: serialize_form1(),
-            success: function(result){
+            success: function(result){      //change here is the name of the div to display the results
                 $('#change_here').html(result);
                 $('#change_here').fadeIn(1000);
                 $('#change_here').removeClass('loading');
@@ -20,13 +18,15 @@
     
     }
 
-
+    //Serialize the form
     function serialize_form1(){
-    //  document.write(str);
         return $("#sort_list").serialize();
     }
 </script>
+<!-- End of script file -->
 
+<!-- Start of main body in viewing all the list of books in the user side
+This file will basically prints all the books in the library with pagination -->
 <div id="main-body" class="site-body">
     <div class="site-center">
         <div class="cell body">
@@ -35,6 +35,9 @@
         
         <div class="col">
             <div class="cell">
+                <!-- Two select will be present on the page one is for choosing what to sort
+                    the other one is to whether in descending or ascending 
+                    If the value in the select changes the get_data1() function will be called-->
                 <center><form method="post" id="sort_list" name="sort_list" action="<?php echo site_url("application/controllers/user/controller_books/sort_by()"); ?>">
                 <b> Sort List By: </b> 
                 <select id = "sort_by" name ="sort_by" onchange = "get_data1();">
@@ -55,7 +58,8 @@
                     <div class="header text-center background-red">
                         List of all books
                     </div>
-                    <div id = "change_here">
+                    <!-- This is where the results will be printed -->
+                    <div id = "change_here">        
                     </div>
                 </div>
             </div>

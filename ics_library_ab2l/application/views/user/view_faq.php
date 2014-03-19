@@ -1,9 +1,17 @@
+<!-- This file will display all the faqs in the user side -->
 <div id="main-body" class="site-body">
 		<div class="site-center">
 	<div class="cell body">
 			<p class="tiny">FAQ</p>
 		</div>
 				<div id ="panel">
+						<!-- LIST OF ALL THE QUESTIONS IN FAQS  
+							To add a new question
+							<h3> Your Question </h3>
+							<div>
+								<p> The asnswer </p>
+							</div>
+							-->
 			            <div id="accordion">
 							<h3 >1.) Can a Non-UPLB student or faculty borrow books?</h3>
 							<div>

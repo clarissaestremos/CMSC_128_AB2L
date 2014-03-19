@@ -1,3 +1,6 @@
+<!-- This file is for editing the profile of the user
+Will show you a form just like in registrations wherein you will input a value
+and it will be validated -->
 <div id="main-body" class="site-body">
         <div class="site-center">
 <div class="cell body">
@@ -59,6 +62,8 @@
     </div>
   </div>
 </div>
+
+<!-- This includes script tags for validation of the value input by the user -->
     <script src="<?php echo base_url() ?>js/validation.js"></script>
      <script >
      name = $("#username").text();

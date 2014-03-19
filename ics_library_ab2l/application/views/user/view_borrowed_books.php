@@ -1,16 +1,15 @@
+<!-- Script for ajax in pagination of viewing list of borrowed books -->
 <script type="text/javascript">
     var base_url = "<?php echo base_url() ?>";
-    window.onload = get_data1;
+    window.onload = get_data1;          //on default load of page get_data1() will be called 
     
     function get_data1(){ 
      
-        $.ajax({
-            
+        $.ajax({ //change the url if you are about to change the location            
             url: base_url+"index.php/user/controller_book/get_book_data",     //EDIT THIS URL IF YOU ARE USING A DIFFERENT ONE. This url refers to the path where search/get_book_data is found
-            
             type: 'POST',
             async: false,
-                success: function(result){
+            success: function(result){      //change here is the name of the div to display the results
                 $('#change_here').html(result);
                 $('#change_here').fadeIn(1000);
                 $('#change_here').removeClass('loading');
@@ -35,7 +34,7 @@
                             <div class="header text-center background-red">
                                 <?php echo $header1; ?>
                             </div>
-            
+                            <!-- FIRST DIV TO SHOW THE LIST OF OVERDUE BOOKS -->
                             <table class="body fixed">
                             <thead>
                                 <tr>
@@ -92,7 +91,7 @@
                         </div>
                         <?php 
                             } 
-                        
+                            // Else show that there is no list in the table
                             else{
                                 echo "<hr>";
                                 echo "<h2 class='color-grey'>$message1</h2>";
@@ -107,7 +106,7 @@
                             <div class="header text-center background-red">
                                 <?php echo $header2; ?>
                             </div>
-            
+                            <!-- SECOND TABLE TO SHOW THE LIST OF BORROWED BOOKS -->
                             <table class="body fixed">
                             <thead>
                                 <tr>

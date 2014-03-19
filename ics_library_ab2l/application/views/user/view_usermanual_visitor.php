@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<title>User Manual</title>
+		<!-- Include other css and javascript files -->
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/build-full.css" media="all"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/main-template.css" media="all"/>
 		<link rel="stylesheet" href="<?php echo base_url(); ?>style/jquery-ui.css"><!--source: http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css-->
@@ -9,6 +11,8 @@
   		<link rel="stylesheet" href="<?php echo base_url(); ?>default/default.css" type="text/css" media="screen" />
   		<link rel="icon" href="<?php echo base_url(); ?>images/ics_icon.png"/>
   		<link rel="stylesheet" type="text/css" href="<?php echo  base_url() ?>style/user/edit.css" media="all"/>
+		
+		<!-- CSS modification for the user manual -->
 		<style type="text/css">
 			* {font-family: Arial;}
 			span {font-size: 20px;}
@@ -19,81 +23,83 @@
 				
 			}
 			
-#dialogoverlay{
-	display: none;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	
+		#dialogoverlay{
+			display: none;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+		
+		}
 
-}
-#dialogbox{
-	margin-top: 4%;
-	margin-left:16%;
-	background: #B00000 ;
-	border-radius:4%; 
-	width:70%;
-	height: 85%;
-	z-index: 10;
-}
+		#dialogbox{
+			margin-top: 4%;
+			margin-left:16%;
+			background: #B00000 ;
+			border-radius:4%; 
+			width:70%;
+			height: 85%;
+			z-index: 10;
+		}
 
-#dialogboxhead{
-	margin-top: 2%;
-}
+		#dialogboxhead{
+			margin-top: 2%;
+		}
 
-#boxbody{
-	height: 97%;
-}
-#dialogboxbody{
-	width:95.4%;
-	height: 72%;
-	overflow-x:auto;
-	background:url('../../../images/bgmanual.jpg');
-}
+		#boxbody{
+			height: 97%;
+		}
 
+		#dialogboxbody{
+			width:95.4%;
+			height: 72%;
+			overflow-x:auto;
+			background:url('../../../images/bgmanual.jpg');
+		}
 
+		#dialogbox > div{ background:#B80000  ; margin:8px; }
+		#dialogbox > div > #dialogboxhead{ background: #B80000 ; font-size:19px; padding:10px; color:white; }
+		#dialogbox > div > #dialogboxbody{ padding:20px; color:black; }
+		#dialogbox > div > #dialogboxfoot{ background: #B80000 ; padding:10px; text-align:right;color:white; }
 
+		li{
+			text-decoration:none;
+			list-style:none;
+		}
 
-#dialogbox > div{ background:#B80000  ; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #B80000 ; font-size:19px; padding:10px; color:white; }
-#dialogbox > div > #dialogboxbody{ padding:20px; color:black; }
-#dialogbox > div > #dialogboxfoot{ background: #B80000 ; padding:10px; text-align:right;color:white; }
-li{
-	text-decoration:none;
-	list-style:none;
-}
-<script>
-function CustomAlert(){
-	this.render = function(){
-		var winW = window.innerWidth;
-	    var winH = window.innerHeight;
-		var dialogoverlay = document.getElementById('dialogoverlay');
-	    var dialogbox = document.getElementById('dialogbox');
-		dialogoverlay.style.display = "block";
-	    dialogoverlay.style.height = winH+"px";
-		dialogbox.style.left = (winW/2) - (550 * .5)+"px";
-	    dialogbox.style.top = "100px";
-	    dialogbox.style.display = "block";
-	//	document.getElementById('dialogboxhead').innerHTML = "USER MANUAL";
-	//    document.getElementById('dialogboxbody').innerHTML = "Do you want to add these information in the database?";
-	//	document.getElementById('dialogboxfoot').innerHTML = '© 2013 ICS UPLB';
-	}
-	this.ok = function(){
-		document.getElementById('dialogbox').style.display = "none";
-		document.getElementById('dialogoverlay').style.display = "none";
-		proceed_add();
-	}
-	
-	this.no = function(){
-		document.getElementById('dialogbox').style.display = "none";
-		document.getElementById('dialogoverlay').style.display = "none";
-	}
-}
-var Alert = new CustomAlert();
-</script>
+			<script>
+				function CustomAlert(){
+					this.render = function(){
+						var winW = window.innerWidth;
+					    var winH = window.innerHeight;
+						var dialogoverlay = document.getElementById('dialogoverlay');
+					    var dialogbox = document.getElementById('dialogbox');
+						dialogoverlay.style.display = "block";
+					    dialogoverlay.style.height = winH+"px";
+						dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+					    dialogbox.style.top = "100px";
+					    dialogbox.style.display = "block";
+					//	document.getElementById('dialogboxhead').innerHTML = "USER MANUAL";
+					//    document.getElementById('dialogboxbody').innerHTML = "Do you want to add these information in the database?";
+					//	document.getElementById('dialogboxfoot').innerHTML = '© 2013 ICS UPLB';
+					}
+					this.ok = function(){
+						document.getElementById('dialogbox').style.display = "none";
+						document.getElementById('dialogoverlay').style.display = "none";
+						proceed_add();
+					}
+					
+					this.no = function(){
+						document.getElementById('dialogbox').style.display = "none";
+						document.getElementById('dialogoverlay').style.display = "none";
+					}
+				}
+				var Alert = new CustomAlert();
+			</script>
 		</style>
 	</head>
+
+	/*Start of Body */
 	<body onload="Alert.render()">
 	<div id="dialogoverlay"></div>
 		<div id="dialogbox">
@@ -335,7 +341,6 @@ var Alert = new CustomAlert();
 		
 		</div>
 			<div id="dialogboxfoot">© 2013 ICS UPLB</div>
-			
 		</div>
 	</div>
 	</body>

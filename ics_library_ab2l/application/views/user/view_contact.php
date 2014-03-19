@@ -1,3 +1,5 @@
+<!-- This file view_contact.php is for viewing of the contact us page in 
+the user side -->
 <div id="fb-root"></div>
 	<script>
 		(function(d, s, id) {
@@ -32,6 +34,7 @@
 									<h5>Phone(8:00-17:00 +8:00GMT):</h5>
 									<p class="color-black">536-2313</p>
 								</div>
+								<!-- For display of the facebook page -->
 								<div class="cell justify">
 									<h5>Website:</h5>
 									<p class="color-black"><a href="http://www.ics.uplb.edu.ph">www.ics.uplb.edu.ph</a></p>
@@ -46,10 +49,12 @@
 								<div class="cell width-fill">
 									<div class="cell">
 										<div class="cell">
+											<!-- Div to show the form that the user will answer  -->
 											<h3 class="color-black">Email Us</h3>
 
 											<form action="controller_contact/emailsender" method="POST" class="width-3of4">
 											<div class="cell">
+												<!-- For name with validation that it should be letters only -->
 												<div class="col width-1of3">
 													<label class="color-black" for="name">* Name:</label>
 												</div>
@@ -57,6 +62,7 @@
 													<input type="text" id="sender_name" name="sender_name" pattern="[A-ZÑ]{1}[a-zñ]*[\-]?[a-zñ]*[\.]?[\ ]?([A-ZÑ]{1}[a-z]*[\-]?[a-zñ]*[\.]?[\ ]?)*" oninvalid="setCustomValidity('Invalid Input: Must be capitalized alpha characters only.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 												</div>
 											</div>
+												<!-- For email with validation -->
 											<div class="cell">
 												<div class="col width-1of3">
 													<label class="color-black" for="email">* Email:</label>
@@ -65,6 +71,7 @@
 													<input type="text" id="sender_email" name="sender_email" required="required"  pattern="[A-Za-z][A-Za-z-0-9\._]{3,20}@[A-Za-z0-9]{3,8}\.[A-Za-z]{3,5}" oninvalid="setCustomValidity('Invalid Input: Must be name@domain.extension.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 												</div>
 											</div>
+											<!-- For contact number -->
 											<div class="cell">
 												<div class="col width-1of3">
 													<label class="color-black" for="contactnum">* Contact:</label>
@@ -74,6 +81,7 @@
 													<input type="text" id="contactnum" name="contactnum" pattern="[0]{1}[9]{1}[0-9]{9}"  oninvalid="setCustomValidity('Invalid Input: Must be 09-xxxxxxxxx.')" onchange="try{setCustomValidity('')}catch(e){}" required="required" class="width-1of1 background-white float-right"/>
 												</div>
 											</div>
+											<!-- For the subject of the email -->
 											<div class="cell">
 												<div class="col width-1of3">
 													<label class="color-black" for="subject">* Subject:</label>
@@ -83,7 +91,7 @@
 													<input type="text" id="subject" name="subject" pattern=".{1,50}"  oninvalid="setCustomValidity('Invalid Input: Must be up to 50 characters only.')" onchange="try{setCustomValidity('')}catch(e){}" class="width-1of1 background-white float-right"/>
 												</div>
 											</div>
-										
+											<!-- Email body -->
 											<div class="cell">
 												<div class="width-1of3">
 													<label class="color-black" for="message">*Comments/Suggestion/Inquiries:</label>
@@ -92,6 +100,7 @@
 													<textarea name="message" rows="5" cols="50" required="required" oninvalid="setCustomValidity('Please leave some comments, suggestions or questions.')" onchange="try{setCustomValidity('')}catch(e){}" class="float-right width-5of6 background-white"></textarea>
 												</div>
 											</div>
+											<!-- Submit button -->
 											<div class="cell">
 												<input type="submit" name="submit" class="float-right"/>
 											</div>

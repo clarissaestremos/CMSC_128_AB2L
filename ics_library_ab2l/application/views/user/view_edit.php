@@ -1,3 +1,5 @@
+<!-- This file is for editing of the profile page of user
+This will display the the profiel and show necessary input fields for edit of values -->
 <div id="main-body" class="site-body">
 	<div class="site-center">
 		<div class="cell body">

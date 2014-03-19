@@ -1,3 +1,6 @@
+<!-- This file view_about.php is a file for displaying the about us page
+This includes the description of the system, the library and who the librarian is
+Also, a section for the class members is alloted -->
 <div id="main-body" class="site-body">
 	<style>
 		#para{ font-size: 20px;} 
@@ -25,7 +28,7 @@
 									<img src="<?php echo base_url();?>images/home/ics.jpg" data-thumb="<?php echo base_url();?>images/home/ics.jpg" alt="" style="border: groove 5px #A80000; margin-left: 20px; width:500px;height:250px;"/>
 								</div>
 								<hr><br/>
-		
+								<!-- DIV for the description about the library -->
 								<div class="cell justify width-3of5 float-left" style="width: 50%;">
 									<h2 class="color-black">About the Library</h2>
 									<p id="para">The ICS library started in 1996, a year after the foundation of the institute. From having only a few resources, the amount of information and innovative ideas began to cultivate year after year in the library with the increasing amount of reading materials like books, journals, theses, etc. The library was able to provide a warm environment where the faculty and students interact as both tries to deepen their understanding in Computer Science. And now, it strives to reach out anyone interested in the the course both in UPLB and beyond and have them experience that environment.</p>
@@ -35,6 +38,7 @@
 								</div>
 								<hr><br/>
 									
+								<!-- DIV for the description who the librarian is -->
 								<div class="cell justify width-3of5 float-left" style="width: 50%;">
 									<h2 class="color-black">About the Librarian</h2>
 									<p id="para">The current library administrative support is Marites M. Gironella. As the librarian for about 3 years and counting, she really enjoys it when she can interact with the users of the library and help them in their searches for the needed books to support in their academic life. She wants the library to be able to cater more people who wants to learn and provide the reading materials they need.</p>
@@ -44,6 +48,8 @@
 								</div>
 								<hr><br/>
 		
+								<!-- Description for the class member 
+								Each member is given a div -->
 								<div class="cell justify float-left">
 									<h2 class="color-black">The Team Behind It</h2>
 									<p id="para">The developers of this system came from the class of CMSC 128 AB-2L under their instructors Reginald Recario and Kim Samaniego. Despite the diversity, everyone wanted to create a simple integrated library system that prioritizes the needs of its user. </p><br/>
@@ -67,7 +73,7 @@
 		
 										<div class="cell" id="tabs-2">
 								
-									
+										<!-- DIV for the team leaders of the team -->
 											<div style="float:left;">
 												<img src="<?php echo base_url();?>images/home/default2.png" data-thumb="<?php echo base_url();?>images/home/default2.png" alt="" style="border: groove 5px #A80000; width:150px;height:150px;"/>
 											</div>
@@ -127,6 +133,8 @@
 										<hr><br/>
 		
 									</div>
+
+									<!-- DIV for the developers for each team -->
 									<div class="cell" id="tabs-3">
 										<h1>Administrator Privileges</h1>
 										<div style="float:left;">
@@ -339,6 +347,7 @@
 		</div>
 	</div>
 </div>
+<!-- Include different javascript file for the jquery -->
 <script type="text/javascript" src="<?php echo base_url(); ?>js/slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tabslet.min.js"></script>
 <script type="text/javascript">

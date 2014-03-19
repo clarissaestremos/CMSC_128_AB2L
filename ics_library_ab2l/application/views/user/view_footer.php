@@ -1,3 +1,4 @@
+<!-- This is for the footer of the site, different links are included  -->
 <style>
 	#hovfooter li:hover a{
 		transform: scale(1.1);

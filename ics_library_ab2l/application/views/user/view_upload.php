@@ -1,3 +1,4 @@
+<!-- For file uploading of the user's profile picture -->
 <?php
 echo  form_open_multipart('index.php/user/controller_upload/uploadImage')?>
 
