@@ -180,3 +180,6 @@
         <p id='akeys'></p>
         <p id='ausernames'></p>
     </div>
+    
+       /* End of file view_add_admin.php */
+    /* Location: ./application/views/admin/view_add_admin.php */
