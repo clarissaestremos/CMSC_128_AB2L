@@ -77,7 +77,6 @@ class Controller_book extends Controller_log {
                         <th style='width: 7%;'><center>Type</center></th>
                         <th style='width: 5%;'><center>Qty</center></th>
                         <th style='width: 8%;'></th>
-                        <th style='width: 8%;'></th>
                     </tr>
                 </thead> 
                 <tbody>";                
@@ -130,12 +129,7 @@ class Controller_book extends Controller_log {
                                 <input type='submit' class='background-red' name='edit' value='Edit' enabled/>
                             </form>
                         </td>
-                        <td>
-                            <form action='$base"."index.php/admin/controller_book/delete/' id='mydeleteform$count' method='post'>
-                                <input type=\"hidden\"  name=\"id\" value=\"{$row->id}\" />
-                                <input type='submit' name='delete' class='background-red' value='Delete' onclick='return trySubmit(mydeleteform$count);' enabled/>
-                            </form>
-                        </td>";
+                        ";
                         echo "</tr></tr>";
                         $count++;
                     }

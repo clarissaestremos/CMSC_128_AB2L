@@ -93,7 +93,6 @@ class Controller_search_book extends CI_Controller {
                         <th style='width: 8%;' nowrap='nowrap'>Availability</th>
                         <th style='width: 13%;' nowrap='nowrap'>Action</th>
                         <th style='width: 13%;' nowrap='nowrap'>Action</th>
-                        <th style='width: 13%;' nowrap='nowrap'>Action</th>
                     </tr>
                 </thead>
                                             
@@ -137,11 +136,6 @@ class Controller_search_book extends CI_Controller {
 			        <td><form action='$base"."index.php/admin/controller_book/edit/' method='post'>
 			            <input type=\"hidden\" name=\"id\" value=\"{$row->id}\" />
 			            <input type='submit' class='background-red' name='edit' value='Edit' enabled/>
-			        </form>
-			        </td>
-			        <td><form action='$base"."index.php/admin/controller_book/delete/' id='mydeleteform$count' method='post'>
-			            <input type=\"hidden\"  name=\"id\" value=\"{$row->id}\" />
-			            <input type='submit' name='delete' class='background-red' value='Delete' onclick='return trySubmit(mydeleteform$count);' enabled/>
 			        </form>
 			        </td>";
 			    
