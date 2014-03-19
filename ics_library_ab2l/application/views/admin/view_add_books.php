@@ -252,7 +252,7 @@
 		textfield.setAttribute("name","call_number[]");
 		textfield.setAttribute("placeholder","Call Number of the Book");
 		textfield.setAttribute("required","required");
-		textfield.setAttribute("class","background-white call_nos");
+		textfield.setAttribute("class","call_nos background-white");
 
 		// create buttons
 		var button1 = document.createElement("input");
@@ -418,7 +418,7 @@
 												<div class="col width-fill">
 													<div class="cell">
 														<input type="text" class="call_nos background-white" id="callno" name = "call_number[]" placeholder="Call number of the book" data-required="true" required>&nbsp;
-														<input type="button" class="row3 cell" value="Add copy" onclick="validate_subject"="addRow_callno(this, false)">
+														<input type="button" class="row3 cell" value="Add copy" onclick="addRow_callno(this, false)">
 														<br/><span name="help_call_number" class="color-red"></span><br/>
 													</div>
 												</div>
