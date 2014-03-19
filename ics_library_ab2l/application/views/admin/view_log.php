@@ -41,3 +41,6 @@
 	 	</div>
 	</div>
 </div>
+
+<!-- End of file view_log.php */
+    /* Location: ./application/views/admin/view_log.php */ -->
