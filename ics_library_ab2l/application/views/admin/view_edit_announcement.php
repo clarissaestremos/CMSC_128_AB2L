@@ -247,3 +247,5 @@
 	var form;
 	var link;
 </script>
+<!-- End of file view_edit_announcement.php */
+    /* Location: ./application/views/admin/view_edit_announcement.php */ -->
