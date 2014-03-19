@@ -396,6 +396,12 @@
 															<option value="CMSC 190">CMSC 190</option>
 															<option value="CMSC 199">CMSC 199</option>
 															<option value="CMSC 200">CMSC 200</option>
+															<option value="CMSC 191">CMSC 191</option>
+															<option value="CMSC 161">CMSC 161</option>
+															<option value="CMSC 165">CMSC 165</option>
+															<option value="CMSC 129">CMSC 129</option>
+															<option value="CMSC 172">CMSC 172</option>
+															<option value="CMSC 180">CMSC 180</option>
 														</select>
 														<span name="help_subject" class="color-red"></span><br/><br/>
 													</div>
