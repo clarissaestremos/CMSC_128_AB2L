@@ -1,4 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/* Outgoing books: those books which are already reserved and need confirmation*/
+
 include_once("controller_log.php");
 class Controller_outgoing_books extends Controller_log{
  
@@ -32,8 +34,7 @@ class Controller_outgoing_books extends Controller_log{
             'newline'   => "\r\n",
             'crlf'      => "\n"
             );//config for the email
-            //$account_number=$_POST['account_number'];
-            //$to=$_POST['email'];
+       
             $subject='Re: ICS e-Lib Overdue Materials';
             $from_email = "$email";
             $from_name='ICS e-Lib';
@@ -90,6 +91,7 @@ class Controller_outgoing_books extends Controller_log{
         }//END OF notify_all
     }
     
+    /* Function the extend the due date of the user for borrowing a material*/
     public function extend(){
 		if($this->session->userdata('logged_in_type')!="admin")
                 redirect('index.php/user/controller_login', 'refresh');
@@ -130,6 +132,7 @@ class Controller_outgoing_books extends Controller_log{
         </script>";
     }//END OF extend()
     
+    /*Function about the returning of materials*/
     public function return_book(){
         $base = base_url();
 		if($this->session->userdata('logged_in_type')!="admin")
