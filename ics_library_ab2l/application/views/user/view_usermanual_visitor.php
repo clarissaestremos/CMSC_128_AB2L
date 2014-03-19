@@ -81,7 +81,7 @@
 					    dialogbox.style.display = "block";
 					//	document.getElementById('dialogboxhead').innerHTML = "USER MANUAL";
 					//    document.getElementById('dialogboxbody').innerHTML = "Do you want to add these information in the database?";
-					//	document.getElementById('dialogboxfoot').innerHTML = '© 2013 ICS UPLB';
+					//	document.getElementById('dialogboxfoot').innerHTML = 'ï¿½ 2013 ICS UPLB';
 					}
 					this.ok = function(){
 						document.getElementById('dialogbox').style.display = "none";
@@ -340,8 +340,11 @@
 		<br/><hr width="450px;"><br/>
 		
 		</div>
-			<div id="dialogboxfoot">© 2013 ICS UPLB</div>
+			<div id="dialogboxfoot">ï¿½ 2013 ICS UPLB</div>
 		</div>
 	</div>
 	</body>
 </html>
+
+<!-- End of file view_user_manual_visitor.php -->
+<!-- Location: ./application/view/user/vew_user_manual_visitor.php -->
