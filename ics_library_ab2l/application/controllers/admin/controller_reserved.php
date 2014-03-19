@@ -18,3 +18,5 @@
 			$this->load->view("admin/view_reserved", $data);
 		}
 	}
+/* End of file controller_reserved.php */
+/* Location: ./application/controllers/admin/controller_reserved.php */

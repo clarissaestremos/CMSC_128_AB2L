@@ -6,6 +6,7 @@ class Controller_view_users extends Controller_log {
         $this->viewUser(null);
     }
 
+/*Function that shows the list of all users in the database*/
     function viewUser($msg){
         $this->load->model('model_users');
         $data['results']=$this->model_users->getAllUsers();
@@ -21,6 +22,7 @@ class Controller_view_users extends Controller_log {
         $this->load->view("admin/view_footer");
     }
 
+/*Function that shows the user upon searching*/
     function search_user(){
         $this->load->model('model_users');
         $data['results']=$this->model_users->userSearch($this->input->post('s_user'));
@@ -33,6 +35,8 @@ class Controller_view_users extends Controller_log {
         $this->load->view("admin/view_users",$data);
         $this->load->view("admin/view_footer");
     }
+
+/*Function that approve user account*/
 
     function approve_user(){
         if($this->session->userdata('logged_in_type')!="admin")
@@ -133,7 +137,7 @@ class Controller_view_users extends Controller_log {
              $overdue = count($this->model_reservation->show_all_user_book_reservation("overdue"));
              $borrowed = count($this->model_reservation->show_all_user_book_reservation("borrowed"));
              $count = $overdue + $borrowed;
-             if($count === 0){  //no more books at hand of users, all books are returned in th library
+             if($count === 0){  //no more books at hand of users, all books are returned in the library
                  $this->load->model('model_user');
                  $this->model_user->deactivate_users();
                  echo "<script>alert('You have successfully deactivated the accounts of all users.')</script>";
@@ -147,6 +151,7 @@ class Controller_view_users extends Controller_log {
         redirect('index.php/admin/controller_view_users','refresh');
     }
     
+/*Function that do the borrowing of books for the user*/
     function borrow($borrower){
         $this->load->library(array('form_validation','session'));
         $this->load->model('model_check_session');

@@ -23,5 +23,5 @@
     }
   
   }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_logout.php */
+/* Location: ./application/controllers/user/controller_logout.php */

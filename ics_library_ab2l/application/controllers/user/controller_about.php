@@ -11,5 +11,5 @@ class Controller_about extends CI_Controller {
         
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_about.php */
+/* Location: ./application/controllers/user/controller_about.php */

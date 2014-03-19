@@ -10,5 +10,5 @@
    $this->load->view("user/view_footer"); //displays the footer
   }
  }  
-/* End of file home_controller.php */
+/* End of file controller_home.php */
 /* Location: ./application/controllers/user/controller_home.php */

@@ -15,5 +15,5 @@ class Controller_search extends CI_Controller {
     }
 }
 
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_search.php */
+/* Location: ./application/controllers/user/controller_search.php */

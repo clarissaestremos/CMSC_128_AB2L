@@ -168,5 +168,5 @@ class Controller_search_book extends CI_Controller {
 		
 	}
 }
-/* End of file home_controller.php */
+/* End of file controller_search_book.php */
 /* Location: ./application/controllers/user/controller_search_book.php */

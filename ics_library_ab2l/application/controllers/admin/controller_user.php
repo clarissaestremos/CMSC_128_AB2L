@@ -114,4 +114,7 @@ class Controller_user extends Controller_log{
 		//}
 	}
 }
+
+/* End of file controller_user.php */
+/* Location: ./application/controllers/admin/controller_user.php */
 ?>

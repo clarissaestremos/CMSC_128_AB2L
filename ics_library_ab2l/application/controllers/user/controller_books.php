@@ -133,5 +133,5 @@ class Controller_books extends CI_Controller {
     }
 }
 
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_books.php */
+/* Location: ./application/controllers/user/controller_books.php */

@@ -74,4 +74,6 @@
 			}
 		}
 	}
+/* End of file controller_log.php */
+/* Location: ./application/controllers/admin/controller_log.php */
 ?>

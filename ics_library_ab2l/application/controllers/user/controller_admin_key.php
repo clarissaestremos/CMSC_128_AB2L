@@ -31,5 +31,5 @@ class Controller_admin_key extends CI_Controller {
        
     }
 }
-/* End of file login_controller.php */
-/* Location: ./application/controllers/user/controller_login.php */
+/* End of file controller_admin_key.php */
+/* Location: ./application/controllers/user/controller_admin_key.php */

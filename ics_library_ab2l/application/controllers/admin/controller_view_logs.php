@@ -13,5 +13,5 @@ class Controller_view_logs extends CI_Controller {
         $this->load->view("admin/view_footer");
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_view_logs.php */
+/* Location: ./application/controllers/user/controller_view_logs.php */

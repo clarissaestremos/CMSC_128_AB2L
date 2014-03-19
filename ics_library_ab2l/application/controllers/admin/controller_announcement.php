@@ -2,7 +2,7 @@
 
 include_once("controller_log.php");
 class Controller_announcement extends Controller_log {
-
+/*all functionalities related to annoucements: add, delete, delete*/
 	public function index()
 	{
 		$data['parent'] = "Admin";
@@ -15,8 +15,9 @@ class Controller_announcement extends Controller_log {
 	        $this->load->view("admin/view_footer");
 	}
 	
+/*function that shows the field in which the announcements are entered*/
 	public function viewForm(){
-		//$this->load->view("admin/view_add_announcement.php");
+
 		$data['parent'] = "Admin";
     	$data['current'] = "Add Announcement";
     	$data['user'] = $this->session->userdata('logged_in');
@@ -35,7 +36,7 @@ class Controller_announcement extends Controller_log {
 
 		
 	}
-	
+/*function that delete all announcements*/
 	public function deleteAll(){
 		if($this->session->userdata('logged_in_type')!="admin")
             redirect('index.php/user/controller_login', 'refresh');
@@ -48,6 +49,8 @@ class Controller_announcement extends Controller_log {
 			header("refresh:0;url=../controller_announcement");
 		}
 	}
+
+/*function that saves all added and edited announcements to a file for reference*/
 	
 	public function writeToFile(){
 		$status = 1;
@@ -93,6 +96,8 @@ class Controller_announcement extends Controller_log {
 			}
 		}
 	}
+
+/*function that find a specific announcemnt on the text file*/
 	
 	public function find(){
 		if($this->session->userdata('logged_in_type')!="admin")
@@ -173,6 +178,7 @@ class Controller_announcement extends Controller_log {
 		}
 	}
 	
+/*function that commit changes on edited announcements*/
 	public function saveChanges(){
 		$status = 1;
 		if($this->session->userdata('logged_in_type')!="admin")
@@ -221,3 +227,5 @@ class Controller_announcement extends Controller_log {
 		}
 	}
 }
+/* End of file controller_add_announcement.php */
+/* Location: ./application/controllers/admin/controller_add_announcement.php */

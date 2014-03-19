@@ -10,5 +10,5 @@ class Controller_search extends CI_Controller {
         $this->load->view("user/view_footer"); //displays the footer
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_search.php */
+/* Location: ./application/controllers/user/controller_search.php */

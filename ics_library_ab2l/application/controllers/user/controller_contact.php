@@ -155,5 +155,5 @@ class Controller_contact extends CI_Controller {
     //         } 
     } 
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_contact.php */
+/* Location: ./application/controllers/user/controller_contacts.php */

@@ -438,5 +438,7 @@ class Controller_book extends Controller_log {
         redirect('index.php/admin/controller_book', 'refresh');
 	}
 }
+/* End of file controller_book.php */
+/* Location: ./application/controllers/admin/controller_book.php */
  ?>
 

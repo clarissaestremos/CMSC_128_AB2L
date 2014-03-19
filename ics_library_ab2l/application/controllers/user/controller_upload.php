@@ -106,5 +106,6 @@
     }
  
   }
- 
+ /* End of file controller_upload.php */
+/* Location: ./application/controllers/admin/controller_upload.php */
 ?>

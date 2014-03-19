@@ -14,5 +14,5 @@ class Controller_view_books extends Controller_log {
         $this->load->view("admin/view_footer");
    }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_view_books.php */
+/* Location: ./application/controllers/user/controller_view_books.php */

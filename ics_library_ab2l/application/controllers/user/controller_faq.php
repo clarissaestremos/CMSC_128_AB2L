@@ -14,5 +14,5 @@ class Controller_faq extends CI_Controller {
         $this->load->view("user/view_footer");        //displays the page footer
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_faq.php */
+/* Location: ./application/controllers/user/controller_faq.php */

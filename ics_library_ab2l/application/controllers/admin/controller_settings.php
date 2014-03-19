@@ -132,6 +132,6 @@ class Controller_settings extends Controller_log {
 		$this->load->view("admin/view_footer");
     }
 }
-/* End of file home_controller.php */
+/* End of file controller_settings.php */
 /* Location: ./application/controllers/admin/controller_settings.php */
 

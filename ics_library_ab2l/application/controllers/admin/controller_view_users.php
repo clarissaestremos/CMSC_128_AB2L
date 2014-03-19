@@ -148,36 +148,7 @@ class Controller_view_users extends Controller_log {
                      
                             });
                         </script>";
-		/**}else{
-            echo "
-                    <div id='mysuccess' title='Add User Account Failed'>
-                        <h6>The account of $account_number was not successfully validated! Error: Email failed to send. Please check your internet connection.</h6>
-                    </div>
-                    <script src='$base/js/jquery-1.10.2.min.js'></script>
-                    <script src='$base/js/jquery-ui.js'></script>
-                    <link rel='stylesheet' href='$base/style/jquery-ui.css'/>
-                    <script>
-                            $('#mysuccess').dialog({
-                                modal: true,
-                                closeOnEscape: true,
-                                closeText: 'show',
-                                show: {
-                                  effect: 'fadeIn',
-                                  duration: 200
-                                },
-                                draggable: false,
-                                close: function(event, ui){
-                                    window.location.replace('$base/index.php/admin/controller_view_users');
-                                },
-                                buttons : {
-                                  'Ok': function() {
-                                      window.location.replace('$base/index.php/admin/controller_view_users');
-                                  },
-                                }
-                     
-                            });
-                        </script>";
-		}*/
+
 	}
         
     function deactivate(){
@@ -374,5 +345,5 @@ class Controller_view_users extends Controller_log {
     	}
     }
 }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_view_users.php */
+/* Location: ./application/controllers/user/controller_view_users.php */

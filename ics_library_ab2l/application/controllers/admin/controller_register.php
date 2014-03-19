@@ -146,5 +146,5 @@
             }
         }
     }
-/* End of file home_controller.php */
-/* Location: ./application/controllers/user/controller_home.php */
+/* End of file controller_register.php */
+/* Location: ./application/controllers/user/controller_register.php */

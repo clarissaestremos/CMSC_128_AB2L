@@ -95,4 +95,6 @@ class Controller_add_admin extends Controller_log{
             $this->load->view("admin/view_footer");
     }
 }
+/* End of file controller_add_admin.php */
+/* Location: ./application/controllers/admin/controller_add_admin.php */
 ?>

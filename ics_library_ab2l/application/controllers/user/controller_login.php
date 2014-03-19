@@ -28,5 +28,5 @@
       }
     }
   }
-/* End of file login_controller.php */
+/* End of file controller_login.php */
 /* Location: ./application/controllers/user/controller_login.php */

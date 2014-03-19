@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-include_once('controller_log.php');	//necessary para malagay sa ADMIN_LOGS yung paglog-in ng admin
+include_once('controller_log.php');	//necessary in order to be included in the ADMIN_LOGS
 class Controller_verify_login extends Controller_log {
     function __construct() {
         parent::__construct();
