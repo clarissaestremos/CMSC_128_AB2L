@@ -52,3 +52,5 @@
 </div>
 </div>
 </div>
+<!-- End of file view_login.php -->
+<!-- Location: ./application/view/user/view_login.php -->
