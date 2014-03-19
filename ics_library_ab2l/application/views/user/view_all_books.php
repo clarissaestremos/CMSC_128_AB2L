@@ -7,9 +7,11 @@
          
         $.ajax({ //change the url if you are about to change the location
             url: base_url+"index.php/user/controller_books/get_book_data1",   
+            
+            type: 'POST',
             async: false,
             data: serialize_form1(),
-            success: function(result){      //change here is the name of the div to display the results
+            success: function(result){
                 $('#change_here').html(result);
                 $('#change_here').fadeIn(1000);
                 $('#change_here').removeClass('loading');
