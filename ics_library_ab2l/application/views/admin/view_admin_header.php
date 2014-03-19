@@ -7,4 +7,4 @@
 <body>
 
   <!-- /* End of file view_add_header.php */
-    /* Location: ./application/views/admin/view_add_header.php */-->
+    /* Location: ./application/views/admin/view_admin_header.php */-->
