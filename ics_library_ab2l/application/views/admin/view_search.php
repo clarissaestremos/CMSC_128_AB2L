@@ -95,3 +95,6 @@
 										</div>
 	                </div>
 	            </div>
+	            
+	<!-- End of file view_search.php */
+    /* Location: ./application/views/admin/view_search.php */ -->
