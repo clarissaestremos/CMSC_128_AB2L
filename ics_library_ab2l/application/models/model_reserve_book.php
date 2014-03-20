@@ -34,7 +34,10 @@
 			$query="*
 			FROM book_reservation
 			WHERE account_number LIKE '$borrower'
-			AND call_number LIKE '$call_number'";
+			AND call_number LIKE '$call_number'
+			AND (status LIKE 'borrowed'
+				OR status LIKE 'reserved'
+				OR status LIKE 'overdue')";
 			//execute query
 			$this->db->select($query,FALSE);
 			
@@ -66,11 +69,11 @@
 								            },
 								            draggable: false,
 								            close: function(event, ui){
-								                window.location.replace('".base_url()."/index.php/user/controller_home');
+								                window.location.replace('".base_url()."index.php/user/controller_home');
 								            },
 								            buttons : {
 								              'Ok': function() {
-								                  window.location.replace('".base_url()."/index.php/user/controller_home');
+								                  window.location.replace('".base_url()."index.php/user/controller_home');
 								              },
 								            }
 								 
@@ -104,9 +107,7 @@
 							'account_number' => $data['borrower']
 							);
 						$this->db->insert('book_reservation', $newdata);
-						if($data['updatechecker'] != true){
-							$book_stat++;
-						}
+						$book_stat++;
 						$no_of_available--;
 						$newdata2 = array(
 							'no_of_available' => $no_of_available,
@@ -143,11 +144,11 @@
 								            },
 								            draggable: false,
 								            close: function(event, ui){
-								                window.location.replace('".base_url()."/index.php/user/controller_home');
+								                window.location.replace('".base_url()."index.php/user/controller_home');
 								            },
 								            buttons : {
 								              'Ok': function() {
-								                  window.location.replace('".base_url()."/index.php/user/controller_home');
+								                  window.location.replace('".base_url()."index.php/user/controller_home');
 								              },
 								            }
 								 
@@ -312,13 +313,13 @@
 			return $this->db->get();
 		}
 
-		function get_borrower($id){
+		function get_borrower($id, $rank){
 			$query = $this->db->query("SELECT call_number FROM book_call_number WHERE id LIKE '$id'");
 			$call_number = $query->result()[0]->call_number;
-			$query = $this->db->query("SELECT account_number FROM book_reservation
+			$query = $this->db->query("SELECT * FROM book_reservation
 										WHERE call_number LIKE '$call_number'
 										AND status LIKE 'reserved'
-										AND rank > 0
+										AND rank > $rank
 										ORDER BY rank");
 			return $query->result();
 		}

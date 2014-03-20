@@ -103,8 +103,6 @@
 							//if the user's account is approved, and his number of borrowed/reserved books is less than three,
 							//and there is an available copy of the book, then he is allowed to reserve it
 							if($no_of_available > 0){
-							
-								$data['updatechecker'] = false;
 								if($this->model_reserve_book->add_reservation($data)){
 									echo "<div id='mysuccess' title='Success: Reserved'>
 										<h5>You have successfully reserved a book for user ".$data['borrower'].". Please confirm it.</h5>
@@ -123,11 +121,11 @@
 									            },
 									            draggable: false,
 									            close: function(event, ui){
-									                window.location.replace('$base/index.php/admin/controller_outgoing_books');
+									                window.location.replace('".$base."index.php/admin/controller_outgoing_books');
 									            },
 									            buttons : {
 									              'Ok': function() {
-									                  window.location.replace('$base/index.php/admin/controller_outgoing_books');
+									                  window.location.replace('".$base."index.php/admin/controller_outgoing_books');
 									              },
 									            }
 									 
@@ -157,11 +155,11 @@
 									            },
 									            draggable: false,
 									            close: function(event, ui){
-									                window.location.replace('$base/index.php/admin/controller_outgoing_books');
+									                window.location.replace('".$base."index.php/admin/controller_outgoing_books');
 									            },
 									            buttons : {
 									              'Ok': function() {
-									                  window.location.replace('$base/index.php/admin/controller_outgoing_books');
+									                  window.location.replace('".$base."index.php/admin/controller_outgoing_books');
 									              },
 									            }
 									 
@@ -189,11 +187,11 @@
 								            },
 								            draggable: false,
 								            close: function(event, ui){
-								                window.location.replace('$base/index.php/user/controller_home');
+								                window.location.replace('".$base."index.php/user/controller_home');
 								            },
 								            buttons : {
 								              'Ok': function() {
-								                  window.location.replace('$base/index.php/user/controller_home');
+								                  window.location.replace('".$base."index.php/user/controller_home');
 								              },
 								            }
 								 
@@ -222,11 +220,11 @@
 							},
 					            	draggable: false,
 					            	close: function(event, ui){
-						                window.location.replace('$base/index.php/user/controller_home');
+						                window.location.replace('".$base."index.php/user/controller_home');
 							},
 							buttons : {
 								'Ok': function() {
-								 	window.location.replace('$base/index.php/admin/controller_admin_home');
+								 	window.location.replace('".$base."index.php/admin/controller_admin_home');
 								 },
 								            }
 								 

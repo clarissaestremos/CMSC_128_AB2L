@@ -40,9 +40,9 @@ This file will basically prints all the books in the library with pagination -->
                 <!-- Two select will be present on the page one is for choosing what to sort
                     the other one is to whether in descending or ascending 
                     If the value in the select changes the get_data1() function will be called-->
-                <center><form method="post" id="sort_list" name="sort_list" action="<?php echo site_url("application/controllers/user/controller_books/sort_by()"); ?>">
+                <center><form method="post" id="sort_list" name="sort_list">
                 <b> Sort List By: </b> 
-                <select id = "sort_by" name ="sort_by" onchange = "get_data1();">
+                <select id = "sort_by" name ="sort_by" onchange = "get_data1();" onload = "get_data1();">
                   <option value="subject">Subject</option>
                   <option value="author">Author</option>
                   <option selected = "selected" value="title">Title</option>
